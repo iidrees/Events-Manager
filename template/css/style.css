@@ -1,6 +1,24 @@
-body {
-  background-color: purple;
+body::after {
+  content: "";
+ background-color: purple; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
+
+/* 
+#background-cover {
+  background-color: purple;
+  opacity: 0.6;
+} */
 
 .main-text
 {
@@ -59,3 +77,55 @@ h1 {
 .landing-auth {
   font-size: 15px;
 }
+
+header {
+  margin-bottom: 100px;
+}
+.signup-text {
+  font-family: 'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
+  color: #393939+100ml of waterRESET
+  
+}
+
+@media(min-width: 768px) {
+  .field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+  }
+
+  #navbar-signup {
+    margin-left: 800px;
+  }
+  .nav-link {
+    border-right: solid grey 1px;
+    border-radius: 10px;
+    margin: 3px 20px 0px 5px; 
+    
+  }
+  #nav-logo {
+    border-right: solid grey 1px;
+    padding-right: 20px;
+  }
+  
+}
+
+@media(max-width: 576px) {
+  #navbar-signup {
+    margin-left: 30px;
+  }
+  .nav-link {
+    border: solid grey 0.5px;
+    border-radius: 5px;
+    max-width: 130px;
+    text-align: center;
+    margin: 10px 0 0 0;
+    
+  }
+  #nav-logo {
+    border-right: solid grey 1px;
+    padding-right: 20px;
+  }
+  
+}
+
+
