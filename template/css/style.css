@@ -1,0 +1,61 @@
+body {
+  background-color: purple;
+}
+
+.main-text
+{
+    position: absolute;
+    top: 90px;
+    
+    color: rgb(20, 20, 20);
+}
+.btn-min-block
+{
+    min-width: 170px;
+    line-height: 26px;
+}
+.btn-clear
+{
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+    margin-right: 15px;
+}
+.btn-clear:hover
+{
+    color: #000;
+    background-color: #FFF;
+}
+
+#img-landing1,#img-landing2,#img-landing3 {
+  opacity: 0.7;
+  width: 300px;
+  z-index: -1
+}
+
+.jumbotron {
+  opacity: 0.8;
+  color: #fff;
+  background: #000;
+  margin-left: 250px;
+  
+}
+
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 60px;
+  color: white;
+  font-style: italic;
+  font-weight: bold; 
+  margin-bottom: 5px;
+}
+
+#para-landing {
+  font-family: 'Encode Sans Expanded', sans-serif;
+  font-style: italic;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.landing-auth {
+  font-size: 15px;
+}
