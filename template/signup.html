@@ -1,0 +1,146 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Events Manager Web Application">
+    <title>Events Manager</title>
+    <meta name="keywords" content="Videos, Images, Text, events">
+    <meta name="author" content="Idrees Ibraheem">
+
+    <!-- Bootstrap, Font Awesome CSS --> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+
+    <!-- Google Fonts --> 
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+
+    
+
+  </head>
+  <body id="background-cover">
+		<header ><!-- Start HEADER for NAVBAR -->
+			<nav id="nav-bar" class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-signup" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a id="nav-logo" class="navbar-brand" href="#">Events Manager!</a>
+				<div class="collapse navbar-collapse left" id="navbar-signup">
+					<ul class="navbar-nav mr-auto ">
+						<li class="nav-item">
+							<a class="nav-link" href="#">See Events</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Sign-up</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Sign-in</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header><!-- END HEADER FOR NAVBAR -->
+		
+		<div class="container"><!-- Container for signup form -->
+				<form id="form-signup" class="form-horizontal" role="form" method="POST" action="#"><!-- START OF FORM -->
+					<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+									<h2 class="signup-text">Let's get started</h2>
+									<hr>
+									<p class="signup-text">enter your name, email and password to Sign-up </p>
+							</div>
+					</div>
+					<div class="row"><!-- START FORM INPUT NAME -->
+							<div class="col-md-3 field-label-responsive">
+									<label for="name">Name</label>
+							</div>
+							<div class="col-md-6">
+									<div class="form-group">
+											<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+													<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+													<input type="text" name="name" class="form-control" id="name"
+																 placeholder="Idrees Ibraheem" required autofocus>
+											</div>
+									</div>
+							</div>
+							<div class="col-md-3">
+									<div class="form-control-feedback">
+													<span class="text-danger align-middle">
+															<!-- Put name validation error messages here -->
+													</span>
+									</div>
+							</div>
+					</div><!-- END FORM INPUT NAME -->
+					<div class="row"><!-- FORM INPUT EMAIL -->
+							<div class="col-md-3 field-label-responsive">
+									<label for="email">E-Mail Address</label>
+							</div>
+							<div class="col-md-6">
+									<div class="form-group">
+											<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+													<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+													<input type="text" name="email" class="form-control" id="email"
+																 placeholder="youremail@host.com" required autofocus>
+											</div>
+									</div>
+							</div>
+							<div class="col-md-3">
+									<div class="form-control-feedback">
+													<span class="text-danger align-middle">
+															<!-- Put e-mail validation error messages here -->
+													</span>
+									</div>
+							</div>
+					</div><!-- END FORM INPUT EMAIL -->
+					<div class="row"><!-- FORM INPUT PASSWORD & CONFIRM PASSWORD-->
+							<div class="col-md-3 field-label-responsive">
+									<label for="password">Password</label>
+							</div>
+							<div class="col-md-6">
+									<div class="form-group has-danger">
+											<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+													<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+													<input type="password" name="password" class="form-control" id="password"
+																 placeholder="Password" required>
+											</div>
+									</div>
+							</div>
+					</div>
+					<div class="row">
+							<div class="col-md-3 field-label-responsive">
+									<label for="password">Confirm Password</label>
+							</div>
+							<div class="col-md-6">
+									<div class="form-group">
+											<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+													<div class="input-group-addon" style="width: 2.6rem">
+															<i class="fa fa-repeat"></i>
+													</div>
+													<input type="password" name="password-confirmation" class="form-control"
+																 id="password-confirm" placeholder="Password" required>
+											</div>
+									</div>
+							</div>
+					</div><!-- END FORM INPUT PASSWORD & CONFIRM PASSWORD -->
+					<div class="row"><!-- SIGN UP FORM BUTTON -->
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+									<button type="submit" class="btn btn-success"> Sign-up  <span><i class="fa fa-user-plus"></i></span></button>
+							</div>
+					</div><!-- END FORM BUTTON -->
+			</form><!-- END FORM -->
+		</div><!-- END CONTAINER -->
+		
+    <!-- Bootstrap.js, Jquery.js, Popper.js -->
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/popper-dist/umd/popper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </body>
+</html>
