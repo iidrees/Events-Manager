@@ -1,0 +1,140 @@
+/* 
+import fonts
+ */
+@font-face {
+  font-family: 'Cantarell';
+  src: url(../fonts/webfontkit/cantarell-regular-webfont.woff); }
+@font-face {
+  font-family: 'Maven Pro';
+  src: url(../fonts/webfontkit/mavenpro-medium-webfont.woff); }
+@font-face {
+  font-family: 'PT Sans Caption';
+  src: url(../fonts/webfontkit/pt_sans-caption-web-bold-regular-webfont.woff); }
+/* Variables */
+/* background: url('../images/food-landing.jpg') no-repeat center center fixed 
+background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
+#add-events-body::after {
+  content: "";
+  background: url("../images/pexels-photo-621891.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#event-details::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+.head1 {
+  font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
+  color: #393939; }
+
+#p-head {
+  font-size: 20px;
+  font-weight: 20px; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 70px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px; }
+
+/* Event catalog and My Events page */
+.even-font {
+  font-family: "Patrick Hand", cursive;
+  font-weight: bold; }
+
+.date-font {
+  font-family: "Cantarell", sans-serif;
+  font-weight: bold; }
+
+.location-font, .search-font {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bold; }
+
+small {
+  font-family: "Patrick Hand", cursive;
+  font-weight: bolder;
+  color: purple; }
+
+/* View point for  */
+@media (min-width: 768px) {
+  /* landing page */
+  #navbar-myevents {
+    margin-left: 500px; }
+
+  .nav-link {
+    border-right: solid grey 1px;
+    border-radius: 10px;
+    margin: 3px 20px 0px 5px; }
+
+  #nav-logo {
+    border-right: solid grey 1px;
+    padding-right: 20px; }
+
+  /*events catalog  */
+  #myevent {
+    margin-top: 70px; }
+
+  .cont-body {
+    margin-bottom: 150px; } }
+@media (max-width: 576px) {
+  #navbar-myevents {
+    margin-left: 30px; }
+
+  .nav-link {
+    border: solid grey 0.5px;
+    border-radius: 5px;
+    max-width: 130px;
+    text-align: center;
+    margin: 10px 0 0 0; }
+
+  #nav-logo {
+    border-right: solid grey 1px;
+    padding-right: 20px; }
+
+  #myevent {
+    margin-top: 70px; }
+
+  .card {
+    height: 20rem;
+    width: 20rem;
+    margin-left: 70px; }
+
+  #card1, #card2 {
+    margin-top: 10px; }
+
+  .card {
+    margin-top: 200px; }
+
+  .cont-body {
+    margin-bottom: 200px; } }
+
+/*# sourceMappingURL=main.css.map */
