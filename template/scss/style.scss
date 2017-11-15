@@ -49,6 +49,22 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
+
+#admin-add-center::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 body::after {
 	content: "";
 	background: url('../images/pexels-photo-621891.jpeg') no-repeat center center fixed;
@@ -66,14 +82,12 @@ body::after {
 }
 
 
-#add-event-header {
-  margin-top: 70px;
-}
 
-.form-control {
-  max-width: 600px;
-  border: solid purple 1px;
-}
+/* #admin-form .form-control {
+  width: 600px;
+	border: solid purple 1px;
+
+} */
 
 .home-para {
   font-family: $font-Encode;
@@ -124,9 +138,7 @@ body {
 
 
 
-
 /* Event Catalog page fonts */
-
 
 .even-font {
 	font-family: $font-patrick;
@@ -145,7 +157,8 @@ body {
 /* View point for  */
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events, #navbar-addevents {
+	#nav-events, #navbar-addevents, #navbar-admin-center
+	 {
 		margin-left: 500px;
 	}
 	.nav-link {
@@ -160,7 +173,7 @@ body {
 	}
 
 	/*events catalog  */
-	#event-page {
+	#event-page, #add-center-header {
 		margin-top: $header-top;
 	}
 
@@ -178,6 +191,11 @@ body {
 	}
 	.cont-body {
 		margin-bottom: 150px;
+	}
+	#admin-form .form-control {
+		width: 600px;
+		border: solid purple 1px;
+	
 	}
 	
 }
@@ -200,7 +218,7 @@ body {
 		padding-right: 20px;
 	}
 
-	#event-page {
+	#event-page, #add-center-header {
 		margin-top: $header-top;
 	}
 	input[type=text] {
@@ -229,6 +247,11 @@ body {
 	}
 	.cont-body {
 		margin-bottom: 200px;
+	}
+	#admin-form .form-control {
+		width: 300px;
+		border: solid purple 1px;
+	
 	}
 }
 
