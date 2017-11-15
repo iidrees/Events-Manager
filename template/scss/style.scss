@@ -1,4 +1,5 @@
 
+
 /* 
 import fonts
  */
@@ -15,7 +16,8 @@ import fonts
 	src: url(../fonts/webfontkit/pt_sans-caption-web-bold-regular-webfont.woff);
 }
 /* Variables */
-$pry-color: #800080;
+
+$pry-color: white;
 $font-head-color: #393939;
 $header-color: black;
 $navbar-border: grey;
@@ -30,6 +32,23 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
 
+
+/* add-events page */
+#add-events-body::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 body::after {
 	content: "";
 	background: url('../images/pexels-photo-621891.jpeg') no-repeat center center fixed;
@@ -46,6 +65,33 @@ body::after {
 	z-index: -1;
 }
 
+
+#add-event-header {
+  margin-top: 70px;
+}
+
+.form-control {
+  max-width: 600px;
+  border: solid purple 1px;
+}
+
+.home-para {
+  font-family: $font-Encode;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.head-1 {
+	font-family: $font-cantarell;
+	font-weight: 50px;
+	font-size: 70px;  
+}
+.head-para {
+font-family: $font-maven-pro;
+font-weight: 200px;
+font-size: 20px;
+}
+/* FOOTER */
+
 .head1 {
 	font-family: $font-Encode;
 	color: $font-head-color;
@@ -56,23 +102,30 @@ body::after {
 	font-weight: 20px;
 }
 
+
 html {
   position: relative;
   min-height: 100%;
 }
 body {
   /* Margin bottom by footer height */
+
   margin-bottom: 70px;
+
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
+
   height: 30px; 
 }
 
-/* Event Catalog page */
+
+
+
+/* Event Catalog page fonts */
 
 
 .even-font {
@@ -92,7 +145,7 @@ body {
 /* View point for  */
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events {
+	#nav-events, #navbar-addevents {
 		margin-left: 500px;
 	}
 	.nav-link {
@@ -129,6 +182,7 @@ body {
 	
 }
 	
+
 @media(max-width: 576px) {
 	#navbar-signup {
 		margin-left: 30px;
@@ -145,6 +199,7 @@ body {
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
 	}
+
 	#event-page {
 		margin-top: $header-top;
 	}
@@ -176,6 +231,4 @@ body {
 		margin-bottom: 200px;
 	}
 }
-
-
 

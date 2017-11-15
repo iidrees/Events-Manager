@@ -1,6 +1,6 @@
 body::after {
   content: "";
- background-color: purple; 
+ background-color: black; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -37,14 +37,16 @@ body::after {
     background-color: #FFF;
 }
 
-#img-landing1,#img-landing2,#img-landing3 {
-  opacity: 0.7;
-  width: 100%;
+
+#img-landing1,#img-landing2,#img-landing3,#img-landing4 {
+  opacity: 0.9;
+  width: 300px;
+
   z-index: -1
 }
 
 .jumbotron {
-  opacity: 0.8;
+  opacity: 0.7;
   color: #fff;
   background: #000;
   margin-left: 250px;
@@ -70,15 +72,18 @@ h1 {
   font-size: 15px;
 }
 
+
+
+.signup-text {
+  font-family: 'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
+  color: #393939;
+
 header {
   margin-bottom: 0px;
 }
 #form-signup, #form-signin {
   margin-top: 100px;
 }
-.signup-text {
-  font-family: 'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
-  color: #393939
   
 }
 
@@ -122,5 +127,4 @@ header {
   }
   
 }
-
 

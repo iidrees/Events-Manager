@@ -13,6 +13,23 @@ import fonts
 /* Variables */
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
+
+/* add-events page */
+#add-events-body::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  opacity: 0.4;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
 body::after {
   content: "";
   background: url("../images/pexels-photo-621891.jpeg") no-repeat center center fixed;
@@ -28,6 +45,30 @@ body::after {
   position: absolute;
   z-index: -1; }
 
+
+#add-event-header {
+  margin-top: 70px; }
+
+.form-control {
+  max-width: 600px;
+  border: solid purple 1px; }
+
+.home-para {
+  font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
+  font-size: 20px;
+  font-weight: bolder; }
+
+.head-1 {
+  font-family: "Cantarell", sans-serif;
+  font-weight: 50px;
+  font-size: 70px; }
+
+.head-para {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 200px;
+  font-size: 20px; }
+
+/* FOOTER */
 .head1 {
   font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
   color: #393939; }
@@ -35,6 +76,7 @@ body::after {
 #p-head {
   font-size: 20px;
   font-weight: 20px; }
+
 
 html {
   position: relative;
@@ -44,11 +86,18 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 70px; }
 
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
+  height: 30px; }
+
+/* Desktop View port  */
+@media (min-width: 768px) {
+  /* landing page */
+  #navbar-addevents {
   height: 30px; }
 
 /* Event Catalog page */
@@ -62,9 +111,6 @@ body {
 
 .location-font, .search-font {
   font-family: "Maven Pro", sans-serif; }
-
-/* View point for  */
-@media (min-width: 768px) {
   /* landing page */
   #nav-events {
     margin-left: 500px; }
@@ -76,7 +122,10 @@ body {
 
   #nav-logo {
     border-right: solid grey 1px;
-    padding-right: 20px; }
+
+    padding-right: 20px; } }
+/* Mobile viewport */
+
 
   /*events catalog  */
   #event-page {
@@ -95,6 +144,7 @@ body {
 
   .cont-body {
     margin-bottom: 150px; } }
+
 @media (max-width: 576px) {
   #navbar-signup {
     margin-left: 30px; }
@@ -108,7 +158,9 @@ body {
 
   #nav-logo {
     border-right: solid grey 1px;
-    padding-right: 20px; }
+
+    padding-right: 20px; } }
+
 
   #event-page {
     margin-top: 70px; }

@@ -1,0 +1,142 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Events Manager Web Application">
+    <title>Events Manager</title>
+    <meta name="keywords" content="Videos, Images, Text, events">
+    <meta name="author" content="Idrees Ibraheem">
+
+    <!-- Bootstrap, Font Awesome CSS --> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+
+    <!-- Google Fonts --> 
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+
+    
+
+  </head>
+  <body id="add-events-body">
+		<header ><!-- Start HEADER for NAVBAR -->
+			<nav id="nav-bar" class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-addevents" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a id="nav-logo" class="navbar-brand" href="#">Events Manager!</a>
+				<div class="collapse navbar-collapse left" id="navbar-addevents">
+					<ul class="navbar-nav mr-auto ">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Events Catalog</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Add Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Help</a>
+            </li>
+					</ul>
+				</div>
+			</nav>
+    </header><!-- END HEADER FOR NAVBAR -->
+    
+
+		<div class="container">
+      <div class="row">
+        <div class="container" id="add-event-header">
+          <div class="row">
+            <div class="col-sm-12">              
+              <h1 class="text-center head-1">Add your events </h1>
+              <p class="head-para text-center">
+                Are you in need of a location to host your event? 
+                If yes, then why not host your events using one of 
+                our numerous event centers by creating an event below?
+              </p>
+            </div>
+          </div>
+        </div>
+      
+        
+        <div class="container"><!-- Start container for Add Form -->
+          <div class="row">
+            <div class="col-sm-12">
+              <form method="POST" class="form-horizontal" role="form"  action="#"><!-- ADD FORM -->
+                <div class="form-group">
+                  <label for="add-event" class=" home-para">Name of Event:</label>
+                  <input class="form-control" type="text" placeholder="" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="add-event" class=" home-para">Date &amp; Time of event:</label>
+                  <input class="form-control" type="text" placeholder="DD/MM/YY  &amp; hh/mm/ss" id="example-text-input" >
+                </div>            
+                <div class="form-group">
+                  <label for="add-event" class=" home-para">Location:</label>
+                  <input class="form-control" type="text" placeholder="DD/MM/YY  &amp; hh/mm/ss" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="event-centers" class=" home-para">Event Centers:</label>
+                  <select class="form-control" id="event-center">
+                    <option class=" home-para">Choose an event center</option>
+                    <option class=" home-para">Afe Babalola Hall, UNILAG</option>
+                    <option class=" home-para">Multi-purpose Hall, UNILAG</option>
+                    <option class=" home-para">Muson Center, Lagos</option>
+                    <option class=" home-para">Race Course, Lagos</option>
+                    <option class=" home-para">National Theater, Lagos</option>
+                  </select required>
+                </div>
+                <div class="form-group">
+                  <label for="event-details" class=" home-para">Events description:</label>
+                  <textarea class="form-control" id="eventTextarea" rows="8" placeholder="brief details about the event"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="event-centers" class=" home-para">Event type:</label>
+                  <select class="form-control" id="event-center">
+                    <option class=" home-para">Pick a type</option>
+                    <option class=" home-para">Public</option>
+                    <option >Private</option>
+                  </select required>
+                </div>
+                <div class="form-group">
+                  <label for="add-event" class=" home-para">Expected No of attandence:</label>
+                  <input class="form-control" type="number" placeholder="Attendance" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="add-event" class=" home-para">Upload an Image of your event below:</label>
+                  <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                </div>  
+                <button type="button" class="btn btn-primary btn-sm" id="preview-event">Preview event</button>
+                <button type="button" class="btn btn-primary btn-sm" id="save-event">Save and create event  <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span></button>
+              </form>          
+            </div><!-- End Container ADD EVENTS FORM -->
+          </div>
+        </div>
+    </div>
+    </div><!-- End container for the Head section -->
+   
+
+      
+		
+    <!-- Bootstrap.js, Jquery.js, Popper.js -->
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/popper-dist/umd/popper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <div class="footer"><!-- Footer-->
+      <p id="footer-para" class="text-center">
+        <strong>Made with  <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
+    </div>
+  </body>
+</html>
