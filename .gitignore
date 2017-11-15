@@ -1,2 +1,11 @@
 .sass-cache/
-template/.sass-cache/
+ template/.sass-cache/
+ template/css/main.css.map
+ template/css/font-awesome-4.7.0/
+ template/js/bootstrap.min.css
+ template/js/bootstrap.css
+ template/js/popper-dist/
+ template/js/bootstrap.js
+ template/js/bootstrap.min.js
+ template/js/jquery-3.2.1.js
+ template/js/jquery-3.2.1.min.js 
