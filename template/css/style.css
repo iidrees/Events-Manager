@@ -14,26 +14,18 @@ body::after {
   z-index: -1;
 }
 
-/* 
-#background-cover {
-  background-color: purple;
-  opacity: 0.6;
-} */
-
-.main-text
-{
+.main-text {
     position: absolute;
     top: 90px;
     
     color: rgb(20, 20, 20);
 }
-.btn-min-block
-{
+
+.btn-min-block {
     min-width: 170px;
     line-height: 26px;
 }
-.btn-clear
-{
+.btn-clear {
     color: #FFF;
     background-color: transparent;
     border-color: #FFF;
@@ -47,7 +39,7 @@ body::after {
 
 #img-landing1,#img-landing2,#img-landing3 {
   opacity: 0.7;
-  width: 300px;
+  width: 100%;
   z-index: -1
 }
 
@@ -79,7 +71,10 @@ h1 {
 }
 
 header {
-  margin-bottom: 100px;
+  margin-bottom: 0px;
+}
+#form-signup, #form-signin {
+  margin-top: 100px;
 }
 .signup-text {
   font-family: 'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
@@ -93,7 +88,7 @@ header {
     text-align: right;
   }
 
-  #navbar-signup {
+  #navbar-signup, #navbar-signin {
     margin-left: 800px;
   }
   .nav-link {
@@ -114,7 +109,7 @@ header {
     margin-left: 30px;
   }
   .nav-link {
-    border: solid grey 0.5px;
+    border-left: solid grey 0.5px;
     border-radius: 5px;
     max-width: 130px;
     text-align: center;
