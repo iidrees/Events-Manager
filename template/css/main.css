@@ -87,7 +87,7 @@ small {
 /* View point for  */
 @media (min-width: 768px) {
   /* landing page */
-  #navbar-myevents {
+  #navbar-details {
     margin-left: 500px; }
 
   .nav-link {
@@ -100,11 +100,31 @@ small {
     padding-right: 20px; }
 
   /*events catalog  */
-  #myevent {
+  #myevent, #details {
     margin-top: 70px; }
 
   .cont-body {
     margin-bottom: 150px; } }
+/* 
+Event Details Page
+ */
+#img-details {
+  max-width: 400px; }
+
+.font-details {
+  font-family: "Cantarell", sans-serif;
+  font-weight: bold;
+  font-size: 25px; }
+
+.font-span {
+  font-family: "Patrick Hand", cursive; }
+
+#details-ev {
+  margin-bottom: 50px; }
+
+.detail-button {
+  margin-left: 500px; }
+
 @media (max-width: 576px) {
   #navbar-myevents {
     margin-left: 30px; }
@@ -135,6 +155,9 @@ small {
     margin-top: 200px; }
 
   .cont-body {
-    margin-bottom: 200px; } }
+    margin-bottom: 200px; }
+
+  .detail-button {
+    margin-left: 110px; } }
 
 /*# sourceMappingURL=main.css.map */
