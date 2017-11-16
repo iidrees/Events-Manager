@@ -30,7 +30,6 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
-
 #event-details::after {
   content: "";
   background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
@@ -45,7 +44,6 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   right: 0;
   position: absolute;
   z-index: -1; }
-
 
 #add-event-header {
   margin-top: 70px; }
@@ -93,7 +91,6 @@ body {
   /* Set the fixed height of the footer here */
   height: 30px; }
 
-
 /* Event catalog and My Events page */
 .even-font {
   font-family: "Patrick Hand", cursive;
@@ -101,7 +98,6 @@ body {
 
 .date-font {
   font-family: "Cantarell", sans-serif;
-
   font-weight: bold; }
 
 .location-font, .search-font {
@@ -112,26 +108,26 @@ small {
   font-family: "Patrick Hand", cursive;
   font-weight: bolder;
   color: purple; }
+
 /* 
-  Event Details Page
-   */
-  #img-details {
-    max-width: 400px; }
+Event Details Page
+ */
+#img-details {
+  max-width: 400px; }
 
-  .font-details {
-    font-family: "Cantarell", sans-serif;
-    font-weight: bold;
-    font-size: 25px; }
+.font-details {
+  font-family: "Cantarell", sans-serif;
+  font-weight: bold;
+  font-size: 25px; }
 
-  .font-span {
-    font-family: "Patrick Hand", cursive; }
+.font-span {
+  font-family: "Patrick Hand", cursive; }
 
-  #details-ev {
-    margin-bottom: 50px; }
+#details-ev {
+  margin-bottom: 50px; }
 
-  .detail-button {
+.detail-button {
     margin-left: 500px; }
-
 
 /* View point for  */
 @media (min-width: 768px) {  
@@ -188,9 +184,8 @@ small {
     border-right: solid grey 1px;
     padding-right: 20px; }
 
-  #myevent {
+  #myevent, #details {
     margin-top: 70px; }
-
 
   #event-page {
     margin-top: 70px; }
@@ -222,6 +217,5 @@ small {
 
   .detail-button {
     margin-left: 110px; } }
-
 
 /*# sourceMappingURL=main.css.map */
