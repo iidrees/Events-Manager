@@ -104,8 +104,11 @@ font-family: $font-maven-pro;
 font-weight: 200px;
 font-size: 20px;
 }
-/* FOOTER */
 
+#admin-add-head {
+	margin-bottom: $header-top;
+}
+/* FOOTER */
 .head1 {
 	font-family: $font-Encode;
 	color: $font-head-color;

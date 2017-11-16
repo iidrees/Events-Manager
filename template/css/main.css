@@ -79,6 +79,9 @@ body::after {
   font-weight: 200px;
   font-size: 20px; }
 
+#admin-add-head {
+  margin-bottom: 70px; }
+
 /* FOOTER */
 .head1 {
   font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
