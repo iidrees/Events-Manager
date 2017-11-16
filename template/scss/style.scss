@@ -1,5 +1,4 @@
 
-
 /* 
 import fonts
  */
@@ -49,15 +48,32 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
-body::after {
+
+#center-details-cover:after {
 	content: "";
-	background: url('../images/pexels-photo-621891.jpeg') no-repeat center center fixed;
-	-webkit-background-size: cover;
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	opacity: 0.5;
-	top: 0;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+#admin-add-center::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
@@ -66,14 +82,12 @@ body::after {
 }
 
 
-#add-event-header {
-  margin-top: 70px;
-}
 
-.form-control {
-  max-width: 600px;
-  border: solid purple 1px;
-}
+/* #admin-form .form-control {
+  width: 600px;
+	border: solid purple 1px;
+
+} */
 
 .home-para {
   font-family: $font-Encode;
@@ -90,8 +104,11 @@ font-family: $font-maven-pro;
 font-weight: 200px;
 font-size: 20px;
 }
-/* FOOTER */
 
+#admin-add-head {
+	margin-bottom: $header-top;
+}
+/* FOOTER */
 .head1 {
 	font-family: $font-Encode;
 	color: $font-head-color;
@@ -124,10 +141,7 @@ body {
 
 
 
-
 /* Event Catalog page fonts */
-
-
 .even-font {
 	font-family: $font-patrick;
 	font-weight: bold;
@@ -142,10 +156,27 @@ body {
 	font-family: $font-maven-pro;
 
 }
-/* View point for  */
+
+/* Center Details page */
+.center-details-para {
+	font-family: $font-maven-pro;
+	font-weight: bolder;
+}
+.center-details-span {
+	font-family: $font-cantarell;
+}
+#head-holding{
+	font-family: $font-Encode;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+
+/* View point for  desktop*/
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events, #navbar-addevents {
+	#nav-events, #navbar-addevents, #navbar-admin-center, #nav-center-details
+	 {
 		margin-left: 500px;
 	}
 	.nav-link {
@@ -160,7 +191,7 @@ body {
 	}
 
 	/*events catalog  */
-	#event-page {
+	#event-page, #add-center-header, #event-holding-header,#event-holding {
 		margin-top: $header-top;
 	}
 
@@ -176,8 +207,16 @@ body {
 			width: 70%;
 			border-color: $header-color;
 	}
-	.cont-body {
+	.cont-body, #event-holding {
 		margin-bottom: 150px;
+	}
+	#admin-form .form-control {
+		width: 600px;
+		border: solid purple 1px;
+	
+	}
+	#center-details-slider, #center-details-header {
+		margin-top: $header-top;
 	}
 	
 }
@@ -200,7 +239,7 @@ body {
 		padding-right: 20px;
 	}
 
-	#event-page {
+	#event-page, #add-center-header {
 		margin-top: $header-top;
 	}
 	input[type=text] {
@@ -230,5 +269,9 @@ body {
 	.cont-body {
 		margin-bottom: 200px;
 	}
+	#admin-form .form-control {
+		width: 300px;
+		border: solid purple 1px;
+	
+	}
 }
-
