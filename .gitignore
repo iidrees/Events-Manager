@@ -10,6 +10,7 @@ template/css/bootstrap-reboot.css
 template/css/bootstrap-reboot.css.map
 template/css/bootstrap-reboot.min.css
 template/css/bootstrap-reboot.min.css.map
+
 template/css/bootstrap.min.css
 template/css/bootstrap.css
 template/js/popper-dist/
@@ -19,5 +20,3 @@ template/js/jquery-3.2.1.js
 template/js/jquery-3.2.1.min.js
 css/
 template/fonts/webfontkit-20171114-134325
-
-

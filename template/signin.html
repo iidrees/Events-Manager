@@ -1,0 +1,143 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Events Manager Web Application">
+    <title>Events Manager</title>
+    <meta name="keywords" content="Videos, Images, Text, events">
+    <meta name="author" content="Idrees Ibraheem">
+
+    <!-- Bootstrap, Font Awesome CSS --> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+
+    <!-- Google Fonts --> 
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+	</head>
+	
+  <body id="background-cover">
+		<header ><!-- Start HEADER for NAVBAR -->
+			<nav id="nav-bar" class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-signin" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a id="nav-logo" class="navbar-brand" href="#">Events Manager!</a>
+				<div class="collapse navbar-collapse left" id="navbar-signin">
+					<ul class="navbar-nav mr-auto ">
+						<li class="nav-item">
+							<a class="nav-link" href="#">See Events</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="signup.html">Sign-up</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Sign-in</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header><!-- END HEADER FOR NAVBAR -->
+		
+		<div id="form-signin" class="container">
+		<form class="form-horizontal" role="form" method="POST" action="#">
+				<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-6">
+								<h2 class="signup-text">Welcome!</h2>
+								<hr>
+								<p class="signup-text">Please fill the form below to log into Events Manager</p>
+						</div>
+				</div>
+				<div class="row">
+						<div class="col-md-3 field-label-responsive">
+								<label  for="name">Name</label>
+						</div>
+						<div class="col-md-6">
+								<div class="form-group">
+										<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+												<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+												<input type="text" name="name" class="form-control" id="name"
+															 placeholder="Idrees Ibraheem" required autofocus>
+										</div>
+								</div>
+						</div>
+						<div class="col-md-3">
+								<div class="form-control-feedback">
+												<span class="text-danger align-middle">
+														<!-- Put name validation error messages here -->
+												</span>
+								</div>
+						</div>
+				</div>
+				
+				<div class="row">
+						<div class="col-md-3 field-label-responsive">
+								<label for="name">Password</label>
+						</div>
+						<div class="col-md-6">
+								<div class="form-group">
+										<label class="sr-only" for="password">Password</label>
+										<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+												<div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+												<input type="password" name="password" class="form-control" id="password"
+															 placeholder="Password" required>
+										</div>
+								</div>
+						</div>
+						<div class="col-md-3">
+								<div class="form-control-feedback">
+										
+								</div>
+						</div>
+				</div>
+				<div class="row">
+						<div class="col-md-3 field-label-responsive">
+								<label for="password">Confirm Password</label>
+						</div>
+						<div class="col-md-6">
+								<div class="form-group">
+										<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+												<div class="input-group-addon" style="width: 2.6rem">
+														<i class="fa fa-repeat"></i>
+												</div>
+												<input type="password" name="password-confirmation" class="form-control"
+															 id="password-confirm" placeholder="Password" required>
+										</div>
+								</div>
+						</div>
+				</div>
+				<div class="row">
+						<div class="col-md-3"></div>
+						<div class="col-md-6" style="padding-top: .35rem">
+								<div class="form-check mb-2 mr-sm-2 mb-sm-0">
+										<label class="form-check-label">
+												<input class="form-check-input" name="remember"
+															 type="checkbox" >
+												<span style="padding-bottom: .15rem">Remember me</span>
+										</label>
+								</div>
+						</div>
+				</div>
+				<div class="row" style="padding-top: 1rem">
+						<div class="col-md-3"></div>
+						<div class="col-md-6">
+								<button type="submit" class="btn btn-success">  Sign-in <span> <i class="fa fa-sign-in"></i></span></button>
+								<a class="btn btn-link" href="#">Forgot Your Password?</a>
+						</div>
+				</div>
+		</form>
+</div>
+		
+    <!-- Bootstrap.js, Jquery.js, Popper.js -->
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/popper-dist/umd/popper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </body>
+</html>
