@@ -17,12 +17,12 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 /* add-events page */
 #add-events-body::after {
   content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
-  opacity: 0.4;
+  background: url("../images/pexels-photo-621891.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  opacity: 0.3;
   top: 0;
   left: 0;
   bottom: 0;
@@ -30,14 +30,15 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
-body::after {
+
+#event-details::after {
   content: "";
-  background: url("../images/pexels-photo-621891.jpeg") no-repeat center center fixed;
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.5;
+  opacity: 0.3;
   top: 0;
   left: 0;
   bottom: 0;
@@ -77,7 +78,6 @@ body::after {
   font-size: 20px;
   font-weight: 20px; }
 
-
 html {
   position: relative;
   min-height: 100%; }
@@ -86,7 +86,6 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 70px; }
 
-
 .footer {
   position: absolute;
   bottom: 0;
@@ -94,27 +93,55 @@ body {
   /* Set the fixed height of the footer here */
   height: 30px; }
 
-/* Desktop View port  */
-@media (min-width: 768px) {
-  /* landing page */
-  #navbar-addevents {
-  height: 30px; }
 
-/* Event Catalog page */
+/* Event catalog and My Events page */
 .even-font {
   font-family: "Patrick Hand", cursive;
   font-weight: bold; }
 
 .date-font {
   font-family: "Cantarell", sans-serif;
-  font-weight: 80px; }
+
+  font-weight: bold; }
 
 .location-font, .search-font {
-  font-family: "Maven Pro", sans-serif; }
-  /* landing page */
-  #nav-events {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bold; }
+
+small {
+  font-family: "Patrick Hand", cursive;
+  font-weight: bolder;
+  color: purple; }
+/* 
+  Event Details Page
+   */
+  #img-details {
+    max-width: 400px; }
+
+  .font-details {
+    font-family: "Cantarell", sans-serif;
+    font-weight: bold;
+    font-size: 25px; }
+
+  .font-span {
+    font-family: "Patrick Hand", cursive; }
+
+  #details-ev {
+    margin-bottom: 50px; }
+
+  .detail-button {
     margin-left: 500px; }
 
+
+/* View point for  */
+@media (min-width: 768px) {  
+  /* landing page */
+  #nav-events, #navbar-details {
+    margin-left: 500px; }
+  
+  #navbar-addevents {
+    height: 30px; }
+  
   .nav-link {
     border-right: solid grey 1px;
     border-radius: 10px;
@@ -122,12 +149,12 @@ body {
 
   #nav-logo {
     border-right: solid grey 1px;
-
-    padding-right: 20px; } }
-/* Mobile viewport */
-
-
+    padding-right: 20px; }
+  
   /*events catalog  */
+  #myevent, #details {
+    margin-top: 70px; }
+   /*events catalog  */
   #event-page {
     margin-top: 70px; }
 
@@ -145,8 +172,9 @@ body {
   .cont-body {
     margin-bottom: 150px; } }
 
-@media (max-width: 576px) {
-  #navbar-signup {
+
+  @media (max-width: 576px) {
+  #navbar-myevents, #navbar-signup {
     margin-left: 30px; }
 
   .nav-link {
@@ -158,8 +186,10 @@ body {
 
   #nav-logo {
     border-right: solid grey 1px;
+    padding-right: 20px; }
 
-    padding-right: 20px; } }
+  #myevent {
+    margin-top: 70px; }
 
 
   #event-page {
@@ -188,6 +218,10 @@ body {
     margin-top: 200px; }
 
   .cont-body {
-    margin-bottom: 200px; } }
+    margin-bottom: 200px; }
+
+  .detail-button {
+    margin-left: 110px; } }
+
 
 /*# sourceMappingURL=main.css.map */

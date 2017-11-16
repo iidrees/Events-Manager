@@ -1,6 +1,5 @@
 .sass-cache/
 template/.sass-cache/
-
 template/css/main.css.map
 template/css/font-awesome-4.7.0/
 template/css/bootstrap-grid.css
@@ -20,5 +19,6 @@ template/js/jquery-3.2.1.js
 template/js/jquery-3.2.1.min.js
 css/
 template/fonts/webfontkit-20171114-134325
+
 
 
