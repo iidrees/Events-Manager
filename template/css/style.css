@@ -77,7 +77,7 @@ h1 {
 .signup-text {
   font-family: 'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
   color: #393939;
-
+}
 header {
   margin-bottom: 0px;
 }
@@ -85,7 +85,7 @@ header {
   margin-top: 100px;
 }
   
-}
+
 
 @media(min-width: 768px) {
   .field-label-responsive {
