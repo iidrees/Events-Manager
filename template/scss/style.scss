@@ -14,7 +14,7 @@ import fonts
 	src: url(../fonts/webfontkit/pt_sans-caption-web-bold-regular-webfont.woff);
 }
 /* Variables */
-$pry-color: #800080;
+
 $font-head-color: #393939;
 $header-color: black;
 $navbar-border: grey;
@@ -28,6 +28,7 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
+
 
 #add-events-body::after {
 	content: "";
@@ -45,6 +46,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	z-index: -1;
 }
 
+
 #event-details::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
@@ -60,6 +62,35 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
+
+
+
+#add-event-header {
+  margin-top: 70px;
+}
+
+.form-control {
+  max-width: 600px;
+  border: solid purple 1px;
+}
+
+.home-para {
+  font-family: $font-Encode;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.head-1 {
+	font-family: $font-cantarell;
+	font-weight: 50px;
+	font-size: 70px;  
+}
+.head-para {
+font-family: $font-maven-pro;
+font-weight: 200px;
+font-size: 20px;
+}
+
+/* FOOTER */
 .head1 {
 	font-family: $font-Encode;
 	color: $font-head-color;
@@ -69,6 +100,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	font-size: 20px;
 	font-weight: 20px;
 }
+
 
 html {
   position: relative;
@@ -83,12 +115,15 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
+
+  height: 30px; 
+}
+
   height: 30px; 
 }
 
 /* Event catalog and My Events page */
-
-
+/* Event Catalog page fonts */
 .even-font {
 	font-family: $font-patrick;
 	font-weight: bold;
@@ -108,33 +143,6 @@ small {
   font-family: $font-patrick;
   font-weight: bolder;
   color: purple;
-}
-/* View point for  */
-@media(min-width: 768px) {
-/* landing page */
-	#navbar-details {
-		margin-left: 500px;
-	}
-	.nav-link {
-		border-right: solid $navbar-border 1px;
-		border-radius: 10px;
-		margin: 3px 20px 0px 5px; 
-		
-	}
-	#nav-logo {
-		border-right: solid $navbar-border 1px;
-		padding-right: 20px;
-	}
-
-	/*events catalog  */
-	#myevent, #details {
-		margin-top: $header-top;
-	}
-
-	.cont-body {
-		margin-bottom: 150px;
-	}
-	
 }
 /* 
 Event Details Page
@@ -158,8 +166,57 @@ Event Details Page
  .detail-button {
 	 margin-left: 500px;
  }
+
+
+
+/* View point for  */
+@media(min-width: 768px) {
+/* landing page */
+	#nav-events, #navbar-addevents,#navbar-details {
+		margin-left: 500px;
+	}
+	.nav-link {
+		border-right: solid $navbar-border 1px;
+		border-radius: 10px;
+		margin: 3px 20px 0px 5px; 
+		
+	}
+	#nav-logo {
+		border-right: solid $navbar-border 1px;
+		padding-right: 20px;
+	}
+
+	/*events catalog  */
+
+	#myevent, #details {
+		margin-top: $header-top;
+	}
+
+
+	#event-page {
+		margin-top: $header-top;
+	}
+
+	input[type=text] {
+		width: 300px;
+		-webkit-transition: width 0.4s ease-in-out;
+		transition: width 0.4s ease-in-out;
+		border-color: $header-color;
+}
+	
+	/* When the input field gets focus, change its width to 70% */
+	input[type=text]:focus {
+			width: 70%;
+			border-color: $header-color;
+	}
+	.cont-body {
+		margin-bottom: 150px;
+	}
+}
+	
+
 @media(max-width: 576px) {
-	#navbar-myevents {
+	#navbar-signup, #navbar-myevents {
 		margin-left: 30px;
 	}
 	.nav-link {
@@ -173,10 +230,24 @@ Event Details Page
 	#nav-logo {
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
-	}
-	#myevent {
+  }
+
+	#event-page, #myevent {
 		margin-top: $header-top;
 	}
+	input[type=text] {
+		width: 300px;
+		-webkit-transition: width 0.4s ease-in-out;
+		transition: width 0.4s ease-in-out;
+		border-color: $header-color;
+	}
+
+ /* When the input field gets focus, change its width to 70% */
+	input[type=text]:focus {
+		width: 100%;
+		border-color: $header-color;
+	}	
+  
 	.card {
 		height: 20rem;
 		width: 20rem;
@@ -191,6 +262,7 @@ Event Details Page
 	.cont-body {
 		margin-bottom: 200px;
 	}
+
 	.detail-button {
 		margin-left: 110px;
 	}
