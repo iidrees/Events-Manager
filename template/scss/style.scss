@@ -14,8 +14,6 @@ import fonts
 	src: url(../fonts/webfontkit/pt_sans-caption-web-bold-regular-webfont.woff);
 }
 /* Variables */
-
-$pry-color: white;
 $font-head-color: #393939;
 $header-color: black;
 $navbar-border: grey;
@@ -30,17 +28,32 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
 
-
-/* add-events page */
 #add-events-body::after {
+	content: "";
+	background: url('../images/pexels-photo-621891.jpeg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 0.3;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+
+#admin-add-center::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-  opacity: 0.4;
-  top: 0;
+	opacity: 0.3;
+	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
@@ -56,7 +69,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	-o-background-size: cover;
 	background-size: cover;
   opacity: 0.4;
-  top: 0;
+	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
@@ -64,7 +77,8 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	z-index: -1;
 }
 
-#admin-add-center::after {
+
+#center-details-cover:after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -73,14 +87,32 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	background-size: cover;
   opacity: 0.4;
   top: 0;
-	left: 0;
+  left: 0;
 	bottom: 0;
 	right: 0;
 	position: absolute;
 	z-index: -1;
 }
 
+#event-details::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 0.3;
+	top: 0;
+  left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 
+#add-event-header {
+  margin-top: 70px;
+}
 
 /* #admin-form .form-control {
   width: 600px;
@@ -125,22 +157,18 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-
   margin-bottom: 70px;
-
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-
   height: 30px; 
 }
 
 
-
-/* Event Catalog page fonts */
+/* Event catalog and My Events page */
 .even-font {
 	font-family: $font-patrick;
 	font-weight: bold;
@@ -148,12 +176,40 @@ body {
 
 .date-font {
 	font-family: $font-cantarell;
-	font-weight: 80px;
+	font-weight: bold;
 }
 
 .location-font, .search-font {
-	font-family: $font-maven-pro;
+  font-family: $font-maven-pro;
+  font-weight: bold;
+}
 
+small {
+  font-family: $font-patrick;
+  font-weight: bolder;
+  color: purple;
+}
+/* 
+Event Details Page
+ */
+ #img-details {
+	max-width: 400px;
+}
+.font-details {
+	font-family: $font-cantarell;
+	font-weight: bold;
+	font-size: 25px;
+}
+.font-span {
+	font-family: $font-patrick;
+}
+
+#details-ev {
+	margin-bottom: 50px;
+}
+
+.detail-button {
+	margin-left: 500px;
 }
 
 /* Center Details page */
@@ -165,10 +221,11 @@ body {
 	font-family: $font-cantarell;
 }
 
-/* View point for  desktop*/
+
+/* View point for  */
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events, #navbar-addevents, #navbar-admin-center, #nav-center-details
+	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center, #nav-center-details
 	 {
 		margin-left: 500px;
 	}
@@ -184,7 +241,7 @@ body {
 	}
 
 	/*events catalog  */
-	#event-page, #add-center-header {
+	#event-page,#myevent, #details,#add-center-header, {
 		margin-top: $header-top;
 	}
 
@@ -206,17 +263,18 @@ body {
 	#admin-form .form-control {
 		width: 600px;
 		border: solid purple 1px;
-	
+
+	#center-details-slider, #center-details-header {
+		margin-top: $header-top;
 	}
 	#center-details-slider, #center-details-header {
 		margin-top: $header-top;
 	}
 	
 }
-	
 
 @media(max-width: 576px) {
-	#navbar-signup {
+	#navbar-signup, #navbar-myevents {
 		margin-left: 30px;
 	}
 	.nav-link {
@@ -230,9 +288,10 @@ body {
 	#nav-logo {
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
-	}
+  }
 
-	#event-page, #add-center-header {
+
+	#event-page, #myevent,#details, #add-center-header {
 		margin-top: $header-top;
 	}
 	input[type=text] {
@@ -247,6 +306,7 @@ body {
 		width: 100%;
 		border-color: $header-color;
 	}	
+  
 
 	.card {
 		height: 20rem;
@@ -262,6 +322,10 @@ body {
 	.cont-body {
 		margin-bottom: 200px;
 	}
+	.detail-button {
+		margin-left: 110px;	
+	}
+  
 	#admin-form .form-control {
 		width: 300px;
 		border: solid purple 1px;
