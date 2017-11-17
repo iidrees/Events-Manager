@@ -13,7 +13,6 @@ import fonts
 /* Variables */
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
-
 /* add-events page */
 #add-events-body::after {
   content: "";
@@ -22,7 +21,22 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.3;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#admin-add-center::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
   top: 0;
   left: 0;
   bottom: 0;
@@ -45,6 +59,11 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
+/* #admin-form .form-control {
+  width: 600px;
+	border: solid purple 1px;
+
+} */
 #add-event-header {
   margin-top: 70px; }
 
@@ -66,6 +85,9 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   font-family: "Maven Pro", sans-serif;
   font-weight: 200px;
   font-size: 20px; }
+
+#admin-add-head {
+  margin-bottom: 70px; }
 
 /* FOOTER */
 .head1 {
@@ -129,10 +151,10 @@ Event Details Page
 .detail-button {
     margin-left: 500px; }
 
-/* View point for  */
-@media (min-width: 768px) {  
+    /* View point for  */
+@media (min-width: 768px) {
   /* landing page */
-  #nav-events, #navbar-details {
+  #nav-events, #navbar-addevents, #navbar-admin-center, #navbar-details {
     margin-left: 500px; }
   
   #navbar-addevents {
@@ -146,12 +168,9 @@ Event Details Page
   #nav-logo {
     border-right: solid grey 1px;
     padding-right: 20px; }
-  
+
   /*events catalog  */
-  #myevent, #details {
-    margin-top: 70px; }
-   /*events catalog  */
-  #event-page {
+  #event-page, #add-center-header,#myevent, #details {
     margin-top: 70px; }
 
   input[type=text] {
@@ -166,11 +185,15 @@ Event Details Page
     border-color: black; }
 
   .cont-body {
-    margin-bottom: 150px; } }
+    margin-bottom: 150px; }
 
-
-  @media (max-width: 576px) {
-  #navbar-myevents, #navbar-signup {
+  #admin-form .form-control {
+    width: 600px;
+    border: solid purple 1px; } }
+    
+    /*Viewport for mobile  */
+@media (max-width: 576px) {
+  #navbar-myevents,#navbar-signup {
     margin-left: 30px; }
 
   .nav-link {
@@ -184,10 +207,7 @@ Event Details Page
     border-right: solid grey 1px;
     padding-right: 20px; }
 
-  #myevent, #details {
-    margin-top: 70px; }
-
-  #event-page {
+  #event-page, #add-center-header,#myevent, #details {
     margin-top: 70px; }
 
   input[type=text] {
@@ -214,6 +234,10 @@ Event Details Page
 
   .cont-body {
     margin-bottom: 200px; }
+
+  #admin-form .form-control {
+    width: 300px;
+    border: solid purple 1px; } 
 
   .detail-button {
     margin-left: 110px; } }

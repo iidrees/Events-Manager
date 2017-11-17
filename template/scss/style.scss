@@ -44,6 +44,22 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	z-index: -1;
 }
 
+
+#admin-add-center::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 0.3;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 #event-details::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
@@ -67,10 +83,11 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   margin-top: 70px;
 }
 
-.form-control {
-  max-width: 600px;
-  border: solid purple 1px;
-}
+/* #admin-form .form-control {
+  width: 600px;
+	border: solid purple 1px;
+
+} */
 
 .home-para {
   font-family: $font-Encode;
@@ -88,6 +105,9 @@ font-weight: 200px;
 font-size: 20px;
 }
 
+#admin-add-head {
+	margin-bottom: $header-top;
+}
 /* FOOTER */
 .head1 {
 	font-family: $font-Encode;
@@ -165,7 +185,8 @@ Event Details Page
 /* View point for  */
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events, #navbar-addevents,#navbar-details {
+	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center
+	 {
 		margin-left: 500px;
 	}
 	.nav-link {
@@ -184,7 +205,7 @@ Event Details Page
 		margin-top: $header-top;
 	}
   
-	#event-page {
+	#event-page, #add-center-header {
 		margin-top: $header-top;
 	}
 
@@ -203,6 +224,12 @@ Event Details Page
 	.cont-body {
 		margin-bottom: 150px;
 	}
+	#admin-form .form-control {
+		width: 600px;
+		border: solid purple 1px;
+	
+	}
+	
 }
 
 @media(max-width: 576px) {
@@ -222,7 +249,7 @@ Event Details Page
 		padding-right: 20px;
   }
 
-	#event-page, #myevent,#details {
+	#event-page, #myevent,#details, #add-center-header {
 		margin-top: $header-top;
 	}
 	input[type=text] {
@@ -254,6 +281,11 @@ Event Details Page
 		margin-bottom: 200px;
 	}
 	.detail-button {
-		margin-left: 110px;
+		margin-left: 110px;	
+	}
+	#admin-form .form-control {
+		width: 300px;
+		border: solid purple 1px;
+	
 	}
 }
