@@ -89,6 +89,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
+
 /* #admin-form .form-control {
   width: 600px;
 	border: solid purple 1px;
@@ -169,9 +170,16 @@ small {
 
 .center-details-span {
   font-family: "Cantarell", sans-serif; }
+
 #head-holding {
   font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
   font-size: 30px;
+  font-weight: bold; }
+
+
+/* GET all events center page */
+.all-centers-font {
+  font-family: "Cantarell", sans-serif;
   font-weight: bold; }
 
 /* 
@@ -226,7 +234,6 @@ Event Details Page
   input[type=text]:focus {
     width: 70%;
     border-color: black; }
-
 
   .cont-body {
     margin-bottom: 150px; }
