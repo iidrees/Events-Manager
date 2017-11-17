@@ -310,7 +310,7 @@ Event Details Page
 /* View point for  desktop*/
 @media (min-width: 768px) {
   /* landing page */
-  #nav-events, #navbar-addevents, #navbar-details, #navbar-admin-center, #nav-center-details {
+  #nav-events, #navbar-addevents, #navbar-details, #navbar-admin-center, #nav-center-details, #navbar-myevents {
     margin-left: 500px; }
 
   .nav-link {
@@ -341,14 +341,14 @@ Event Details Page
     width: 70%;
     border-color: black; }
 
-  #card-body, #event-holding {
+  #event-holding {
     margin-bottom: 150px; }
-
-  #card-body1 {
-    margin-bottom: 300px; }
 
   #details-ev {
     margin-bottom: 50px; }
+
+  #card-body, #card-body4, #card-body1, #card-body2, #card-body3, #card-center1, #card-center2 {
+    margin-bottom: 170px; }
 
   #admin-form .form-control, #name-form, #email-form {
     width: 600px;
@@ -358,7 +358,11 @@ Event Details Page
     margin-top: 70px; }
 
   #center-details-slider, #center-details-header {
-    margin-top: 70px; } }
+    margin-top: 70px; }
+
+  #form-event1, #form-event2, #form-event3, #form-event4, #form-event5, #event-center1, #event-center2 {
+    width: 600px;
+    border: solid purple 1px; } }
 @media (max-width: 576px) {
   #navbar-signup, #navbar-myevents {
     margin-left: 30px; }
@@ -395,12 +399,12 @@ Event Details Page
     margin-left: 70px;
     margin-top: 300px; }
 
-  #card-body, #event-holding {
+  #card-body2, #event-holding {
     margin-bottom: 5px;
     margin-top: 100px; }
 
   #card-body1 {
-    margin-bottom: 300px; }
+    margin-bottom: 500px; }
 
   .detail-button {
     margin-left: 120px;
