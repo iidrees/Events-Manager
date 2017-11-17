@@ -59,6 +59,21 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
+#admin-add-center::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
 /* #admin-form .form-control {
   width: 600px;
 	border: solid purple 1px;
@@ -70,6 +85,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 .form-control {
   max-width: 600px;
   border: solid purple 1px; }
+
 
 .home-para {
   font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
@@ -131,6 +147,15 @@ small {
   font-weight: bolder;
   color: purple; }
 
+/* Center Details page */
+.center-details-para {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bolder; }
+
+.center-details-span {
+  font-family: "Cantarell", sans-serif; }
+
+
 /* 
 Event Details Page
  */
@@ -150,11 +175,11 @@ Event Details Page
 
 .detail-button {
     margin-left: 500px; }
-
+    
     /* View point for  */
 @media (min-width: 768px) {
   /* landing page */
-  #nav-events, #navbar-addevents, #navbar-admin-center, #navbar-details {
+  #nav-events, #navbar-addevents, #navbar-admin-center, #navbar-details, #nav-center-details {
     margin-left: 500px; }
   
   #navbar-addevents {
@@ -189,9 +214,12 @@ Event Details Page
 
   #admin-form .form-control {
     width: 600px;
-    border: solid purple 1px; } }
-    
-    /*Viewport for mobile  */
+    border: solid purple 1px; }
+
+  #center-details-slider, #center-details-header {
+    margin-top: 70px; } }
+
+    /* Viewport for Mobile */
 @media (max-width: 576px) {
   #navbar-myevents,#navbar-signup {
     margin-left: 30px; }

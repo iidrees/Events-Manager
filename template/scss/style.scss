@@ -60,6 +60,22 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
+
+#center-details-cover:after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 #event-details::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
@@ -75,9 +91,6 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
-
-
-
 
 #add-event-header {
   margin-top: 70px;
@@ -163,29 +176,38 @@ small {
 Event Details Page
  */
  #img-details {
-	 max-width: 400px;
- }
- .font-details {
-	 font-family: $font-cantarell;
-	 font-weight: bold;
-	 font-size: 25px;
- }
- .font-span {
-	 font-family: $font-patrick;
- }
+	max-width: 400px;
+}
+.font-details {
+	font-family: $font-cantarell;
+	font-weight: bold;
+	font-size: 25px;
+}
+.font-span {
+	font-family: $font-patrick;
+}
 
- #details-ev {
-	 margin-bottom: 50px;
- }
+#details-ev {
+	margin-bottom: 50px;
+}
 
- .detail-button {
-	 margin-left: 500px;
- }
+.detail-button {
+	margin-left: 500px;
+}
+/* Center Details page */
+.center-details-para {
+	font-family: $font-maven-pro;
+	font-weight: bolder;
+}
+.center-details-span {
+	font-family: $font-cantarell;
+}
+
 
 /* View point for  */
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center
+	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center, #nav-center-details
 	 {
 		margin-left: 500px;
 	}
@@ -201,11 +223,7 @@ Event Details Page
 	}
 
 	/*events catalog  */
-	#myevent, #details {
-		margin-top: $header-top;
-	}
-  
-	#event-page, #add-center-header {
+	#event-page,#myevent, #details,#add-center-header, {
 		margin-top: $header-top;
 	}
 
@@ -228,6 +246,9 @@ Event Details Page
 		width: 600px;
 		border: solid purple 1px;
 	
+	}
+	#center-details-slider, #center-details-header {
+		margin-top: $header-top;
 	}
 	
 }
