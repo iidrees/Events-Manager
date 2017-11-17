@@ -13,10 +13,70 @@ import fonts
 /* Variables */
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
-/* add-events page */
 #add-events-body::after {
   content: "";
   background: url("../images/pexels-photo-621891.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#events-bk-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-518244.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#admin-add-center::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#center-details-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#profile-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-518244.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -44,8 +104,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
-
-#event-details::after {
+#center-details-cover::after {
   content: "";
   background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -60,6 +119,20 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
+#event-details::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
 
 #profile-cover::after {
   content: "";
@@ -76,22 +149,6 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
-#center-details-cover::after {
-  content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
-
-
 #help-cover::after {
   content: "";
   background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
@@ -107,12 +164,21 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
+#admin-add-center::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
 
-/* #admin-form .form-control {
-  width: 600px;
-	border: solid purple 1px;
-
-} */
 #add-event-header {
   margin-top: 70px; }
 
@@ -181,6 +247,30 @@ small {
   font-weight: bolder;
   color: purple; }
 
+/* 
+Event Details Page
+ */
+#img-details {
+  max-width: 400px; }
+
+.font-details {
+  font-family: "Cantarell", sans-serif;
+  font-weight: bold;
+  font-size: 25px; }
+
+/* Center Details page */
+.center-details-para {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bolder; }
+
+.center-details-span {
+  font-family: "Cantarell", sans-serif; }
+
+#head-holding {
+  font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
+  font-size: 30px;
+  font-weight: bold; }
+
 /* Center Details page */
 .center-details-para {
   font-family: "Maven Pro", sans-serif;
@@ -199,37 +289,30 @@ small {
   font-family: "Cantarell", sans-serif;
   font-weight: bold; }
 
+/* Center Details page */
+.center-details-para {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bolder; }
 
+.center-details-span {
+  font-family: "Cantarell", sans-serif; }
 
-/* 
-Event Details Page
- */
-#img-details {
-  max-width: 400px; }
+#head-holding {
+  font-family: "Encode Sans Expanded", Helvetica, Tahoma, sans-serif;
+  font-size: 30px;
+  font-weight: bold; }
 
-.font-details {
+/* GET all events center page */
+.all-centers-font {
   font-family: "Cantarell", sans-serif;
-  font-weight: bold;
-  font-size: 25px; }
+  font-weight: bold; }
 
-.font-span {
-  font-family: "Patrick Hand", cursive; }
-
-#details-ev {
-  margin-bottom: 50px; }
-
-.detail-button {
-    margin-left: 500px; }
-    
-    /* View point for  */
+/* View point for  desktop*/
 @media (min-width: 768px) {
   /* landing page */
-  #nav-events, #navbar-addevents, #navbar-admin-center, #navbar-details, #nav-center-details {
+  #nav-events, #navbar-addevents, #navbar-details, #navbar-admin-center, #nav-center-details {
     margin-left: 500px; }
-  
-  #navbar-addevents {
-    height: 30px; }
-  
+
   .nav-link {
     border-right: solid grey 1px;
     border-radius: 10px;
@@ -240,7 +323,7 @@ Event Details Page
     padding-right: 20px; }
 
   /*events catalog  */
-  #event-page, #add-center-header, #event-holding-header, #event-holding,#myevent, #details {
+  #event-page, #myevent, #details, #add-center-header, #event-holding-header, #event-holding {
     margin-top: 70px; }
 
   input[type=text] {
@@ -249,26 +332,35 @@ Event Details Page
     transition: width 0.4s ease-in-out;
     border-color: black; }
 
+  .detail-button {
+    margin-left: 400px;
+    margin-bottom: 70px; }
+
   /* When the input field gets focus, change its width to 70% */
   input[type=text]:focus {
     width: 70%;
     border-color: black; }
 
-
-  .cont-body, #event-holding {
+  #card-body, #event-holding {
     margin-bottom: 150px; }
 
-  #admin-form, .form-control, #name-form, #email-form {
+  #card-body1 {
+    margin-bottom: 300px; }
+
+  #details-ev {
+    margin-bottom: 50px; }
+
+  #admin-form .form-control, #name-form, #email-form {
     width: 600px;
     border: solid purple 1px; }
 
   #center-details-slider, #center-details-header {
+    margin-top: 70px; }
+
+  #center-details-slider, #center-details-header {
     margin-top: 70px; } }
-
-
-    /* Viewport for Mobile */
 @media (max-width: 576px) {
-  #navbar-myevents,#navbar-signup {
+  #navbar-signup, #navbar-myevents {
     margin-left: 30px; }
 
   .nav-link {
@@ -280,10 +372,10 @@ Event Details Page
 
   #nav-logo {
     border-right: solid grey 1px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    margin-left: 300px; }
 
-
-  #event-page, #add-center-header,#myevent, #details {
+  #event-page, #myevent, #details, #add-center-header {
     margin-top: 70px; }
 
   input[type=text] {
@@ -300,24 +392,25 @@ Event Details Page
   .card {
     height: 20rem;
     width: 20rem;
-    margin-left: 70px; }
+    margin-left: 70px;
+    margin-top: 300px; }
 
-  #card1, #card2 {
-    margin-top: 10px; }
+  #card-body, #event-holding {
+    margin-bottom: 5px;
+    margin-top: 100px; }
 
-  .card {
-    margin-top: 200px; }
+  #card-body1 {
+    margin-bottom: 300px; }
 
-  .cont-body {
-    margin-bottom: 200px; }
+  .detail-button {
+    margin-left: 120px;
+    margin-bottom: 70px; }
 
+  #details-ev {
+    margin-bottom: 70px; }
 
   #admin-form, .form-control, #name-form, #email-form {
     width: 300px;
-    border: solid purple 1px; }  
-
-  .detail-button {
-    margin-left: 110px; } }
-
+    border: solid purple 1px; } }
 
 /*# sourceMappingURL=main.css.map */
