@@ -44,6 +44,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
+
 #event-details::after {
   content: "";
   background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
@@ -59,39 +60,41 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   position: absolute;
   z-index: -1; }
 
-#center-details-cover:after {
-  content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
 
-#admin-add-center::after {
-  content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
-
-#profile-cover:after {
+#profile-cover::after {
   content: "";
   background: url("../images/pexels-photo-518244.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#center-details-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+
+#help-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -160,7 +163,6 @@ body {
   /* Set the fixed height of the footer here */
   height: 30px; }
 
-
 /* Event catalog and My Events page */
 .even-font {
   font-family: "Patrick Hand", cursive;
@@ -196,6 +198,7 @@ small {
 .all-centers-font {
   font-family: "Cantarell", sans-serif;
   font-weight: bold; }
+
 
 
 /* 
@@ -250,16 +253,18 @@ Event Details Page
   input[type=text]:focus {
     width: 70%;
     border-color: black; }
-  
-  .cont-body {
+
+
+  .cont-body, #event-holding {
     margin-bottom: 150px; }
-  
-  #admin-form .form-control {
+
+  #admin-form, .form-control, #name-form, #email-form {
     width: 600px;
     border: solid purple 1px; }
 
   #center-details-slider, #center-details-header {
     margin-top: 70px; } }
+
 
     /* Viewport for Mobile */
 @media (max-width: 576px) {
@@ -276,6 +281,7 @@ Event Details Page
   #nav-logo {
     border-right: solid grey 1px;
     padding-right: 20px; }
+
 
   #event-page, #add-center-header,#myevent, #details {
     margin-top: 70px; }
@@ -305,11 +311,13 @@ Event Details Page
   .cont-body {
     margin-bottom: 200px; }
 
-  #admin-form .form-control {
+
+  #admin-form, .form-control, #name-form, #email-form {
     width: 300px;
-    border: solid purple 1px; } 
+    border: solid purple 1px; }  
 
   .detail-button {
     margin-left: 110px; } }
+
 
 /*# sourceMappingURL=main.css.map */

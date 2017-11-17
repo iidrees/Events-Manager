@@ -79,7 +79,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 }
 
 
-#profile-cover:after {
+#profile-cover::after {
 	content: "";
 	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -111,6 +111,23 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	z-index: -1;
 }
 
+
+#center-details-cover::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
+ 	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+
+
 }
 
 #event-details::after {
@@ -123,6 +140,55 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	opacity: 0.3;
 	top: 0;
   left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+
+#profile-cover::after {
+	content: "";
+	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+#help-cover::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+#admin-add-center::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+	left: 0;
 	bottom: 0;
 	right: 0;
 	position: absolute;
@@ -219,9 +285,6 @@ Event Details Page
 	font-weight: bold;
 	font-size: 25px;
 }
-.font-span {
-	font-family: $font-patrick;
-}
 
 #details-ev {
 	margin-bottom: 50px;
@@ -288,6 +351,7 @@ Event Details Page
 	font-weight: bold;
 }
 
+
 /* View point for  desktop*/
 @media(min-width: 768px) {
 /* landing page */
@@ -326,7 +390,8 @@ Event Details Page
 	.cont-body, #event-holding {
 		margin-bottom: 150px;
 	}
-	#admin-form .form-control {
+
+	#admin-form .form-control, #name-form, #email-form {
 		width: 600px;
 		border: solid purple 1px;
   }
@@ -355,6 +420,7 @@ Event Details Page
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
   }
+
 
 	#event-page, #myevent,#details, #add-center-header {
 		margin-top: $header-top;
@@ -387,13 +453,13 @@ Event Details Page
 	.cont-body {
 		margin-bottom: 200px;
 	}
+  
 	.detail-button {
 		margin-left: 110px;	
 	}
  
-	#admin-form .form-control {
+	#admin-form, .form-control, #name-form, #email-form {
 		width: 300px;
 		border: solid purple 1px;
-	
 	}
 }
