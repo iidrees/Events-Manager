@@ -69,8 +69,26 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	-o-background-size: cover;
 	background-size: cover;
   opacity: 0.4;
+  top: 0;
 	top: 0;
 	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+
+#profile-cover:after {
+	content: "";
+	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
 	bottom: 0;
 	right: 0;
 	position: absolute;
@@ -86,11 +104,13 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	background-size: cover;
   opacity: 0.4;
   top: 0;
-  left: 0;
+	left: 0;
 	bottom: 0;
 	right: 0;
 	position: absolute;
 	z-index: -1;
+}
+
 }
 
 #event-details::after {
@@ -247,6 +267,26 @@ Event Details Page
 	font-weight: bold;
 }
 
+
+/* Center Details page */
+.center-details-para {
+	font-family: $font-maven-pro;
+	font-weight: bolder;
+}
+.center-details-span {
+	font-family: $font-cantarell;
+}
+#head-holding{
+	font-family: $font-Encode;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/* GET all events center page */
+.all-centers-font {
+	font-family: $font-cantarell;
+	font-weight: bold;
+}
 
 /* View point for  desktop*/
 @media(min-width: 768px) {
