@@ -365,7 +365,7 @@ Event Details Page
 /* View point for  desktop*/
 @media(min-width: 768px) {
 /* landing page */
-	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center, #nav-center-details
+	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center, #nav-center-details, #navbar-myevents
 	 {
 		margin-left: 500px;
 	}
@@ -381,7 +381,7 @@ Event Details Page
 	}
 
 	/*events catalog  */
-	#event-page,#myevent, #details, #add-center-header, #event-holding-header,#event-holding {
+	#event-page, #myevent, #details, #add-center-header, #event-holding-header,#event-holding {
 		margin-top: $header-top;
 	}
 
@@ -400,14 +400,15 @@ Event Details Page
 			width: 70%;
 			border-color: $header-color;
 	}
-	#card-body, #event-holding {
+	 #event-holding {
 		margin-bottom: 150px;
-	}
-	#card-body1{
-		margin-bottom: 300px;
 	}
 	#details-ev {
 		margin-bottom: 50px;
+	}
+	
+	#card-body,#card-body4, #card-body1, #card-body2, #card-body3, #card-center1, #card-center2{
+		margin-bottom: 170px;
 	}
 
 	#admin-form .form-control, #name-form, #email-form {
@@ -419,6 +420,11 @@ Event Details Page
 	}
 	#center-details-slider, #center-details-header {
 		margin-top: $header-top;
+	}
+	#form-event1, #form-event2, #form-event3, #form-event4, #form-event5, #event-center1,#event-center2
+	{
+		width: 600px;
+		border: solid purple 1px;
 	}
 	
 	
@@ -443,7 +449,7 @@ Event Details Page
   }
 
 
-	#event-page, #myevent,#details, #add-center-header {
+	#event-page, #myevent, #details, #add-center-header {
 		margin-top: $header-top;
 	}
 	input[type=text] {
@@ -467,12 +473,12 @@ Event Details Page
 		margin-top: 300px;
 	}
 	
-	#card-body, #event-holding {
+	#card-body2, #event-holding {
 		margin-bottom: 5px;
 		margin-top: 100px;
 	}
 	#card-body1{
-		margin-bottom: 300px;
+		margin-bottom: 500px;
 	} 
 	.detail-button {
 		margin-left: 120px;	
