@@ -78,7 +78,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 }
 
 
-#center-details-cover:after {
+#admin-add-center::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -168,6 +168,7 @@ body {
 }
 
 
+
 /* Event catalog and My Events page */
 .even-font {
 	font-family: $font-patrick;
@@ -189,6 +190,7 @@ small {
   font-weight: bolder;
   color: purple;
 }
+
 /* 
 Event Details Page
  */
@@ -221,6 +223,11 @@ Event Details Page
 	font-family: $font-cantarell;
 }
 
+#head-holding{
+	font-family: $font-Encode;
+	font-size: 30px;
+	font-weight: bold;
+}
 
 /* View point for  */
 @media(min-width: 768px) {
@@ -241,7 +248,8 @@ Event Details Page
 	}
 
 	/*events catalog  */
-	#event-page,#myevent, #details,#add-center-header, {
+
+	#event-page,#myevent, #details, #add-center-header, #event-holding-header,#event-holding {
 		margin-top: $header-top;
 	}
 
@@ -257,13 +265,13 @@ Event Details Page
 			width: 70%;
 			border-color: $header-color;
 	}
-	.cont-body {
+	.cont-body, #event-holding {
 		margin-bottom: 150px;
 	}
 	#admin-form .form-control {
 		width: 600px;
 		border: solid purple 1px;
-
+  }
 	#center-details-slider, #center-details-header {
 		margin-top: $header-top;
 	}
@@ -289,7 +297,6 @@ Event Details Page
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
   }
-
 
 	#event-page, #myevent,#details, #add-center-header {
 		margin-top: $header-top;
@@ -332,3 +339,4 @@ Event Details Page
 	
 	}
 }
+
