@@ -28,7 +28,7 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 /* background: url('../images/food-landing.jpg') no-repeat center center fixed 
 background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
 
-#add-events-body::after {
+ #add-events-body::after {
 	content: "";
 	background: url('../images/pexels-photo-621891.jpeg') no-repeat center center fixed;
 	-webkit-background-size: cover;
@@ -43,7 +43,21 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
-
+#events-bk-cover::after {
+	content: "";
+	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 0.3;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
 
 #admin-add-center::after {
 	content: "";
@@ -61,7 +75,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	z-index: -1;
 }
 
-#center-details-cover:after {
+#center-details-cover::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -286,13 +300,9 @@ Event Details Page
 	font-size: 25px;
 }
 
-#details-ev {
-	margin-bottom: 50px;
-}
 
-.detail-button {
-	margin-left: 500px;
-}
+
+
 
 /* Center Details page */
 .center-details-para {
@@ -380,15 +390,24 @@ Event Details Page
 		-webkit-transition: width 0.4s ease-in-out;
 		transition: width 0.4s ease-in-out;
 		border-color: $header-color;
-}
-	
+	}
+	.detail-button {
+		margin-left: 400px;
+		margin-bottom: $header-top;
+}	
 	/* When the input field gets focus, change its width to 70% */
 	input[type=text]:focus {
 			width: 70%;
 			border-color: $header-color;
 	}
-	.cont-body, #event-holding {
+	#card-body, #event-holding {
 		margin-bottom: 150px;
+	}
+	#card-body1{
+		margin-bottom: 300px;
+	}
+	#details-ev {
+		margin-bottom: 50px;
 	}
 
 	#admin-form .form-control, #name-form, #email-form {
@@ -401,6 +420,7 @@ Event Details Page
 	#center-details-slider, #center-details-header {
 		margin-top: $header-top;
 	}
+	
 	
 }
 
@@ -419,6 +439,7 @@ Event Details Page
 	#nav-logo {
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
+		margin-left: 300px;
   }
 
 
@@ -443,19 +464,22 @@ Event Details Page
 		height: 20rem;
 		width: 20rem;
 		margin-left: 70px;
+		margin-top: 300px;
 	}
-	#card1, #card2 {
-		margin-top: 10px;
+	
+	#card-body, #event-holding {
+		margin-bottom: 5px;
+		margin-top: 100px;
 	}
-	.card {
-		margin-top: 200px;
-	}
-	.cont-body {
-		margin-bottom: 200px;
-	}
-  
+	#card-body1{
+		margin-bottom: 300px;
+	} 
 	.detail-button {
-		margin-left: 110px;	
+		margin-left: 120px;	
+		margin-bottom: $header-top;
+	}
+	#details-ev {
+		margin-bottom: 70px;
 	}
  
 	#admin-form, .form-control, #name-form, #email-form {
