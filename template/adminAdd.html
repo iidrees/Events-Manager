@@ -1,0 +1,130 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Events Manager Web Application">
+    <title>Events Manager</title>
+    <meta name="keywords" content="Videos, Images, Text, events">
+    <meta name="author" content="Idrees Ibraheem">
+
+    <!-- Bootstrap, Font Awesome CSS --> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+
+    <!-- Google Fonts --> 
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Cantarell:400,400i" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+  </head>
+  <body id="admin-add-center">
+		<header ><!-- Start HEADER for NAVBAR -->
+			<nav id="nav-bar" class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-admin-center" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<a id="nav-logo" class="navbar-brand" href="#">Events Manager!</a>
+				<div class="collapse navbar-collapse left" id="navbar-admin-center">
+					<ul class="navbar-nav mr-auto ">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Events Catalog</a>
+            </li>
+              <a class="nav-link" href="#">Center Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="myEvents.html">Add Center</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Help</a>
+            </li>
+					</ul>
+				</div>
+			</nav>
+    </header><!-- END HEADER FOR NAVBAR -->
+
+    <div class="container">
+      <div class="row">
+        <div class="container" id="add-center-header">
+          <div class="row">
+            <div class="col-sm-12">              
+              <h1 class="text-center head-1" id="admin-add-head">Add New Event Centers Below </h1>
+              <p class="head-para text-center">
+              </p>
+              <hr >
+            </div>
+          </div>
+        </div>
+      
+        
+        <div class="container"><!-- Start container for Add Form -->
+          <div class="row">
+            <div class="col-md-6">
+              <form method="POST" class="form form-center" role="form" id="admin-form"  action="#"><!-- ADD FORM -->
+                <div class="form-group">
+                  <label for="add-center" class=" home-para">Name of Center:</label>
+                  <input class="form-control"  type="text" placeholder="Enter Name of Center" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="add-center" class=" home-para">Location:</label>
+                  <input class="form-control" type="text" placeholder=" Enter Location" id="example-text-input" >
+                </div>                
+                <div class="form-group">
+                  <label for="add-center" class=" home-para">Address:</label>
+                  <input class="form-control" type="text" placeholder="Enter Address" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="add-center" class=" home-para">Capacity:</label>
+                  <input class="form-control" type="text" placeholder="Enter Capacity" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="add-center" class=" home-para">Owner:</label>
+                  <input class="form-control" type="text" placeholder="Enter Owner" id="example-text-input" >
+                </div>
+                <div class="form-group">
+                  <label for="event-details" class=" home-para"> Description:</label>
+                  <textarea class="form-control" id="eventTextarea" rows="8" placeholder="brief details about the event"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="add-center" class=" home-para">Upload an Image of event center below:</label>
+                  <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                </div>  
+                <button type="button" class="btn btn-primary btn-sm" id="save-event">Save and create Event Center<span><i class="fa fa-paper-plane" aria-hidden="true"></i></span></button>
+              </form>          
+            </div><!-- End Container ADD EVENTS FORM -->
+          </div>
+        </div>
+    </div>
+  </div>
+
+    
+    
+
+   
+
+      
+		
+    <!-- Bootstrap.js, Jquery.js, Popper.js -->
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/popper-dist/umd/popper.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <div class="footer"><!-- Footer-->
+      <p id="footer-para" class="text-center">
+        <strong>Made with  <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
+    </div>
+  </body>
+</html>
+
+
+
+
+
