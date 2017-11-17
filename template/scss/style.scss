@@ -76,6 +76,24 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	position: absolute;
 	z-index: -1;
 }
+
+
+#center-details-cover:after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
 #event-details::after {
 	content: "";
 	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
@@ -85,7 +103,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 	background-size: cover;
 	opacity: 0.3;
 	top: 0;
-	left: 0;
+  left: 0;
 	bottom: 0;
 	right: 0;
 	position: absolute;
@@ -151,7 +169,6 @@ body {
 
 
 /* Event catalog and My Events page */
-/* Event Catalog page fonts */
 .even-font {
 	font-family: $font-patrick;
 	font-weight: bold;
@@ -194,6 +211,7 @@ Event Details Page
 .detail-button {
 	margin-left: 500px;
 }
+
 /* Center Details page */
 .center-details-para {
 	font-family: $font-maven-pro;
@@ -245,7 +263,9 @@ Event Details Page
 	#admin-form .form-control {
 		width: 600px;
 		border: solid purple 1px;
-	
+
+	#center-details-slider, #center-details-header {
+		margin-top: $header-top;
 	}
 	#center-details-slider, #center-details-header {
 		margin-top: $header-top;
@@ -269,6 +289,7 @@ Event Details Page
 		border-right: solid $navbar-border 1px;
 		padding-right: 20px;
   }
+
 
 	#event-page, #myevent,#details, #add-center-header {
 		margin-top: $header-top;
@@ -304,6 +325,7 @@ Event Details Page
 	.detail-button {
 		margin-left: 110px;	
 	}
+  
 	#admin-form .form-control {
 		width: 300px;
 		border: solid purple 1px;

@@ -1,5 +1,6 @@
 .sass-cache/
 template/.sass-cache/
+
 template/css/main.css.map
 template/css/font-awesome-4.7.0/
 template/css/bootstrap-grid.css
@@ -10,12 +11,14 @@ template/css/bootstrap-reboot.css
 template/css/bootstrap-reboot.css.map
 template/css/bootstrap-reboot.min.css
 template/css/bootstrap-reboot.min.css.map
-
 template/css/bootstrap.min.css
 template/css/bootstrap.css
+template/css/bootstrap.min.css.map
+template/css/bootstrap.css.map
 template/js/popper-dist/
 template/js/bootstrap.js
 template/js/bootstrap.min.js
 template/js/jquery-3.2.1.js
 template/js/jquery-3.2.1.min.js
 template/fonts/webfontkit-20171114-134325
+
