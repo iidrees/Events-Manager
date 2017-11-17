@@ -16,52 +16,7 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 /* add-events page */
 #add-events-body::after {
   content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
-
-#center-details-cover:after {
-  content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
-
-#profile-cover:after {
-  content: "";
-  background: url("../images/pexels-photo-518244.jpeg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1; }
-
-#help-cover::after {
-  content: "";
-  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  background: url("../images/pexels-photo-621891.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -88,6 +43,78 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
   right: 0;
   position: absolute;
   z-index: -1; }
+
+
+#event-details::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+
+#profile-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-518244.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+#center-details-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+
+#help-cover::after {
+  content: "";
+  background: url("../images/pexels-photo-64769.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; }
+
+
+/* #admin-form .form-control {
+  width: 600px;
+	border: solid purple 1px;
+
+} */
+#add-event-header {
+  margin-top: 70px; }
 
 /* #admin-form .form-control {
   width: 600px;
@@ -136,17 +163,23 @@ body {
   /* Set the fixed height of the footer here */
   height: 30px; }
 
-/* Event Catalog page fonts */
+/* Event catalog and My Events page */
 .even-font {
   font-family: "Patrick Hand", cursive;
   font-weight: bold; }
 
 .date-font {
   font-family: "Cantarell", sans-serif;
-  font-weight: 80px; }
+  font-weight: bold; }
 
 .location-font, .search-font {
-  font-family: "Maven Pro", sans-serif; }
+  font-family: "Maven Pro", sans-serif;
+  font-weight: bold; }
+
+small {
+  font-family: "Patrick Hand", cursive;
+  font-weight: bolder;
+  color: purple; }
 
 /* Center Details page */
 .center-details-para {
@@ -166,12 +199,37 @@ body {
   font-family: "Cantarell", sans-serif;
   font-weight: bold; }
 
-/* View point for  desktop*/
+
+
+/* 
+Event Details Page
+ */
+#img-details {
+  max-width: 400px; }
+
+.font-details {
+  font-family: "Cantarell", sans-serif;
+  font-weight: bold;
+  font-size: 25px; }
+
+.font-span {
+  font-family: "Patrick Hand", cursive; }
+
+#details-ev {
+  margin-bottom: 50px; }
+
+.detail-button {
+    margin-left: 500px; }
+    
+    /* View point for  */
 @media (min-width: 768px) {
   /* landing page */
-  #nav-events, #navbar-addevents, #navbar-admin-center, #nav-center-details {
+  #nav-events, #navbar-addevents, #navbar-admin-center, #navbar-details, #nav-center-details {
     margin-left: 500px; }
-
+  
+  #navbar-addevents {
+    height: 30px; }
+  
   .nav-link {
     border-right: solid grey 1px;
     border-radius: 10px;
@@ -182,7 +240,7 @@ body {
     padding-right: 20px; }
 
   /*events catalog  */
-  #event-page, #add-center-header, #event-holding-header, #event-holding {
+  #event-page, #add-center-header, #event-holding-header, #event-holding,#myevent, #details {
     margin-top: 70px; }
 
   input[type=text] {
@@ -196,6 +254,7 @@ body {
     width: 70%;
     border-color: black; }
 
+
   .cont-body, #event-holding {
     margin-bottom: 150px; }
 
@@ -205,8 +264,11 @@ body {
 
   #center-details-slider, #center-details-header {
     margin-top: 70px; } }
+
+
+    /* Viewport for Mobile */
 @media (max-width: 576px) {
-  #navbar-signup {
+  #navbar-myevents,#navbar-signup {
     margin-left: 30px; }
 
   .nav-link {
@@ -220,7 +282,8 @@ body {
     border-right: solid grey 1px;
     padding-right: 20px; }
 
-  #event-page, #add-center-header {
+
+  #event-page, #add-center-header,#myevent, #details {
     margin-top: 70px; }
 
   input[type=text] {
@@ -248,8 +311,13 @@ body {
   .cont-body {
     margin-bottom: 200px; }
 
+
   #admin-form, .form-control, #name-form, #email-form {
     width: 300px;
-    border: solid purple 1px; } }
+    border: solid purple 1px; }  
+
+  .detail-button {
+    margin-left: 110px; } }
+
 
 /*# sourceMappingURL=main.css.map */
