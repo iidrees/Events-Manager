@@ -25,124 +25,8 @@ $font-maven-pro: 'Maven Pro', sans-serif;
 $font-pt-sans: 'PT Sans Caption', sans-serif;
 
 
-/* background: url('../images/food-landing.jpg') no-repeat center center fixed 
-background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fixed;*/
-
- #add-events-body::after {
-	content: "";
-	background: url('../images/pexels-photo-621891.jpeg') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	opacity: 0.3;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-#events-bk-cover::after {
-	content: "";
-	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	opacity: 0.3;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-#admin-add-center::after {
-	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	opacity: 0.3;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-#center-details-cover::after {
-	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
 
 
-#profile-cover::after {
-	content: "";
-	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-#admin-add-center::after {
-	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-
-#center-details-cover::after {
-	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-	left: 0;
- 	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-
-
-}
 
 #event-details::after {
 	content: "";
@@ -161,63 +45,11 @@ background: url('../images/pexels-photo-274192.jpeg') no-repeat center center fi
 }
 
 
-#profile-cover::after {
-	content: "";
-	background: url('../images/pexels-photo-518244.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-#help-cover::after {
-	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
-#admin-add-center::after {
-	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-  opacity: 0.4;
-  top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: -1;
-}
-
 #add-event-header {
   margin-top: 70px;
 }
 
-/* #admin-form .form-control {
-  width: 600px;
-	border: solid purple 1px;
 
-} */
 
 .home-para {
   font-family: $font-Encode;
@@ -407,14 +239,17 @@ Event Details Page
 		margin-bottom: 50px;
 	}
 	
-	#card-body,#card-body4, #card-body1, #card-body2, #card-body3, #card-center1, #card-center2 {
+	#card-body,#card-body4, #card-body1, #card-body2, #card-body3 {
 		margin-bottom: 170px;
 	}
+	#card-center1, #card-center2 {
+		margin-bottom: 120px;
+	}
 	#cadcad-body, #cadcad {
-		margin-bottom: 250px;
+		margin-bottom: 170px;
 	}
 
-	#admin-form .form-control, #name-form, #email-form {
+	#admin-form .form-control, #name-form, #email-form,#text-form {
 		width: 600px;
 		border: solid purple 1px;
   }
@@ -491,7 +326,7 @@ Event Details Page
 		margin-bottom: 70px;
 	}
  
-	#admin-form, .form-control, #name-form, #email-form {
+	#admin-form, .form-control, #name-form, #email-form, #text-form {
 		width: 300px;
 		border: solid purple 1px;
 	}
