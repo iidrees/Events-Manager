@@ -1,0 +1,41 @@
+{
+  "name": "events-manager",
+  "version": "1.0.0",
+  "description": "An Events Manager Application that allows users host their organised events",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test mocha",
+    "start": "node_modules/.bin/babel server/src/server.js",
+    "build": "babel src -d lib",
+    "babel-node": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iidrees/Events-Manager.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "React.js",
+    "API",
+    "Events-Management"
+  ],
+  "author": "Idrees Ibraheem",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iidrees/Events-Manager/issues"
+  },
+  "homepage": "https://github.com/iidrees/Events-Manager#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
