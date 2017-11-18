@@ -4,10 +4,11 @@
   "description": "An Events Manager Application that allows users host their organised events",
   "main": "server.js",
   "scripts": {
-    "test": "npm test mocha",
-    "start": "node_modules/.bin/babel server/src/server.js",
-    "build": "babel src -d lib",
-    "babel-node": ""
+    "test": "mocha",
+    "start": "node_modules/.bin/babel-node  server/src/server.js",
+    "nodemon": "nodemon server/src/server.js --exec babel-node",
+    "build": "babel server/src -d server/lib",
+    "start:prod": "node server/lib/server.js"
   },
   "repository": {
     "type": "git",
@@ -32,10 +33,15 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",
+    "eslint": "^4.11.0",
     "express": "^4.16.2",
     "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "nodemon": "^1.12.1"
   }
 }
