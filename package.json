@@ -9,7 +9,7 @@
     "start:nodemon": "nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
     "start:prod": "node server/lib/server.js",
-    "coverage": " npm test && nyc report --reporter-text-lcov | coveralls",
+    "coverage": " npm test && nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report"
   },
   "repository": {
