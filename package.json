@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "node_modules/.bin/babel-node  server/src/server.js",
-    "nodemon": "nodemon server/src/server.js --exec babel-node",
+    "start": "babel-node  server/src/server.js",
+    "start:nodemon": "nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
     "start:prod": "node server/lib/server.js"
   },
