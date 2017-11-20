@@ -9,6 +9,7 @@ import { UserSignup, UserSignin } from './controllers/users';
 
 
 
+
 /* initialise App and set PORT */
 const app = express();
 const port = process.env.PORT || 5050;
@@ -30,8 +31,8 @@ app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
 
-app.post('/api/v1/users', UserSignup.signUp);
 
+app.post('/api/v1/users', UserSignup.signUp);
 
 // start application
 app.listen(port, () => {
