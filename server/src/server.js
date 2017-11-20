@@ -5,13 +5,14 @@ import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
 import { Events } from './models';
+import { UserSignup, UserSignin } from './controllers/users';
+
 
 
 
 /* initialise App and set PORT */
 const app = express();
 const port = process.env.PORT || 5050;
-
 
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
@@ -30,6 +31,8 @@ app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
 
+
+app.post('/api/v1/users', UserSignup.signUp);
 
 // start application
 app.listen(port, () => {
