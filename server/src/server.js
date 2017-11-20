@@ -6,6 +6,7 @@ import logger from 'morgan';
 import { Events } from './models';
 
 
+
 /* initialise App and set PORT */
 const app = express();
 const port = process.env.PORT || 5050;
@@ -20,6 +21,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 
 // route
+
 app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });

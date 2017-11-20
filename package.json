@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc mocha server/test/test.js --require babel-register --exit",
     "start": "babel-node  server/src/server.js",
+
     "start:dev": "nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
     "start:prod": "node server/lib/server.js",
