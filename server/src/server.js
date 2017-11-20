@@ -2,8 +2,9 @@
 import 'babel-polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
-
 import logger from 'morgan';
+import { Events } from './models';
+
 
 
 /* initialise App and set PORT */
@@ -20,8 +21,9 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 
 // route
-app.get('/home/', (req, res) => {
-  res.status(200).send({ message: 'Locked and Loaded' });
+
+app.get('/home', (req, res) => {
+  res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
 
 
