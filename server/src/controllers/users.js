@@ -61,8 +61,87 @@ export class UserSignup {
       .catch((err) => {
         return res.status(400).send({
           status: 'Fail',
-          message: 'This username already exist, enter a new one',
-          data: err.errors[0].message
+          message: err.errors[0].message
+        });
+      });
+  }
+}
+
+
+
+/**
+ * This is a UserSignin class that allows a user to signin
+ * a token is generated for token based authentication
+ * @export
+ * @class UserSignin
+ */
+export class UserSignin {
+  /**
+ * @param {object} req - The req
+ * @param {object} res - The res
+ * @return {object} JSON 
+ * @static
+ * @memberof UserSignin
+ */
+  static signIn(req, res) {
+    /* grab the email and password from the req.body
+      these values are parsed and then if there is an error it is returned
+      if
+     */
+
+    const { email, password, confirmPassword } = req.body;
+    console.log(email, password)
+    if (!validator.equals(password, confirmPassword)) {
+      return res.status(400).send({
+        status: 'Fail',
+        message: `Please your password ${password} do not match ${confirmPassword}`
+      });
+    }
+    if (validator.isEmpty(password)) {
+      return res.status(400).send({
+        status: 'Fail',
+        message: 'Please enter your password'
+      });
+    }
+    if (validator.isEmpty(email)) {
+      return res.status(400).send({
+        status: 'Fail',
+        message: 'Please enter your email address'
+      });
+    }
+    return Users // check the db if user has already signedup
+      .findOne({
+        where: {
+          email,
+        }
+      })
+      .then((user) => {
+        if (!user) { // returns an error if user has not signedup yet
+          return res.status(400).send({
+            status: 'Fail',
+            err: 'User Not Found'
+          });
+        }
+        if (bcrypt.compareSync(password, user.password)) {
+          /*  if user has an account,
+            compare password with what we have in the db.
+            if password is correct, save the user id in a token
+            and send this to the user for authentication.
+           */
+          const payload = { id: user.id, admin: user.isAdmin };
+          console.log(payload);
+          const token = jwt.sign(payload, process.env.SECRET, {
+            expiresIn: '3h'
+          });
+          return res.status(200).send({
+            status: 'Success',
+            message: 'Token generation and signin successful',
+            data: token,
+          });
+        }
+        return res.status(400).send({
+          status: 'Fail',
+          message: 'Incorrect Login Details supplied'
         });
       });
   }

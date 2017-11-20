@@ -3,7 +3,10 @@ export default (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: {
+        args: true,
+        msg: 'This name already exist, enter a new name'
+      },
       validate: {
         is: /^[a-z]+$/i
       }

@@ -9,7 +9,6 @@ import { UserSignup, UserSignin } from './controllers/users';
 
 
 
-
 /* initialise App and set PORT */
 const app = express();
 const port = process.env.PORT || 5050;
@@ -33,6 +32,7 @@ app.get('/home', (req, res) => {
 
 
 app.post('/api/v1/users', UserSignup.signUp);
+app.post('/api/v1/users/login', UserSignin.signIn);
 
 // start application
 app.listen(port, () => {
