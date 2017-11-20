@@ -2,6 +2,7 @@
 import 'babel-polyfill';
 import express from 'express';
 import bodyParser from 'body-parser';
+
 import logger from 'morgan';
 
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.get('/home/', (req, res) => {
   res.status(200).send({ message: 'Locked and Loaded' });
 });
+
 
 // start application
 app.listen(port, () => {

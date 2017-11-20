@@ -11,6 +11,12 @@
     "start:prod": "node server/lib/server.js",
     "coverage": " npm test && nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report"
+    "test": "mocha",
+    "start": "babel-node  server/src/server.js",
+    "start:nodemon": "nodemon server/src/server.js --exec babel-node",
+    "build": "babel server/src -d server/lib",
+    "start:prod": "node server/lib/server.js"
+
   },
   "repository": {
     "type": "git",
@@ -45,6 +51,9 @@
     "morgan": "^1.9.0",
     "nyc": "^11.3.0",
     "supertest": "^3.0.0"
+    "eslint": "^4.11.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^16.1.0",
