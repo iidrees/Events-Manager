@@ -43,7 +43,7 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
-    centers: {
+    venue: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -87,16 +87,7 @@ export default (sequelize, DataTypes) => {
         }
       },
       defaultValue: 0
-    },
-    center: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'Centers',
-        key: 'id',
-      },
-      onDelete: 'CASCADE',
-    },
+    }
   });
   /* Event Associations */
   Events.associate = (model) => {
@@ -104,7 +95,10 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     });
-    Events.belongsTo(model.Centers);
+    Events.belongsTo(model.Centers, {
+      foreignKey: 'centerId',
+      onDelete: 'CASCADE'
+    });
   };
   return Events;
 };

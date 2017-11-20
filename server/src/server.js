@@ -6,7 +6,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import auth from './auth/auth';
 import { UserSignup, UserSignin } from './controllers/users';
-import { Event, EventUpdate } from './controllers/events';
+import { Event, EventUpdate, EventDelete } from './controllers/events';
 
 
 
@@ -39,6 +39,8 @@ app.post('/api/v1/users/login', UserSignin.signIn);
 app.use(auth.verifyUser);
 app.post('/api/v1/events', Event.postEvents);
 app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
+app.delete('/api/v1/events/:eventId', EventDelete.deleteEvent);
+
 
 // start application
 app.listen(port, () => {

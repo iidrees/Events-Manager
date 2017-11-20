@@ -21,26 +21,24 @@ export class Event {
       description,
       date,
       time,
-      centers,
+      venue,
       location,
       type,
       attendance,
-      center
     } = req.body;
     const { id } = req.decoded;
-    console.log('add events',id);
+    console.log('add events', id);
     return Events
       .create({
         title,
         description,
         date,
         time,
-        centers,
+        venue,
         location,
         type,
         attendance,
-        userId: id,
-        center
+        userId: id
       })
       .then((event) => {
         return res.status(201).send({
@@ -52,7 +50,7 @@ export class Event {
       .catch((err) => {
         return res.status(400).send({
           status: 'Fail',
-          message: err.message
+          message: err
         });
       });
   }
@@ -65,11 +63,10 @@ export class Event {
  * @class EventUpdate
  */
 export class EventUpdate {
-  
   /**
    * @static
-   * @param {any} req 
-   * @param {any} res 
+   * @param {any} req
+   * @param {any} res
    * @returns {*} JSON
    * @memberof EventUpdate
    */
@@ -79,7 +76,7 @@ export class EventUpdate {
       description,
       date,
       time,
-      centers,
+      venue,
       location,
       type,
       attendance
@@ -100,6 +97,7 @@ export class EventUpdate {
           return res.status(401).send({
             status: 'Fail',
             message: 'Event Not Found',
+            data: event
           });
         }
         /* Update recipe if found and return update */
@@ -109,7 +107,7 @@ export class EventUpdate {
             description: description || event.description,
             date: date || event.date,
             time: time || event.time,
-            centers: centers || event.centers,
+            venue: venue || event.venue,
             location: location || event.location,
             type: type || event.type,
             attendance: attendance || event.attendance,
@@ -124,6 +122,52 @@ export class EventUpdate {
       .catch(err => res.status(400).send({
         status: 'Fail',
         message: 'Please ensure you are entring a value',
+        data: err
+      }));
+  }
+}
+
+/**
+ * An event class that allows a user
+ * delete a recipe he/she added
+ * @export
+ * @class EventDelete
+ */
+export class EventDelete {
+  /**
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {*} JSON
+   * @memberof EventDelete
+   */
+  static deleteEvent(req, res) {
+    const userId = req.decoded.id;
+    return Events
+      .findOne({
+        where: {
+          id: req.params.eventId,
+          userId
+        },
+      })
+      .then((event) => {
+        if (!event) {
+          return res.status(404).send({
+            status: 'Fail',
+            message: 'Event Not Found'
+          });
+        }
+        return event
+          .destroy()
+          .then(() => res.status(200).send({
+            status: 'Success',
+            message: 'Event Successfuly Deleted'
+          }))
+          .catch(err => res.status(404).send(err));
+      })
+      .catch(err => res.status(404).send({
+        status: 'Fail',
+        message: 'Not deleting',
         data: err
       }));
   }
