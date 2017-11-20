@@ -12,6 +12,7 @@ import { Events } from './models';
 const app = express();
 const port = process.env.PORT || 5050;
 
+
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
 
