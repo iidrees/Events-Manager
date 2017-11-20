@@ -6,7 +6,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import auth from './auth/auth';
 import { UserSignup, UserSignin } from './controllers/users';
-import  { Event }  from './controllers/events';
+import { Event, EventUpdate } from './controllers/events';
 
 
 
@@ -38,6 +38,7 @@ app.post('/api/v1/users/login', UserSignin.signIn);
 // jwt middleware to verify users trying to hit secure endpoints
 app.use(auth.verifyUser);
 app.post('/api/v1/events', Event.postEvents);
+app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
 
 // start application
 app.listen(port, () => {
