@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import auth from './auth/auth';
 import { UserSignup, UserSignin } from './controllers/users';
 import { Event, EventUpdate, EventDelete } from './controllers/events';
-
+import Admin from './controllers/admin';
 
 
 /* initialise App and set PORT */
@@ -40,6 +40,7 @@ app.use(auth.verifyUser);
 app.post('/api/v1/events', Event.postEvents);
 app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
 app.delete('/api/v1/events/:eventId', EventDelete.deleteEvent);
+app.post('/api/v1/users/admin/:bool', Admin.addAdmin);
 
 
 // start application
