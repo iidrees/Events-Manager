@@ -10,7 +10,9 @@
     "build": "babel server/src -d server/lib",
     "start:prod": "node server/lib/server.js",
     "coverage": " npm test && nyc report --reporter=text-lcov | coveralls",
-    "nyc": "nyc report"
+    "nyc": "nyc report",
+    "seq:drop": "sequelize db:migrate:undo:all",
+    "seq:create": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",
