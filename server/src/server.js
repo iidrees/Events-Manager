@@ -4,8 +4,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import { Events } from './models';
+import auth from './auth/auth';
 import { UserSignup, UserSignin } from './controllers/users';
+import  { Event }  from './controllers/events';
 
 
 
@@ -33,6 +34,10 @@ app.get('/home', (req, res) => {
 
 app.post('/api/v1/users', UserSignup.signUp);
 app.post('/api/v1/users/login', UserSignin.signIn);
+
+// jwt middleware to verify users trying to hit secure endpoints
+app.use(auth.verifyUser);
+app.post('/api/v1/events', Event.postEvents);
 
 // start application
 app.listen(port, () => {

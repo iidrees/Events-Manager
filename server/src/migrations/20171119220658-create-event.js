@@ -1,13 +1,29 @@
 module.exports = {
   up: (queryInterface, Sequelize) => 
-    queryInterface.createTable('Centers', {
+   queryInterface.createTable('Events', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      title: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      date: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      time: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      centers: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -15,21 +31,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      address: {
+      type: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      owner: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      capacity: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false
+      attendance: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
@@ -47,11 +56,19 @@ module.exports = {
           model: 'Users',
           key: 'id',
           as: 'userId'
-
+        }
+      },
+      centerId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Centers',
+          key: 'id',
+          as: 'centerId',
         },
       },
     }),
   down: (queryInterface /* , Sequelize */) => {
-    return queryInterface.dropTable('Centers');
+    return queryInterface.dropTable('Events');
   }
 };

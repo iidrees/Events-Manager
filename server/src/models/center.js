@@ -25,11 +25,12 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     }
   });
-  /* Model Associations */
+
+  /* Model Associations for centers */
   Centers.associate = (model) => {
     Centers.hasMany(model.Events, {
-      foreignkey: 'centerId',
-      as: 'events',
+      as: 'venue',
+      foreignkey: 'center'
     });
     Centers.belongsTo(model.Users, {
       foreignkey: 'userId',
