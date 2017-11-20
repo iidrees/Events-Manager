@@ -31,13 +31,13 @@ app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
 
+
 app.post('/api/v1/users', UserSignup.signUp);
 app.post('/api/v1/users/login', UserSignin.signIn);
 
 // jwt middleware to verify users trying to hit secure endpoints
 app.use(auth.verifyUser);
 app.post('/api/v1/events', Event.postEvents);
-
 
 // start application
 app.listen(port, () => {

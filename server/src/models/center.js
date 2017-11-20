@@ -25,6 +25,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     }
   });
+
   /* Model Associations for centers */
   Centers.associate = (model) => {
     Centers.hasMany(model.Events, {
@@ -34,6 +35,9 @@ export default (sequelize, DataTypes) => {
     Centers.belongsTo(model.Users, {
       foreignkey: 'userId',
       onDelete: 'CASCADE'
+    });
+    Centers.belongsTo(model.Events, {
+      foreignkey: 'eventId',
     });
   };
   return Centers;
