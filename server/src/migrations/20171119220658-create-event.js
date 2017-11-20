@@ -1,6 +1,6 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => 
-   queryInterface.createTable('Events', {
+  up: (queryInterface, Sequelize) =>
+    queryInterface.createTable('Events', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -23,9 +23,9 @@ module.exports = {
       },
       time: {
         type: Sequelize.STRING,
-        allowNull: false        
+        allowNull: false
       },
-      centers: {
+      venue: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -60,16 +60,16 @@ module.exports = {
           as: 'userId'
         }
       },
-      center: {
+      centerId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
+        allowNull: true,
         references: {
           model: 'Centers',
           key: 'id',
-        },
-      },
+          as: 'centerId'
+        }
+      }
     }),
-  down: (queryInterface /* , Sequelize */) => {
-    return queryInterface.dropTable('Events');
-  }
+  down: (queryInterface /* , Sequelize */ => queryInterface.dropTable('Events'))
 };

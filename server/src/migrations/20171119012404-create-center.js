@@ -1,5 +1,5 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => 
+  up: (queryInterface, Sequelize) =>
     queryInterface.createTable('Centers', {
       id: {
         allowNull: false,
@@ -47,7 +47,6 @@ module.exports = {
           model: 'Users',
           key: 'id',
           as: 'userId'
-
         },
       },
     }),
