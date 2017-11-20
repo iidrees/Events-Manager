@@ -10,11 +10,14 @@
     <meta name="author" content="Idrees Ibraheem">
 
     <!-- Bootstrap, Font Awesome CSS --> 
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">-->
+    
 
     <!-- Google Fonts --> 
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed" rel="stylesheet">
@@ -33,19 +36,19 @@
 				<div class="collapse navbar-collapse left" id="navbar-addevents">
 					<ul class="navbar-nav mr-auto ">
             <li class="nav-item">
-              <a class="nav-link" href="#">Events Catalog</a>
+              <a class="nav-link" href="events-catalog.html">Events Catalog</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Add Events</a>
+              <a class="nav-link" href="addEvents">Add Events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My events</a>
+              <a class="nav-link" href="myEvents.html">My events</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">My profile</a>
+                <a class="nav-link" href="profile.html">My profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
+                <a class="nav-link" href="help.html">Help</a>
             </li>
 					</ul>
 				</div>
@@ -75,19 +78,19 @@
               <form method="POST" class="form-horizontal" role="form"  action="#"><!-- ADD FORM -->
                 <div class="form-group">
                   <label for="add-event" class=" home-para">Name of Event:</label>
-                  <input class="form-control" type="text" placeholder="" id="example-text-input" >
+                  <input class="form-control" id="form-event1" type="text" placeholder="" id="example-text-input" >
                 </div>
                 <div class="form-group">
                   <label for="add-event" class=" home-para">Date &amp; Time of event:</label>
-                  <input class="form-control" type="text" placeholder="DD/MM/YY  &amp; hh/mm/ss" id="example-text-input" >
+                  <input class="form-control" type="text" id="form-event2"placeholder="DD/MM/YY  &amp; hh/mm/ss" id="example-text-input" >
                 </div>            
                 <div class="form-group">
                   <label for="add-event" class=" home-para">Location:</label>
-                  <input class="form-control" type="text" placeholder="DD/MM/YY  &amp; hh/mm/ss" id="example-text-input" >
+                  <input class="form-control" type="text" id="form-event3" placeholder="DD/MM/YY  &amp; hh/mm/ss" id="example-text-input" >
                 </div>
                 <div class="form-group">
                   <label for="event-centers" class=" home-para">Event Centers:</label>
-                  <select class="form-control" id="event-center">
+                  <select class="form-control" id="event-center1">
                     <option class=" home-para">Choose an event center</option>
                     <option class=" home-para">Afe Babalola Hall, UNILAG</option>
                     <option class=" home-para">Multi-purpose Hall, UNILAG</option>
@@ -97,12 +100,12 @@
                   </select required>
                 </div>
                 <div class="form-group">
-                  <label for="event-details" class=" home-para">Events description:</label>
-                  <textarea class="form-control" id="eventTextarea" rows="8" placeholder="brief details about the event"></textarea>
+                  <label for="event-details"  class=" home-para">Events description:</label>
+                  <textarea class="form-control" id="form-event4" rows="8" placeholder="brief details about the event"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="event-centers" class=" home-para">Event type:</label>
-                  <select class="form-control" id="event-center">
+                  <select class="form-control" id="event-center2">
                     <option class=" home-para">Pick a type</option>
                     <option class=" home-para">Public</option>
                     <option >Private</option>
@@ -110,11 +113,11 @@
                 </div>
                 <div class="form-group">
                   <label for="add-event" class=" home-para">Expected No of attandence:</label>
-                  <input class="form-control" type="number" placeholder="Attendance" id="example-text-input" >
+                  <input class="form-control" id="form-event5" type="number" placeholder="Attendance" id="example-text-input" >
                 </div>
                 <div class="form-group">
                   <label for="add-event" class=" home-para">Upload an Image of your event below:</label>
-                  <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                  <input type="file" class="form-control-file"  aria-describedby="fileHelp">
                 </div>  
                 <button type="button" class="btn btn-primary btn-sm" id="preview-event">Preview event</button>
                 <button type="button" class="btn btn-primary btn-sm" id="save-event">Save and create event  <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span></button>
@@ -129,6 +132,11 @@
       
 		
     <!-- Bootstrap.js, Jquery.js, Popper.js -->
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/popper-dist/umd/popper.js"></script>
