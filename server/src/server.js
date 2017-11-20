@@ -8,6 +8,7 @@ import auth from './auth/auth';
 import { UserSignup, UserSignin } from './controllers/users';
 import { Event, EventUpdate, EventDelete } from './controllers/events';
 import Admin from './controllers/admin';
+import Center from './controllers/AddCenters';
 
 
 /* initialise App and set PORT */
@@ -41,6 +42,7 @@ app.post('/api/v1/events', Event.postEvents);
 app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
 app.delete('/api/v1/events/:eventId', EventDelete.deleteEvent);
 app.post('/api/v1/users/admin/:bool', Admin.addAdmin);
+app.post('/api/v1/centers', Center.addCenter);
 
 
 // start application
