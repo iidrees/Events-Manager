@@ -16,12 +16,14 @@ module.exports = {
         allowNull: false
       },
       date: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+        isDate: true,
+        unique: true
       },
       time: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false        
       },
       centers: {
         type: Sequelize.STRING,
@@ -58,13 +60,12 @@ module.exports = {
           as: 'userId'
         }
       },
-      centerId: {
+      center: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
           model: 'Centers',
           key: 'id',
-          as: 'centerId',
         },
       },
     }),
