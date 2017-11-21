@@ -9,6 +9,7 @@ script:
   
 cache:
  - npm install
+ - node_modules/
 
  services:
   - postgresql
