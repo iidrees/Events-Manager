@@ -4,10 +4,17 @@ node_js:
   - "8.2.1"
 
 script:
+  - npm run seq:create
   - npm test
   
 cache:
  - npm install
+
+ services:
+  - postgresql
+
+before_script:
+  - psql -c "create database events_manager;" -U postgres
 
 after_success:
    - npm run coverage
