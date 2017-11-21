@@ -46,8 +46,6 @@ app.post('/api/v1/centers', Center.addCenter);
 
 
 // start application
-app.listen(port, () => {
-  console.log(`we are live on port ${port}`);
-});
+app.listen(port);
 
 export default app;

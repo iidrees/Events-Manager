@@ -27,7 +27,6 @@ export class Event {
       attendance,
     } = req.body;
     const { id } = req.decoded;
-    console.log('add events', id);
     return Events
       .create({
         title,
@@ -40,19 +39,15 @@ export class Event {
         attendance,
         userId: id
       })
-      .then((event) => {
-        return res.status(201).send({
-          status: 'Success',
-          message: 'Event added sucessfully',
-          data: event
-        });
-      })
-      .catch((err) => {
-        return res.status(400).send({
-          status: 'Fail',
-          message: err
-        });
-      });
+      .then(event => res.status(201).send({
+        status: 'Success',
+        message: 'Event added successfully',
+        data: event
+      }))
+      .catch(err => res.status(400).send({
+        status: 'Unsuccessful',
+        message: err.message
+      }));
   }
 }
 
@@ -83,7 +78,6 @@ export class EventUpdate {
     } = req.body;
     const { id } = req.decoded;
     const { eventId } = req.params;
-    console.log('this is the event ID', eventId);
     /* Find Events */
     return Events
       .find({
@@ -94,10 +88,9 @@ export class EventUpdate {
       })
       .then((event) => {
         if (!event) {
-          return res.status(401).send({
-            status: 'Fail',
+          return res.status(404).send({
+            status: 'Unsuccessful',
             message: 'Event Not Found',
-            data: event
           });
         }
         /* Update recipe if found and return update */
@@ -105,7 +98,7 @@ export class EventUpdate {
           .update({
             title: title || event.title,
             description: description || event.description,
-            date: date || event.date,
+            date,
             time: time || event.time,
             venue: venue || event.venue,
             location: location || event.location,
@@ -120,8 +113,8 @@ export class EventUpdate {
           .catch(err => res.send(err.message));
       })
       .catch(err => res.status(400).send({
-        status: 'Fail',
-        message: 'Please ensure you are entring a value',
+        status: 'Unsuccessful',
+        message: 'Please ensure you are entering a value',
         data: err
       }));
   }
@@ -153,7 +146,7 @@ export class EventDelete {
       .then((event) => {
         if (!event) {
           return res.status(404).send({
-            status: 'Fail',
+            status: 'Unsuccessful',
             message: 'Event Not Found'
           });
         }
@@ -166,7 +159,7 @@ export class EventDelete {
           .catch(err => res.status(404).send(err));
       })
       .catch(err => res.status(404).send({
-        status: 'Fail',
+        status: 'Unsuccessful',
         message: 'Not deleting',
         data: err
       }));

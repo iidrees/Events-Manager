@@ -6,9 +6,8 @@ import { Centers } from '../models';
  * @export
  * @class Center
  */
-export default class Center {  
+export default class Center {
   /**
-   * 
    * @static
    * @param {any} req
    * @param {any} res
@@ -16,7 +15,6 @@ export default class Center {
    * @memberof Center
    */
   static addCenter(req, res) {
-    
     const {
       name,
       location,
@@ -37,18 +35,15 @@ export default class Center {
         description,
         userId: id
       })
-      .then((center) => {
-        return res.status(200).send({
-          status: 'Success',
-          message: 'Center Added Successfully',
-          data: center
-        });
-      })
+      .then(center => res.status(201).send({
+        status: 'Success',
+        message: 'Center Added Successfully',
+        data: center
+      }))
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Center Could not be added',
         data: err.message
       }));
   }
-  
 }
