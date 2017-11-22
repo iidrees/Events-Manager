@@ -24,6 +24,11 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'Free'
+    },
     address: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -63,7 +68,17 @@ export default (sequelize, DataTypes) => {
           msg: 'Please enter a description of what the center looks like'
         }
       }
-    }
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'CASCADE',
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id',
+        as: 'userId'
+      },
+    },
   });
 
   /* Model Associations for centers */

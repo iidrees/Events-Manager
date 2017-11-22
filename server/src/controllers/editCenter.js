@@ -18,6 +18,7 @@ export default class ModifyCenter {
       name,
       location,
       address,
+      status,
       owner,
       capacity,
       description
@@ -48,6 +49,7 @@ export default class ModifyCenter {
             name: name || center.name,
             location: location || center.location,
             address: address || center.address,
+            status: status || center.status,
             owner: owner || center.owner,
             capacity: capacity || center.capacity,
             description: description || center.description

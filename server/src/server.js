@@ -10,6 +10,7 @@ import { Event, EventUpdate, EventDelete } from './controllers/events';
 import Admin from './controllers/admin';
 import Center from './controllers/AddCenters';
 import EditCenter from './controllers/editCenter';
+import { GetCenter } from './controllers/getCenters';
 
 
 /* initialise App and set PORT */
@@ -36,9 +37,12 @@ app.get('/home', (req, res) => {
 
 app.post('/api/v1/users', UserSignup.signUp);
 app.post('/api/v1/users/login', UserSignin.signIn);
+app.get('/api/v1/centers/:centerId', GetCenter.getCenter);
 
 // jwt middleware to verify users trying to hit secure endpoints
 app.use(auth.verifyUser);
+
+// API ENDPOINTS
 app.post('/api/v1/events', Event.postEvents);
 app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
 app.delete('/api/v1/events/:eventId', EventDelete.deleteEvent);

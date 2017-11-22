@@ -6,6 +6,8 @@ node_js:
 script:
   - npm run seq:create
   - npm test
+env:
+  - TEST_DBURL=process.env.DB_TEST_URL
 
 install:
   - npm install
@@ -17,7 +19,7 @@ services:
   - postgresql
 
 before_script:
-  - psql -c "create database events_manager;" -U postgres
+  - psql -c "create database events_manager_test;" -U postgres
 
 after_success:
   - npm run coverage
