@@ -17,12 +17,12 @@ export default class Admin {
  */
   static addAdmin(req, res) {
     const { id, admin } = req.decoded;
-    const { bool } = req.params;
+
 
     if (admin === true) {
-      return res.status(200).send({
+      return res.status(403).send({
         status: 'Unsuccessful',
-        message: 'You are already an admin'
+        message: 'You are already an admin. Please signin again.'
       });
     }
     return Users
@@ -34,11 +34,11 @@ export default class Admin {
       })
       .then(user => user
         .update({
-          isAdmin: bool,
+          isAdmin: true,
         })
         .then(updateUser => res.status(201).send({
           status: 'Success',
-          message: 'You have been successfully made an admin',
+          message: 'You have been successfully made an admin. Please signin again.',
           data: {
             name: updateUser.name,
             email: updateUser.email,

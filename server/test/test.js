@@ -579,7 +579,7 @@ describe('TEST add centers', () => {
       .catch(err => done(err));
   });
 });
-
+/* TEST FOR MODIFY/EDIT/PUT CENTERS */
 describe('TEST PUT/ edit centers endpoint', () => {
   it('Should return "Unauthorized" for wrong token', (done) => {
     request(app)
