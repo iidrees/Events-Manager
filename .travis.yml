@@ -6,8 +6,12 @@ node_js:
 script:
   - npm run seq:create
   - npm test
-cache:
+
+install:
   - npm install
+cache:
+  directories:
+   - "node_modules"
 
 services:
   - postgresql
@@ -17,4 +21,3 @@ before_script:
 
 after_success:
   - npm run coverage
-  - npm run cover
