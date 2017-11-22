@@ -258,212 +258,6 @@ describe('Sign-up and Sign-in Endpoints', () => {
   });
 });
 
-describe('TEST EVENT ENDPOINTS', () => {
-  /* TESTS FOR EVENTS */
-  describe('Test POST "/api/v1/events"', () => {
-    it('should return "Unauthorized" for wrong credentials', (done) => {
-      request(app)
-        .post('/api/v1/events')
-        .send({
-          title: 'Felabration',
-          description: 'Its an event for fela abeg',
-          date: '2018-03-02',
-          time: '12:03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'Public',
-          attendance: '200',
-          userId: 1
-        })
-        .expect(401)
-        .then((res) => {
-          assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Unauthorized');
-          assert.deepEqual(res.status, 401);
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('should return "Unsuccessful" for wrong credentials', (done) => {
-      request(app)
-        .post('/api/v1/events')
-        .set('x-access-token', expiredToken)
-        .send({
-          title: 'Felabration',
-          description: 'Its an event for fela abeg',
-          date: '2018-03-02',
-          time: '12:03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'Public',
-          attendance: '200',
-          userId: 1
-        })
-        .expect(403)
-        .then((res) => {
-          assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
-          assert.deepEqual(res.status, 403);
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('should return "Success" for creating an event', (done) => {
-      request(app)
-        .post('/api/v1/events')
-        .set('x-access-token', token)
-        .send({
-          title: 'Felabration',
-          description: 'Its an event for fela abeg',
-          date: '2018-03-02',
-          time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: '200'
-        })
-        .expect(201)
-        .then((res) => {
-          assert.deepEqual(res.status, 201);
-          assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'Event added successfully');
-          assert.deepEqual(res.body.data.title, 'Felabration');
-          assert.deepEqual(res.body.data.description, 'Its an event for fela abeg');
-          assert.deepEqual(res.body.data.date, '2018-03-02');
-          assert.deepEqual(res.body.data.time, '12-03 PM');
-          assert.deepEqual(res.body.data.venue, 'Lagos Lagoon');
-          assert.deepEqual(res.body.data.location, 'The Shrine');
-          assert.deepEqual(res.body.data.type, 'public');
-          assert.deepEqual(res.body.data.attendance, 200);
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('should return "Date already booked, enter another date" for unique data validation', (done) => {
-      request(app)
-        .post('/api/v1/events')
-        .set('x-access-token', token)
-        .send({
-          title: 'Felabration',
-          description: 'Its an event for fela abeg',
-          date: '2018-03-02',
-          time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: '200'
-        })
-        .expect(400)
-        .then((res) => {
-          assert.deepEqual(res.status, 400);
-          assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Date already booked, enter another date');
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('should return "Date already booked, enter another date" for unique data validation', (done) => {
-      request(app)
-        .post('/api/v1/events')
-        .set('x-access-token', token)
-        .send({
-          title: 'Felabration',
-          description: '',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: '200'
-        })
-        .expect(400)
-        .then((res) => {
-          assert.deepEqual(res.status, 400);
-          assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Validation error: Please enter a description');
-          done();
-        })
-        .catch(err => done(err));
-    });
-  });
-  describe('Test PUT/ modify "/api/v1/events/:eventId" endpoint', () => {
-    it('Should return "Event Not Found" if event not found', (done) => {
-      request(app)
-        .put(`/api/v1/events/${4}`)
-        .set('x-access-token', token)
-        .send({
-          title: 'Felabration',
-          description: 'It not fela anymore anymore oo',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: '200'
-        })
-        .expect(404)
-        .then((res) => {
-          assert.deepEqual(res.status, 404);
-          assert.deepEqual(res.body.message, 'Event Not Found');
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('Should return "Event updated successfully" if event found and updated', (done) => {
-      request(app)
-        .put(`/api/v1/events/${1}`)
-        .set('x-access-token', token)
-        .send({
-          title: 'Felabration',
-          description: 'It not fela anymore anymore oo',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: 200
-        })
-        .expect(200)
-        .then((res) => {
-          assert.deepEqual(res.status, 200);
-          assert.deepEqual(res.body.message, 'Event updated successfully');
-          assert.deepEqual(res.body.data.title, 'Felabration');
-          assert.deepEqual(res.body.data.description, 'It not fela anymore anymore oo');
-          assert.deepEqual(res.body.data.date, '2018-03-08');
-          assert.deepEqual(res.body.data.time, '12-03 PM');
-          assert.deepEqual(res.body.data.venue, 'Lagos Lagoon');
-          assert.deepEqual(res.body.data.location, 'The Shrine');
-          assert.deepEqual(res.body.data.type, 'public');
-          assert.deepEqual(res.body.data.attendance, 200);
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('Should return "Unauthorized" if expired token supplied', (done) => {
-      request(app)
-        .put(`/api/v1/events/${4}`)
-        .set('x-access-token', expiredToken)
-        .send({
-          title: 'Felabration',
-          description: '',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: 200
-        })
-        .expect(403)
-        .then((res) => {
-          assert.deepEqual(res.status, 403);
-          assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
-          done();
-        })
-        .catch(err => done(err));
-    });
-  });
-});
-
 describe('TEST FOR ADMIN', () => {
   describe('Test creation of an admin', () => {
     it('Should return "Success" for successful admin creation', (done) => {
@@ -643,5 +437,212 @@ describe('TEST PUT/ edit centers endpoint', () => {
         done();
       })
       .catch(err => done(err));
+  });
+});
+
+
+describe('TEST EVENT ENDPOINTS', () => {
+  /* TESTS FOR EVENTS */
+  describe('Test POST "/api/v1/events"', () => {
+    it('should return "Unauthorized" for wrong credentials', (done) => {
+      request(app)
+        .post('/api/v1/events')
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-02',
+          time: '12:03 PM',
+          venue: 'Lagos Lagoon',
+          location: 'The Shrine',
+          type: 'Public',
+          attendance: '200',
+          userId: 1
+        })
+        .expect(401)
+        .then((res) => {
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Unauthorized');
+          assert.deepEqual(res.status, 401);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "Unsuccessful" for wrong credentials', (done) => {
+      request(app)
+        .post('/api/v1/events')
+        .set('x-access-token', expiredToken)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-02',
+          time: '12:03 PM',
+          venue: 'Lagos Lagoon',
+          location: 'The Shrine',
+          type: 'Public',
+          attendance: '200',
+          userId: 1
+        })
+        .expect(403)
+        .then((res) => {
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
+          assert.deepEqual(res.status, 403);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "Success" for creating an event', (done) => {
+      request(app)
+        .post('/api/v1/events')
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-02',
+          time: '12-03 PM',
+          venue: 'Muson Center',
+          location: 'The Shrine',
+          type: 'public',
+          attendance: '200'
+        })
+        .expect(201)
+        .then((res) => {
+          assert.deepEqual(res.status, 201);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Event added successfully');
+          assert.deepEqual(res.body.data.title, 'Felabration');
+          assert.deepEqual(res.body.data.description, 'Its an event for fela abeg');
+          assert.deepEqual(res.body.data.date, '2018-03-02');
+          assert.deepEqual(res.body.data.time, '12-03 PM');
+          assert.deepEqual(res.body.data.venue, 'Muson Center');
+          assert.deepEqual(res.body.data.location, 'The Shrine');
+          assert.deepEqual(res.body.data.type, 'public');
+          assert.deepEqual(res.body.data.attendance, 200);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "Date already booked, enter another date" for unique data validation', (done) => {
+      request(app)
+        .post('/api/v1/events')
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-02',
+          time: '12-03 PM',
+          venue: 'Muson Center',
+          location: 'The Shrine',
+          type: 'public',
+          attendance: '200'
+        })
+        .expect(400)
+        .then((res) => {
+          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Date already booked, enter another date');
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "Date already booked, enter another date" for unique data validation', (done) => {
+      request(app)
+        .post('/api/v1/events')
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: '',
+          date: '2018-03-08',
+          time: '12-03 PM',
+          venue: 'Muson Center',
+          location: 'The Shrine',
+          type: 'public',
+          attendance: '200'
+        })
+        .expect(400)
+        .then((res) => {
+          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Validation error: Please enter a description');
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+  describe('Test PUT/ modify "/api/v1/events/:eventId" endpoint', () => {
+    it('Should return "Event Not Found" if event not found', (done) => {
+      request(app)
+        .put(`/api/v1/events/${4}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'It not fela anymore anymore oo',
+          date: '2018-03-08',
+          time: '12-03 PM',
+          venue: 'Muson Center',
+          location: 'The Shrine',
+          type: 'public',
+          attendance: '200'
+        })
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.status, 404);
+          assert.deepEqual(res.body.message, 'Event Not Found');
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('Should return "Event updated successfully" if event found and updated', (done) => {
+      request(app)
+        .put(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'It not fela anymore anymore oo',
+          date: '2018-03-08',
+          time: '12-03 PM',
+          venue: 'Lagos Lagoon',
+          location: 'The Shrine',
+          type: 'public',
+          attendance: 200
+        })
+        .expect(200)
+        .then((res) => {
+          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.body.message, 'Event updated successfully');
+          assert.deepEqual(res.body.data.title, 'Felabration');
+          assert.deepEqual(res.body.data.description, 'It not fela anymore anymore oo');
+          assert.deepEqual(res.body.data.date, '2018-03-08');
+          assert.deepEqual(res.body.data.time, '12-03 PM');
+          assert.deepEqual(res.body.data.venue, 'Lagos Lagoon');
+          assert.deepEqual(res.body.data.location, 'The Shrine');
+          assert.deepEqual(res.body.data.type, 'public');
+          assert.deepEqual(res.body.data.attendance, 200);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('Should return "Unauthorized" if expired token supplied', (done) => {
+      request(app)
+        .put(`/api/v1/events/${4}`)
+        .set('x-access-token', expiredToken)
+        .send({
+          title: 'Felabration',
+          description: '',
+          date: '2018-03-08',
+          time: '12-03 PM',
+          venue: 'Lagos Lagoon',
+          location: 'The Shrine',
+          type: 'public',
+          attendance: 200
+        })
+        .expect(403)
+        .then((res) => {
+          assert.deepEqual(res.status, 403);
+          assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
+          done();
+        })
+        .catch(err => done(err));
+    });
   });
 });

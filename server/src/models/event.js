@@ -87,6 +87,26 @@ export default (sequelize, DataTypes) => {
         }
       },
       defaultValue: 0
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'CASCADE',
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id',
+        as: 'userId'
+      }
+    },
+    centerId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'CASCADE',
+      allowNull: true,
+      references: {
+        model: 'Centers',
+        key: 'id',
+        as: 'centerId'
+      }
     }
   });
   /* Event Associations */

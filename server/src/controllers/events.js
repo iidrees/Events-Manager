@@ -1,5 +1,5 @@
 /* Import modules */
-import { Events } from '../models';
+import { Events, Centers } from '../models';
 
 
 /**
@@ -27,30 +27,44 @@ export class Event {
       attendance,
     } = req.body;
     const { id } = req.decoded;
-    return Events
-      .create({
-        title,
-        description,
-        date,
-        time,
-        venue,
-        location,
-        type,
-        attendance,
-        userId: id
+    return Centers
+      .findOne({
+        where: {
+          name: venue,
+        }
       })
-      .then(event => res.status(201).send({
-        status: 'Success',
-        message: 'Event added successfully',
-        data: event
-      }))
-      .catch(err => res.status(400).send({
-        status: 'Unsuccessful',
-        message: err.message
-      }));
+      .then((center) => {
+        if (!center) {
+          return res.status(404).send({
+            status: 'Unsuccessful',
+            message: 'Center Not Found'
+          });
+        }
+        return Events
+          .create({
+            title,
+            description,
+            date,
+            time,
+            venue,
+            location,
+            type,
+            attendance,
+            userId: id,
+            centerId: center.id
+          })
+          .then(event => res.status(201).send({
+            status: 'Success',
+            message: 'Event added successfully',
+            data: event
+          }))
+          .catch(err => res.status(400).send({
+            status: 'Unsuccessful',
+            message: err.message
+          }));
+      });
   }
 }
-
 /**
  * This is a EventUpdate class that allows a user
  * update an event he/she created

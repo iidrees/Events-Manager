@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "nyc mocha server/test/test.js --require babel-register --exit",
+    "test:env": "nyc mocha server/test/test.js --require babel-register --exit",
     "start": "babel-node  server/src/server.js",
     "start:dev": "nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
@@ -12,7 +13,8 @@
     "coverage": " npm test && nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report",
     "seq:drop": "sequelize db:migrate:undo:all",
-    "seq:create": "sequelize db:migrate"
+    "seq:create": "sequelize db:migrate",
+    "seq:elecreate": "sequelize db:migrate"
   },
   "repository": {
     "type": "git",
@@ -41,6 +43,7 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
+    "cross-env": "^5.1.1",
     "dotenv": "^4.0.0",
     "eslint": "^4.11.0",
     "express": "^4.16.2",

@@ -20,6 +20,7 @@ exclude_paths:
 - client/
 - server/src/models/
 - server/src/migrations/
+- server/test/
 - template/
 - .nyc_output
 - coverage
