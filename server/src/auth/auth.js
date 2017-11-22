@@ -23,17 +23,17 @@ export default { // exported into the server module/file
       jwt.verify(token, process.env.SECRET, (error, decoded) => {
         if (error) { // if error, user is not allowed access for expired token
           return res.status(403).send({
-            status: 'Fail',
-            message: 'Authentication Failed, Please signin again to get a token.'
+            status: 'Unsuccessful',
+            message: 'Session Expired, Please signin again.'
           });
         }// we store token in the req object for later authentication use
         req.decoded = decoded;
         next();
       });
     } else { // when token is not supplied, this error response is returned
-      return res.status(403).send({
-        status: 'Fail',
-        message: 'Please send your token along with your request'
+      return res.status(401).send({
+        status: 'Unsuccessful',
+        message: 'Unauthorized'
       });
     }
   }

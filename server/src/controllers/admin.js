@@ -1,8 +1,8 @@
 import { Users } from '../models';
-import { isBoolean } from 'util';
+
 
 /**
- * A class to help to help give users 
+ * A class to help to help give users
  * admin priviledges
  * @export
  * @class Admin
@@ -10,8 +10,8 @@ import { isBoolean } from 'util';
 export default class Admin {
 /**
  * @static
- * @param {any} req 
- * @param {any} res 
+ * @param {any} req
+ * @param {any} res
  * @returns {*} any
  * @memberof Admin
  */
@@ -32,27 +32,23 @@ export default class Admin {
           isAdmin: admin,
         }
       })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).send({
-            status: 'Unsuccessful',
-            message: 'User Not Found'
-          });
-        }
-        return user
-          .update({
-            isAdmin: bool,
-          })
-          .then(updateUser => res.status(200).send({
-            status: 'Success',
-            message: 'You have been successfully made an Admin',
-            data: updateUser
-          }))
-          .catch(err => res.status(400).send({
-            status: 'Unsuccessful',
-            message: 'Admin creation failed'
-          }));
-      })
+      .then(user => user
+        .update({
+          isAdmin: bool,
+        })
+        .then(updateUser => res.status(201).send({
+          status: 'Success',
+          message: 'You have been successfully made an admin',
+          data: {
+            name: updateUser.name,
+            email: updateUser.email,
+            admin: updateUser.isAdmin
+          }
+        }))
+        .catch(() => res.status(400).send({
+          status: 'Unsuccessful',
+          message: 'Admin creation failed'
+        })))
       .catch(err => err.message);
   }
 }

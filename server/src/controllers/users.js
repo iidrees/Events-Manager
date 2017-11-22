@@ -20,24 +20,23 @@ export class UserSignup {
   static signUp(req, res) {
     const { name, email, confirmPassword } = req.body;
     let { password } = req.body;
-    console.log('this is the password', password, 'and confirmed', confirmPassword);
     /* Checks password */
     if (!validator.equals(password, confirmPassword)) {
       return res.status(400).send({
-        status: 'Fail',
-        message: `Please your password ${password} do not match ${confirmPassword}`
+        status: 'Unsuccessful',
+        message: 'Your password do not match'
       });
     }
     if (validator.isEmpty(password)) {
       return res.status(400).send({
-        status: 'Fail',
-        message: 'Please enter a valid password'
+        status: 'Unsuccessful',
+        message: 'Please enter a password'
       });
     }
     if (!validator.isLength(password, { min: 8, max: undefined })) {
       return res.status(400).send({
-        status: 'Fail',
-        message: 'Please your password cannot be less than 8 characters'
+        status: 'Unsuccessful',
+        message: 'Password cannot be less than 8 characters'
       });
     }
 
@@ -58,15 +57,12 @@ export class UserSignup {
           id: user.id
         });
       })
-      .catch((err) => {
-        return res.status(400).send({
-          status: 'Fail',
-          message: err.errors[0].message
-        });
-      });
+      .catch(err => res.status(400).send({
+        status: 'Unsuccessful',
+        message: err.errors[0].message
+      }));
   }
 }
-
 
 
 /**
@@ -79,33 +75,25 @@ export class UserSignin {
   /**
  * @param {object} req - The req
  * @param {object} res - The res
- * @return {object} JSON 
+ * @return {object} JSON
  * @static
  * @memberof UserSignin
  */
   static signIn(req, res) {
     /* grab the email and password from the req.body
       these values are parsed and then if there is an error it is returned
-      if
      */
 
-    const { email, password, confirmPassword } = req.body;
-    console.log(email, password)
-    if (!validator.equals(password, confirmPassword)) {
-      return res.status(400).send({
-        status: 'Fail',
-        message: `Please your password ${password} do not match ${confirmPassword}`
-      });
-    }
+    const { email, password } = req.body;
     if (validator.isEmpty(password)) {
       return res.status(400).send({
-        status: 'Fail',
+        status: 'Unsuccessful',
         message: 'Please enter your password'
       });
     }
     if (validator.isEmpty(email)) {
       return res.status(400).send({
-        status: 'Fail',
+        status: 'Unsuccessful',
         message: 'Please enter your email address'
       });
     }
@@ -117,9 +105,9 @@ export class UserSignin {
       })
       .then((user) => {
         if (!user) { // returns an error if user has not signedup yet
-          return res.status(400).send({
-            status: 'Fail',
-            err: 'User Not Found'
+          return res.status(404).send({
+            status: 'Unsuccessful',
+            message: 'User Not Found'
           });
         }
         if (bcrypt.compareSync(password, user.password)) {
@@ -128,20 +116,25 @@ export class UserSignin {
             if password is correct, save the user id in a token
             and send this to the user for authentication.
            */
-          const payload = { id: user.id, admin: user.isAdmin };
-          console.log(payload);
+          const payload = {
+            id: user.id,
+            admin: user.isAdmin,
+            name: user.name,
+            email: user.email
+          };
+          /* Generates token and sends to user */
           const token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '3h'
           });
           return res.status(200).send({
             status: 'Success',
-            message: 'Token generation and signin successful',
+            message: 'Token successfully generated and signin successful',
             data: token,
           });
         }
-        return res.status(400).send({
-          status: 'Fail',
-          message: 'Incorrect Login Details supplied'
+        return res.status(403).send({
+          status: 'Unsuccessful',
+          message: 'Incorrect login details supplied'
         });
       });
   }
