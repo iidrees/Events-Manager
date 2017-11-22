@@ -21,6 +21,7 @@ Centers.destroy({
 });
 
 let token;
+let adminToken;
 const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTEwMTMyODA5LCJleHAiOjE1MTAxNDM2MDl9.Kjyo44x-yMFaS4yO9rr0kzi2qxQ1NxIod7HS5IMUihc';
 // testing the server
 describe('Server and status', () => {
@@ -467,16 +468,45 @@ describe('TEST FOR ADMIN', () => {
   describe('Test creation of an admin', () => {
     it('Should return "Success" for successful admin creation', (done) => {
       request(app)
-        .post('/api/v1/users/admin/true')
+        .post('/api/v1/users/admin')
         .set('x-access-token', token)
         .expect(201)
         .then((res) => {
           assert.deepEqual(res.status, 201);
           assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'You have been successfully made an admin');
+          assert.deepEqual(res.body.message, 'You have been successfully made an admin. Please signin again.');
           assert.deepEqual(res.body.data.name, 'tester');
           assert.deepEqual(res.body.data.email, 'tester@gmail.com');
-          assert.deepEqual(res.body.data.admin, true);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('Should return "Success" for signin', (done) => {
+      request(app)
+        .post('/api/v1/users/login')
+        .send({
+          email: 'tester@gmail.com',
+          password: 'idreeskun'
+        })
+        .expect(200)
+        .then((res) => {
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Token successfully generated and signin successful');
+          assert.deepEqual(res.status, 200);
+          adminToken = res.body.data;
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('Should return "Unsuccessful" for unsuccessful admin creation request', (done) => {
+      request(app)
+        .post('/api/v1/users/admin')
+        .set('x-access-token', adminToken)
+        .expect(403)
+        .then((res) => {
+          assert.deepEqual(res.status, 403);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'You are already an admin. Please signin again.');
           done();
         })
         .catch(err => done(err));
@@ -485,10 +515,31 @@ describe('TEST FOR ADMIN', () => {
 });
 /* TEST POST CENTER */
 describe('TEST add centers', () => {
-  it('should add center on "/api/v1/centers" endpoint', (done) => {
+  it('should return "Unsuccessful" when a non-admin tries to create a center', (done) => {
     request(app)
       .post('/api/v1/centers')
       .set('x-access-token', token)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address: 'Fela\'s shrine',
+        owner: 'The Civil Society',
+        capacity: '2000',
+        description: 'This venue is a great place to make things happen',
+      })
+      .expect(403)
+      .then((res) => {
+        assert.deepEqual(res.status, 403);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'You are not permitted to create a center');
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('should add center on "/api/v1/centers" endpoint when an admin adds a center', (done) => {
+    request(app)
+      .post('/api/v1/centers')
+      .set('x-access-token', adminToken)
       .send({
         name: 'Muson Center',
         location: 'Lagos',
@@ -506,10 +557,10 @@ describe('TEST add centers', () => {
       })
       .catch(err => done(err));
   });
-  it('should return an error for wrong input', (done) => {
+  it('should return an error for wrong input by an admin', (done) => {
     request(app)
       .post('/api/v1/centers')
-      .set('x-access-token', token)
+      .set('x-access-token', adminToken)
       .send({
         name: 'Muson Center',
         location: 'Lagos',
@@ -523,6 +574,72 @@ describe('TEST add centers', () => {
         assert.deepEqual(res.status, 400);
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'Center Could not be added');
+        done();
+      })
+      .catch(err => done(err));
+  });
+});
+/* TEST FOR MODIFY/EDIT/PUT CENTERS */
+describe('TEST PUT/ edit centers endpoint', () => {
+  it('Should return "Unauthorized" for wrong token', (done) => {
+    request(app)
+      .put(`/api/v1/centers/${1}`)
+      .set('x-access-token', token)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address: 'The Shrine',
+        owner: 'The Civil Society',
+        capacity: '2000',
+        description: 'This venue is a great place to make things happen',
+      })
+      .expect(403)
+      .then((res) => {
+        assert.deepEqual(res.status, 403);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'You are not permitted to edit or modify this event center');
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('Should return "Center Not found" where center not in database', (done) => {
+    request(app)
+      .put(`/api/v1/centers/${4}`)
+      .set('x-access-token', adminToken)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address: 'The Shrine',
+        owner: 'The Civil Society',
+        capacity: '2000',
+        description: 'This venue is a great place to make things happen',
+      })
+      .expect(404)
+      .then((res) => {
+        assert.deepEqual(res.status, 404);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Center Not Found');
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('Should return "Center successfully updated" when correct credentials supplied', (done) => {
+    request(app)
+      .put(`/api/v1/centers/${1}`)
+      .set('x-access-token', adminToken)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address: 'The Shrine',
+        owner: 'The Civil Society',
+        capacity: '2000',
+        description: 'This venue is a great place to make things happen',
+      })
+      .expect(201)
+      .then((res) => {
+        assert.deepEqual(res.status, 201);
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'Center successfully updated');
         done();
       })
       .catch(err => done(err));

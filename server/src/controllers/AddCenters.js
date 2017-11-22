@@ -23,8 +23,14 @@ export default class Center {
       capacity,
       description
     } = req.body;
-    const { id } = req.decoded;
+    const { id, admin } = req.decoded;
 
+    if (admin === false) {
+      return res.status(403).send({
+        status: 'Unsuccessful',
+        message: 'You are not permitted to create a center'
+      });
+    }
     return Centers
       .create({
         name,
@@ -43,7 +49,7 @@ export default class Center {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Center Could not be added',
-        data: err.message
+        data: err.errors[0].message
       }));
   }
 }
