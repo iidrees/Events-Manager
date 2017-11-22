@@ -6,17 +6,15 @@ node_js:
 script:
   - npm run seq:create
   - npm test
-  
 cache:
- - npm install
- - node_modules
+  - npm install
 
- services:
+services:
   - postgresql
 
 before_script:
   - psql -c "create database events_manager;" -U postgres
 
 after_success:
-   - npm run coverage
-   - npm run cover
+  - npm run coverage
+  - npm run cover
