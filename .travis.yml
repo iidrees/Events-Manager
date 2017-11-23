@@ -10,7 +10,7 @@ install:
   - npm install
 
 env:
-  -NODE_ENV=test
+  - NODE_ENV=test
 services:
   - postgresql
 
