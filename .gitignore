@@ -27,5 +27,5 @@ server/src/migrations/20171119011057-create-user.js
 server/src/migrations/20171119220658-create-event.js
 .env
 .nyc_output
-
+coverage/
 .env
