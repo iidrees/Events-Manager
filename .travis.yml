@@ -4,7 +4,7 @@ node_js:
   - "8.2.1"
 
 script:
-  - npm test
+  - NODE_ENV=test && npm test
 env:
   - TEST_DBURL=process.env.DB_TEST_URL
 
@@ -21,4 +21,4 @@ before_script:
   - psql -c "create database events_manager_test;" -U postgres
 
 after_success:
-  - npm run coverage
+  - NODE_ENV=test && npm run coverage

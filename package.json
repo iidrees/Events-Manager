@@ -6,11 +6,12 @@
   "scripts": {
     "test": "nyc mocha server/test/test.js --require babel-register --exit",
     "test:env": "nyc mocha server/test/test.js --require babel-register --exit",
+    "test:tester": "nyc cross-env NODE_ENV=test  --reporter=html --reporter=text --reporter=lcov --reporter=text-lcov _mocha server/test/test.js --compilers js:babel-core/register --exit",
     "start": "babel-node  server/src/server.js",
     "start:dev": "nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
     "start:prod": "node server/lib/server.js",
-    "coverage": " npm test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report",
     "seq:drop": "sequelize db:migrate:undo:all",
     "seq:create": "sequelize db:migrate",
