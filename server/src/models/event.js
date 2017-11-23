@@ -43,23 +43,13 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
-    venue: {
+    center: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: {
           args: true,
           msg: 'Please enter a center'
-        }
-      }
-    },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'Please enter a location'
         }
       }
     },
@@ -76,17 +66,6 @@ export default (sequelize, DataTypes) => {
           msg: 'Must be public or private'
         }
       }
-    },
-    attendance: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'Please enter the number of expected attendance'
-        }
-      },
-      defaultValue: 0
     },
     userId: {
       type: DataTypes.INTEGER,

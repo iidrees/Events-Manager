@@ -21,7 +21,7 @@ export class UserSignup {
     const { name, email, confirmPassword } = req.body;
     let { password } = req.body;
     /* Checks password */
-    if (!validator.equals(password, confirmPassword)) {
+    if (!validator.equals(password.toLowerCase().trim(), confirmPassword.toLowerCase().trim())) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Your password do not match'
@@ -33,7 +33,7 @@ export class UserSignup {
         message: 'Please enter a password'
       });
     }
-    if (!validator.isLength(password, { min: 8, max: undefined })) {
+    if (!validator.isLength(password.toLowerCase().trim(), { min: 8, max: undefined })) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Password cannot be less than 8 characters'
@@ -45,17 +45,35 @@ export class UserSignup {
     password = bcrypt.hashSync(password, 10);
     return Users
       .create({
-        name,
-        email,
-        password,
+        name: name.toLowerCase().trim(),
+        email: email.toLowerCase().trim(),
+        password: password.toLowerCase().trim(),
       })
       .then((user) => {
+        const payload = {
+          id: user.id,
+          admin: user.isAdmin,
+          name: user.name,
+          email: user.email
+        };
+        /* Generates token and sends to user */
+        const token = jwt.sign(payload, process.env.SECRET, {
+          expiresIn: '3h'
+        });
+        return res.status(200).send({
+          status: 'Success',
+          message: 'You are signed up successfully.',
+          name: user.name,
+          id: user.id,
+          authToken: token
+        });
+      /* 
         res.status(201).send({
           status: 'Success',
           message: 'Your account has been created',
           name: user.name,
           id: user.id
-        });
+        }); */
       })
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
