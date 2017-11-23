@@ -67,13 +67,6 @@ export class UserSignup {
           id: user.id,
           authToken: token
         });
-      /* 
-        res.status(201).send({
-          status: 'Success',
-          message: 'Your account has been created',
-          name: user.name,
-          id: user.id
-        }); */
       })
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
