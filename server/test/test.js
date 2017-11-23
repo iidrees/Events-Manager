@@ -249,7 +249,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(403)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Incorrect login details supplied');
+          assert.deepEqual(res.body.message, 'Incorrect Login Credentials');
           assert.deepEqual(res.status, 403);
           done();
         })
@@ -307,6 +307,23 @@ describe('TEST FOR ADMIN', () => {
     });
   });
 });
+
+/* TESCT FOR NONE AVAILABLE CENTERS */
+describe('TEST FOR NONE AVAILABLE CENTERS', () => {
+  it('should return "No Centers Found" when query made to an empty database', (done) => {
+    request(app)
+      .get('/api/v1/centers')
+      .expect(404)
+      .then((res) => {
+        assert.deepEqual(res.status, 404);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'No Centers Found');
+        done();
+      })
+      .catch(err => done(err));
+  });
+});
+
 /* TEST POST CENTER */
 describe('TEST add centers', () => {
   it('should return "Unsuccessful" when a non-admin tries to create a center', (done) => {
@@ -640,6 +657,72 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then((res) => {
           assert.deepEqual(res.status, 403);
           assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+});
+
+
+describe('TEST FOR AVAILABILITY OF CENTERS', () => {
+  describe('Get A Single Center', () => {
+    it('should return "Center Not Found" for a wrong req.param', (done) => {
+      request(app)
+        .get(`/api/v1/centers/${3}`)
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.status, 404);
+          assert.deepEqual(res.body.message, 'Center Not Found');
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+  it('should return "Success" for a successful query for a single event center', (done) => {
+    request(app)
+      .get(`/api/v1/centers/${1}`)
+      .expect(200)
+      .then((res) => {
+        assert.deepEqual(res.status, 200);
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'These are the event centers');
+        done();
+      });
+  });
+  it('should return "Center Not Found" for a "-1" query', (done) => {
+    request(app)
+      .get(`/api/v1/centers/${-1}`)
+      .expect(404)
+      .then((res) => {
+        assert.deepEqual(res.status, 404);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Center Not Found');
+        done();
+      })
+      .catch(err => done(err));
+  });
+  it('should return "Center Not Found" for a "*" query', (done) => {
+    request(app)
+      .get('/api/v1/centers/*')
+      .expect(400)
+      .then((res) => {
+        assert.deepEqual(res.status, 400);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.data, 'invalid input syntax for integer: "*"');
+        done();
+      })
+      .catch(err => done(err));
+  });
+  describe('Test for getting all centers', () => {
+    it('should return "Success" and centers for a query for all centers', (done) => {
+      request(app)
+        .get('/api/v1/centers')
+        .expect(200)
+        .then((res) => {
+          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Centers found');
           done();
         })
         .catch(err => done(err));
