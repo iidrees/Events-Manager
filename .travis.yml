@@ -4,13 +4,11 @@ node_js:
   - "8.2.1"
 
 script:
-  - NODE_ENV=test && npm test
+  - NODE_ENV=test npm test
 
 install:
   - npm install
 
-env:
-  - NODE_ENV=test
 services:
   - postgresql
 

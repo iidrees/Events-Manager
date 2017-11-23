@@ -10,12 +10,21 @@ module.exports = {
     dialect: 'postgres'
   },
   test: {
-    use_env_variable: 'DB_TEST_URL',
-    dialect: 'postgres'
-    
+    username: 'udmihcxr',
+    password: 'ySU0_nN0OAf5bQjjviHieNrWv5zBXvl8',
+    database: 'udmihcxr',
+    host: 'baasu.db.elephantsql.com',
+    dialect: 'postgres',
   },
   production: {
     use_env_variable: 'DATABASE_URL',
     dialect: 'postgres'
   }
 };
+
+/* ,
+  test: {
+    use_env_variable: 'DB_TEST_URL',
+    dialect: 'postgres'
+    
+  }, */
