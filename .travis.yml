@@ -4,7 +4,7 @@ node_js:
   - "8.2.1"
 
 script:
-  - npm test
+  - NODE_ENV=test && npm test
 
 install:
   - npm install
@@ -15,6 +15,7 @@ services:
   - postgresql
 
 before_script:
+  - "NODE_ENV=test"
   - psql -c "create database events_manager_test;" -U postgres
 
 after_success:
