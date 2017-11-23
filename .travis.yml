@@ -5,14 +5,10 @@ node_js:
 
 script:
   - npm test
-env:
-  - TEST_DBURL=process.env.DB_TEST_URL
 
 install:
   - npm install
-cache:
-  directories:
-   - "node_modules"
+
 
 services:
   - postgresql
