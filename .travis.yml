@@ -9,7 +9,8 @@ script:
 install:
   - npm install
 
-
+env:
+  -NODE_ENV=test
 services:
   - postgresql
 
@@ -17,4 +18,4 @@ before_script:
   - psql -c "create database events_manager_test;" -U postgres
 
 after_success:
-  - NODE_ENV=test && npm run coverage
+  - npm run coverage
