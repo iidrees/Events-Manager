@@ -113,7 +113,7 @@ export class UserSignin {
     return Users // check the db if user has already signedup
       .findOne({
         where: {
-          email,
+          email:email.toLowerCase().trim(),
         }
       })
       .then((user) => {
