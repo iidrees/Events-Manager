@@ -5,16 +5,21 @@ node_js:
 
 script:
   - NODE_ENV=test npm test
+  - NODE_ENV=development npm test
 
 install:
   - npm install
+env:
+  
 
 services:
   - postgresql
 
 before_script:
-  - "NODE_ENV=test"
   - psql -c "create database events_manager_test;" -U postgres
+  - psql -c "create database events_manager;" -U postgres
+  - NODE_ENV=development npm run seq:create 
 
 after_success:
-  - npm run coverage
+  - NODE_ENV=development npm run coverage
+  - NODE_ENV=test npm run coverage
