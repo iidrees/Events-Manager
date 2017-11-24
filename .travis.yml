@@ -4,21 +4,22 @@ node_js:
   - "8.2.1"
 
 script:
-  - npm test
-env:
-  - TEST_DBURL=process.env.DB_TEST_URL
+  - NODE_ENV=test npm test
+  - NODE_ENV=development npm test
 
 install:
   - npm install
-cache:
-  directories:
-   - "node_modules"
+env:
+  
 
 services:
   - postgresql
 
 before_script:
   - psql -c "create database events_manager_test;" -U postgres
+  - psql -c "create database events_manager;" -U postgres
+  - NODE_ENV=development npm run seq:create 
 
 after_success:
-  - npm run coverage
+  - NODE_ENV=development npm run coverage
+  - NODE_ENV=test npm run coverage

@@ -21,20 +21,18 @@ export class Event {
       description,
       date,
       time,
-      venue,
-      location,
+      center,
       type,
-      attendance,
     } = req.body;
     const { id } = req.decoded;
     return Centers
       .findOne({
         where: {
-          name: venue,
+          name: center,
         }
       })
-      .then((center) => {
-        if (!center) {
+      .then((venue) => {
+        if (!venue) {
           return res.status(404).send({
             status: 'Unsuccessful',
             message: 'Center Not Found'
@@ -46,12 +44,10 @@ export class Event {
             description,
             date,
             time,
-            venue,
-            location,
+            center,
             type,
-            attendance,
             userId: id,
-            centerId: center.id
+            centerId: venue.id
           })
           .then(event => res.status(201).send({
             status: 'Success',
@@ -85,10 +81,8 @@ export class EventUpdate {
       description,
       date,
       time,
-      venue,
-      location,
-      type,
-      attendance
+      center,
+      type
     } = req.body;
     const { id } = req.decoded;
     const { eventId } = req.params;
@@ -114,10 +108,8 @@ export class EventUpdate {
             description: description || event.description,
             date,
             time: time || event.time,
-            venue: venue || event.venue,
-            location: location || event.location,
-            type: type || event.type,
-            attendance: attendance || event.attendance,
+            center: center || event.center,
+            type: type || event.type
           })
           .then(updatedEvent => res.status(200).send({
             status: 'Success',
