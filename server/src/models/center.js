@@ -50,7 +50,7 @@ export default (sequelize, DataTypes) => {
       }
     },
     capacity: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         notEmpty: {
