@@ -10,10 +10,7 @@ module.exports = {
     dialect: 'postgres'
   },
   test: {
-    username: 'udmihcxr',
-    password: 'ySU0_nN0OAf5bQjjviHieNrWv5zBXvl8',
-    database: 'udmihcxr',
-    host: 'baasu.db.elephantsql.com',
+    use_env_variable: 'DB_TEST_URL',
     dialect: 'postgres',
   },
   production: {
@@ -21,10 +18,3 @@ module.exports = {
     dialect: 'postgres'
   }
 };
-
-/* ,
-  test: {
-    use_env_variable: 'DB_TEST_URL',
-    dialect: 'postgres'
-    
-  }, */

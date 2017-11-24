@@ -114,6 +114,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.id, 1);
           assert.deepEqual(res.status, 201);
           token  = res.body.data.token;
+
           done();
         })
         .catch(err => done(err));
