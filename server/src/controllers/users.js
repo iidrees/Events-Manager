@@ -42,12 +42,12 @@ export class UserSignup {
 
     /* encrypt password and stores in the database
     along with some user information */
-    password = bcrypt.hashSync(password, 10);
+    password = bcrypt.hashSync(password.trim(), 10);
     return Users
       .create({
         name: name.toLowerCase().trim(),
         email: email.toLowerCase().trim(),
-        password: password.toLowerCase().trim(),
+        password,
       })
       .then((user) => {
         const payload = {
@@ -57,15 +57,17 @@ export class UserSignup {
           email: user.email
         };
         /* Generates token and sends to user */
-        const token = jwt.sign(payload, process.env.SECRET, {
+        const tokens = jwt.sign(payload, process.env.SECRET, {
           expiresIn: '3h'
         });
-        return res.status(200).send({
+        return res.status(201).send({
           status: 'Success',
           message: 'You are signed up successfully.',
           name: user.name,
           id: user.id,
-          authToken: token
+          data: {
+            token: tokens,
+          }
         });
       })
       .catch(err => res.status(400).send({
@@ -121,7 +123,7 @@ export class UserSignin {
             message: 'User Not Found'
           });
         }
-        if (bcrypt.compareSync(password, user.password)) {
+        if (bcrypt.compareSync(password.trim(), user.password)) {
           /*  if user has an account,
             compare password with what we have in the db.
             if password is correct, save the user id in a token
@@ -134,13 +136,15 @@ export class UserSignin {
             email: user.email
           };
           /* Generates token and sends to user */
-          const token = jwt.sign(payload, process.env.SECRET, {
+          const tokens = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '3h'
           });
           return res.status(200).send({
             status: 'Success',
             message: 'Token successfully generated and signin successful',
-            data: token,
+            data: {
+              token: tokens,
+            },
           });
         }
         return res.status(403).send({

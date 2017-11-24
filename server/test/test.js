@@ -21,6 +21,7 @@ Centers.destroy({
 });
 
 let token;
+let newToken;
 let adminToken;
 const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTEwMTMyODA5LCJleHAiOjE1MTAxNDM2MDl9.Kjyo44x-yMFaS4yO9rr0kzi2qxQ1NxIod7HS5IMUihc';
 // testing the server
@@ -108,10 +109,11 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(201)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'Your account has been created');
+          assert.deepEqual(res.body.message, 'You are signed up successfully.');
           assert.deepEqual(res.body.name, 'tester');
           assert.deepEqual(res.body.id, 1);
           assert.deepEqual(res.status, 201);
+          token  = res.body.data.token;
           done();
         })
         .catch(err => done(err));
@@ -234,7 +236,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'Token successfully generated and signin successful');
           assert.deepEqual(res.status, 200);
-          token = res.body.data;
+          newToken = res.body.data;
           done();
         })
         .catch(err => done(err));
@@ -287,20 +289,7 @@ describe('TEST FOR ADMIN', () => {
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'Token successfully generated and signin successful');
           assert.deepEqual(res.status, 200);
-          adminToken = res.body.data;
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('Should return "Unsuccessful" for unsuccessful admin creation request', (done) => {
-      request(app)
-        .post('/api/v1/users/admin')
-        .set('x-access-token', adminToken)
-        .expect(403)
-        .then((res) => {
-          assert.deepEqual(res.status, 403);
-          assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'You are already an admin. Please signin again.');
+          adminToken = res.body.data.token;
           done();
         })
         .catch(err => done(err));
@@ -517,10 +506,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'Its an event for fela abeg',
           date: '2018-03-02',
           time: '12-03 PM',
-          venue: 'Muson Center',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: '200'
+          center: 'Muson Center',
+          type: 'public'
         })
         .expect(201)
         .then((res) => {
@@ -531,10 +518,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.description, 'Its an event for fela abeg');
           assert.deepEqual(res.body.data.date, '2018-03-02');
           assert.deepEqual(res.body.data.time, '12-03 PM');
-          assert.deepEqual(res.body.data.venue, 'Muson Center');
-          assert.deepEqual(res.body.data.location, 'The Shrine');
+          assert.deepEqual(res.body.data.center, 'Muson Center');
           assert.deepEqual(res.body.data.type, 'public');
-          assert.deepEqual(res.body.data.attendance, 200);
           done();
         })
         .catch(err => done(err));
@@ -548,10 +533,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'Its an event for fela abeg',
           date: '2018-03-02',
           time: '12-03 PM',
-          venue: 'Muson Center',
-          location: 'The Shrine',
-          type: 'public',
-          attendance: '200'
+          center: 'Muson Center',
+          type: 'public'
         })
         .expect(400)
         .then((res) => {
@@ -562,7 +545,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         })
         .catch(err => done(err));
     });
-    it('should return "Date already booked, enter another date" for unique data validation', (done) => {
+    it('should return "Enter a description" for unique data validation', (done) => {
       request(app)
         .post('/api/v1/events')
         .set('x-access-token', token)
@@ -571,10 +554,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: '',
           date: '2018-03-08',
           time: '12-03 PM',
-          venue: 'Muson Center',
-          location: 'The Shrine',
+          center: 'Muson Center',
           type: 'public',
-          attendance: '200'
         })
         .expect(400)
         .then((res) => {
@@ -596,10 +577,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
           time: '12-03 PM',
-          venue: 'Muson Center',
-          location: 'The Shrine',
+          center: 'Muson Center',
           type: 'public',
-          attendance: '200'
         })
         .expect(404)
         .then((res) => {
@@ -618,10 +597,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
           time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
+          center: 'Lagos Lagoon',
           type: 'public',
-          attendance: 200
         })
         .expect(200)
         .then((res) => {
@@ -631,10 +608,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.description, 'It not fela anymore anymore oo');
           assert.deepEqual(res.body.data.date, '2018-03-08');
           assert.deepEqual(res.body.data.time, '12-03 PM');
-          assert.deepEqual(res.body.data.venue, 'Lagos Lagoon');
-          assert.deepEqual(res.body.data.location, 'The Shrine');
+          assert.deepEqual(res.body.data.center, 'Lagos Lagoon');
           assert.deepEqual(res.body.data.type, 'public');
-          assert.deepEqual(res.body.data.attendance, 200);
           done();
         })
         .catch(err => done(err));
@@ -648,10 +623,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: '',
           date: '2018-03-08',
           time: '12-03 PM',
-          venue: 'Lagos Lagoon',
-          location: 'The Shrine',
+          center: 'Lagos Lagoon',
           type: 'public',
-          attendance: 200
         })
         .expect(403)
         .then((res) => {

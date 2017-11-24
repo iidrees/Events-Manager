@@ -51,6 +51,7 @@ app.post('/api/v1/users/admin', Admin.addAdmin);
 app.post('/api/v1/centers', Center.addCenter);
 app.put('/api/v1/centers/:centerId', EditCenter.editCenter);
 
+
 // start application
 app.listen(port);
 
