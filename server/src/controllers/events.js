@@ -160,14 +160,55 @@ export class EventDelete {
           .destroy()
           .then(() => res.status(200).send({
             status: 'Success',
-            message: 'Event Successfuly Deleted'
+            message: 'Event Successfully Deleted'
           }))
           .catch(err => res.status(404).send(err));
       })
-      .catch(err => res.status(404).send({
+      .catch(err => res.status(400).send({
         status: 'Unsuccessful',
-        message: 'Not deleting',
+        message: 'No such event is available',
         data: err
+      }));
+  }
+}
+/**
+ * This is a GET Event class with a static method getEvents that allows a user
+ * get an event they created
+ * @export
+ * @class GetEvent
+ */
+export class GetEvent {
+  /**
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {object} JSON
+   * @memberof GetEvent
+   */
+  static getEvent(req, res) {
+    return Events
+      .findOne({
+        where: {
+          id: req.params.eventId,
+          userId: req.decoded.id
+        }
+      })
+      .then((event) => {
+        if (!event) {
+          return res.status(404).send({
+            status: 'Unsuccessful',
+            message: 'No event available, please post an event'
+          });
+        }
+        return res.status(200).send({
+          status: 'Success',
+          message: 'This is your event',
+          data: event
+        });
+      })
+      .catch(() => res.status(400).send({
+        status: 'Unsuccessful',
+        message: 'No such event is available'
       }));
   }
 }
