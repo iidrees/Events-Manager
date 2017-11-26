@@ -76,10 +76,58 @@ export class GetAllCenters {
           message: 'Centers found',
           data: centers
         });
+      });
+  }
+}
+
+/**
+ *
+ * @export
+ * @class CenterDelete
+ */
+export class CenterDelete {
+  /**
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {*} JSON
+   * @memberof CenterDelete
+   */
+  static deleteCenter(req, res) {
+    const userId = req.decoded.id;
+    const id = req.params.centerId;
+    if (req.decoded.admin === false) {
+      return res.status(403).send({
+        status: 'Unsuccessful',
+        message: 'You are not permitted to delete this event center'
+      });
+    }
+    return Centers
+      .findOne({
+        where: {
+          id,
+          userId
+        },
+      })
+      .then((center) => {
+        if (!center) {
+          return res.status(404).send({
+            status: 'Unsuccessful',
+            message: 'Center Not Found'
+          });
+        }
+        return center
+          .destroy()
+          .then(() => res.status(200).send({
+            status: 'Success',
+            message: 'Center Successfuly Deleted'
+          }))
+          .catch(err => res.status(404).send(err));
       })
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
-        message: err.message
+        message: 'Unable to delete center, please try again later',
+        data: err
       }));
   }
 }
