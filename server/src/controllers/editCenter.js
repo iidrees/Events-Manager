@@ -63,9 +63,9 @@ export default class ModifyCenter {
             message: err.message
           }));
       })
-      .catch(err => res.status(400).send({
+      .catch(() => res.status(400).send({
         status: 'Unsuccessful',
-        message: err
+        message: 'Please input correct value'
       }));
   }
 }

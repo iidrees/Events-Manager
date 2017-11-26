@@ -6,11 +6,11 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import auth from './auth/auth';
 import { UserSignup, UserSignin } from './controllers/users';
-import { Event, EventUpdate, EventDelete } from './controllers/events';
+import { Event, EventUpdate, EventDelete, GetEvent } from './controllers/events';
 import Admin from './controllers/admin';
 import Center from './controllers/AddCenters';
 import EditCenter from './controllers/editCenter';
-import { GetCenter, GetAllCenters } from './controllers/getCenters';
+import { GetCenter, GetAllCenters, CenterDelete } from './controllers/getCenters';
 
 
 /* initialise App and set PORT */
@@ -43,14 +43,14 @@ app.get('/api/v1/centers', GetAllCenters.getAllCenters);
 // jwt middleware to verify users trying to hit secure endpoints
 app.use(auth.verifyUser);
 
-// API ENDPOINTS
+app.get('/api/v1/events/:eventId', GetEvent.getEvent);
 app.post('/api/v1/events', Event.postEvents);
 app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
 app.delete('/api/v1/events/:eventId', EventDelete.deleteEvent);
 app.post('/api/v1/users/admin', Admin.addAdmin);
 app.post('/api/v1/centers', Center.addCenter);
 app.put('/api/v1/centers/:centerId', EditCenter.editCenter);
-
+app.delete('/api/v1/centers/:centerId', CenterDelete.deleteCenter);
 
 // start application
 app.listen(port);

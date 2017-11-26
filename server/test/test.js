@@ -35,12 +35,11 @@ describe('Server and status', () => {
           assert.deepEqual(res.body.message, 'Welcome to the Events Manager API');
           assert.deepEqual(res.status, 200);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
   });
 });
-
+/* TESTING SIGNUP AND SIGNIN ENDPOINTS */
 describe('Sign-up and Sign-in Endpoints', () => {
   describe('Test Sign-up "/api/v1/users" endpoint', () => {
     it('should return "Please enter a password" for an empty input field', (done) => {
@@ -58,8 +57,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Please enter a password');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "Please your password do not match"', (done) => {
       request(app)
@@ -76,8 +74,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Your password do not match');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "Password cannot be less than 8 characters"', (done) => {
       request(app)
@@ -94,8 +91,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Password cannot be less than 8 characters');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return status "Success" for a successful sign-up', (done) => {
       request(app)
@@ -113,11 +109,10 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.name, 'tester');
           assert.deepEqual(res.body.id, 1);
           assert.deepEqual(res.status, 201);
-          token  = res.body.data.token;
+          token = res.body.data.token;
 
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "name already exists" for duplicate entries', (done) => {
       request(app)
@@ -134,8 +129,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'This name already exist, enter a new name');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "Please enter a valid email address" for empty input', (done) => {
       request(app)
@@ -152,8 +146,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Please enter a valid email address');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "the email already exists, enter a new email" for same email sign-up', (done) => {
       request(app)
@@ -170,8 +163,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'This email already exist, enter a new email address');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
   });
   describe('Test sign-in "/api/v1/users/login" endopoint', () => {
@@ -189,8 +181,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'User Not Found');
           assert.deepEqual(res.status, 404);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('Should return "Please enter your password"', (done) => {
       request(app)
@@ -206,8 +197,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Please enter your password');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });        
     });
     it('Should return "Please enter your email"', (done) => {
       request(app)
@@ -222,8 +212,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Please enter your email address');
           assert.deepEqual(res.status, 400);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('Should return "Success" for token generation', (done) => {
       request(app)
@@ -239,8 +228,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.status, 200);
           newToken = res.body.data;
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('Should return "Incorrect login details supplied" for wrong password', (done) => {
       request(app)
@@ -255,8 +243,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.message, 'Incorrect Login Credentials');
           assert.deepEqual(res.status, 403);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
   });
 });
@@ -275,8 +262,7 @@ describe('TEST FOR ADMIN', () => {
           assert.deepEqual(res.body.data.name, 'tester');
           assert.deepEqual(res.body.data.email, 'tester@gmail.com');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('Should return "Success" for signin', (done) => {
       request(app)
@@ -292,8 +278,7 @@ describe('TEST FOR ADMIN', () => {
           assert.deepEqual(res.status, 200);
           adminToken = res.body.data.token;
           done();
-        })
-        .catch(err => done(err));
+        });
     });
   });
 });
@@ -309,8 +294,7 @@ describe('TEST FOR NONE AVAILABLE CENTERS', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'No Centers Found');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
 });
 
@@ -334,8 +318,7 @@ describe('TEST add centers', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'You are not permitted to create a center');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
   it('should add center on "/api/v1/centers" endpoint when an admin adds a center', (done) => {
     request(app)
@@ -355,8 +338,7 @@ describe('TEST add centers', () => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Center Added Successfully');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
   it('should return an error for wrong input by an admin', (done) => {
     request(app)
@@ -376,8 +358,7 @@ describe('TEST add centers', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'Center Could not be added');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
 });
 /* TEST FOR MODIFY/EDIT/PUT CENTERS */
@@ -400,8 +381,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'You are not permitted to edit or modify this event center');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
   it('Should return "Center Not found" where center not in database', (done) => {
     request(app)
@@ -421,8 +401,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'Center Not Found');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
   it('Should return "Center successfully updated" when correct credentials supplied', (done) => {
     request(app)
@@ -442,8 +421,27 @@ describe('TEST PUT/ edit centers endpoint', () => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Center successfully updated');
         done();
+      });
+  });
+  it('Should return "Please input correct value" when wrong input supplied', (done) => {
+    request(app)
+      .put('/api/v1/centers/$')
+      .set('x-access-token', adminToken)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address: 'The Shrine',
+        owner: 'The Civil Society',
+        capacity: '2000',
+        description: 'This venue is a great place to make things happen',
       })
-      .catch(err => done(err));
+      .expect(400)
+      .then((res) => {
+        assert.deepEqual(res.status, 400);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Please input correct value');
+        done();
+      });
   });
 });
 
@@ -471,8 +469,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.message, 'Unauthorized');
           assert.deepEqual(res.status, 401);
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "Unsuccessful" for wrong credentials', (done) => {
       request(app)
@@ -495,8 +492,28 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
           assert.deepEqual(res.status, 403);
           done();
+        });
+    });
+
+    it('should return "Unsuccessful" for supplying a center not existing', (done) => {
+      request(app)
+        .post('/api/v1/events')
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-07',
+          time: '12-03 PM',
+          center: 'Club House',
+          type: 'public'
         })
-        .catch(err => done(err));
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.status, 404);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Center Not Found');
+          done();
+        });
     });
     it('should return "Success" for creating an event', (done) => {
       request(app)
@@ -522,8 +539,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.center, 'Muson Center');
           assert.deepEqual(res.body.data.type, 'public');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "Date already booked, enter another date" for unique data validation', (done) => {
       request(app)
@@ -543,8 +559,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Date already booked, enter another date');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('should return "Enter a description" for unique data validation', (done) => {
       request(app)
@@ -564,8 +579,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Validation error: Please enter a description');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
   });
   describe('Test PUT/ modify "/api/v1/events/:eventId" endpoint', () => {
@@ -586,8 +600,26 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.status, 404);
           assert.deepEqual(res.body.message, 'Event Not Found');
           done();
+        });
+    });
+    it('Should return "Please ensure you are entering a value" for wrong params input', (done) => {
+      request(app)
+        .put('/api/v1/events/*')
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'It not fela anymore anymore oo',
+          date: '2018-03-08',
+          time: '12-03 PM',
+          center: 'Muson Center',
+          type: 'public',
         })
-        .catch(err => done(err));
+        .expect(400)
+        .then((res) => {
+          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.body.message, 'Please ensure you are entering a value');
+          done();
+        });
     });
     it('Should return "Event updated successfully" if event found and updated', (done) => {
       request(app)
@@ -612,8 +644,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.center, 'Lagos Lagoon');
           assert.deepEqual(res.body.data.type, 'public');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
     it('Should return "Unauthorized" if expired token supplied', (done) => {
       request(app)
@@ -632,8 +663,45 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.status, 403);
           assert.deepEqual(res.body.message, 'Session Expired, Please signin again.');
           done();
-        })
-        .catch(err => done(err));
+        });
+    });
+  });
+  describe('Test for the retrieval of an event', () => {
+    it('Should return "Success" for getting an event', (done) => {
+      request(app)
+        .get(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .expect(200)
+        .then((res) => {
+          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'This is your event');
+          done();
+        });
+    });
+    it('Should return "Unsuccessful" for wrong eventId', (done) => {
+      request(app)
+        .get(`/api/v1/events/${2}`)
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.status, 404);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'No event available, please post an event');
+          done();
+        });
+    });
+    it('Should return "Unsuccessful" for wrong params input  ', (done) => {
+      request(app)
+        .get('/api/v1/events/*')
+        .set('x-access-token', token)
+        .expect(400)
+        .then((res) => {
+          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'No such event is available');
+          done();
+        });
     });
   });
 });
@@ -649,8 +717,7 @@ describe('TEST FOR AVAILABILITY OF CENTERS', () => {
           assert.deepEqual(res.status, 404);
           assert.deepEqual(res.body.message, 'Center Not Found');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
   });
   it('should return "Success" for a successful query for a single event center', (done) => {
@@ -673,8 +740,7 @@ describe('TEST FOR AVAILABILITY OF CENTERS', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'Center Not Found');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
   it('should return "Center Not Found" for a "*" query', (done) => {
     request(app)
@@ -685,8 +751,7 @@ describe('TEST FOR AVAILABILITY OF CENTERS', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.data, 'invalid input syntax for integer: "*"');
         done();
-      })
-      .catch(err => done(err));
+      });
   });
   describe('Test for getting all centers', () => {
     it('should return "Success" and centers for a query for all centers', (done) => {
@@ -698,8 +763,100 @@ describe('TEST FOR AVAILABILITY OF CENTERS', () => {
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'Centers found');
           done();
-        })
-        .catch(err => done(err));
+        });
     });
+  });
+});
+
+/* TEST FOR DELETE AN EVENT */
+describe('Test DEL "/api/v1/events/:eventId" endpoint ', () => {
+  it('Should return "Event Not Found" for wrong eventId', (done) => {
+    request(app)
+      .del(`/api/v1/events/${3}`)
+      .set('x-access-token', token)
+      .expect(404)
+      .then((res) => {
+        assert.deepEqual(res.status, 404);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Event Not Found');
+        done();
+      });
+  });
+  it('Should return "No such event is available" for wrong params input', (done) => {
+    request(app)
+      .del('/api/v1/events/*')
+      .set('x-access-token', token)
+      .expect(400)
+      .then((res) => {
+        assert.deepEqual(res.status, 400);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'No such event is available');
+        done();
+      });
+  });
+  it('Should return "Event Successfully Deleted" for correct eventId', (done) => {
+    request(app)
+      .del(`/api/v1/events/${1}`)
+      .set('x-access-token', token)
+      .expect(200)
+      .then((res) => {
+        assert.deepEqual(res.status, 200);
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'Event Successfully Deleted');
+        done();
+      });
+  });
+});
+
+
+/* TEST FOR DELETE A CENTER */
+describe('Test DEL "/api/v1/centers/:centerId" endpoint ', () => {
+  it('Should return "403" unauthorized', (done) => {
+    request(app)
+      .del(`/api/v1/centers/${3}`)
+      .set('x-access-token', token)
+      .expect(403)
+      .then((res) => {
+        assert.deepEqual(res.status, 403);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'You are not permitted to delete this event center');
+        done();
+      });
+  });
+  it('Should return "Center Not Found"', (done) => {
+    request(app)
+      .del(`/api/v1/centers/${3}`)
+      .set('x-access-token', adminToken)
+      .expect(404)
+      .then((res) => {
+        assert.deepEqual(res.status, 404);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Center Not Found');
+        done();
+      });
+  });
+  it('Should return "Unable to delete center, please try again later" for wrong params input', (done) => {
+    request(app)
+      .del('/api/v1/centers/$')
+      .set('x-access-token', adminToken)
+      .expect(400)
+      .then((res) => {
+        assert.deepEqual(res.status, 400);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Unable to delete center, please try again later');
+        done();
+      });
+  });
+  it('Should return "Unable to delete center, please try again later" for wrong params input', (done) => {
+    request(app)
+      .del(`/api/v1/centers/${1}`)
+      .set('x-access-token', adminToken)
+      .expect(200)
+      .then((res) => {
+        assert.deepEqual(res.status, 200);
+        assert.deepEqual(res.body.status, 'Success');
+        assert.deepEqual(res.body.message, 'Center Successfuly Deleted');
+        done();
+      });
   });
 });
