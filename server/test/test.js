@@ -294,7 +294,8 @@ describe('TEST FOR NONE AVAILABLE CENTERS', () => {
         assert.deepEqual(res.body.status, 'Unsuccessful');
         assert.deepEqual(res.body.message, 'No Centers Found');
         done();
-      });
+      })
+      .catch(err => done(err))
   });
 });
 

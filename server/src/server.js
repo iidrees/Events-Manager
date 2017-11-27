@@ -4,17 +4,17 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import auth from './auth/auth';
-import { UserSignup, UserSignin } from './controllers/users';
-import { Event, EventUpdate, EventDelete, GetEvent } from './controllers/events';
-import Admin from './controllers/admin';
-import Center from './controllers/AddCenters';
-import EditCenter from './controllers/editCenter';
-import { GetCenter, GetAllCenters, CenterDelete } from './controllers/getCenters';
+import webpack from 'webpack';
+import path from 'path';
+import config from '../../webpack.config';
+import swaggerJSDOC from 'swagger-jsdoc';
+import router from './routes/routes';
 
 
 /* initialise App and set PORT */
 const app = express();
+
+const compiler = webpack(config);
 const port = process.env.PORT || 5050;
 
 // configured the dotenv command to enable storage in the environment
@@ -28,29 +28,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
 
 // route
 app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
+// router to the API
+app.use('/api/v1/', router);
+
+// Catch all default route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/index.html'));
+}); 
 
 
-app.post('/api/v1/users', UserSignup.signUp);
-app.post('/api/v1/users/login', UserSignin.signIn);
-app.get('/api/v1/centers/:centerId', GetCenter.getCenter);
-app.get('/api/v1/centers', GetAllCenters.getAllCenters);
-
-// jwt middleware to verify users trying to hit secure endpoints
-app.use(auth.verifyUser);
-
-app.get('/api/v1/events/:eventId', GetEvent.getEvent);
-app.post('/api/v1/events', Event.postEvents);
-app.put('/api/v1/events/:eventId', EventUpdate.updateEvent);
-app.delete('/api/v1/events/:eventId', EventDelete.deleteEvent);
-app.post('/api/v1/users/admin', Admin.addAdmin);
-app.post('/api/v1/centers', Center.addCenter);
-app.put('/api/v1/centers/:centerId', EditCenter.editCenter);
-app.delete('/api/v1/centers/:centerId', CenterDelete.deleteCenter);
 
 // start application
 app.listen(port);
