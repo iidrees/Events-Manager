@@ -1,14 +1,13 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
-      }
-    }]
+    "react","es2015","stage-0","env"
   ],
   "env": {
     "test": {
       "plugins": ["istanbul"]
     }
-  }
+  },
+  "plugins": [
+    
+  ]
 }
