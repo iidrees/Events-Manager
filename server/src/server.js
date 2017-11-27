@@ -39,13 +39,14 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
+// router to the API
+app.use('/api/v1/', router);
+
 // Catch all default route
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
-});
+}); 
 
-// router to the API
-app.use('/api/v1/', router);
 
 
 // start application
