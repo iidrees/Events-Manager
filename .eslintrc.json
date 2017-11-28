@@ -12,9 +12,10 @@
       "new-cap": 0,
       "consistent-return": 0,
       "no-param-reassign": 0,
+      "no-unused-vars": 0,
       "comma-dangle": 0,
       "curly": ["error", "multi-line"],
-      "import/no-unresolved": [2, { "commonjs": true }],
+      "import/no-unresolved": [0, { "commonjs": true }],
       "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
       "valid-jsdoc": ["error", {
         "requireReturn": true,
@@ -22,6 +23,13 @@
         "requireParamDescription": false,
         "requireReturnDescription": true
       }],
+      "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
       "require-jsdoc": ["error", {
           "require": {
               "FunctionDeclaration": true,

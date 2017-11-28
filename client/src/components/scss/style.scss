@@ -1,0 +1,322 @@
+/* 
+import fonts
+ */
+ 
+/* Variables */
+$font-head-color: #393939;
+$header-color: black;
+$navbar-border: grey;
+$header-top: 70px;
+$font-Encode:  'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
+$font-cantarell: 'Cantarell', sans-serif;
+$font-patrick: 'Patrick Hand', cursive;
+$font-maven-pro: 'Maven Pro', sans-serif;
+$font-pt-sans: 'PT Sans Caption', sans-serif;
+
+
+
+
+
+#event-details::after {
+	content: "";
+	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 0.3;
+	top: 0;
+  left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+
+#add-event-header {
+  margin-top: 70px;
+}
+
+
+
+.home-para {
+  font-family: $font-Encode;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.head-1 {
+	font-family: $font-cantarell;
+	font-weight: 50px;
+	font-size: 70px;  
+}
+.head-para {
+font-family: $font-maven-pro;
+font-weight: 200px;
+font-size: 20px;
+}
+
+#admin-add-head {
+	margin-bottom: $header-top;
+}
+/* FOOTER */
+.head1 {
+	font-family: $font-Encode;
+	color: $font-head-color;
+}
+
+#p-head {
+	font-size: 20px;
+	font-weight: 20px;
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 70px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px; 
+}
+
+/* Event catalog and My Events page */
+.even-font {
+	font-family: $font-patrick;
+	font-weight: bold;
+}
+
+.date-font {
+	font-family: $font-cantarell;
+	font-weight: bold;
+}
+
+.location-font, .search-font {
+  font-family: $font-maven-pro;
+  font-weight: bold;
+}
+
+small {
+  font-family: $font-patrick;
+  font-weight: bolder;
+  color: purple;
+}
+
+/* 
+Event Details Page
+ */
+ #img-details {
+	max-width: 400px;
+}
+.font-details {
+	font-family: $font-cantarell;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+
+
+
+
+/* Center Details page */
+.center-details-para {
+	font-family: $font-maven-pro;
+	font-weight: bolder;
+}
+.center-details-span {
+	font-family: $font-cantarell;
+}
+
+#head-holding{
+	font-family: $font-Encode;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+
+/* Center Details page */
+.center-details-para {
+	font-family: $font-maven-pro;
+	font-weight: bolder;
+}
+.center-details-span {
+	font-family: $font-cantarell;
+}
+#head-holding{
+	font-family: $font-Encode;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/* GET all events center page */
+.all-centers-font {
+	font-family: $font-cantarell;
+	font-weight: bold;
+}
+
+
+/* Center Details page */
+.center-details-para {
+	font-family: $font-maven-pro;
+	font-weight: bolder;
+}
+.center-details-span {
+	font-family: $font-cantarell;
+}
+#head-holding{
+	font-family: $font-Encode;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+/* GET all events center page */
+.all-centers-font {
+	font-family: $font-cantarell;
+	font-weight: bold;
+}
+
+
+/* View point for  desktop*/
+@media(min-width: 768px) {
+/* landing page */
+	#nav-events, #navbar-addevents,#navbar-details, #navbar-admin-center, #nav-center-details, #navbar-myevents
+	 {
+		margin-left: 500px;
+	}
+	.nav-link {
+		border-right: solid $navbar-border 1px;
+		border-radius: 10px;
+		margin: 3px 20px 0px 5px; 
+		
+	}
+	#nav-logo {
+		border-right: solid $navbar-border 1px;
+		padding-right: 20px;
+	}
+
+	/*events catalog  */
+	#event-page, #myevent, #details, #add-center-header, #event-holding-header,#event-holding {
+		margin-top: $header-top;
+	}
+
+	input[type=text] {
+		width: 300px;
+		-webkit-transition: width 0.4s ease-in-out;
+		transition: width 0.4s ease-in-out;
+		border-color: $header-color;
+	}
+	.detail-button {
+		margin-left: 400px;
+		margin-bottom: $header-top;
+}	
+	/* When the input field gets focus, change its width to 70% */
+	input[type=text]:focus {
+			width: 70%;
+			border-color: $header-color;
+	}
+	 #event-holding {
+		margin-bottom: 150px;
+	}
+	#details-ev {
+		margin-bottom: 50px;
+	}
+	
+	#card-body,#card-body4, #card-body1, #card-body2, #card-body3 {
+		margin-bottom: 170px;
+	}
+	#card-center1, #card-center2 {
+		margin-bottom: 120px;
+	}
+	#cadcad-body, #cadcad {
+		margin-bottom: 170px;
+	}
+
+	#admin-form .form-control, #name-form, #email-form,#text-form {
+		width: 600px;
+		border: solid purple 1px;
+  }
+	#center-details-slider, #center-details-header {
+		margin-top: $header-top;
+	}
+	#center-details-slider, #center-details-header {
+		margin-top: $header-top;
+	}
+	#form-event1, #form-event2, #form-event3, #form-event4, #form-event5, #event-center1,#event-center2
+	{
+		width: 600px;
+		border: solid purple 1px;
+	}
+	
+	
+}
+
+@media(max-width: 576px) {
+	#navbar-signup, #navbar-myevents {
+		margin-left: 30px;
+	}
+	.nav-link {
+		border: solid $navbar-border 0.5px;
+		border-radius: 5px;
+		max-width: 130px;
+		text-align: center;
+		margin: 10px 0 0 0;
+		
+	}
+	#nav-logo {
+		border-right: solid $navbar-border 1px;
+		padding-right: 20px;
+		margin-left: 300px;
+  }
+
+
+	#event-page, #myevent, #details, #add-center-header {
+		margin-top: $header-top;
+	}
+	input[type=text] {
+		width: 300px;
+		-webkit-transition: width 0.4s ease-in-out;
+		transition: width 0.4s ease-in-out;
+		border-color: $header-color;
+	}
+
+ /* When the input field gets focus, change its width to 70% */
+	input[type=text]:focus {
+		width: 100%;
+		border-color: $header-color;
+	}	
+  
+
+	.card {
+		height: 20rem;
+		width: 20rem;
+		margin-left: 70px;
+		margin-top: 300px;
+	}
+	
+	#card-body2, #event-holding {
+		margin-bottom: 5px;
+		margin-top: 100px;
+	}
+	#card-body1{
+		margin-bottom: 500px;
+	} 
+	.detail-button {
+		margin-left: 120px;	
+		margin-bottom: $header-top;
+	}
+	#details-ev {
+		margin-bottom: 70px;
+	}
+ 
+	#admin-form, .form-control, #name-form, #email-form, #text-form {
+		width: 300px;
+		border: solid purple 1px;
+	}
+}
