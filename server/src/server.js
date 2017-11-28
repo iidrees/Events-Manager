@@ -29,7 +29,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
 app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
+  hot: true,
+  noInfo: false,
   publicPath: config.output.publicPath
 }));
 

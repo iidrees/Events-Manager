@@ -9,6 +9,10 @@ import auth from '../auth/auth';
 
 const router = express.Router();
 
+router.post('/home', (req, res) => {
+  console.log(req.body);
+})
+
 router.post('/users', UserSignup.signUp);
 router.post('/users/login', UserSignin.signIn);
 router.get('/centers/:centerId', GetCenter.getCenter);

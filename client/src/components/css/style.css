@@ -1,0 +1,142 @@
+body::after {
+  content: "";
+ background-color: black; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.main-text {
+    position: absolute;
+    top: 90px;    
+    color: rgb(20, 20, 20);
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+}
+.btn-clear {
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+    margin-right: 15px;
+}
+.btn-clear:hover
+{
+    color: #000;
+    background-color: #FFF;
+}
+
+.landing-auth {
+  font-size: 15px;
+}
+
+.signup-text {
+  font-family: 'Encode Sans Expanded', Helvetica,Tahoma, sans-serif;
+  color: #393939;
+}
+header {
+  margin-bottom: 0px;
+}
+#form-signup, #form-signin {
+  margin-top: 100px;
+}
+
+
+@media(min-width: 768px) {
+  .field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+  }
+  #img-landing1,#img-landing2,#img-landing3,#img-landing4 {
+    opacity: 0.9;
+    width: 300px;  
+    z-index: -1
+  }
+  #navbar-signup, #navbar-signin, #nav-landing {
+    margin-left: 700px;
+  }
+  .nav-link {
+    border-right: solid grey 1px;
+    border-radius: 10px;
+    margin: 3px 20px 0px 5px; 
+    
+  }
+  #nav-logo {
+    border-right: solid grey 1px;
+    padding-right: 20px;
+  }
+  .jumbotron {
+    opacity: 0.8;
+    color: white;
+    background: black;
+    margin-left: 250px;
+    
+  }
+  
+  h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 60px;
+    color: white;
+    font-style: italic;
+    font-weight: bold; 
+    margin-bottom: 5px;
+  }
+  #para-landing {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-style: italic;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media(max-width: 576px) {
+  #navbar-signup {
+    margin-left: 30px;
+  }
+  .nav-link {
+    border: solid grey 0.5px;
+    border-radius: 5px;
+    max-width: 130px;
+    text-align: center;
+    margin: 10px 0 0 0;
+    
+  }
+  #nav-logo {
+    border-right: solid grey 1px;
+    padding-right: 20px;
+  }
+  #img-landing1,#img-landing2,#img-landing3,#img-landing4 {
+    opacity: 0.9;
+    width: 150px;
+    z-index: -1
+  }
+  .jumbotron {
+    opacity: 0.7;
+    color: #fff;
+    background: #000; 
+  }
+  h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    color: white;
+    font-style: italic;
+    font-weight: bold; 
+    margin-bottom: 5px;
+  }
+  #para-landing {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-style: italic;;
+  }
+  
+}
+

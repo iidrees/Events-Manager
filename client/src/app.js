@@ -1,6 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware
@@ -8,6 +10,7 @@ import { createStore, applyMiddleware
 
 import Routes from './routes';
 import App from './components/App';
+import NavigationBar  from './components/NavigationBar.js';
 
 
 const store = createStore(
@@ -18,9 +21,8 @@ const store = createStore(
 
 render( 
   <Provider store={store}>
-    <BrowserRouter>
+      
       <App />
-    </BrowserRouter>
   </Provider>
    , document.getElementById('app'))
 

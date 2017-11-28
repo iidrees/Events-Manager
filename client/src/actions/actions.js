@@ -1,6 +1,11 @@
 import axios from 'axios';
-export function userSignupRequest(userData) {
-  return dispatch => {
-    return axios.post('/api/users', userData);
-  }
+
+/**
+ * Axios will help make POST
+ * @export {function}
+ * @param {any} userData
+ * @returns {JSON} userData
+ */
+export default function userSignupRequest(userData) {
+  return dispatch => axios.post('/api/v1/users', userData);
 }

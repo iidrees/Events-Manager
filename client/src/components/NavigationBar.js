@@ -1,5 +1,10 @@
+/* eslint-disable */
 import React from 'react';
 import {  Link } from 'react-router-dom';
+
+/*
+ The Navigation Bar component
+ */
 export default () => {
   return (
     <header >
@@ -11,7 +16,7 @@ export default () => {
         <div className="collapse navbar-collapse left" id="navbar-signup">
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item nav-link">
-              <Link to="/home">See Events</Link>
+            <a className="nav-link" href="events-catalog.html">See Events</a>
             </li>
             <li className="nav-item nav-link active">
               <a className="nav-link" href="#">Sign-up</a>
