@@ -7,9 +7,13 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, '/client/dist'),
-    publicPath: '/static/',
+    publicPath: '/dist/', // remember to change it to static to run from server
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devtool: 'eval-source-map',
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
@@ -17,8 +21,15 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader'
     }, {
-      test: /\.less$/,
-      loaders: ['style-loader', 'css-loader', 'less-loader']
+      test: /\.(scss|css|sass)$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader']
+    }, {
+      test: /\.(jpe?g|png|gif|svg|ico)$/i,
+      use: [
+        {
+          loader: 'file-loader'
+        }
+      ]
     }]
   },
   devServer: {
