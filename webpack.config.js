@@ -8,12 +8,11 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/client/dist'),
     publicPath: '/dist/', // remember to change it to static to run from server
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
-  devtool: 'eval-source-map',
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,

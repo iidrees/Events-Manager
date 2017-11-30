@@ -23,7 +23,7 @@ export default () => {
           <div className="col-sm-9">
             <div className="card-deck" id="cadcad-body" >
               <div className="card" id="card1" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/components/images/events-center.jpg" alt="Card image cap" /></a>
+                <a href="event.html"><img className="card-img-top" src="./src/media/images/events-center.jpg" alt="Card image cap" /></a>
                 <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
                   <h5 className="card-title even-font">
                     <span >Event:</span>
@@ -41,7 +41,7 @@ export default () => {
                 </div>              
               </div>
               <div className="card" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/components/images/events-center.jpg" alt="Card image cap" /></a>
+                <a href="event.html"><img className="card-img-top" src="./src/media/images/events-center.jpg" alt="Card image cap" /></a>
                 <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
                   <h5 className="card-title even-font">
                     <span className="">Event:</span>

@@ -1,10 +1,24 @@
 {
     "root": true,
-    "extends": "airbnb-base",
+    "extends": ["airbnb-base", "eslint:recommended",
+       "plugin:import/errors", "plugin:import/warnings"],
+    "parser": "babel-eslint",
+    "plugins": [
+      "react",
+      "jsx-a11y",
+      "import"
+    ],
     "env": {
       "node": true,
       "es6": true,
       "mocha": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
     },
     "rules": {
       "one-var": 0,
@@ -14,6 +28,7 @@
       "no-param-reassign": 0,
       "no-unused-vars": 0,
       "comma-dangle": 0,
+      "no-undef": 0,
       "curly": ["error", "multi-line"],
       "import/no-unresolved": [0, { "commonjs": true }],
       "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
@@ -23,13 +38,6 @@
         "requireParamDescription": false,
         "requireReturnDescription": true
       }],
-      "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-          "jsx": true
-        }
-      },
       "require-jsdoc": ["error", {
           "require": {
               "FunctionDeclaration": true,

@@ -21,19 +21,19 @@ export class UserSignup {
     const { name, email, confirmPassword } = req.body;
     let { password } = req.body;
     /* Checks password */
-    if (!validator.equals(password.toLowerCase().trim(), confirmPassword.toLowerCase().trim())) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Your password do not match'
-      });
-    }
-    if (validator.isEmpty(password)) {
+    if (validator.isEmpty(password + '') || password === undefined) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Please enter a password'
       });
     }
-    if (!validator.isLength(password.toLowerCase().trim(), { min: 8, max: undefined })) {
+    if (!validator.equals('' + password.toLowerCase().trim(),'' + confirmPassword.toLowerCase().trim())) {
+      return res.status(400).send({
+        status: 'Unsuccessful',
+        message: 'Your password do not match'
+      });
+    }
+    if (!validator.isLength('' + password.toLowerCase().trim(), { min: 8, max: undefined })) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Password cannot be less than 8 characters'
@@ -98,7 +98,7 @@ export class UserSignin {
      */
 
     const { email, password } = req.body;
-    if (validator.isEmpty(password)) {
+    if (validator.isEmpty(''+password) || password === undefined) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Please enter your password'

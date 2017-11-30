@@ -103,6 +103,7 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
