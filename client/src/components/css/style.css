@@ -48,7 +48,7 @@ header {
   margin-bottom: 0px;
 }
 #form-signup, #form-signin {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 
@@ -63,15 +63,15 @@ header {
     z-index: -1
   }
   #navbar-signup, #navbar-signin, #nav-landing {
-    margin-left: 700px;
+    margin-left: 600px;
   }
   .nav-link {
     border-right: solid grey 1px;
-    border-radius: 10px;
-    margin: 3px 20px 0px 5px; 
+    border-radius: 5px;
+    margin: 3px 10px 0px 0px; 
     
   }
-  #nav-logo {
+  #nav-logo-nav {
     border-right: solid grey 1px;
     padding-right: 20px;
   }
