@@ -11,9 +11,11 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true
+    })
   ],
-  devtool: 'eval-source-map',
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,

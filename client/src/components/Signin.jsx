@@ -1,25 +1,37 @@
 import React from 'react';
-import { userSignin } from '../actions/actions';
 import { connect } from 'react-redux';
+
+import { userSignin } from '../actions/actions';
 
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
 
-
+/**
+ * 
+ * @class Signin
+ * @extends {React.Component}
+ */
 class Signin extends React.Component {
+	/**
+	 * @param {e} e
+	 * @return {*} any
+	 * @memberof Signin
+	 */
 	onChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value })
 	}
 	onSubmit = (e) => {
 		e.preventDefault();
-		console.log('HERE SIGN IN');
 		let userData = this.state;
 		const { dispatch } = this.props;
 		return dispatch(userSignin(userData));
 	}
+	/**
+	 * A render method that renders the 
+	 * @returns {component} component
+	 * @memberof Signin
+	 */
 	render() {
-		// const { errors } = this.state;
-
 		return (
 			<div>
 				<NavBarOne />
@@ -100,7 +112,7 @@ class Signin extends React.Component {
 			</div>	
   );
 	}
-};
+}
 
 const mapDispatchToProps = (dispatch) => {
 	return {

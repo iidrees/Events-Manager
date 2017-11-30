@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { history } from '../routes';
 
-import { SIGN_UP, SIGNED_UP, SIGN_UP_FAIL, SIGN_IN, SIGNED_IN, SIGN_IN_FAIL } from './types';
+import { 
+  SIGN_UP, SIGNED_UP, 
+  SIGN_UP_FAIL, SIGN_IN, 
+  SIGNED_IN, SIGN_IN_FAIL 
+} from './types';
 
 /**
  * Axios will help make POST request to signup user
@@ -10,9 +14,6 @@ import { SIGN_UP, SIGNED_UP, SIGN_UP_FAIL, SIGN_IN, SIGNED_IN, SIGN_IN_FAIL } fr
  * @returns {JSON} userData
  */
 export const userSignup = (userData) => {
-  console.log('LETS SIGNUP');
-  console.log(userData);
-
   return (dispatch) => {
     dispatch({ type: 'SIGN_UP' });
     axios({
@@ -22,13 +23,10 @@ export const userSignup = (userData) => {
       withCredentials: true,
     })
       .then((response) => {
-        console.log(response.data);
         dispatch({ type: SIGNED_UP, payload: response.data });
-        // history.push('/getEvents');
+        history.push('/getEvents');
       })
       .catch((err) => {
-        console.log(err);
-        console.log(err.response.data);
         dispatch({ type: 'SIGN_UP_FAIL', payload: err });
         history.push('/');
       });
@@ -36,7 +34,6 @@ export const userSignup = (userData) => {
 };
 
 export const userSignin = (userData) => {
-  console.log('LET SIGN_IN');
   return (dispatch) => {
     dispatch({ type: 'SIGN_IN' });
     axios({
@@ -46,9 +43,8 @@ export const userSignin = (userData) => {
       withCredentials: true,
     })
       .then((response) => {
-        console.log(response.data);
         dispatch({ type: SIGNED_IN, payload: response.data });
-      // history.push('/login);
+        history.push('/login');
       })
       .catch((err) => {
         console.log(err.response.data);
