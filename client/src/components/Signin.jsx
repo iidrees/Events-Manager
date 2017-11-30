@@ -1,25 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { userSignin } from '../actions/actions';
+import { userSignin } from '../actions/userActions';
 
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
 
 /**
- * 
+ * A signin component
  * @class Signin
  * @extends {React.Component}
  */
 class Signin extends React.Component {
 	/**
-	 * @param {e} e
+	 * @param {any} e 
 	 * @return {*} any
 	 * @memberof Signin
 	 */
 	onChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value })
 	}
+	/**
+	 * @param {any} e
+	 * @returns {*} any
+	 * @memberof Signin
+	 */
 	onSubmit = (e) => {
 		e.preventDefault();
 		let userData = this.state;

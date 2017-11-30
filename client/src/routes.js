@@ -1,4 +1,3 @@
-/* disable eslint */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
@@ -14,7 +13,7 @@ export const history = createBrowserHistory();
 export const Routes = () => {
   return (
       <Switch>
-        <Route exact path='/signup' component={Signup}/>
+        <Route exact path='/' component={Signup}/>
         <Route exact path='/signin' component={Signin}/>
         <Route exact path='/getevents' component={Getevents}/>
         <Route exact path='/myevents' component={Myevents} />

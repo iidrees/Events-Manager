@@ -14,16 +14,13 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log('Reducer');
   switch (action.type) {
     case SIGN_UP: {
-      console.log('SIGNING UP ', action.payload);
       return {
         ...state
       }
     }
     case SIGNED_UP: {
-      console.log('FINISHED SIGNING UP');
       return {
         ...state,
         status: action.payload.data.status,
@@ -32,7 +29,6 @@ export default (state = initialState, action) => {
       }
     }
     case SIGN_UP_FAIL: {
-      console.log('SIGN UP FAILED');
       return {
         ...state,
         status: 'Error' || undefined,
@@ -41,13 +37,11 @@ export default (state = initialState, action) => {
       }
     }
     case SIGN_IN: {
-      console.log('SIGNING IN', action.payload);
       return {
         ...state
       }
     }
     case SIGNED_IN: {
-      console.log('SIGN IN COMPLETE');
       return {
         ...state,
         status: action.payload.data.status,
@@ -56,7 +50,6 @@ export default (state = initialState, action) => {
       }
     }
     case SIGN_IN_FAIL: {
-      console.log('SIGN IN FAIL');
       return {
         ...state,
         status: 'Error' || undefined,

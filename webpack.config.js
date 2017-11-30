@@ -8,13 +8,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/client/dist'),
     publicPath: '/dist/', // remember to change it to static to run from server
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true
-    })
   ],
   module: {
     loaders: [{

@@ -1,9 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Redirect } from 'react-router-dom';
 
-import  { userSignup }  from '../actions/actions'
+import  { userSignup }  from '../actions/userActions'
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
 class Signup extends React.Component {

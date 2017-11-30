@@ -47,19 +47,9 @@ export const userSignin = (userData) => {
         history.push('/login');
       })
       .catch((err) => {
-        console.log(err.response.data);
         dispatch({ type: 'SIGNED_IN_FAIL', payload: err });
-      // history.push('/login);
+        history.push('/login');
       });
   };
 };
 
-/**
- * @export {function}
- * @param {any} userData
- * @returns {JSON} userData
- */
-/* export function userSigninRequest(userData) {
-  return dispatch => axios.post('/api/v1/users/login', userData);
-}
- */
