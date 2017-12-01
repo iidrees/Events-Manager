@@ -18,7 +18,7 @@ export default () => {
             <Link to='/getevents' className=" nav-link">See Events</Link>
             </li>
             <li className="nav-item nav-link">
-            <Link to='#' className=" nav-link">See Centers</Link>
+            <Link to='/getcenters' className=" nav-link">See Centers</Link>
             </li>
             <li className="nav-item nav-link active">
             <Link to='/signin' className=" nav-link">Sign-in</Link>

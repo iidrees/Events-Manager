@@ -16,10 +16,10 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 
 
 
-
+/* 
 #event-details::after {
 	content: "";
-	background: url('../images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+	background: url('.././images/pexels-photo-64769.jpeg') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -31,7 +31,7 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 	right: 0;
 	position: absolute;
 	z-index: -1;
-}
+} */
 
 
 #add-event-header {
@@ -56,7 +56,7 @@ font-weight: 200px;
 font-size: 20px;
 }
 
-#admin-add-head {
+#admin-add-head, #centerbottom {
 	margin-bottom: $header-top;
 }
 /* FOOTER */
@@ -64,7 +64,9 @@ font-size: 20px;
 	font-family: $font-Encode;
 	color: $font-head-color;
 }
-
+#centerid {
+	font-size: 20;
+}
 #p-head {
 	font-size: 20px;
 	font-weight: 20px;

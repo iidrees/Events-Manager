@@ -858,6 +858,6 @@ describe('Test DEL "/api/v1/centers/:centerId" endpoint ', () => {
         assert.deepEqual(res.body.status, 'Success');
         assert.deepEqual(res.body.message, 'Center Successfuly Deleted');
         done();
-      });
+      }); 
   });
 });
