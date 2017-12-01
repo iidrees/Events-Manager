@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
 
 import userReducer from './userReducer';
+import centerReducer from './centerReducer';
 
-export default combineReducers({
-  userReducer
+const indexReducer = combineReducers({
+  userReducer,
+  centerReducer
 });
+
+export default indexReducer;
