@@ -848,7 +848,7 @@ describe('Test DEL "/api/v1/centers/:centerId" endpoint ', () => {
         done();
       });
   });
-  /* it('Should return "Unable to delete center, please try again later" for wrong params input', (done) => {
+  it('Should return "Unable to delete center, please try again later" for wrong params input', (done) => {
     request(app)
       .del(`/api/v1/centers/${1}`)
       .set('x-access-token', adminToken)
@@ -859,5 +859,5 @@ describe('Test DEL "/api/v1/centers/:centerId" endpoint ', () => {
         assert.deepEqual(res.body.message, 'Center Successfuly Deleted');
         done();
       }); 
-  });*/
+  });
 });
