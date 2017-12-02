@@ -46,7 +46,7 @@ render() {
             </div>
           </div>{/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
           <div className="container" >			
-            <div className="row">
+              <div className="row">            
             {events.map((event) => {
               return (
               <div className="col-sm-4" key={event.id}>
@@ -96,7 +96,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    events: state.eventReducer
+    events: state.eventReducer,
+    status: state.userReducer
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(GetEvents);

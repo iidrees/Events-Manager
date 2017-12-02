@@ -9,6 +9,7 @@ import {
 const initialState = { /* The initial state of the component */
   authenticated: false,
   status: '',
+  message: '',
   user: {
     name: '',
     email: '',
@@ -19,15 +20,12 @@ const initialState = { /* The initial state of the component */
 
 export default (state = initialState, action) => {
   switch (action.type) {/* The reducer listening for action to update store */
-    case SIGN_UP: {
-      return {
-        ...state
-      }
-    }
+
     case SIGNED_UP: {
       return {
         ...state,
-        status: action.payload.data.status,
+        status: 'Success',
+        message: action.payload.data,
         ...action.payload.data,
         authenticated: true
       }
@@ -35,7 +33,7 @@ export default (state = initialState, action) => {
     case SIGN_UP_FAIL: {
       return {
         ...state,
-        status: 'Error' || undefined,
+        status: 'Unsuccessful' || undefined,
         ...action.payload,
         authenticated: false
       }
@@ -48,7 +46,7 @@ export default (state = initialState, action) => {
     case SIGNED_IN: {
       return {
         ...state,
-        status: action.payload.data.status,
+        status: 'Success',
         ...action.payload.data,
         authenticated: true
       }
@@ -56,7 +54,7 @@ export default (state = initialState, action) => {
     case SIGN_IN_FAIL: {
       return {
         ...state,
-        status: 'Error' || undefined,
+        status: 'Unsuccessful' || undefined,
         ...action.payload,
         authenticated: false
       }

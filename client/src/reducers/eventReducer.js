@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
     case  GET_EVENTS:
       return action.events.data.data;
     case EVENT_FAILED:
-      return err.data
+      return action.err.data
     default:
      return state;
   }

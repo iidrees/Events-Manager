@@ -16,22 +16,21 @@ import {
  */
 export const userSignup = (userData) => {
   return (dispatch) => {
-    dispatch({ type: 'SIGN_UP' });
     axios({
       method: 'post',
       url: 'http://localhost:5050/api/v1/users',
       data: userData,
       credentials: true,
     })
-      .then((response) => {        
-        localStorage.setItem(token, response.data.data.token);
-        dispatch({ type: SIGNED_UP, payload: response.data });
-        history.push('/getevents');
-      })
-      .catch((err) => {
-        dispatch({ type: 'SIGN_UP_FAIL', payload: err });
-        history.push('/');
-      });
+    .then((response) => {        
+      localStorage.setItem('x-access-token', response.data.data.token);
+      dispatch({ type: SIGNED_UP, payload: response.data });
+      history.push('/getevents');
+    })
+    .catch((err) => {
+      dispatch({ type: 'SIGN_UP_FAIL', payload: err.response.data});
+      history.push('/');
+    });
   };
 };
 
