@@ -2,7 +2,13 @@ export default (sequelize, DataTypes) => {
   const Events = sequelize.define('Events', {
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Please your events name cannot be empty'
+        }
+      }
     },
     description: {
       type: DataTypes.STRING,
