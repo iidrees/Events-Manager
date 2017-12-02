@@ -1,147 +1,102 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default () => {
+import NavBarOne from './NavBarOne';
+import Footer from './footer.jsx';
+import { getEvents  } from '../actions/eventAction';
+
+/**
+ * 
+ * 
+ * @className GetEvents
+ * @extends {React.Component}
+ */
+class GetEvents extends React.Component {
+/**
+ * A method that lets a user get their events
+ * @memberof GetEvents
+ */
+componentWillMount() {
+    const { dispatch } = this.props;
+    return dispatch(getEvents());
+  }
+
+  /**
+ * 
+ * 
+ * @returns {*} method
+ * @memberof GetEvents
+ */
+render() {  
+  const { events } = this.props;
   return (
-    <div className="row">
-      <div className="container" id="event-page">{/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
-        <div className="row">
-          <div className="col-sm-12">
-              <h1 className=" head1 text-center">Find Your Next Event</h1>
-              <p id="p-head" className="head1 text-center">Popular events in Lagos</p>
-              <hr />
-              <form className="text-right" method='POST' action='#'>
-                <p className="search-font">Looking for a particular event? <br /> enter your search below </p>
-                <input id="event-search" type="text" name="search" placeholder="Enter Your Search Here..." />
-              </form>						
+    <div>
+      <NavBarOne />
+      <div className="container" id="myevent">
+        <div className="row">          
+          <div className="container" >{/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
+            <div className="row">
+              <div className="col-sm-12">
+                  <h1 className=" head1 text-center">My Events</h1>
+                  <p id="p-head" className="head1 text-center">
+                    Check your pending events below.
+                  </p>
+                  <hr />					
+              </div>
+            </div>
+          </div>{/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
+          <div className="container" >			
+            <div className="row">
+            {events.map((event) => {
+              return (
+              <div className="col-sm-4" key={event.id}>
+              <div className="card-deck cont-body" id="card-body" >
+                <div className="card" style={{height: "10rem"}}>
+                  <a href="event.html"><img className="card-img-top" src="https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg" alt="Card image cap" /></a>
+                  <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
+                    <h5 className="card-title even-font">
+                      <span className="">Event: </span>
+                      {event.title}
+                    </h5>
+                    <p className=" even-font">
+                        <span>Description: </span>
+                      {event.description}</p>
+                    <p className="card-title even-font">
+                        <span>DATE: </span>
+                      {event.date}</p>
+                    <p className=" even-font">
+                        <span>LOCATION: </span>
+                      {event.center}</p>
+                    <p className="card-text">
+                        <span>tags:  </span>
+                      <small className=" event-tag">#{event.type} event</small></p>
+                  </div>              
+                </div>
+              </div>
+            </div>
+              )
+            })}				
+            </div>			
           </div>
         </div>
-      </div>{/* END BODY-HEADER WITH SEARCH FORM  */}
-    
-    
-    <div className="container" >			
-        <div className="row">
-          <div className="col-sm-9">
-            <div className="card-deck" id="cadcad-body" >
-              <div className="card" id="card1" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/media/images/events-center.jpg" alt="Card image cap" /></a>
-                <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
-                  <h5 className="card-title even-font">
-                    <span >Event:</span>
-                    FELABRATION!
-                  </h5>
-                  <p className="card-title date-font">
-                      <span>DATE:</span>
-                    SAT. DEC 18 9:00 PM</p>
-                  <p className=" location-font">
-                      <span>LOCATION:</span>
-                    Ikeja Shrine</p>
-                  <p className="card-text">
-                      <span>tags:</span>
-                    <small className="text-muted">#Shrine</small></p>
-                </div>              
-              </div>
-              <div className="card" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/media/images/events-center.jpg" alt="Card image cap" /></a>
-                <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
-                  <h5 className="card-title even-font">
-                    <span className="">Event:</span>
-                    FELABRATION!
-                  </h5>
-                  <p className="card-title date-font">
-                      <span>DATE:</span>
-                    SAT. DEC 18 9:00 PM</p>
-                  <p className=" location-font">
-                      <span>LOCATION:</span>
-                    Ikeja Shrine</p>
-                  <p className="card-text">
-                      <span>tags:</span>
-                    <small className="text-muted">#Shrine</small></p>
-                </div>              
-              </div>
-              <div className="card" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/components/images/events-center.jpg" alt="Card image cap" /></a>
-                <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
-                  <h5 className="card-title even-font">
-                    <span className="">Event:</span>
-                    FELABRATION!
-                  </h5>
-                  <p className="card-title date-font">
-                      <span>DATE:</span>
-                    SAT. DEC 18 9:00 PM</p>
-                  <p className=" location-font">
-                      <span>LOCATION:</span>
-                    Ikeja Shrine</p>
-                  <p className="card-text">
-                      <span>tags:</span>
-                    <small className="text-muted">#Shrine</small></p>
-                </div>              
-              </div>
-            </div>
-          </div>				
-        </div>			
       </div>
-      <div className="container" id="cadcad">			
-        <div className="row">
-          <div className="col-sm-9">
-            <div className="card-deck"  >
-              <div className="card" id="card1" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/components/images/events-center.jpg" alt="Card image cap" /></a>
-                <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
-                  <h5 className="card-title even-font">
-                    <span >Event:</span>
-                    FELABRATION!
-                  </h5>
-                  <p className="card-title date-font">
-                      <span>DATE:</span>
-                    SAT. DEC 18 9:00 PM</p>
-                  <p className=" location-font">
-                      <span>LOCATION:</span>
-                    Ikeja Shrine</p>
-                  <p className="card-text">
-                      <span>tags:</span>
-                    <small className="text-muted">#Shrine</small></p>
-                </div>              
-              </div>
-              <div className="card" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/components/images/events-center.jpg" alt="Card image cap" /></a>
-                <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
-                  <h5 className="card-title even-font">
-                    <span className="">Event:</span>
-                    FELABRATION!
-                  </h5>
-                  <p className="card-title date-font">
-                      <span>DATE:</span>
-                    SAT. DEC 18 9:00 PM</p>
-                  <p className=" location-font">
-                      <span>LOCATION:</span>
-                    Ikeja Shrine</p>
-                  <p className="card-text">
-                      <span>tags:</span>
-                    <small className="text-muted">#Shrine</small></p>
-                </div>              
-              </div>
-              <div className="card" style={{height: "10rem"}}>
-                <a href="event.html"><img className="card-img-top" src="./src/components/images/events-center.jpg" alt="Card image cap" /></a>
-                <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
-                  <h5 className="card-title even-font">
-                    <span className="">Event:</span>
-                    FELABRATION!
-                  </h5>
-                  <p className="card-title date-font">
-                      <span>DATE:</span>
-                    SAT. DEC 18 9:00 PM</p>
-                  <p className=" location-font">
-                      <span>LOCATION:</span>
-                    Ikeja Shrine</p>
-                  <p className="card-text">
-                      <span>tags:</span>
-                    <small className="text-muted">#Shrine</small></p>
-                </div>              
-              </div>
-            </div>
-          </div>				
-        </div>			
+      <div id="card-body1">
       </div>
-    </div>	
+      <Footer />
+    </div>
   );
+  }
 }
+
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch: (action) => dispatch(action)
+  }
+};
+const mapStateToProps = (state) => {
+  return {
+    events: state.eventReducer
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(GetEvents);

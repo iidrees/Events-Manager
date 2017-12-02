@@ -56,7 +56,7 @@ export class Event {
           }))
           .catch(err => res.status(400).send({
             status: 'Unsuccessful',
-            message: err.message
+            message: err.errors[0].message
           }));
       });
   }
@@ -106,7 +106,7 @@ export class EventUpdate {
           .update({
             title: title || event.title,
             description: description || event.description,
-            date,
+            date: date || event.date,
             time: time || event.time,
             center: center || event.center,
             type: type || event.type
@@ -116,12 +116,12 @@ export class EventUpdate {
             message: 'Event updated successfully',
             data: updatedEvent
           }))
-          .catch(err => res.send(err.message));
+          .catch(err => res.send(err.errors[0].message));
       })
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Please ensure you are entering a value',
-        data: err
+        
       }));
   }
 }
@@ -167,7 +167,7 @@ export class EventDelete {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'No such event is available',
-        data: err
+        
       }));
   }
 }
@@ -210,5 +210,42 @@ export class GetEvent {
         status: 'Unsuccessful',
         message: 'No such event is available'
       }));
+  }
+}
+
+/**
+ * 
+ * 
+ * @export
+ * @class GetAllEvents
+ */
+export class GetAllEvents {
+  /**
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {*} JSON
+   * @memberof GetAllEvents
+   */
+  static getAllEvents(req, res) {
+    const { id } = req.decoded;
+    return Events
+      .findAll({
+        where: {
+          userId: id,
+        }
+      }).then((events) => {
+        if (events.length === 0) {
+          return res.status(404).send({
+            status: 'Unsuccessful',
+            message: 'No Event(s) Found'
+          });
+        }
+        return res.status(200).send({
+          status: 'Success',
+          message: 'These are your Events',
+          data: events
+        });
+      });
   }
 }

@@ -21,13 +21,20 @@ export class UserSignup {
     const { name, email, confirmPassword } = req.body;
     let { password } = req.body;
     /* Checks password */
+    if ( name === undefined ||  email === undefined || 
+       password === undefined ||  confirmPassword === undefined ) {
+      return res.status(400).send({
+        status: 'Unsuccessful',
+        message: 'Please enter the required input in all required fields'
+      });
+    }
     if (validator.isEmpty(password + '') || password === undefined) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Please enter a password'
       });
     }
-    if (!validator.equals('' + password.toLowerCase().trim(),'' + confirmPassword.toLowerCase().trim())) {
+    if (!validator.equals(  password === undefined ||'' + password.toLowerCase().trim(),'' + confirmPassword.toLowerCase().trim())) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Your password do not match'
@@ -98,6 +105,13 @@ export class UserSignin {
      */
 
     const { email, password } = req.body;
+    if (  email === undefined || 
+      password === undefined  ) {
+     return res.status(400).send({
+       status: 'Unsuccessful',
+       message: 'Please enter a value'
+     });
+   }
     if (validator.isEmpty(''+password) || password === undefined) {
       return res.status(400).send({
         status: 'Unsuccessful',

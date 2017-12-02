@@ -13,6 +13,7 @@
     "start:prod": "node server/lib/server.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report",
+    "lint": "node_modules/.bin/eslint client/src",
     "seq:drop": "sequelize db:migrate:undo:all",
     "seq:create": "sequelize db:migrate",
     "seq:elecreate": "sequelize db:migrate",
