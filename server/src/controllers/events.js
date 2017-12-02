@@ -121,7 +121,7 @@ export class EventUpdate {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Please ensure you are entering a value',
-        data: err.errors[0].message
+        
       }));
   }
 }
@@ -167,7 +167,7 @@ export class EventDelete {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'No such event is available',
-        data: err.errors[0].message
+        
       }));
   }
 }

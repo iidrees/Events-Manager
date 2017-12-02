@@ -578,7 +578,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then((res) => {
           assert.deepEqual(res.status, 400);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Validation error: Please enter a description');
+          assert.deepEqual(res.body.message, 'Please enter a description');
           done();
         });
     });
