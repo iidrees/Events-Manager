@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NavBarOne from './NavBarOne';
+import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
 import { getEvents  } from '../actions/eventAction';
 
@@ -31,7 +31,7 @@ render() {
   const { events } = this.props;
   return (
     <div>
-      <NavBarOne />
+      <NavBarMain />
       <div className="container" id="myevent">
         <div className="row">          
           <div className="container" >{/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}

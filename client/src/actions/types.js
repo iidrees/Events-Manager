@@ -19,3 +19,7 @@ export const CENTERS_ERRORS = 'CENTERS_ERRORS';
 export const GET_EVENTS = 'GET_EVENTS';
 export const EVENT_RETRIEVED = 'EVENT_RETRIEVED';
 export const EVENT_FAILED = 'EVENT_FAILED';
+
+// Add event type
+export const ADD_EVENT = 'ADD_EVENT';
+export const ADD_FAIL = 'ADD_FAIL';

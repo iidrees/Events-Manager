@@ -20,7 +20,7 @@ export const userSignup = (userData) => {
       method: 'post',
       url: 'http://localhost:5050/api/v1/users',
       data: userData,
-      credentials: true,
+      withCredentials: true,
     })
     .then((response) => {        
       localStorage.setItem('x-access-token', response.data.data.token);
@@ -29,7 +29,7 @@ export const userSignup = (userData) => {
     })
     .catch((err) => {
       dispatch({ type: 'SIGN_UP_FAIL', payload: err.response.data});
-      history.push('/');
+      history.push('/signup');
     });
   };
 };
@@ -56,7 +56,7 @@ export const userSignin = (userData) => {
       })
       .catch((err) => {// if there is an error, no access is given to user.
         dispatch({ type: 'SIGNED_IN_FAIL', payload: err });
-        history.push('/');
+        history.push('/signin');
       });
   };
 };

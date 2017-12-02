@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import axios from 'axios';
 import { history } from '../routes';
 
@@ -30,6 +30,7 @@ export const getEvents = () => {
     })
     .catch((err) => {// if any error is returned, it is shown to the user.
       dispatch({ type: EVENT_FAILED, err});
+      history.push('/getevents')
     })
   }
 }

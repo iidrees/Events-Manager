@@ -1,7 +1,8 @@
 /* Import action types from the action type module */
 import { 
   GET_EVENTS, EVENT_RETRIEVED,
-   EVENT_FAILED 
+   EVENT_FAILED, 
+   ADD_EVENT
   } 
 from '../actions/types';
 

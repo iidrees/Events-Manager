@@ -19,7 +19,7 @@ class Signup extends React.Component {
 
   render() {
 		const { status } = this.props;
-		console.log(status);
+		
 
     return (
         <div>
