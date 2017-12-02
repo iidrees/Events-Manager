@@ -12,14 +12,14 @@ class Signup extends React.Component {
 	}
 	onSubmit = (e) => {
 		e.preventDefault();
-		console.log("HERE");
 		let userData = this.state;
 		const { dispatch } = this.props;
 		return dispatch(userSignup(userData))
 	}
 
   render() {
-		//const { errors } = this.state;
+		const { status } = this.props;
+		
 
     return (
         <div>
@@ -34,6 +34,11 @@ class Signup extends React.Component {
 										<p className="signup-text">enter your name, email and password to Sign-up </p>
 								</div>
 						</div>
+						{(status.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+						<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+	<strong>{status.message}.</strong></div>}
 						<div className="row">
 								<div className="col-md-3 field-label-responsive">
 										<label htmlFor="name">Name</label>
@@ -122,9 +127,14 @@ class Signup extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+	return {
+		status: state.userReducer
+	}
+}
  const mapDispatchToProps = (dispatch) => {
 	 return {
 		 dispatch: (action) => dispatch(action)
 	 }
  };
-export default connect(null, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

@@ -40,6 +40,20 @@ class Signin extends React.Component {
 		return (
 			<div>
 				<NavBarOne />
+				<div>
+          {(this.props.status.status === 'Unsuccessful' ) && <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <strong>{this.props.status.message}.</strong></div>}
+          </div>
+          <div>	
+            {(status.status === 'Success') && <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Well done!</strong>{status.message}.</div>}
+            </div>
 					<div id="form-signin" className="container">
 						<form className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} action="#">
 								<div className="row">
@@ -126,7 +140,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
 	return {
-		signedin: state.userReducer
+		signedin: state.userReducer,
+		status: state.userReducer
 	}
 }
 

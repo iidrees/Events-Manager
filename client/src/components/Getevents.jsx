@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import NavBarOne from './NavBarOne';
+import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
 import { getEvents  } from '../actions/eventAction';
 
@@ -31,7 +31,7 @@ render() {
   const { events } = this.props;
   return (
     <div>
-      <NavBarOne />
+      <NavBarMain />
       <div className="container" id="myevent">
         <div className="row">          
           <div className="container" >{/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
@@ -46,7 +46,7 @@ render() {
             </div>
           </div>{/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
           <div className="container" >			
-            <div className="row">
+              <div className="row">            
             {events.map((event) => {
               return (
               <div className="col-sm-4" key={event.id}>
@@ -96,7 +96,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    events: state.eventReducer
+    events: state.eventReducer,
+    status: state.userReducer
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(GetEvents);

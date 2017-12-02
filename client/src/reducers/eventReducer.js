@@ -1,7 +1,8 @@
 /* Import action types from the action type module */
 import { 
   GET_EVENTS, EVENT_RETRIEVED,
-   EVENT_FAILED 
+   EVENT_FAILED, 
+   ADD_EVENT
   } 
 from '../actions/types';
 
@@ -12,7 +13,7 @@ export default (state = initialState, action) => {
     case  GET_EVENTS:
       return action.events.data.data;
     case EVENT_FAILED:
-      return err.data
+      return action.err.data
     default:
      return state;
   }

@@ -57,30 +57,30 @@ componentWillMount() {
                     <a href="centerDetails.html"><img className="card-img-top" src="https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg" alt="Card image cap" /></a>
                     <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
                       <h5 className="card-title even-font">
-                        <span  className="all-centers-font">Center:</span>
+                        <span  className="all-centers-font">Center: </span>
                        {center.name}
                       </h5>
                       <p className="card-title date-font">
-                          <span className="all-centers-font">STATUS:</span>
+                          <span className="all-centers-font">STATUS: </span>
                         {center.status}</p>
                       <p className=" location-font">
-                          <span  className="all-centers-font">LOCATION:</span>
+                          <span  className="all-centers-font">LOCATION: </span>
                         {center.location}</p>
                         
                       <p className=" location-font">
-                          <span  className="all-centers-font">Description:</span>
+                          <span  className="all-centers-font">Description: </span>
                         {center.description}</p> 
 
                       <p className=" location-font">
-                          <span  className="all-centers-font">ADDRESS:</span>
+                          <span  className="all-centers-font">ADDRESS: </span>
                         {center.address}</p>
 
                       <p className=" location-font">
-                          <span  className="all-centers-font">OWNER:</span>
+                          <span  className="all-centers-font">OWNER: </span>
                         {center.owner}</p>
 
                       <p className=" location-font">
-                          <span  className="all-centers-font">CAPACITY:</span>
+                          <span  className="all-centers-font">CAPACITY: </span>
                         {center.capacity}</p>
                     </div>              
                   </div>
