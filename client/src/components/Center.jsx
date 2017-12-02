@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
-import  { getCenters }  from '../actions/getCentersAction'
+import  getCenters   from '../actions/getCentersAction'
 
 
 /**

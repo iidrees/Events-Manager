@@ -13,3 +13,9 @@ export const SIGN_IN_FAIL = 'SIGN_IN_FAIL';
 export const GET_ALL_CENTERS = 'GET_ALL_CENTERS';
 export const CENTERS_SUCCESS = 'CENTERS_SUCCESS';
 export const CENTERS_ERRORS = 'CENTERS_ERRORS';
+
+
+// Get all events type
+export const GET_EVENTS = 'GET_EVENTS';
+export const EVENT_RETRIEVED = 'EVENT_RETRIEVED';
+export const EVENT_FAILED = 'EVENT_FAILED';

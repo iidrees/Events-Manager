@@ -14,10 +14,10 @@ export const history = createBrowserHistory();
 export const Routes = () => {
   return (
       <Switch>
-        <Route exact path='/' component={Signup}/>
+        <Route exact path='/signup' component={Signup}/>
         <Route exact path='/getcenters' component={Center}/>
         <Route exact path='/signin' component={Signin}/>
-        <Route exact path='/getevents' component={Getevents}/>
+        <Route exact path='/' component={Getevents}/>
         <Route exact path='/myevents' component={Myevents} />
       </Switch>
   )

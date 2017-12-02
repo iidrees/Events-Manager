@@ -20,11 +20,13 @@ export const userSignup = (userData) => {
       method: 'post',
       url: 'http://localhost:5050/api/v1/users',
       data: userData,
-      withCredentials: true,
+      credentials: true,
     })
-      .then((response) => {
+      .then((response) => {        
+        localStorage.setItem(token, response.data.data.token);
+        // console.log( 'this is from user signup',localStorage.getItem(token));
         dispatch({ type: SIGNED_UP, payload: response.data });
-        history.push('/getEvents');
+        history.push('/getevents');
       })
       .catch((err) => {
         dispatch({ type: 'SIGN_UP_FAIL', payload: err });
@@ -37,18 +39,22 @@ export const userSignin = (userData) => {
   return (dispatch) => {
     dispatch({ type: 'SIGN_IN' });
     axios({
-      method: 'post',
+      method: 'POST',
       url: 'http://localhost:5050/api/v1/users/login',
       data: userData,
       withCredentials: true,
+      
     })
       .then((response) => {
+        // console.log(response.data.data.token)
+        localStorage.setItem('x-access-token', response.data.data.token);
+        console.log( 'this is from user signup',localStorage.getItem('x-access-token'));
         dispatch({ type: SIGNED_IN, payload: response.data });
-        history.push('/login');
+        history.push('/getevents');
       })
       .catch((err) => {
         dispatch({ type: 'SIGNED_IN_FAIL', payload: err });
-        history.push('/login');
+        history.push('/');
       });
   };
 };

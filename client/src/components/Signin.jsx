@@ -124,8 +124,13 @@ const mapDispatchToProps = (dispatch) => {
 		dispatch: (action) => dispatch(action)
 	}
 };
+const mapStateToProps = (state) => {
+	return {
+		signedin: state.userReducer
+	}
+}
 
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(Signin)
