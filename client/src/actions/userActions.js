@@ -1,3 +1,4 @@
+/* Import dependencies and Modules */
 import axios from 'axios';
 import { history } from '../routes';
 
@@ -24,7 +25,6 @@ export const userSignup = (userData) => {
     })
       .then((response) => {        
         localStorage.setItem(token, response.data.data.token);
-        // console.log( 'this is from user signup',localStorage.getItem(token));
         dispatch({ type: SIGNED_UP, payload: response.data });
         history.push('/getevents');
       })
@@ -35,24 +35,27 @@ export const userSignup = (userData) => {
   };
 };
 
+/**
+ * Axios will help make POST request to signin a user
+ * @export {function}
+ * @param {any} userData
+ * @returns {JSON} userData
+ */
 export const userSignin = (userData) => {
-  return (dispatch) => {
+  return (dispatch) => {// dispatcher sends action to userReducer
     dispatch({ type: 'SIGN_IN' });
-    axios({
+    axios({// axios request is made
       method: 'POST',
       url: 'http://localhost:5050/api/v1/users/login',
       data: userData,
-      withCredentials: true,
-      
+      withCredentials: true,      
     })
-      .then((response) => {
-        // console.log(response.data.data.token)
+      .then((response) => {// the response is used to let user access protected resource
         localStorage.setItem('x-access-token', response.data.data.token);
-        console.log( 'this is from user signup',localStorage.getItem('x-access-token'));
         dispatch({ type: SIGNED_IN, payload: response.data });
         history.push('/getevents');
       })
-      .catch((err) => {
+      .catch((err) => {// if there is an error, no access is given to user.
         dispatch({ type: 'SIGNED_IN_FAIL', payload: err });
         history.push('/');
       });

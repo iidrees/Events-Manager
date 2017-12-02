@@ -1,8 +1,12 @@
-import { SIGN_UP, SIGNED_UP, SIGN_UP_FAIL, SIGN_IN,
-  SIGNED_IN, SIGN_IN_FAIL } from '../actions/types';
+/* Import types from action types */
+import { 
+  SIGN_UP, SIGNED_UP, 
+  SIGN_UP_FAIL, SIGN_IN,
+  SIGNED_IN, SIGN_IN_FAIL 
+} from '../actions/types';
 
 
-const initialState = {
+const initialState = { /* The initial state of the component */
   authenticated: false,
   status: '',
   user: {
@@ -14,7 +18,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
+  switch (action.type) {/* The reducer listening for action to update store */
     case SIGN_UP: {
       return {
         ...state
