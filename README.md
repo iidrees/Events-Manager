@@ -28,6 +28,7 @@ This is a javascript application built with [**Express**](https://expressjs.com/
 
 This is a project in three parts, and the first part is to design a UI Template to be hosted using Github Pages.
 To view the UI template for the Events-Manager web application on Github Pages, you should click on this link [Events-Manager](https://iidrees.github.io/Events-Manager/template/landing.html).
+
 To get more information on how to use the API, a good place to start would be here: [Events-Manager Doc](https://swaggerhub.com/apis/events-manager/Events-manager/1.0.0) on swaggerhub.
 
 
@@ -44,7 +45,7 @@ rrent-state)
 
 1. Install [**Node JS**](https://nodejs.org/en/).
 1. Install [**Postgres**](https://www.postgresql.org/) .
-1. Clone the [**repository here**](https://github.com/kenoseni/Events-Manager-Olusola-Oseni)
+1. Clone the [**repository here**](https://github.com/iidrees/Events-Manager)
 1. [**cd**] into the root of the **project directory**.
 1. Run `npm install` on the terminal to install Dependecies
 1. Install sequelize-cli, Create Postgresql database, Navigate to server directory and run migrations:
