@@ -11,11 +11,11 @@ This is a project divided into three parts:
 
 1. The Templates:
     
-    * This part holds the UI or template for the whole project.
+    * This part holds the UI or template and mock-up design for the client-side.
  
 2. The Server:
 
-    * This part holds the basic functionalities that will make the UI interactive for users
+    * This part holds the API that will be consumed by the user 
 
 3. The Client:
 
@@ -27,7 +27,9 @@ This is a project divided into three parts:
 This is a javascript application built with [**Express**](https://expressjs.com/) framework on the nodejs platform. Authentication of users is done via [**JSON Web Tokens**](https://jwt.io/).
 
 This is a project in three parts, and the first part is to design a UI Template to be hosted using Github Pages.
-To view the UI template for the Events-Manager web application on Github Pages, you should click on this link [Events-Manager](https://iidrees.github.io/Events-Manager/template/landing.html)
+To view the UI template for the Events-Manager web application on Github Pages, you should click on this link [Events-Manager](https://iidrees.github.io/Events-Manager/template/landing.html).
+To get more information on how to use the API, a good place to start would be here: [Events-Manager Doc](https://swaggerhub.com/apis/events-manager/Events-manager/1.0.0) on swaggerhub.
+
 
 ### Prerequisites
 To view the UI Template, please use a web browser, preferably, Google Chrome and ensure you have a very good internet connection for a good web experience.
@@ -114,15 +116,20 @@ Event Manager consists of the following features:
 Server side testing is achieved through use of `supertest`, `mocha` and `chai` packages. `supertest` is used to make requests to the api and `mocha` is the testing framework and `chai` is the exception library. They will both be installed when you run `npm install` and the tests will run when you run `npm test`.
 
 ### Technology Stack
-**UI & Templates**
+**UI, React & Templates**
 * HTML/CSS
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Twitter Bootstrap](getbootstrap.com) / [Font Awesome](fontawesome.io/icons/)
+* [Reactjs](reactjs.org)
+
 
 **Server Side**
 1. NodeJs
 2. Express
 3. Sequelize
+4. [Swaggerhub](https://swaggerhub.com)
+
+
 
 
 

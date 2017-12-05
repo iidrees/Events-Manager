@@ -16,8 +16,6 @@ import router from './routes/routes';
 const app = express();
 const compiler = webpack(config);
 app.use(cors({credentials: true, origin: true}));
-// serve static files 
-app.use('/', express.static(path.join(__dirname, 'client/dist')));
 
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
@@ -36,17 +34,20 @@ app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }))
 
+
 // route
+app.get('/home', (req, res) => {
+  res.status(200).send({ message: 'Welcome to the Events Manager API' });
+});
+// router to the API
+app.use('/api/v1/', router);
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
 });
-
-// router to the API
-app.use('/api/v1/', router);
-
 
 // set port 
 const port = process.env.PORT || 5050;
