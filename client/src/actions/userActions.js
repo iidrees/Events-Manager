@@ -18,7 +18,7 @@ export const userSignup = (userData) => {
   return (dispatch) => {
     axios({
       method: 'post',
-      url: 'http://localhost:5050/api/v1/users',
+      url: `http://localhost:${process.env.PORT}/api/v1/users`,
       data: userData,
       withCredentials: true,
     })
@@ -45,7 +45,7 @@ export const userSignin = (userData) => {
     dispatch({ type: 'SIGN_IN' });
     axios({// axios request is made
       method: 'POST',
-      url: 'http://localhost:5050/api/v1/users/login',
+      url: '/api/v1/users/login',
       data: userData,
       withCredentials: true,      
     })

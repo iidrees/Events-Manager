@@ -18,7 +18,7 @@ export const getEvents = () => {
   return (dispatch) => {// axios request is made
     axios({
       method: 'GET',
-      url: 'http://localhost:5050/api/v1/events',
+      url: '/api/v1/events',
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },

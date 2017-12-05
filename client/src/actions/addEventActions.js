@@ -19,7 +19,7 @@ export const addEvent = (eventData) => {
   return (dispatch) => {
     axios({
       method: 'post',
-      url: 'http://localhost:5050/api/v1/events',
+      url: '/api/v1/events',
       data: eventData,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')

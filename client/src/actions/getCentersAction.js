@@ -17,7 +17,7 @@ const getCenters = () => {// function to get all centers
   return (dispatch) => {// axios request is made
     axios({
       method: 'GET',
-      url: 'http://localhost:5050/api/v1/centers'
+      url: '/api/v1/centers'
     })
     .then((centers) => {// when response is recieved
       dispatch({ type: CENTERS_SUCCESS, centers })

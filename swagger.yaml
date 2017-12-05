@@ -1,0 +1,444 @@
+---
+swagger: "2.0"
+info:
+  description: "An Events Manager API that helps events planners plan their events."
+  version: "1.0.0"
+  title: "Events Manager"
+host: "intense-ocean-37313.herokuapp.com"
+basePath: "/api/v1"
+schemes:
+- "https"
+paths:
+  /users:
+    post:
+      tags:
+      - "Users"
+      summary: "Creates a new user"
+      description: "It is a sign-up endpoint that allows users create an account."
+      parameters:
+      - in: "body"
+        name: "user"
+        description: "The user to create."
+        required: true
+        schema:
+          $ref: "#/definitions/user"
+      responses:
+        201:
+          description: "Returns a status, message, user name, id and a token"
+          schema:
+            type: "object"
+            properties: {}
+        400:
+          description: "Returns a response stating why the request sent was bad and\
+            \ how to rectify it."
+  /users/login:
+    post:
+      tags:
+      - "Users"
+      summary: "Logs in a new user to their account"
+      description: "Allows a user whose token has expired login again"
+      parameters:
+      - in: "body"
+        name: "user"
+        description: "The user to be logged in"
+        required: true
+        schema:
+          $ref: "#/definitions/user_1"
+      responses:
+        200:
+          description: "OK login was successful and the user id and token are returned"
+        400:
+          description: "returned when user enters imput of the wrong data type or\
+            \ enters incomplete details"
+        403:
+          description: "Incorrect Login Credentials"
+        404:
+          description: "returned when user does not exist in the database"
+  /centers:
+    get:
+      tags:
+      - "Centers"
+      description: "Returns all centers"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "returns all centers created"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/inline_response_200"
+    post:
+      tags:
+      - "Centers"
+      description: "creates a new center"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "center"
+        description: "center object used to create a center"
+        required: true
+        schema:
+          $ref: "#/definitions/center"
+      responses:
+        201:
+          description: "Center successfully created"
+        400:
+          description: "Center could not be added because of bad user input."
+        403:
+          description: "You are not permitted to create a center because you are not\
+            \ an admin"
+  /centers/{centerId}:
+    get:
+      tags:
+      - "Centers"
+      description: "Returns a list of all centers in the database"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "centerId"
+        in: "path"
+        description: "a center's id is used to retrieve a center from the database"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "An array of centers"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/inline_response_200"
+    put:
+      tags:
+      - "Centers"
+      description: "updates a single center"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "centerId"
+        in: "path"
+        description: "Fields for center resource"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "center"
+        description: "center object used to create a center"
+        required: true
+        schema:
+          $ref: "#/definitions/center_1"
+      responses:
+        201:
+          description: "successfully updated"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/inline_response_200"
+        400:
+          description: "Invalid request"
+        403:
+          description: "Unauthorized"
+        404:
+          description: "Centers Not Found"
+    delete:
+      tags:
+      - "Centers"
+      description: "deletes a single center"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "centerId"
+        in: "path"
+        description: "center id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successfully deleted"
+        400:
+          description: "returned when wrong parameter input is supplied"
+        403:
+          description: "Unauthorised to delete the center. You can only delete a center\
+            \ you created"
+        404:
+          description: "returned when the center with that centerId is not in the\
+            \ database"
+  /events:
+    get:
+      tags:
+      - "Events"
+      description: "Returns all events created by a user"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "returns all events created"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/inline_response_200_1"
+        403:
+          description: "returns unauthorised when an authenticated user tries to get\
+            \ events they did not create"
+        404:
+          description: "returned when a user tries to get an event when they have\
+            \ not created any event."
+    post:
+      tags:
+      - "Events"
+      description: "Returns all events created by a user"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "event"
+        description: "event object"
+        required: true
+        schema:
+          $ref: "#/definitions/event"
+      responses:
+        201:
+          description: "returns a Event added successfully response"
+        400:
+          description: "returned when a user sent a bad request to the server"
+        403:
+          description: "returns unauthorised when a user tries to create an event\
+            \ without authentication"
+        404:
+          description: "returned when a user tries to create an event but the center\
+            \ is not available yet"
+  /events/{eventId}:
+    get:
+      tags:
+      - "Events"
+      description: "Returns the details of a particular event"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "an event's id is used to retrieve an event from the database"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "An object is returned if the request is successful"
+          schema:
+            $ref: "#/definitions/inline_response_200_1"
+        400:
+          description: "returned when user sends an invalid or bad request parameter"
+        404:
+          description: "returned when event with the supplied id is not available"
+    put:
+      tags:
+      - "Events"
+      description: "Returns the details of a particular event"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "an event's id is used to retrieve an event from the database"
+        required: true
+        type: "integer"
+      - in: "body"
+        name: "event"
+        description: "event object used to update a center"
+        required: true
+        schema:
+          $ref: "#/definitions/event_1"
+      responses:
+        201:
+          description: "An object is returned if the request to edit and modify was\
+            \ successful"
+          schema:
+            $ref: "#/definitions/inline_response_200_1"
+        400:
+          description: "returned when user sends an invalid or bad request parameter\
+            \ or bad request in the body."
+        404:
+          description: "returned when event with the supplied id is not available"
+    delete:
+      tags:
+      - "Events"
+      description: "deletes a single event"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "An event's id is used to find and delete the event"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "successfully deleted"
+        400:
+          description: "returned when wrong parameter input is supplied"
+        403:
+          description: "Unauthorised access to the resource. You can only delete an\
+            \ event you created"
+        404:
+          description: "returned when the event with that eventId is not in the database"
+definitions:
+  user_1:
+    required:
+    - "email"
+    - "password"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+  center_1:
+    required:
+    - "address"
+    - "capacity"
+    - "description"
+    - "location"
+    - "name"
+    - "owner"
+    - "status"
+    properties:
+      name:
+        type: "string"
+      location:
+        type: "string"
+      status:
+        type: "string"
+      owner:
+        type: "string"
+      address:
+        type: "string"
+      capacity:
+        type: "integer"
+      description:
+        type: "string"
+  center:
+    required:
+    - "address"
+    - "capacity"
+    - "description"
+    - "location"
+    - "name"
+    - "owner"
+    - "status"
+    properties:
+      name:
+        type: "string"
+      location:
+        type: "string"
+      status:
+        type: "string"
+      owner:
+        type: "string"
+      address:
+        type: "string"
+      capacity:
+        type: "integer"
+      description:
+        type: "string"
+  inline_response_200_1:
+    properties:
+      title:
+        type: "string"
+      date:
+        type: "string"
+      time:
+        type: "string"
+      center:
+        type: "string"
+      type:
+        type: "string"
+      description:
+        type: "string"
+    example:
+      date: "date"
+      center: "center"
+      description: "description"
+      time: "time"
+      title: "title"
+      type: "type"
+  event_1:
+    required:
+    - "center"
+    - "date"
+    - "description"
+    - "time"
+    - "title"
+    - "type"
+    properties:
+      title:
+        type: "string"
+      description:
+        type: "string"
+      date:
+        type: "string"
+      time:
+        type: "string"
+      center:
+        type: "string"
+      type:
+        type: "string"
+  inline_response_200:
+    properties:
+      name:
+        type: "string"
+      location:
+        type: "string"
+      status:
+        type: "string"
+      owner:
+        type: "string"
+      address:
+        type: "string"
+      capacity:
+        type: "string"
+      description:
+        type: "string"
+    example:
+      owner: "owner"
+      address: "address"
+      name: "name"
+      description: "description"
+      location: "location"
+      status: "status"
+      capacity: "capacity"
+  event:
+    required:
+    - "center"
+    - "date"
+    - "description"
+    - "time"
+    - "title"
+    - "type"
+    properties:
+      title:
+        type: "string"
+      date:
+        type: "string"
+      time:
+        type: "string"
+      center:
+        type: "string"
+      type:
+        type: "string"
+      description:
+        type: "string"
+  user:
+    required:
+    - "confirmPassword"
+    - "email"
+    - "name"
+    - "password"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      confirmPassword:
+        type: "string"

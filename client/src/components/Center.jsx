@@ -51,7 +51,7 @@ componentWillMount() {
               <div className="row">
               {centers.map((center) => {
                 return (
-                <div className="col-sm-12" key={center.id}>
+                <div className="col-sm-4" key={center.id}>
                 <div className="card-deck cont-body" id="card-center1" >
                   <div className="card" id="card1" style={{height: "10rem"}}>
                     <a href="centerDetails.html"><img className="card-img-top" src="https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg" alt="Card image cap" /></a>
