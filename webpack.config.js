@@ -1,23 +1,31 @@
 const webpack = require('webpack');
 const path = require('path');
 
-require('dotenv').config();
-
 module.exports = {
   entry: [
     path.join(__dirname, '/client/src/app.js')
   ],
   output: {
-    path: path.join(__dirname, '/client/dist/'),
+    path: path.join(__dirname, '/client/dist'),
     publicPath: '/dist/', // remember to change it to static to run from server
     filename: 'bundle.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.PORT': JSON.stringify(process.env.PORT)
-    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi] // skip pre-minified libs
+    })
   ],
   module: {
     loaders: [{
@@ -39,7 +47,7 @@ module.exports = {
   },
   devServer: {
     port: 8000,
-    contentBase: 'client/dist/index.html',
+    contentBase: 'client/',
     proxy: {
       '/api/v1/*': {
         target: 'http://localhost:5050'
