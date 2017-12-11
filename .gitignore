@@ -21,5 +21,12 @@ template/js/bootstrap.min.js
 template/js/jquery-3.2.1.js
 template/js/jquery-3.2.1.min.js
 template/fonts/webfontkit-20171114-134325
-
 node_modules/
+.env
+.nyc_output
+coverage/
+.env
+
+server/src/migrations/20171119012404-create-center.js
+server/src/migrations/20171119011057-create-user.js
+server/src/migrations/20171119220658-create-event.js
