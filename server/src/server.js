@@ -32,8 +32,8 @@ app.use(bodyParser.json({ type: 'application/json' }));
   hot: true,
   noInfo: false,
   publicPath: config.output.publicPath
-})) */
-
+}))
+ */
 
 // route
 app.get('/home', (req, res) => {
@@ -47,8 +47,8 @@ app.use('/api/v1/', router);
 
 /* app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
-}); */
-
+});
+ */
 // set port 
 const port = process.env.PORT || 5050;
 
