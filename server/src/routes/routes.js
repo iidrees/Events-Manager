@@ -20,7 +20,7 @@ router.get('/centers', GetAllCenters.getAllCenters);
 router.use(auth.verifyUser);
 router.get('/events/:eventId', GetEvent.getEvent);
 router.get('/events', GetAllEvents.getAllEvents);
-router.post('/events', Event.postEvents);
+router.post('/events/:eventId', Event.postEvents);
 router.put('/events/:eventId', EventUpdate.updateEvent);
 router.delete('/events/:eventId', EventDelete.deleteEvent);
 router.post('/users/admin', Admin.addAdmin);
