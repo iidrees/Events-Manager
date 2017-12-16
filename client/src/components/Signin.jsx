@@ -37,31 +37,24 @@ class Signin extends React.Component {
 	 * @memberof Signin
 	 */
 	render() {
+		const { status } = this.props;
+		console.log(status)
 		return (
 			<div>
 				<NavBarOne />
-				<div>
-          {(this.props.status.status === 'Unsuccessful' ) && <div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <strong>{this.props.status.message}.</strong></div>}
-          </div>
-          <div>	
-            {(status.status === 'Success') && <div class="alert alert-success" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>Well done!</strong>{status.message}.</div>}
-            </div>
 					<div id="form-signin" className="container">
-						<form className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} action="#">
+						<form className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} >
 								<div className="row">
 										<div className="col-md-3"></div>
 										<div className="col-md-6">
 												<h2 className="signup-text">Welcome!</h2>
 												<hr />
 												<p className="signup-text">Please fill the form below to log into Events Manager</p>
+												{(status.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<strong>{status.message}.</strong></div>}
 										</div>
 								</div>
 								<div className="row">
