@@ -146,6 +146,8 @@ export class UserSignin {
           const payload = {
             id: user.id,
             admin: user.isAdmin,
+            role: user.role,
+            isSuperAdmin: user.isSuperAdmin,
             name: user.name,
             email: user.email
           };

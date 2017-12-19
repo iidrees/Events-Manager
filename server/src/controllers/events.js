@@ -21,14 +21,13 @@ export class Event {
       description,
       date,
       time,
-      center,
       type,
     } = req.body;
     const { id } = req.decoded;
     return Centers
       .findOne({
         where: {
-          name: center,
+          id: req.params.eventId,
         }
       })
       .then((venue) => {
@@ -44,7 +43,7 @@ export class Event {
             description,
             date,
             time,
-            center,
+            center: venue.name,
             type,
             userId: id,
             centerId: venue.id

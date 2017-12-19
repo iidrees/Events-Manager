@@ -23,7 +23,7 @@ export default class Center {
       capacity,
       description
     } = req.body;
-    const { id, admin } = req.decoded;
+    const { id, admin, isSuperAdmin } = req.decoded;
 
     if (admin === false) {
       return res.status(403).send({
