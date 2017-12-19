@@ -23,7 +23,7 @@ router.get('/events', GetAllEvents.getAllEvents);
 router.post('/events/:eventId', Event.postEvents);
 router.put('/events/:eventId', EventUpdate.updateEvent);
 router.delete('/events/:eventId', EventDelete.deleteEvent);
-router.post('/users/admin', Admin.addAdmin);
+router.put('/users/admin/:userId', Admin.addAdmin);
 router.post('/centers', Center.addCenter);
 router.put('/centers/:centerId', EditCenter.editCenter);
 router.delete('/centers/:centerId', CenterDelete.deleteCenter);
