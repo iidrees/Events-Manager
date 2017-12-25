@@ -64,7 +64,7 @@ class Addevents extends React.Component {
                 <input className="form-control" onChange={this.onChange}  name="title" id="form-event1" type="text" placeholder=""  />
               </div>
               <div className="form-group">
-                <label htmlFor="add-event" className=" home-para">Date event:</label>
+                <label htmlFor="add-event" className=" home-para">Date of event:</label>
                 <input className="form-control" onChange={this.onChange}  name="date" type="text" id="form-event2"placeholder="YY/MM/DD"  />
               </div>              
               <div className="form-group">
@@ -73,7 +73,15 @@ class Addevents extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="event-centers" className=" home-para">Center:</label>
-                <input className="form-control" onChange={this.onChange}  name="center" type="text" id="event-center1" placeholder="Enter the name of the event center"  />
+                {/* <input className="form-control" onChange={this.onChange}  name="center" type="text" id="event-center1" placeholder="Enter the name of the event center"  /> */}
+                <select className="form-control" id="event-center1" onChange={this.onChange}  name="center">
+                  <option className="home-para">Choose an event center</option>
+                  <option classNam="home-para">Afe Babalola Hall, UNILAG</option>
+                  <option className="home-para">Multi-purpose Hall, UNILAG</option>
+                  <option className="home-para">Muson Center, Lagos</option>
+                  <option className="home-para">Race Course, Lagos</option>
+                  <option className="home-para">National Theater, Lagos</option>
+                </select>
               </div>
               <div className="form-group">
                 <label htmlFor="event-details"  className=" home-para">Events description:</label>

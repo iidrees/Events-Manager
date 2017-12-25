@@ -11,7 +11,7 @@ export default () => {
 				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-myevents" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<a id="nav-logo" className="navbar-brand" href="#">Events Manager!</a>
+				<a id="nav-logo" className="navbar-brand" href="/">Events Manager!</a>
 				<div className="collapse navbar-collapse left" id="navbar-myevents">
 					<ul className="navbar-nav mr-auto ">
             <li className="nav-item">

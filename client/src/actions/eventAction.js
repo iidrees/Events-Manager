@@ -29,6 +29,7 @@ export const getEvents = () => {
       history.push('/getevents');
     })
     .catch((err) => {// if any error is returned, it is shown to the user.
+      console.log(err.response.data);
       dispatch({ type: EVENT_FAILED, err});
       history.push('/getevents')
     })
