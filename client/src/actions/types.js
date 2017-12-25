@@ -23,3 +23,7 @@ export const EVENT_FAILED = 'EVENT_FAILED';
 // Add event type
 export const ADD_EVENT = 'ADD_EVENT';
 export const ADD_FAIL = 'ADD_FAIL';
+
+// Get one events type
+export const GET_EVENT = 'GET_EVENT';
+export const EVENT_FAIL = 'EVENT_FAIL';

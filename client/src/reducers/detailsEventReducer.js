@@ -1,10 +1,5 @@
 /* Import action types from the action type module */
-import { 
-  GET_EVENTS, EVENT_RETRIEVED,
-   EVENT_FAILED, 
-   ADD_EVENT
-  } 
-from '../actions/types';
+import {  GET_EVENT,EVENT_FAIL  } from '../actions/types';
 
 const initialState = { /* The initial state of the component */
   authenticated: false,
@@ -15,18 +10,18 @@ const initialState = { /* The initial state of the component */
 
 export default (state = initialState, action) => {
   switch (action.type) {/* reducer listening for actions and update the store */
-    case  GET_EVENTS: {
-    console.log('this is the reducer',action.events.data);
+    case  GET_EVENT: {
+    console.log('this is the details reducer',action.event.data);
       return { 
         ...state,
         status: 'Success',
-        message: action.events.message,
-        ...action.events.data,
+        message: action.event.message,
+        ...action.event.data,
         authenticated: true
       }
     }
-    case EVENT_FAILED: {
-      console.log('this is the failed reducer',action.err.response.data)
+    case EVENT_FAIL: {
+      console.log('this is the failed details reducer',action.err.response.data)
       return  {
         ...state,
         status: 'Unsuccessful' || undefined,

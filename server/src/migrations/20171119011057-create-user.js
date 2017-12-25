@@ -25,6 +25,14 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },
+      isSuperAdmin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
+      role: {
+        type: Sequelize.STRING,
+        defaultValue: 'User'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

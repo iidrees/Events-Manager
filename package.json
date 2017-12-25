@@ -16,6 +16,8 @@
     "lint": "node_modules/.bin/eslint client/src",
     "seq:drop": "sequelize db:migrate:undo:all",
     "seq:create": "sequelize db:migrate",
+    "seq:seed": "sequelize db:seed:all",
+    "seq:unseed": "sequelize db:seed:undo:all",
     "seq:elecreate": "sequelize db:migrate",
     "watch": "webpack -d && webpack-dev-server --hot --inline",
     "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps"

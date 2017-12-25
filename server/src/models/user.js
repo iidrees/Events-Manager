@@ -38,6 +38,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
+    isSuperAdmin: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'User'
+    }
   });
   /* User associations */
   Users.associate = (model) => {

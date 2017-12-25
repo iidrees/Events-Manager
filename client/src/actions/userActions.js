@@ -18,7 +18,7 @@ export const userSignup = (userData) => {
   return (dispatch) => {
     axios({
       method: 'post',
-      url: `http://localhost:${process.env.PORT}/api/v1/users`,
+      url: '/api/v1/users',
       data: userData,
       withCredentials: true,
     })
@@ -55,7 +55,7 @@ export const userSignin = (userData) => {
         history.push('/getevents');
       })
       .catch((err) => {// if there is an error, no access is given to user.
-        dispatch({ type: 'SIGNED_IN_FAIL', payload: err });
+        dispatch({ type: SIGN_IN_FAIL, payload: err.response.data });
         history.push('/signin');
       });
   };

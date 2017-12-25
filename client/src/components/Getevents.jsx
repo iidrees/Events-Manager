@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -15,6 +16,7 @@ class GetEvents extends React.Component {
 /**
  * A method that lets a user get their events
  * @memberof GetEvents
+ * @returns {any} 
  */
 componentWillMount() {
     const { dispatch } = this.props;
@@ -28,7 +30,8 @@ componentWillMount() {
  * @memberof GetEvents
  */
 render() {  
-  const { events } = this.props;
+  const { events, status } = this.props;
+  console.log('this is the component', events.status, events.message)
   return (
     <div>
       <NavBarMain />
@@ -41,18 +44,28 @@ render() {
                   <p id="p-head" className="head1 text-center">
                     Check your pending events below.
                   </p>
-                  <hr />					
+                  <hr />
+                  {(events.status === 'Success' ) && <div className="alert alert-success" role="alert">
+												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+                        <strong>{events.message}.</strong></div>}
+                        {(events.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<strong>{events.message}.</strong></div>}
               </div>
             </div>
           </div>{/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
           <div className="container" >			
               <div className="row">            
-            {events.map((event) => {
+            {events.data.map((event) => {
               return (
               <div className="col-sm-4" key={event.id}>
               <div className="card-deck cont-body" id="card-body" >
                 <div className="card" style={{height: "10rem"}}>
-                  <a href="event.html"><img className="card-img-top" src="https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg" alt="Card image cap" /></a>
+                <Link to={`/eventdetails/${event.id}`} ><img className="card-img-top" src="https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg" alt="Card image cap" /></Link>
                   <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
                     <h5 className="card-title even-font">
                       <span className="">Event: </span>

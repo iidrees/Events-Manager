@@ -8,6 +8,7 @@ import Getevents from './components/Getevents.jsx';
 import Addevents from './components/Addevents.jsx';
 import Center from './components/Center.jsx';
 import Landing from './components/Landing.jsx';
+import eventDetails from './components/eventDetails.jsx';
 
 
 export const history = createBrowserHistory();
@@ -20,6 +21,7 @@ export const Routes = () => {
         <Route exact path='/signin' component={Signin}/>
         <Route exact path='/getevents' component={Getevents}/>
         <Route exact path='/addevents' component={Addevents} />
+        <Route exact path='/eventdetails/:id' component={eventDetails}/>
         <Route exact path='/' component={Landing} />
       </Switch>
   )

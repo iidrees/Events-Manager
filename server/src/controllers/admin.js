@@ -17,24 +17,40 @@ export default class Admin {
  */
   static addAdmin(req, res) {
     const { id, admin } = req.decoded;
+    const { userId } = req.params;
 
-
-    if (admin === true) {
+    if (admin === false) {
       return res.status(403).send({
         status: 'Unsuccessful',
-        message: 'You are already an admin. Please signin again.'
+        message: 'This user is already an Admin'
       });
     }
+    
     return Users
       .findOne({
         where: {
-          id,
-          isAdmin: admin,
+          id: userId,
         }
       })
-      .then(user => user
+      .then(user => {
+        console.log(user);
+        if (user.isSuperAdmin === true && user.isAdmin) {
+          return res.status(403).send({
+            status: 'Unsuccessful',
+            message: 'You are unauthorised to carry out this action',
+            data: {
+              name: user.name,
+              email: user.email,
+              admin: user.isAdmin,
+              role: user.role,
+              superAdmin: user.isSuperAdmin
+            }
+          })
+        }
+        return user
         .update({
           isAdmin: true,
+          role: 'Admin'
         })
         .then(updateUser => res.status(201).send({
           status: 'Success',
@@ -42,13 +58,19 @@ export default class Admin {
           data: {
             name: updateUser.name,
             email: updateUser.email,
-            admin: updateUser.isAdmin
+            admin: updateUser.isAdmin,
+            role: updateUser.role,
+            superAdmin: updateUser.isSuperAdmin
           }
         }))
         .catch(() => res.status(400).send({
           status: 'Unsuccessful',
           message: 'Admin creation failed'
-        })))
-      .catch(err => err.message);
+        }))})
+      .catch(err => res.status(404).send({
+        status: 'Unsuccessful',
+        message: 'Unable to find user, admin creation failed',
+        error: err.message
+      }));
   }
 }
