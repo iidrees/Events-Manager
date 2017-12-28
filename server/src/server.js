@@ -28,11 +28,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
-/* app.use(require('webpack-dev-middleware')(compiler, {
+app.use(require('webpack-dev-middleware')(compiler, {
   hot: true,
   noInfo: false,
   publicPath: config.output.publicPath
-})) */
+}))
 
 
 // route
@@ -45,9 +45,9 @@ app.use('/api/v1/', router);
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 
-/* app.get('*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
-}); */
+});
 
 // set port 
 const port = process.env.PORT || 5050;

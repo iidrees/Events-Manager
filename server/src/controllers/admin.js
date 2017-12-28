@@ -19,7 +19,7 @@ export default class Admin {
     const { id, admin } = req.decoded;
     const { userId } = req.params;
 
-    if (admin === false) {
+    if (admin === true) {
       return res.status(403).send({
         status: 'Unsuccessful',
         message: 'This user is already an Admin'

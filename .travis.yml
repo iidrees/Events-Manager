@@ -15,10 +15,16 @@ env:
 services:
   - postgresql
 
+cache:
+  directories:
+   - "node_modules"
+
 before_script:
   - psql -c "create database events_manager_test;" -U postgres
   - psql -c "create database events_manager;" -U postgres
   - NODE_ENV=development npm run seq:create 
+  - NODE_ENV=test npm run seq:drop
+  - NODE_ENV=test npm run seq:create 
 
 after_success:
   - NODE_ENV=development npm run coverage

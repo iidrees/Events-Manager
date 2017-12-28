@@ -8,10 +8,6 @@ export default (sequelize, DataTypes) => {
           args: true,
           msg: 'Please enter a CENTER NAME in the input field'
         }
-      },
-      unique: {
-        args: true,
-        msg: 'Please enter another Center Name'
       }
     },
     location: {

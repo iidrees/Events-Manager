@@ -27,7 +27,7 @@ export class Event {
     return Centers
       .findOne({
         where: {
-          id: req.params.eventId,
+          id: req.params.centerId,
         }
       })
       .then((venue) => {
