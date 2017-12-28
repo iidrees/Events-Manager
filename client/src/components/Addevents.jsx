@@ -1,17 +1,17 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
-import { addEvent } from '../actions/addEventActions';
+import { addEvent, getCenters } from '../actions/addEventActions';
+//import  getCenters  from '../actions/getCentersAction';
 
 
 /**
  * 
- * 
  * @class Addevents
- * @extends {React.Component}
+ * @extends { React.Component }
  */
 class Addevents extends React.Component {
 
@@ -26,7 +26,12 @@ class Addevents extends React.Component {
 		let eventData = this.state;
 		const { dispatch } = this.props;
 		return dispatch(addEvent(eventData));
-	}
+  }
+  /* eslint-disable */
+  componentDidMount() {
+    const { dispatch } = this.props;
+    return dispatch(getCenters());
+  }
 
   /**
    * 
@@ -35,10 +40,11 @@ class Addevents extends React.Component {
    * @memberof Addevents
    */
   render() {
-
+    
+    const { centers } = this.props;
   return (
     <div>
-      <NavBarMain />
+    <NavBarMain />
     <div className="container">
     <div className="row">
       <div className="container" id="add-event-header">
@@ -76,11 +82,11 @@ class Addevents extends React.Component {
                 {/* <input className="form-control" onChange={this.onChange}  name="center" type="text" id="event-center1" placeholder="Enter the name of the event center"  /> */}
                 <select className="form-control" id="event-center1" onChange={this.onChange}  name="center">
                   <option className="home-para">Choose an event center</option>
-                  <option classNam="home-para">Afe Babalola Hall, UNILAG</option>
-                  <option className="home-para">Multi-purpose Hall, UNILAG</option>
-                  <option className="home-para">Muson Center, Lagos</option>
-                  <option className="home-para">Race Course, Lagos</option>
-                  <option className="home-para">National Theater, Lagos</option>
+                  {(centers.map((center) => {
+                    
+                    return (<option key={center.id} value={center.id} className="home-para">{center.name}</option>)
+                  }))}
+                  
                 </select>
               </div>
               <div className="form-group">
@@ -118,7 +124,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     addevents: state.eventReducer,
-    status: state.userReducer
+    status: state.userReducer,
+    centers: state.centerReducer
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Addevents);
