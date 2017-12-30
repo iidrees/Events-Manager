@@ -27,3 +27,8 @@ export const ADD_FAIL = 'ADD_FAIL';
 // Get one events type
 export const GET_EVENT = 'GET_EVENT';
 export const EVENT_FAIL = 'EVENT_FAIL';
+
+
+// Add CENTER type
+export const ADD_CENTER = 'ADD_CENTER';
+export const ADD_CENTER_FAIL = 'ADD_CENTER_FAIL';

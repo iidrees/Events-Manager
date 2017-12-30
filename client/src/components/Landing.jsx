@@ -49,7 +49,7 @@ export default class LandingPage extends React.Component {
 		</div>{/* <!--  END Carousel slider Tag --> */}
 		<div className="jumbotron jumbotron-billboard main-text hidden-xs">
 				<div className="col-md-12 text-center">
-					<h1>Events Manager</h1> {/* <!-- Intro Header --> */}
+					<h1 className="event-header">Events Manager</h1> {/* <!-- Intro Header --> */}
 					<p id="para-landing">
 						This is an Events Manager Application that allows Event Planners, Party-Goers <br /> 
 						and just about anyone who is either looking to organise an event, host one or attend <br />

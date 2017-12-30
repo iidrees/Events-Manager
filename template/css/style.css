@@ -84,7 +84,7 @@ header {
     
   }
   
-  h1 {
+  .event-header {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 60px;
     color: white;
