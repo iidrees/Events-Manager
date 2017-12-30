@@ -3,8 +3,7 @@ import {
   GET_EVENTS, EVENT_RETRIEVED,
    EVENT_FAILED, 
    ADD_EVENT
-  } 
-from '../actions/types';
+  } from '../actions/types';
 
 const initialState = { /* The initial state of the component */
   authenticated: false,
