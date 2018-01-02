@@ -31,7 +31,7 @@ componentWillMount() {
  */
 render() {  
   const { events, status } = this.props;
-  console.log('this is the component', events.status, events.message)
+  
   return (
     <div>
       <NavBarMain />

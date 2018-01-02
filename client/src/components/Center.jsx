@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
@@ -29,6 +30,7 @@ componentWillMount() {
   render() {
     const { centers } = this.props;
     
+    
     return (
       <div>
         <NavBarOne />
@@ -54,7 +56,7 @@ componentWillMount() {
                 <div className="col-sm-4" key={center.id}>
                 <div className="card-deck cont-body" id="card-center1" >
                   <div className="card" id="card1" style={{height: "10rem"}}>
-                    <a href="centerDetails.html"><img className="card-img-top" src="https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg" alt="Card image cap" /></a>
+                    <Link to={`/centerdetails/${center.id}`}><img className="card-img-top" src="https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg" alt="Card image cap" /></Link>
                     <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
                       <h5 className="card-title even-font">
                         <span  className="all-centers-font">Center: </span>
