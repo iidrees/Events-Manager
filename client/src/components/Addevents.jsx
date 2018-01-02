@@ -79,7 +79,6 @@ class Addevents extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="event-centers" className=" home-para">Center:</label>
-                {/* <input className="form-control" onChange={this.onChange}  name="center" type="text" id="event-center1" placeholder="Enter the name of the event center"  /> */}
                 <select className="form-control" id="event-center1" onChange={this.onChange}  name="center">
                   <option className="home-para">Choose an event center</option>
                   {(centers.map((center) => {
