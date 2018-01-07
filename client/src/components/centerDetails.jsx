@@ -90,8 +90,8 @@ class CenterDetails extends React.Component {
                 </p>
                 <p className="center-details-para">
                 </p>
-                <a className="btn btn-primary" href="#" role="button">Edit Center Details</a>
-                <a className="btn btn-danger" href="#" role="button">DELETE EVENT CENTER</a>
+                <Link className="btn btn-primary" to={`/editcenter/${center.data.id}`} role="button">Edit Center Details</Link>
+                <a className="btn btn-danger"to={`/editdetails/${center.data.id}`} role="button">DELETE EVENT CENTER</a>
               </div>
             </div>
             <hr/>
@@ -153,6 +153,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     center: state.centerDetailsReducer
+    
   }
 }
 

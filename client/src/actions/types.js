@@ -36,3 +36,7 @@ export const ADD_CENTER_FAIL = 'ADD_CENTER_FAIL';
 // Get one center
 export const GET_CENTER = 'GET_CENTER';
 export const GET_CENTER_FAIL = 'GET_CENTER_FAIL';
+
+// Get one center
+export const EDIT_CENTER = 'EDIT_CENTER';
+export const EDIT_CENTER_FAIL = 'EDIT_CENTER_FAIL';

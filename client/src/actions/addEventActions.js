@@ -13,7 +13,7 @@ import {
   CENTERS_ERRORS
 } from './types';
 
-
+/* eslint-disable */
 /**
  * Axios will help make POST request to add event
  * @export {function}
@@ -39,21 +39,5 @@ export const addEvent = (eventData) => {
       dispatch({ type: ADD_FAIL, err });
       history.push('/addevents')
     })
-  }
-}
-
-export const getCenters = () => {
-  return (dispatch) => {
-    axios({
-      method: 'GET',
-      url: 'api/v1/centers',
-      withCredentials: true,
-    })
-    .then((centers) => {
-      dispatch({ type: CENTERS_SUCCESS, centers })
-    })
-    .catch((err) => {
-      dispatch({ type: CENTERS_ERRORS, err })
-    });
   }
 }
