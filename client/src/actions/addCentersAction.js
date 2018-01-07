@@ -21,10 +21,12 @@ export const addCenter = (centerData) => {
     .then((res) => {
       console.log('res from actions addcenter',  res);
       dispatch(({ type: ADD_CENTER, res }))
+      history.push('/getcenters')
     })
     .catch((err) => {
       console.log('err from actions addcenters', err);
       dispatch({ type: ADD_CENTER_FAIL, err });
+      history.push('/addcenter')
     })
   }
 }
