@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
-import { centerDetails } from '../actions/centerDetailsAction';
+import { deleteCenter } from '../actions/deleteCenterAction';
+import {centerDetails } from '../actions/centerDetailsAction';
 
 /* eslint-disable */
 class CenterDetails extends React.Component {
@@ -12,6 +13,14 @@ class CenterDetails extends React.Component {
   componentWillMount() {
     const { dispatch } = this.props;
     return dispatch(centerDetails(this.props.match.params.id));
+  }
+
+  onDelete = (e) => {
+    e.preventDefault();
+    let { center } = this.props;
+    const { dispatch } = this.props;
+    console.log('this is the onDelete button and its result is this', center.data.id)
+    return dispatch(deleteCenter(center.data.id));
   }
 
   render () {
@@ -91,7 +100,7 @@ class CenterDetails extends React.Component {
                 <p className="center-details-para">
                 </p>
                 <Link className="btn btn-primary" to={`/editcenter/${center.data.id}`} role="button">Edit Center Details</Link>
-                <a className="btn btn-danger"to={`/editdetails/${center.data.id}`} role="button">DELETE EVENT CENTER</a>
+                <Link className="btn btn-danger" onClick={this.onDelete} to={`/delcenter/${center.data.id}`} role="button">DELETE EVENT CENTER</Link>
               </div>
             </div>
             <hr/>
