@@ -25,6 +25,7 @@ export const deleteCenter = (index) => {
     .catch((err) => {
       //dispatch({ type: EDIT_CENTER_FAIL, err});
       console.log('This is the delete error from the server', err)
+      //history.push(`/centerdetails/${index}`)
     })
   }
 }

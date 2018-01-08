@@ -19,7 +19,6 @@ class CenterDetails extends React.Component {
     e.preventDefault();
     let { center } = this.props;
     const { dispatch } = this.props;
-    console.log('this is the onDelete button and its result is this', center.data.id)
     return dispatch(deleteCenter(center.data.id));
   }
 
