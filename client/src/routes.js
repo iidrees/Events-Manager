@@ -12,6 +12,7 @@ import eventDetails from './components/eventDetails.jsx';
 import AddCenter from './components/AddCenter.jsx';
 import CenterDetails from './components/centerDetails.jsx';
 import EditCenter from './components/editCenter.jsx';
+import EditEvent from './components/editEvent.jsx';
 
 export const history = createBrowserHistory();
 
@@ -26,6 +27,7 @@ export const Routes = () => {
         <Route exact path='/eventdetails/:id' component={eventDetails}/>
         <Route exact path='/centerdetails/:id' component={CenterDetails}/>
         <Route exact path='/editcenter/:id' component={EditCenter}/>
+        <Route exact path='/editevent/:id' component={EditEvent}/>
         <Route exact path='/addcenter' component={AddCenter} />
         <Route exact path='/' component={Landing} />
       </Switch>

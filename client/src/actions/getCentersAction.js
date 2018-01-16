@@ -21,11 +21,11 @@ const getCenters = () => {// function to get all centers
     })
     .then((centers) => {// when response is recieved
       dispatch({ type: CENTERS_SUCCESS, centers })
-      history.push('/getcenters')
+      //history.push('/getcenters')
     })
     .catch((err) => {
       dispatch({ type: CENTERS_ERRORS, err })
-      history.push('/getcenters')
+      //history.push('/getcenters')
     })
 
   }

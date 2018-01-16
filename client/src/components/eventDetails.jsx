@@ -96,7 +96,7 @@ render() {
                   <button className="btn btn-primary" type="submit">Delete Event</button>                
                   <span></span>
 
-                  <button className="btn btn-primary" type="submit">Edit Event</button>                  
+                  <Link className="btn btn-primary" to={`/editevent/${event.data.id}`} type="button">Edit Event</Link>                  
                 </div>
                 </div>
               </div>
