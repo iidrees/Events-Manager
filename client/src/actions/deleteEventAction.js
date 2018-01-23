@@ -2,17 +2,18 @@ import axios from 'axios';
 import { history } from '../routes';
 
 import { 
-  DELETE_CENTER,
-  DELETE_CENTER_FAIL
+  DELETE_EVENT,
+  DELETE_EVENT_FAIL
 
   } from './types';
 
+  
 /* eslint-disable */
-export const deleteCenter = (index) => {
+export const deleteEvent = (index) => {
   return (dispatch) => {
     axios({
       method: 'DELETE',
-      url: `/api/v1/centers/${index}`,
+      url: `/api/v1/events/${index}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
@@ -20,12 +21,12 @@ export const deleteCenter = (index) => {
     })
     .then((center) => {
       
-      history.push('/getcenters')
+      history.push('/getevents')
     })
     .catch((err) => {
-      dispatch({ type: DELETE_CENTER_FAIL, err});
+      dispatch({ type: DELETE_EVENT_FAIL, err});
       
-      history.push(`/centerdetails/${index}`)
+      history.push(`/eventdetails/${index}`)
     })
   }
 }

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
 import { detailEvent  } from '../actions/eventAction';
+import { deleteEvent  } from '../actions/deleteEventAction';
 
 /**
  * 
@@ -20,9 +21,21 @@ class DetailEvent extends React.Component {
  */
 componentWillMount() {
     const { dispatch } = this.props;
-    console.log('this is the details dispatch component', this.props.match)
+    
     return dispatch(detailEvent(this.props.match.params.id));
     
+  }
+
+/**
+ * @param {e} e is the event
+ * @returns {action} returns a dispatched action
+ * @memberof DetailEvent
+ */
+onDelete = (e) => {
+    e.preventDefault();
+    let { event } = this.props;
+    const { dispatch } = this.props;
+    return dispatch(deleteEvent(event.data.id));
   }
 
   /**
@@ -33,7 +46,7 @@ componentWillMount() {
  */
 render() {  
   const { event, status } = this.props;
-  console.log('this is the details component', event)
+  
   return (
     <div>
       <NavBarMain />
@@ -93,9 +106,11 @@ render() {
                 </p>
                 <div className="detail-button">
 
-                  <button className="btn btn-primary" type="submit">Delete Event</button>                
-                  <span></span>
+                  {/* <button className="btn btn-primary" type="submit">Delete Event</button> */}
+                  <button className="btn btn-primary" onClick={this.onDelete} type="button">Delete Event</button>
+                  <span>
 
+                  </span>
                   <Link className="btn btn-primary" to={`/editevent/${event.data.id}`} type="button">Edit Event</Link>                  
                 </div>
                 </div>

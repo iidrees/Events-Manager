@@ -20,12 +20,12 @@ import {
  * @param {eventData} - JSON
  * @returns {JSON} JSON data containing events 
  */
-export const addEvent = (eventData) => {
+export const addEvent = (eventData,index) => {
   /* disable-eslint */
   return (dispatch) => {
     axios({
       method: 'post',
-      url: '/api/v1/events',
+      url: `/api/v1/events/${index}`,
       data: eventData,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
