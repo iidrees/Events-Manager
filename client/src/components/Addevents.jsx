@@ -23,9 +23,10 @@ class Addevents extends React.Component {
 
   onSubmit = (e) => {
 		e.preventDefault();
-		let eventData = this.state;
+    let eventData = this.state;
+   
 		const { dispatch } = this.props;
-		return dispatch(addEvent(eventData));
+		return dispatch(addEvent(eventData, eventData.center));
   }
   /* eslint-disable */
   componentDidMount() {

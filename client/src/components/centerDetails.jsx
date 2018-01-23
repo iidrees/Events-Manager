@@ -99,7 +99,7 @@ class CenterDetails extends React.Component {
                 <p className="center-details-para">
                 </p>
                 <Link className="btn btn-primary" to={`/editcenter/${center.data.id}`} role="button">Edit Center Details</Link>
-                <Link className="btn btn-danger" onClick={this.onDelete} to={`/delcenter/${center.data.id}`} role="button">DELETE EVENT CENTER</Link>
+                <Link className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE EVENT CENTER</Link>
               </div>
             </div>
             <hr/>

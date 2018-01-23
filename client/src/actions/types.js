@@ -42,10 +42,15 @@ export const EDIT_CENTER = 'EDIT_CENTER';
 export const EDIT_CENTER_FAIL = 'EDIT_CENTER_FAIL';
 
 
-// Get one center
+// Delete center
 export const DELETE_CENTER = 'DELETE_CENTER';
 export const DELETE_CENTER_FAIL = 'DELETE_CENTER_FAIL';
 
 // Add event type
 export const EDIT_EVENT = 'EDIT_EVENT';
 export const EDIT_EVENT_FAIL = 'EDIT_EVENT_FAIL';
+
+
+// Delete Event
+export const DELETE_EVENT = 'DELETE_EVENT';
+export const DELETE_EVENT_FAIL = 'DELETE_EVENT_FAIL';

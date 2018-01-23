@@ -72,7 +72,6 @@ class EditEvent extends React.Component {
   render() {
     
     const { centers, event } = this.props;
-    console.log('this is the event details from the edit component', event)
   return (
     <div>
     <NavBarMain />
