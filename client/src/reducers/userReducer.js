@@ -25,16 +25,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         status: 'Success',
-        message: action.payload.data,
+        message: action.payload.message,
+        ...action.payload.user,
         ...action.payload.data,
         authenticated: true
       }
     }
     case SIGN_UP_FAIL: {
+      console.log('from the user SIGN_UP_FAIL reducer', action.payload)
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        ...action.payload,
+        message: action.payload.message,
         authenticated: false
       }
     }
@@ -47,6 +49,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         status: 'Success',
+        message: action.payload.message,
+        ...action.payload.user,
         ...action.payload.data,
         authenticated: true
       }
