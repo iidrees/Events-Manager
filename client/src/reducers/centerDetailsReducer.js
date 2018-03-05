@@ -16,12 +16,13 @@ import {
   export default (state=initialState, action) => {
     switch (action.type) {
       case GET_CENTER: {
+        console.log('details', action.center.data.data)
         return {
           ...state,
           status: 'Success',
           message: action.center.message,
           ...action.center.data,
-          events: action.center.data.data.events,
+          ...action.center.data.data.events,
           authenticated: true
         }
       }

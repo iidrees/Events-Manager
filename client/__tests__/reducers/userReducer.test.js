@@ -157,5 +157,25 @@ describe('USER reducer test', () => {
 			}
 		})
 	})
-	it('should show signin fail')
+	it('should show signin fail',  () => {
+		const state = {
+			authenticated: false,
+		  status: '',
+		  message: ''
+		}
+
+		const payload = {
+			message: 'User signin failed'
+		}
+
+		const result = userReducer(state, {
+			type: types.SIGN_IN_FAIL, payload})
+		console.log('test reduver',result )
+
+		expect(result).toEqual({
+			message: 'User signin failed',
+			status: 'Unsuccessful',
+			authenticated: false
+		});
+	})
 })

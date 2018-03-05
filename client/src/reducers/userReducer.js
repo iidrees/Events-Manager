@@ -59,7 +59,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        ...action.payload,
+        message: action.payload.message,
         authenticated: false
       }
     }
