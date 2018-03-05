@@ -6,7 +6,6 @@ import {
   } from '../actions/types';
 
 const initialState = { /* The initial state of the component */
-  authenticated: false,
   status: '',
   message: '',
   data: []
@@ -20,8 +19,7 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Success',
         message: action.events.message,
-        ...action.events.data,
-        authenticated: true
+        ...action.events.data
       }
     }
     case EVENT_FAILED: {
@@ -29,8 +27,7 @@ export default (state = initialState, action) => {
       return  {
         ...state,
         status: 'Unsuccessful' || undefined,
-        message: action.err.response.data.message,        
-        authenticated: false
+        message: action.err.response.data.message
       }
     }
     default:

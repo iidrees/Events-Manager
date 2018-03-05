@@ -20,7 +20,10 @@
     "seq:unseed": "sequelize db:seed:undo:all",
     "seq:elecreate": "sequelize db:migrate",
     "watch": "webpack -d && webpack-dev-server --hot --inline",
-    "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps"
+    "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps",
+    "jest":"jest",
+    "jest:cover":"jest --coverage",
+    "jest:watch":"jest --watch"
   },
   "babel": {
     "presets": [
@@ -31,6 +34,9 @@
     "plugins": [
       "transform-object-rest-spread"
     ]
+  },
+  "jest": {
+    "modulePathIgnorePatterns": ["server/test/"]
   },
   "repository": {
     "type": "git",
@@ -107,10 +113,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
+    "babel-jest": "^22.2.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "jest": "^22.2.0",
     "nodemon": "^1.12.1"
   }
 }
