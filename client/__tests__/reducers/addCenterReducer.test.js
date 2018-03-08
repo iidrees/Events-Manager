@@ -1,5 +1,5 @@
-import addCenterReducer from '../../src/reducers/addCenterReducer.js';
-import * as types from '../../src/actions/types.js';
+import addCenterReducer from '../../src/reducers/addCenterReducer';
+import * as types from '../../src/actions/types';
 
 
 describe('Add Center reducer Test', () => {
@@ -78,9 +78,9 @@ describe('Add Center reducer Test', () => {
 
 it('Should return state when add fails', () => {
 	const state = { 
-		  status: '',
-		  message: '',
-		  data: []
+		status: '',
+		message: '',
+		data: []
 		}
 		const err = {
 			response: {
