@@ -12,15 +12,6 @@ describe('Add Center reducer Test', () => {
         description: 'This is a center that can allow you grove as much as you may need to',
         userId: 1
        }
-      // {
-      //   name: 'The MUSON',
-      //   location: 'Lagos Island',
-      //   address: 'Obalende',
-      //   owner: 'The Idrees entertainment',
-      //   capacity: 10000,
-      //   description: 'This is a center that can allow you grove as much as you may need to',
-      //   userId: 2
-      // },
       ]
 
 

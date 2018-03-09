@@ -1,33 +1,32 @@
 /*Import event reducer to be tested and action types*/
 
-import eventReducer from '../../src/reducers/eventReducer.js';
-import * as types from '../../src/actions/types.js';
+import eventReducer from '../../src/reducers/eventReducer';
+import * as types from '../../src/actions/types';
 
 /* Test suits testing the event reducer*/
 describe('GET all events reducer', () => {
 
 	it('should return the initial state when no action is sent', () => {
 		const state = { 
-		  status: '',
-		  message: '',
-		  data: []
+			status: '',
+			message: '',
+			data: []
 		}
 		const result = eventReducer(state, {
 			type: types.ADD_EVENT
 		})
 		expect(result).toEqual({ 
-		  status: '',
-		  message: '',
-		  data: []
+			status: '',
+			message: '',
+			data: []
 		})
 	});
 
 	it('reducer for GET_EVENTS', () => {
-		const state = { 
-		  
-		  status: '',
-		  message: '',
-		  data: []
+		const state = {
+			status: '',
+			message: '',
+			data: []
 		}
 
 		const events = { 
@@ -49,9 +48,9 @@ describe('GET all events reducer', () => {
 
 	it('should return error reducer', () => {
 		const state = { 
-		  status: '',
-		  message: '',
-		  data: []
+			status: '',
+			message: '',
+			data: []
 		}
 		const err = {
 			response: {
