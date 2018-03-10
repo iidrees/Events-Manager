@@ -13,7 +13,7 @@ import Footer from './footer.jsx'
  */
 class Signin extends React.Component {
 	/**
-	 * @param {any} e 
+	 * @param {any} e {event}
 	 * @return {*} any
 	 * @memberof Signin
 	 */
@@ -21,7 +21,7 @@ class Signin extends React.Component {
 		this.setState({ [e.target.name]: e.target.value })
 	}
 	/**
-	 * @param {any} e
+	 * @param {any} e {event}
 	 * @returns {*} any
 	 * @memberof Signin
 	 */
@@ -32,13 +32,12 @@ class Signin extends React.Component {
 		return dispatch(userSignin(userData));
 	}
 	/**
-	 * A render method that renders the 
+	 * A render method that renders the HTML markup
 	 * @returns {component} component
 	 * @memberof Signin
 	 */
 	render() {
 		const { status } = this.props;
-		console.log(status)
 		return (
 			<div>
 				<NavBarOne />
