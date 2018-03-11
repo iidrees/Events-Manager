@@ -10,8 +10,8 @@ import { Users } from '../models';
 export default class Admin {
 /**
  * @static
- * @param {any} req
- * @param {any} res
+ * @param {any} req {request object}
+ * @param {any} res {response object}
  * @returns {*} any
  * @memberof Admin
  */

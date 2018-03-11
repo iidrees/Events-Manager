@@ -69,8 +69,8 @@ export class Event {
 export class EventUpdate {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {request object}
+   * @param {any} res {response object}
    * @returns {*} JSON
    * @memberof EventUpdate
    */
@@ -134,8 +134,8 @@ export class EventUpdate {
 export class EventDelete {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {the request object}
+   * @param {any} res {the response object}
    * @returns {*} JSON
    * @memberof EventDelete
    */
@@ -179,8 +179,8 @@ export class EventDelete {
 export class GetEvent {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {request object}
+   * @param {any} res {response object}
    * @returns {object} JSON
    * @memberof GetEvent
    */
@@ -221,8 +221,8 @@ export class GetEvent {
 export class GetAllEvents {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {request object}
+   * @param {any} res {response object}
    * @returns {*} JSON
    * @memberof GetAllEvents
    */

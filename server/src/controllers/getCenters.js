@@ -9,8 +9,8 @@ import { Centers, Events } from '../models';
 export class GetCenter {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {request object}
+   * @param {any} res {response object}
    * @return {*} JSON
    * @memberof GetCenter
    */
@@ -57,8 +57,8 @@ export class GetCenter {
 export class GetAllCenters {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {request object}
+   * @param {any} res {response object}
    * @returns {*} JSON
    * @memberof GetAllCenters
    */
@@ -88,8 +88,8 @@ export class GetAllCenters {
 export class CenterDelete {
   /**
    * @static
-   * @param {any} req
-   * @param {any} res
+   * @param {any} req {request object}
+   * @param {any} res {response object}
    * @returns {*} JSON
    * @memberof CenterDelete
    */

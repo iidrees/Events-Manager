@@ -10,9 +10,9 @@ import jwt from 'jsonwebtoken';
  */
 export default { // exported into the server module/file
   /**
-   * @param {any} req
-   * @param {any} res
-   * @param {any} next
+   * @param {any} req {request object}
+   * @param {any} res {response object}
+   * @param {any} next {calls next middleware}
    * @returns {object} JSON
    */
   verifyUser(req, res, next) {
