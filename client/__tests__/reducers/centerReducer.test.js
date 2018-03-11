@@ -18,15 +18,15 @@ describe('Show and return event centers', () => {
     const initialState = [];
 
     const centersOne = [{
-      id: 1,
-      name: 'Muson Center',
-      location: 'Lagos',
-      status: 'Free',
-      address: 'The Shrine',
-      owner: 'The Civil Society',
-      capacity: 2000,
-      description: 'This venue is a great place to make things happen',
-      userId: 1
+        id: 1,
+        name: 'Muson Center',
+        location: 'Lagos',
+        status: 'Free',
+        address: 'The Shrine',
+        owner: 'The Civil Society',
+        capacity: 2000,
+        description: 'This venue is a great place to make things happen',
+        userId: 1
       }]
 
       const centers = {
