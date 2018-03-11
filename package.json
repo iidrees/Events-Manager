@@ -13,7 +13,7 @@
     "start:prod": "node server/lib/server.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "nyc": "nyc report",
-    "lint": "node_modules/.bin/eslint client/src",
+    "lint": "node_modules/.bin/eslint client/__tests__",
     "seq:drop": "sequelize db:migrate:undo:all",
     "seq:create": "sequelize db:migrate",
     "seq:seed": "sequelize db:seed:all",
@@ -21,9 +21,9 @@
     "seq:elecreate": "sequelize db:migrate",
     "watch": "webpack -d && webpack-dev-server --hot --inline",
     "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps",
-    "jest":"jest",
-    "jest:cover":"jest --coverage",
-    "jest:watch":"jest --watch"
+    "jest": "jest",
+    "jest:cover": "jest --coverage",
+    "jest:watch": "jest --watch"
   },
   "babel": {
     "presets": [
@@ -36,7 +36,9 @@
     ]
   },
   "jest": {
-    "modulePathIgnorePatterns": ["server/test/"]
+    "modulePathIgnorePatterns": [
+      "server/test/"
+    ]
   },
   "repository": {
     "type": "git",

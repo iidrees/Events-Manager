@@ -12,7 +12,6 @@ import {
 /**
  * Axios will help make GET request for events a user posted
  * @export {function}
- * @param {any} - null
  * @returns {JSON} JSON data containing events 
  */
 export const getEvents = () => {
@@ -30,7 +29,6 @@ export const getEvents = () => {
       //history.push('/getevents');
     })
     .catch((err) => {// if any error is returned, it is shown to the user.
-      console.log('this is from the actions', err.response)
       dispatch({ type: EVENT_FAILED, err});
       history.push('/getevents')
     })
@@ -52,7 +50,6 @@ export const detailEvent = (index) => {
       //history.push('/eventdetails/:id')
     })
     .catch((err) => {
-      console.log('this is the action error details', err.response)
       dispatch({ type: EVENT_FAIL, err });
       //history.push('/eventdetails/:id');
     })

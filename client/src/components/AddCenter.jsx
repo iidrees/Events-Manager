@@ -1,4 +1,4 @@
-/* eslint-disable */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -9,7 +9,12 @@ import { addCenter } from '../actions/addCentersAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 
 
-
+/**
+ * 
+ * @param {event} e {e}
+ * @class AddCenter
+ * @extends {React.Component}
+ */
 class AddCenter extends React.Component {
 
   onChange = (e) => {
@@ -19,17 +24,27 @@ class AddCenter extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     let centerData = this.state;
-    console.log('centerData details from component',  centerData);
     const { dispatch } = this.props;
     return dispatch(addCenter(centerData));
   }
-
-  componentWillMount() {
+/**
+ * 
+ * 
+ * @returns {object} Object containing information about a center
+ * @memberof AddCenter
+ */
+componentWillMount() {
     const { dispatch } = this.props;
     return dispatch(centerDetails(this.props.match.params.id));
   }
 
-  render () {
+/**
+ * 
+ * 
+ * @returns {String} return the HTML markup to be rendered 
+ * @memberof AddCenter
+ */
+render () {
 
     const center = this.props;
 

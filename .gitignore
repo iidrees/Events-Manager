@@ -27,6 +27,7 @@ node_modules/
 coverage/
 .env
 
+.DS_Store
 server/src/migrations/20171119012404-create-center.js
 server/src/migrations/20171119011057-create-user.js
 server/src/migrations/20171119220658-create-event.js

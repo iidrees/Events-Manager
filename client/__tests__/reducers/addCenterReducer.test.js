@@ -1,5 +1,5 @@
-import addCenterReducer from '../../src/reducers/addCenterReducer.js';
-import * as types from '../../src/actions/types.js';
+import addCenterReducer from '../../src/reducers/addCenterReducer';
+import * as types from '../../src/actions/types';
 
 
 describe('Add Center reducer Test', () => {
@@ -12,15 +12,6 @@ describe('Add Center reducer Test', () => {
         description: 'This is a center that can allow you grove as much as you may need to',
         userId: 1
        }
-      // {
-      //   name: 'The MUSON',
-      //   location: 'Lagos Island',
-      //   address: 'Obalende',
-      //   owner: 'The Idrees entertainment',
-      //   capacity: 10000,
-      //   description: 'This is a center that can allow you grove as much as you may need to',
-      //   userId: 2
-      // },
       ]
 
 
@@ -78,9 +69,9 @@ describe('Add Center reducer Test', () => {
 
 it('Should return state when add fails', () => {
 	const state = { 
-		  status: '',
-		  message: '',
-		  data: []
+		status: '',
+		message: '',
+		data: []
 		}
 		const err = {
 			response: {

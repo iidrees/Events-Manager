@@ -32,7 +32,6 @@ export default (state = initialState, action) => {
       }
     }
     case SIGN_UP_FAIL: {
-      console.log('from the user SIGN_UP_FAIL reducer', action.payload)
       return {
         ...state,
         status: 'Unsuccessful' || undefined,

@@ -1,5 +1,5 @@
-import centerDetailsReducer from '../../src/reducers/CenterDetailsReducer.js';
-import * as types from '../../src/actions/types.js';
+import centerDetailsReducer from '../../src/reducers/CenterDetailsReducer';
+import * as types from '../../src/actions/types';
 
 
 describe('Test for Center Details reducer', () => {
@@ -14,37 +14,28 @@ describe('Test for Center Details reducer', () => {
         userId: 1,
         data: {
           data: {
-          	events: [{
-            	        title: 'The Amity Party',
-                      description: 'The Party for andelans',
-                      date: '12 - 02 - 2018',
-                      time: '12 AM',
-                      center: 'UNILAG ESTATE',
-                      type: 'private',
-                      userId: 1,
-                      centerId: 2
-            	      }]
-            	    }
-        	    }
+						events: [{
+								title: 'The Amity Party',
+                description: 'The Party for andelans',
+								date: '12 - 02 - 2018',
+								time: '12 AM',
+								center: 'UNILAG ESTATE',
+								type: 'private',
+								userId: 1,
+								centerId: 2
+										}]
+									}
+								}
        }
-      // {
-      //   name: 'The MUSON',
-      //   location: 'Lagos Island',
-      //   address: 'Obalende',
-      //   owner: 'The Idrees entertainment',
-      //   capacity: 10000,
-      //   description: 'This is a center that can allow you grove as much as you may need to',
-      //   userId: 2
-      // },
       ]
 
 
 	it('Should return initial state when no data is recieved', () => {
 		const state = { 
-		  status: '',
-		  message: '',
-		  data: [],
-		  events: []
+		status: '',
+		message: '',
+		data: [],
+		events: []
 		}
 
 
@@ -52,18 +43,18 @@ describe('Test for Center Details reducer', () => {
 			type: types.ADD_EVENT
 		})
 		expect(result).toEqual({ 
-		  status: '',
-		  message: '',
-		  data: [],
-		  events: []
+		status: '',
+		message: '',
+		data: [],
+		events: []
 		})
-	});/*
-	it('Should return the correct data for center Details', () => {
+	});
+	xit('Should return the correct data for center Details', () => {
 		const state = { 
-		  status: '',
-		  message: '',
-		  data: [],
-		  events: []
+		status: '',
+		message: '',
+		data: [],
+		events: []
 		}
 
 		const center = {
@@ -78,21 +69,21 @@ describe('Test for Center Details reducer', () => {
 			type: types.GET_CENTER, center
 		})
 		expect(result).toEqual({ 
-		  status: 'Success',
-		  message: 'This is the event center',
-		  authenticated: true,
-		  data: centerDetails,
+		status: 'Success',
+		message: 'This is the event center',
+		authenticated: true,
+		data: centerDetails,
       events: [{
-	        title: 'The Amity Party',
-          description: 'The Party for andelans',
-          date: '12 - 02 - 2018',
-          time: '12 AM',
-          center: 'UNILAG ESTATE',
-          type: 'private',
-          userId: 1,
-          centerId: 2
-	       }]
+				title: 'The Amity Party',
+        description: 'The Party for andelans',
+        date: '12 - 02 - 2018',
+        time: '12 AM',
+        center: 'UNILAG ESTATE',
+        type: 'private',
+        userId: 1,
+        centerId: 2
+			}]
 		})
-	});*/
+	});
 	it('Should return fail for any error returned');
 })

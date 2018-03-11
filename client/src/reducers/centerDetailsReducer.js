@@ -16,7 +16,6 @@ import {
   export default (state=initialState, action) => {
     switch (action.type) {
       case GET_CENTER: {
-        console.log('details', action.center.data.data)
         return {
           ...state,
           status: 'Success',

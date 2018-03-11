@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case CENTERS_SUCCESS: 
       return action.centers.data.data;
     case CENTERS_ERRORS:
-      return err.data
+      return action.err.data
     default:
      return state;
   }

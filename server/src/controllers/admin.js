@@ -10,8 +10,8 @@ import { Users } from '../models';
 export default class Admin {
 /**
  * @static
- * @param {any} req
- * @param {any} res
+ * @param {any} req {request object}
+ * @param {any} res {response object}
  * @returns {*} any
  * @memberof Admin
  */
@@ -33,8 +33,7 @@ export default class Admin {
         }
       })
       .then(user => {
-        console.log(user);
-        if (user.isSuperAdmin === true && user.isAdmin) {
+        if (user.isSuperAdmin === false && user.isAdmin) {
           return res.status(403).send({
             status: 'Unsuccessful',
             message: 'You are unauthorised to carry out this action',

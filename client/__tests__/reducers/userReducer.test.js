@@ -1,19 +1,19 @@
-import userReducer from '../../src/reducers/userReducer.js';
-import * as types from '../../src/actions/types.js';
+import userReducer from '../../src/reducers/userReducer';
+import * as types from '../../src/actions/types';
 
 
 describe('USER reducer test', () => {
 	it('should return initial state', () => {
 		const state = {
 			authenticated: false,
-		  status: '',
-		  message: '',
-		  user: {
-		    name: 'Idrees Kun',
-		    email: 'tester@test.com',
-		    password: 'tester',
-		    confirmPassword: 'tester'
-		  }
+			status: '',
+			message: '',
+			user: {
+				name: 'Idrees Kun',
+				email: 'tester@test.com',
+				password: 'tester',
+				confirmPassword: 'tester'
+			}
 		}
 		const result = userReducer(state, {
 			type: types.ADD_EVENT
@@ -21,27 +21,27 @@ describe('USER reducer test', () => {
 
 		expect(result).toEqual({			
 			authenticated: false,
-		  status: '',
-		  message: '',
-		  user: {
-		    name: 'Idrees Kun',
-		    email: 'tester@test.com',
-		    password: 'tester',
-		    confirmPassword: 'tester'
-		  }
+			status: '',
+			message: '',
+			user: {
+				name: 'Idrees Kun',
+				email: 'tester@test.com',
+				password: 'tester',
+				confirmPassword: 'tester'
+			}
 		})
 	});
 	it('should signup new user', () => {
 		const state = {
 			authenticated: false,
-		  status: '',
-		  message: '',
-		  user: {
-		    name: '',
-		    email: '',
-		    password: '',
-		    confirmPassword: ''
-		  }
+			status: '',
+			message: '',
+			user: {
+				name: '',
+				email: '',
+				password: '',
+				confirmPassword: ''
+			}
 		}
 
 		const payload = { 
@@ -51,11 +51,11 @@ describe('USER reducer test', () => {
 			id: 1,
 			user: {
 				user: {
-		    name: 'Idrees',
-		    email: 'tester@test.com',
-		    password: 'tester',
-		    confirmPassword: 'tester'
-			  }
+				name: 'Idrees',
+				email: 'tester@test.com',
+				password: 'tester',
+				confirmPassword: 'tester'
+				}
 			},
 			data: {
 				data: {
@@ -74,11 +74,11 @@ describe('USER reducer test', () => {
 			status: 'Success',
 			authenticated: true,
 			user: {
-		    name: 'Idrees',
-		    email: 'tester@test.com',
-		    password: 'tester',
-		    confirmPassword: 'tester'
-			  },
+				name: 'Idrees',
+				email: 'tester@test.com',
+				password: 'tester',
+				confirmPassword: 'tester'
+				},
 			data: {
 				data: token
 			}
@@ -88,8 +88,8 @@ describe('USER reducer test', () => {
 	it('should show signup failed', () => {
 		const state = {
 			authenticated: false,
-		  status: '',
-		  message: ''
+			status: '',
+			message: ''
 		}
 
 		const payload = {
@@ -98,7 +98,6 @@ describe('USER reducer test', () => {
 
 		const result = userReducer(state, {
 			type: types.SIGN_UP_FAIL, payload})
-		console.log('test reduver',result )
 
 		expect(result).toEqual({
 			message: 'User signup failed',
@@ -109,14 +108,14 @@ describe('USER reducer test', () => {
 	it('should signin user', () => {
 		const state = {
 			authenticated: false,
-		  status: '',
-		  message: '',
-		  user: {
-		    name: '',
-		    email: '',
-		    password: '',
-		    confirmPassword: ''
-		  }
+			status: '',
+			message: '',
+			user: {
+				name: '',
+				email: '',
+				password: '',
+				confirmPassword: ''
+			}
 		}
 
 		const payload = { 
@@ -126,10 +125,10 @@ describe('USER reducer test', () => {
 			id: 1,
 			user: {
 				user: {
-		    name: 'Idrees',
-		    email: 'tester@test.com',
-		    password: 'tester',
-			  }
+				name: 'Idrees',
+				email: 'tester@test.com',
+				password: 'tester',
+				}
 			},
 			data: {
 				data: {
@@ -145,13 +144,13 @@ describe('USER reducer test', () => {
 
 		expect(result).toEqual({			
 			authenticated: true,
-		  status: 'Success',
-		  message: 'You are successfully signed in',
-		  user: {
-		    name: 'Idrees',
-		    email: 'tester@test.com',
-		    password: 'tester',
-		  },
+			status: 'Success',
+			message: 'You are successfully signed in',
+			user: {
+				name: 'Idrees',
+				email: 'tester@test.com',
+				password: 'tester',
+			},
 			data: {
 				data: token
 			}
@@ -160,8 +159,8 @@ describe('USER reducer test', () => {
 	it('should show signin fail',  () => {
 		const state = {
 			authenticated: false,
-		  status: '',
-		  message: ''
+			status: '',
+			message: ''
 		}
 
 		const payload = {
@@ -170,7 +169,6 @@ describe('USER reducer test', () => {
 
 		const result = userReducer(state, {
 			type: types.SIGN_IN_FAIL, payload})
-		console.log('test reduver',result )
 
 		expect(result).toEqual({
 			message: 'User signin failed',
