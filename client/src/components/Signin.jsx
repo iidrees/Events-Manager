@@ -40,7 +40,6 @@ class Signin extends React.Component {
 		const { status } = this.props;
 		return (
 			<div>
-				<NavBarOne />
 					<div id="form-signin" className="container">
 						<form className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} >
 								<div className="row">
@@ -119,7 +118,6 @@ class Signin extends React.Component {
 								</div>
 						</form>
 					</div>
-				<Footer />
 			</div>	
   );
 	}

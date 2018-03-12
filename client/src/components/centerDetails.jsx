@@ -25,6 +25,7 @@ class CenterDetails extends React.Component {
   render () {
 
     const { center } = this.props;
+    console.log('this is the component',center )
 
     return (
       <div className="container">
@@ -99,7 +100,7 @@ class CenterDetails extends React.Component {
                 <p className="center-details-para">
                 </p>
                 <Link className="btn btn-primary" to={`/editcenter/${center.data.id}`} role="button">Edit Center Details</Link>
-                <Link className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE EVENT CENTER</Link>
+                <button className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE EVENT CENTER</button>
               </div>
             </div>
             <hr/>
@@ -122,7 +123,7 @@ class CenterDetails extends React.Component {
               return (
 
               <div className="col-sm-4" key={event.id}>
-              <div className="card-deck cont-body" >
+              <div className="card-deck cont-body" id="card-body">
                 <div className="card" id="card1" style={{height: "10rem"}}>
                   <img className="card-img-top" src="https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg" alt="Card image cap"/>
                   <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>

@@ -1,10 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-
 import  { userSignup }  from '../actions/userActions'
-import NavBarOne from './NavBarOne';
-import Footer from './footer.jsx'
+
 class Signup extends React.Component {
 	
 	onChange = (e) => {
@@ -23,7 +21,6 @@ class Signup extends React.Component {
 
     return (
         <div>
-					<NavBarOne />
 					<div className='container' id="form-signup">
 						<form id="form-signup" className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} >
 						<div className="row">
@@ -126,7 +123,6 @@ class Signup extends React.Component {
 						</div>
 				</form>
 			</div>
-			<Footer />
 				</div>
       );
   }
