@@ -21,7 +21,8 @@ export default class Center {
       address,
       owner,
       capacity,
-      description
+      description,
+      imgUrl
     } = req.body;
     const { id, admin, isSuperAdmin } = req.decoded;
 
@@ -39,6 +40,7 @@ export default class Center {
         owner,
         capacity,
         description,
+        imgUrl,
         userId: id
       })
       .then(center => res.status(201).send({
@@ -49,7 +51,7 @@ export default class Center {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Center Could not be added',
-        data: err.errors
+        data: err.message
       }));
   }
 }

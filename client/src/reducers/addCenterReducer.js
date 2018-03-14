@@ -7,7 +7,8 @@ const initialState = {
   authenticated: false,
   status: '',
   message: '',
-  data: []
+  data: [],
+  error: ''
 };
 export default (state= initialState, action) => {
   switch (action.type) {
@@ -21,10 +22,12 @@ export default (state= initialState, action) => {
       }
     }
     case ADD_CENTER_FAIL: {
+
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        message: action.err.response.data.message
+        error: action.err.response.data.data
+        //error: 
       }
     }
     default: return state;

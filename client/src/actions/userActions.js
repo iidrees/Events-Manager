@@ -11,7 +11,7 @@ import {
 /**
  * Axios will help make POST request to signup user
  * @export {function}
- * @param {any} userData
+ * @param {any} userData {Object data sent to the server}
  * @returns {JSON} userData
  */
 export const userSignup = (userData) => {
@@ -37,7 +37,7 @@ export const userSignup = (userData) => {
 /**
  * Axios will help make POST request to signin a user
  * @export {function}
- * @param {any} userData
+ * @param {any} userData {Object data sent to the server}
  * @returns {JSON} userData
  */
 export const userSignin = (userData) => {

@@ -9,7 +9,7 @@ import  getCenters  from '../actions/getCentersAction';
 
 
 /**
- * 
+ * @param {e} e {events}
  * @class Addevents
  * @extends { React.Component }
  */

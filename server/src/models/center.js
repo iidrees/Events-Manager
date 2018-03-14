@@ -65,6 +65,15 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Center image is required'
+        }
+      }
+    },
     userId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',
