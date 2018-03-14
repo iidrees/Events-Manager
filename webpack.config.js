@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new Dotenv(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
       compress: {
@@ -45,6 +47,7 @@ module.exports = {
       ]
     }]
   },
+  devtool: 'eval',
   devServer: {
     port: 8000,
     contentBase: 'client/',
