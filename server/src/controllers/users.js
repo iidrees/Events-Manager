@@ -79,7 +79,7 @@ export class UserSignup {
       })
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
-        message: err.message
+        message: err.errors[0].message
       }));
   }
 }
@@ -170,3 +170,4 @@ export class UserSignin {
       });
   }
 }
+

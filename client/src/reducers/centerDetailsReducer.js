@@ -9,7 +9,7 @@ import {
     authenticated: false,
     status: '',
     message: '',
-    data: [],
+    data: {},
     events: []
   };
 
@@ -21,7 +21,7 @@ import {
           status: 'Success',
           message: action.center.message,
           ...action.center.data,
-          ...action.center.data.data.events,
+          events: [...action.center.data.data.events],
           authenticated: true
         }
       }

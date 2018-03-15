@@ -131,7 +131,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           done();
         });
     });
-    xit('should return "Please enter a valid email address" for empty input', (done) => {
+    it('should return "Please enter a valid email address" for empty input', (done) => {
       request(app)
         .post('/api/v1/users')
         .send({
@@ -312,6 +312,7 @@ describe('TEST add centers', () => {
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
       })
       .expect(403)
       .then((res) => {
@@ -332,6 +333,7 @@ describe('TEST add centers', () => {
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
       })
       .expect(201)
       .then((res) => {
@@ -375,6 +377,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
       })
       .expect(403)
       .then((res) => {
@@ -395,6 +398,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
       })
       .expect(404)
       .then((res) => {
@@ -415,6 +419,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
       })
       .expect(201)
       .then((res) => {
@@ -435,6 +440,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
       })
       .expect(400)
       .then((res) => {
@@ -793,7 +799,7 @@ describe('Test DEL "/api/v1/events/:eventId" endpoint ', () => {
         done();
       });
   });
-  xit('Should return "Event Successfully Deleted" for correct eventId', (done) => {
+  it('Should return "Event Successfully Deleted" for correct eventId', (done) => {
     request(app)
       .del(`/api/v1/events/${1}`)
       .set('x-access-token', token)
@@ -846,7 +852,7 @@ describe('Test DEL "/api/v1/centers/:centerId" endpoint ', () => {
         done();
       });
   });
-  xit('Should return "Unable to delete center, please try again later" for wrong params input', (done) => {
+  it('Should return "Unable to delete center, please try again later" for wrong params input', (done) => {
     request(app)
       .del(`/api/v1/centers/${1}`)
       .set('x-access-token', adminToken)

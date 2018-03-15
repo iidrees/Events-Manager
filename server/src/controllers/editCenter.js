@@ -21,7 +21,8 @@ export default class ModifyCenter {
       status,
       owner,
       capacity,
-      description
+      description,
+      imgUrl
     } = req.body;
     const { admin } = req.decoded;
     const { centerId } = req.params;
@@ -52,7 +53,8 @@ export default class ModifyCenter {
             status: status || center.status,
             owner: owner || center.owner,
             capacity: capacity || center.capacity,
-            description: description || center.description
+            description: description || center.description,
+            imgUrl: imgUrl || center.imgUrl
           })
           .then(updateCenter => res.status(201).send({
             status: 'Success',

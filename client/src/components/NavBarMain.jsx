@@ -20,11 +20,11 @@ export default () => {
             <li>
               <Link className="nav-link" to='/addevents'>Add Events</Link>
             </li>
-            <li className="nav-item active">
+            <li className="nav-item">
               <Link className="nav-link" to='/getevents'>My Events</Link>
             </li> 
             <li className="nav-item">
-                <Link className="nav-link" to='/myprofile'>My profile</Link>
+                <Link className="nav-link" to='/addcenter'>Add Center</Link>
             </li>
             <li className="nav-item">
                 <Link className="nav-link" to='/help'>Help</Link>

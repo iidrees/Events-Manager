@@ -16,7 +16,7 @@ class GetEvents extends React.Component {
 /**
  * A method that lets a user get their events
  * @memberof GetEvents
- * @returns {any} 
+ * @returns {any} {}
  */
 componentWillMount() {
     const { dispatch } = this.props;

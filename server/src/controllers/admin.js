@@ -18,18 +18,11 @@ export default class Admin {
   static addAdmin(req, res) {
     const { id, admin } = req.decoded;
     const { userId } = req.params;
-
-    if (admin === true) {
-      return res.status(403).send({
-        status: 'Unsuccessful',
-        message: 'This user is already an Admin'
-      });
-    }
     
     return Users
       .findOne({
         where: {
-          id: userId,
+          id,
         }
       })
       .then(user => {

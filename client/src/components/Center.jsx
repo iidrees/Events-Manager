@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
 import  getCenters   from '../actions/getCentersAction'
+import NavBarMain from './NavBarMain.jsx';
 
 
 /**
@@ -33,7 +34,7 @@ componentWillMount() {
     
     return (
       <div>
-        <NavBarOne />
+        <NavBarMain />
       <div className="container">
       <div className="row">
           <div className="container" id="event-page">{/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
