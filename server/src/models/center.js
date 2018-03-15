@@ -70,6 +70,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
+          args: true,
           msg: 'Center image is required'
         }
       }

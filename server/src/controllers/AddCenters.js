@@ -51,7 +51,7 @@ export default class Center {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Center Could not be added',
-        data: err.message
+        data: err.errors[0].message
       }));
   }
 }
