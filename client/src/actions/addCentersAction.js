@@ -51,7 +51,7 @@ export const imageUpload = (centerData) => {
     let formData = new FormData();
     
     formData.append('file', centerData.imgFile)
-    formData.append('upload_preset', process.env.UPLOAD_PREST)
+    formData.append('upload_preset', process.env.UPLOAD_PRESET)
     return (dispatch) => {
       axios({
         method: 'post',
