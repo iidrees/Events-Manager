@@ -1,6 +1,7 @@
 import {
   ADD_CENTER,
-  ADD_CENTER_FAIL
+  ADD_CENTER_FAIL,
+  ADD_IMG_FAIL
 } from '../actions/types';
 
 const initialState = {
@@ -22,12 +23,19 @@ export default (state= initialState, action) => {
       }
     }
     case ADD_CENTER_FAIL: {
-
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        error: action.err.response.data.data
-        //error: 
+        ...action.err.response.data
+       
+      }
+    }
+    case ADD_IMG_FAIL: {
+      return {
+        ...state,
+        status: 'Unsuccessful',
+        error: action.error
+
       }
     }
     default: return state;

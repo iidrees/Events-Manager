@@ -54,3 +54,7 @@ export const EDIT_EVENT_FAIL = 'EDIT_EVENT_FAIL';
 // Delete Event
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const DELETE_EVENT_FAIL = 'DELETE_EVENT_FAIL';
+
+
+// ADD IMAGE FAIL
+export const ADD_IMG_FAIL = 'ADD_IMG_FAIL';

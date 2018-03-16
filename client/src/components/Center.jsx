@@ -29,12 +29,10 @@ componentWillMount() {
    * @memberof Center
    */
   render() {
-    const { centers } = this.props;
-    
-    
+    const { centers } = this.props;  
     return (
       <div>
-        <NavBarMain />
+      <NavBarMain />
       <div className="container">
       <div className="row">
           <div className="container" id="event-page">{/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
@@ -57,7 +55,7 @@ componentWillMount() {
                 <div className="col-sm-4" key={center.id}>
                 <div className="card-deck cont-body" id="card-center1" >
                   <div className="card" id="card1" style={{height: "10rem"}}>
-                    <Link to={`/centerdetails/${center.id}`}><img className="card-img-top" src="https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg" alt="Card image cap" /></Link>
+                    <Link to={`/centerdetails/${center.id}`}><img className="card-img-top" src={center.imgUrl} alt="Center image" /></Link>
                     <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
                       <h5 className="card-title even-font">
                         <span  className="all-centers-font">Center: </span>
