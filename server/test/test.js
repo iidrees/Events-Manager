@@ -126,7 +126,8 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(400)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'This name already exist, enter a new name');
+          assert.deepEqual(res.body.message, 'User signup was unsuccessful')
+          assert.deepEqual(res.body.error, 'This name already exist, enter a new name');
           assert.deepEqual(res.status, 400);
           done();
         });
@@ -143,7 +144,8 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(400)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Please enter a valid email address');
+          assert.deepEqual(res.body.message, 'User signup was unsuccessful')
+          assert.deepEqual(res.body.error, 'Please enter a valid email address');
           assert.deepEqual(res.status, 400);
           done();
         });
@@ -160,7 +162,8 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(400)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'This email already exist, enter a new email address');
+          assert.deepEqual(res.body.message, 'User signup was unsuccessful')
+          assert.deepEqual(res.body.error, 'This email already exist, enter a new email address');
           assert.deepEqual(res.status, 400);
           done();
         });
@@ -240,7 +243,8 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(403)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Incorrect Login Credentials');
+          assert.deepEqual(res.body.message, 'User signin was unsuccessful')
+          assert.deepEqual(res.body.error, 'Incorrect Login Credentials');
           assert.deepEqual(res.status, 403);
           done();
         });
