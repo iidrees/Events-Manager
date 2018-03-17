@@ -22,6 +22,7 @@ export class Event {
       date,
       time,
       type,
+      imgUrl
     } = req.body;
     const { id } = req.decoded;
     return Centers
@@ -45,6 +46,7 @@ export class Event {
             time,
             center: venue.name,
             type,
+            imgUrl,
             userId: id,
             centerId: venue.id
           })
@@ -55,7 +57,8 @@ export class Event {
           }))
           .catch(err => res.status(400).send({
             status: 'Unsuccessful',
-            message: err.errors[0].message
+            message: 'Event could not be added',
+            error: err.errors[0].message
           }));
       });
   }
@@ -170,6 +173,7 @@ export class EventDelete {
       }));
   }
 }
+
 /**
  * This is a GET Event class with a static method getEvents that allows a user
  * get an event they created
@@ -227,13 +231,8 @@ export class GetAllEvents {
    * @memberof GetAllEvents
    */
   static getAllEvents(req, res) {
-    const { id } = req.decoded;
     return Events
-      .findAll({
-        where: {
-          userId: id,
-        }
-      }).then((events) => {
+      .findAll({}).then((events) => {
         if (events.length === 0) {
           return res.status(404).send({
             status: 'Unsuccessful',

@@ -534,7 +534,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'Its an event for fela abeg',
           date: '2018-03-02',
           time: '12-03 PM',
-          type: 'public'
+          type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(201)
         .then((res) => {
@@ -547,6 +548,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.time, '12-03 PM');
           assert.deepEqual(res.body.data.center, 'Muson Center');
           assert.deepEqual(res.body.data.type, 'public');
+          assert.deepEqual(res.body.data.imgUrl, 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg')
           done();
         });
     });
@@ -560,13 +562,58 @@ describe('TEST EVENT ENDPOINTS', () => {
           date: '2018-03-02',
           time: '12-03 PM',
           center: 'Muson Center',
-          type: 'public'
+          type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(400)
         .then((res) => {
           assert.deepEqual(res.status, 400);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Date already booked, enter another date');
+          assert.deepEqual(res.body.message, 'Event could not be added');
+          assert.deepEqual(res.body.error, 'Date already booked, enter another date');
+          done();
+        });
+    });
+    it('should return "Events.imgUrl cannot be null" for image null model validation', (done) => {
+      request(app)
+        .post(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-10',
+          time: '12-03 PM',
+          center: 'Muson Center',
+          type: 'public',
+        })
+        .expect(400)
+        .then((res) => {
+          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Event could not be added');
+          assert.deepEqual(res.body.error, 'Events.imgUrl cannot be null');
+          done();
+        });
+    });
+    it('should return "Image is required" for image null model validation', (done) => {
+      request(app)
+        .post(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-10',
+          time: '12-03 PM',
+          center: 'Muson Center',
+          type: 'public',
+          imgUrl:''
+        })
+        .expect(400)
+        .then((res) => {
+          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Event could not be added');
+          assert.deepEqual(res.body.error, 'Image is required');
           done();
         });
     });
@@ -581,12 +628,28 @@ describe('TEST EVENT ENDPOINTS', () => {
           time: '12-03 PM',
           center: 'Muson Center',
           type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(400)
         .then((res) => {
           assert.deepEqual(res.status, 400);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Please enter a description');
+          assert.deepEqual(res.body.message, 'Event could not be added')
+          assert.deepEqual(res.body.error, 'Please enter a description');
+          done();
+        });
+    });
+  });
+  describe('Test the retrieval of all events', () => {
+    xit('should return "These are your Events" when all events retrieved', () => {
+      request(app)
+        .get('/api/v1/events')
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'These are your Events');
           done();
         });
     });
@@ -716,6 +779,8 @@ describe('TEST EVENT ENDPOINTS', () => {
 });
 
 
+
+/* TEST FOR AVAILABILITY OF CENTERS */
 describe('TEST FOR AVAILABILITY OF CENTERS', () => {
   describe('Get A Single Center', () => {
     it('should return "Center Not Found" for a wrong req.param', (done) => {
@@ -815,6 +880,20 @@ describe('Test DEL "/api/v1/events/:eventId" endpoint ', () => {
         done();
       });
   });
+
+  it('Should return "Event Not Found" when no events in the database', (done) => {
+    request(app)
+      .get('/api/v1/events')
+      .set('x-access-token', token)
+      .expect(404)
+      .then((res) => {
+        assert.deepEqual(res.status, 404);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'No Event(s) Found');
+        done();
+      });
+  });
+  
 });
 
 
