@@ -57,8 +57,6 @@ onImageChange = (e) => {
   }
 
 
-
-
 /**
  * 
  * 
