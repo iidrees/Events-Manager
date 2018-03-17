@@ -57,8 +57,7 @@ export const addEvent = (eventData, index, imgUrl ) => {
  * @returns {URL} URL link returned is used as a parameter
  */
 export const imageUpload = (eventData,index) => {
-  console.log('the is from imge upload in actions', even)
-
+  
   let formData = new FormData();
   
   formData.append('file', eventData.imgFile)
