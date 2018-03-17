@@ -169,7 +169,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    event: state.eventReducer,
+    event: state.addEventReducer,
     status: state.userReducer,
     centers: state.centerReducer
   }

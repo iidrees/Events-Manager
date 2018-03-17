@@ -5,8 +5,7 @@ import { history } from '../routes';
 
 import { 
   ADD_EVENT, 
-  ADD_FAIL, 
-  GET_EVENTS,
+  ADD_EVENT_FAIL, 
   ADD_IMG_FAIL
 } from './types';
 
@@ -26,8 +25,8 @@ export const addEvent = (eventData, index, imgUrl ) => {
       method: 'post',
       url: `/api/v1/events/${index}`,
       data: { 
-        name: eventData.name,
-        date: eventData.data,
+        title: eventData.title,
+        date: eventData.date,
         time: eventData.time,
         center: eventData.center,
         description: eventData.description,
@@ -43,7 +42,8 @@ export const addEvent = (eventData, index, imgUrl ) => {
       history.push('/getevents')
     })
     .catch((err) => {
-      dispatch({ type: ADD_FAIL, err });
+      console.log('the errror actoin for event', err.response)
+      dispatch({ type: ADD_EVENT_FAIL, err });
       history.push('/addevents')
     })
   }
