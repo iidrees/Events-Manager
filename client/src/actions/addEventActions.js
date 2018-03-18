@@ -42,7 +42,6 @@ export const addEvent = (eventData, index, imgUrl ) => {
       history.push('/getevents')
     })
     .catch((err) => {
-      console.log('the errror actoin for event', err.response)
       dispatch({ type: ADD_EVENT_FAIL, err });
       history.push('/addevents')
     })
