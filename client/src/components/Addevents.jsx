@@ -4,8 +4,9 @@ import axios from 'axios';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
-import { addEvent } from '../actions/addEventActions';
+import { addEvent,  } from '../actions/addEventActions';
 import  getCenters  from '../actions/getCentersAction';
+import  { imageUpload }  from '../actions/addCentersAction';
 
 
 /**
@@ -25,10 +26,44 @@ class Addevents extends React.Component {
 		e.preventDefault();
     let eventData = this.state;
    
-		const { dispatch } = this.props;
-		return dispatch(addEvent(eventData, eventData.center));
+    const { dispatch } = this.props;
+    if (!eventData.imgFile) {
+      return dispatch(addEvent(eventData, eventData.center));
+    }
+      return dispatch(imageUpload(eventData, eventData.center));
   }
-  /* eslint-disable */
+
+  /**
+ * @param {e} e {event}
+ * @returns {any} any
+ * @memberof AddEvents
+ */
+onImageChange = (e) => {
+  e.preventDefault();
+
+  let reader = new FileReader();
+  let imgFile = e.target.files[0];
+
+  if (imgFile.type === 'image/jpeg' || imgFile.type === 'image/png') {
+    reader.onloadend = () => {
+      this.setState({
+        imgFile: imgFile,
+        imgUrl: reader.result
+      });
+    }
+    reader.readAsDataURL(imgFile);
+  } else {
+    alert('Please upload an image with the .jpeg or .png file format')
+  }
+
+}
+
+  /**
+   * 
+   * 
+   * @returns {JSON} An array of centers
+   * @memberof Addevents
+   */
   componentDidMount() {
     const { dispatch } = this.props;
     return dispatch(getCenters());
@@ -42,7 +77,7 @@ class Addevents extends React.Component {
    */
   render() {
     
-    const { centers } = this.props;
+    const { centers , event} = this.props;
   return (
     <div>
     <NavBarMain />
@@ -61,6 +96,17 @@ class Addevents extends React.Component {
         </div>
       </div>
     
+      {(event.status === 'Success' ) && <div className="alert alert-success" role="alert">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{event.message}.</strong></div>}
+        {(event.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{event.message}</strong><span> </span>
+        <strong>{event.error}.</strong></div>} 
       
       <div className="container">{/* <!-- Start container for Add Form --> */}
         <div className="row">
@@ -99,7 +145,7 @@ class Addevents extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="add-event" className=" home-para">Upload an Image of your event below:</label>
-                <input type="file" className="form-control-file" onChange={this.onChange}  aria-describedby="fileHelp" /> 
+                <input type="file" className="form-control-file" onChange={this.onImageChange} id="input-file" name="images"  aria-describedby="fileHelp" /> 
               </div>  
           
               <button type="submit" className="btn btn-primary btn-sm" id="save-event">Save and create event  <span><i className="fa fa-paper-plane" aria-hidden="true"></i></span></button>
@@ -123,7 +169,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    addevents: state.eventReducer,
+    event: state.addEventReducer,
     status: state.userReducer,
     centers: state.centerReducer
   }

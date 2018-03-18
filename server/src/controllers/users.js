@@ -79,7 +79,8 @@ export class UserSignup {
       })
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
-        message: err.errors[0].message
+        message: 'User signup was unsuccessful',
+        error: err.errors[0].message
       }));
   }
 }
@@ -165,9 +166,15 @@ export class UserSignin {
         }
         return res.status(403).send({
           status: 'Unsuccessful',
-          message: 'Incorrect Login Credentials'
+          message: 'User signin was unsuccessful',
+          error: 'Incorrect Login Credentials',
         });
-      });
+      })
+      .catch(err => res.status(400).send({
+        status: 'Unsuccessful',
+        message: 'User signin was unsuccessful',
+        error: err.errors[0].message
+      }));
   }
 }
 

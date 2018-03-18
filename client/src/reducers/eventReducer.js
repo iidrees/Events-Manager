@@ -2,13 +2,15 @@
 import { 
   GET_EVENTS, EVENT_RETRIEVED,
    EVENT_FAILED, 
-   ADD_EVENT
+   ADD_EVENT,
+   ADD_IMG_FAIL
   } from '../actions/types';
 
 const initialState = { /* The initial state of the component */
   status: '',
   message: '',
-  data: []
+  data: [],
+  error: ''
 }; 
 
 export default (state = initialState, action) => {
@@ -25,7 +27,15 @@ export default (state = initialState, action) => {
       return  {
         ...state,
         status: 'Unsuccessful' || undefined,
-        message: action.err.response.data.message
+        message: action.err.response.data.message,
+      }
+    }
+    case ADD_IMG_FAIL: {
+      return {
+        ...state,
+        status: 'Unsuccessful',
+        error: action.error
+
       }
     }
     default:

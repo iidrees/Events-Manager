@@ -6,6 +6,7 @@ import eventReducer from './eventReducer';
 import detailsEventReducer from './detailsEventReducer';
 import addCenterReducer from './addCenterReducer';
 import centerDetailsReducer from './centerDetailsReducer';
+import addEventReducer from './addEventReducer'
 
 const indexReducer = combineReducers({
   userReducer,
@@ -13,6 +14,7 @@ const indexReducer = combineReducers({
   eventReducer,
   detailsEventReducer,
   addCenterReducer,
+  addEventReducer,
   centerDetailsReducer
 });
 

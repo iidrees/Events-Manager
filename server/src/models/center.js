@@ -52,6 +52,10 @@ export default (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: 'Please enter the capacity of the Center'
+        },
+        isNumeric: {
+          args: true,
+          msg: 'Please enter the Capacity in numbers '
         }
       }
     },

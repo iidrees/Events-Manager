@@ -73,6 +73,16 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Image is required'
+        }
+      }
+    },
     userId: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',

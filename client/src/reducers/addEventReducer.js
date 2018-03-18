@@ -1,6 +1,6 @@
 import {
-  ADD_CENTER,
-  ADD_CENTER_FAIL,
+  ADD_EVENT,
+  ADD_EVENT_FAIL,
   ADD_IMG_FAIL
 } from '../actions/types';
 
@@ -13,7 +13,7 @@ const initialState = {
 };
 export default (state= initialState, action) => {
   switch (action.type) {
-    case ADD_CENTER: {
+    case ADD_EVENT: {
       return {
         ...state, 
         status: 'Success',
@@ -22,7 +22,7 @@ export default (state= initialState, action) => {
         authenticated: true
       }
     }
-    case ADD_CENTER_FAIL: {
+    case ADD_EVENT_FAIL: {
       return {
         ...state,
         status: 'Unsuccessful' || undefined,

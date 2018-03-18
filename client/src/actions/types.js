@@ -22,7 +22,7 @@ export const EVENT_FAILED = 'EVENT_FAILED';
 
 // Add event type
 export const ADD_EVENT = 'ADD_EVENT';
-export const ADD_FAIL = 'ADD_FAIL';
+export const ADD_EVENT_FAIL = 'ADD_EVENT_FAIL';
 
 // Get one events type
 export const GET_EVENT = 'GET_EVENT';
@@ -54,3 +54,7 @@ export const EDIT_EVENT_FAIL = 'EDIT_EVENT_FAIL';
 // Delete Event
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const DELETE_EVENT_FAIL = 'DELETE_EVENT_FAIL';
+
+
+// ADD IMAGE FAIL
+export const ADD_IMG_FAIL = 'ADD_IMG_FAIL';

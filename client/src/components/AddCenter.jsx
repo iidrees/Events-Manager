@@ -25,8 +25,35 @@ class AddCenter extends React.Component {
     e.preventDefault();
     let centerData = this.state;
     const { dispatch } = this.props;
-    return dispatch(addCenter(centerData));
-    
+    if (!centerData.imgFile) {
+      return dispatch(addCenter(centerData))
+    }
+    return dispatch(imageUpload(centerData));
+  }
+
+/**
+ * @param {e} e {event}
+ * @returns {any} any
+ * @memberof AddCenter
+ */
+onImageChange = (e) => {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let imgFile = e.target.files[0];
+
+    if (imgFile.type === 'image/jpeg' || imgFile.type === 'image/png') {
+      reader.onloadend = () => {
+        this.setState({
+          imgFile: imgFile,
+          imgUrl: reader.result
+        });
+      }
+      reader.readAsDataURL(imgFile);
+    } else {
+      alert('Please upload an image with the .jpeg or .png file format')
+    }
+  
   }
 
 
@@ -39,8 +66,6 @@ class AddCenter extends React.Component {
 render () {
 
     const { createCenter } =  this.props;
-    
-  
     return (
       <div>
         <NavBarMain />
@@ -67,6 +92,7 @@ render () {
 												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
+												<strong>{createCenter.message}</strong><span> </span>
 												<strong>{createCenter.error}.</strong></div>} 
             <div className="container">{/* <!-- Start container for Add Form --> */}
               <div className="row">
@@ -98,7 +124,7 @@ render () {
                     </div>
                     <div className="form-group">
                       <label htmlFor="add-center" className=" home-para">Upload an Image of event center below:</label>
-                      <input type="file" className="form-control-file" onChange={this.onChange} id="input-file" name="images" aria-describedby="fileHelp" />
+                      <input type="file" className="form-control-file" onChange={this.onImageChange} id="input-file" name="images" aria-describedby="fileHelp" />
                     </div>  
                     <button type="submit" className="btn btn-primary btn-sm" id="save-event">Save and create Event Center<span><i className="fa fa-paper-plane" aria-hidden="true"></i></span></button>
                   </form>          

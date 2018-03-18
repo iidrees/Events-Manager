@@ -24,6 +24,7 @@ export default class Center {
       description,
       imgUrl
     } = req.body;
+    
     const { id, admin, isSuperAdmin } = req.decoded;
 
     if (admin === false) {
@@ -51,7 +52,7 @@ export default class Center {
       .catch(err => res.status(400).send({
         status: 'Unsuccessful',
         message: 'Center Could not be added',
-        data: err.errors[0].message
+        error: err.errors[0].message
       }));
   }
 }

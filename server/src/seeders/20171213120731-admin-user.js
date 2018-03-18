@@ -6,7 +6,7 @@ module.exports = {
       name: 'Idrees',
       email: 'idreeskun@kun.com',
       password: bcrypt.hashSync('password', 10),
-      role: 'Super-Admin',
+      role: 'superAdmin',
       isAdmin: true,
       isSuperAdmin: true,
       createdAt: new Date(),
