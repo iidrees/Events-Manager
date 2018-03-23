@@ -15,16 +15,16 @@ import {
  */
 const getCenters = () => {// function to get all centers
   return (dispatch) => {// axios request is made
-    axios({
+   return axios({
       method: 'GET',
       url: '/api/v1/centers'
     })
-    .then((centers) => {// when response is recieved
-      dispatch({ type: CENTERS_SUCCESS, centers })
+    .then((response) => {// when response is recieved
+      dispatch({ type: CENTERS_SUCCESS,  centers: response.data.data })
       //history.push('/getcenters')
     })
     .catch((err) => {
-      dispatch({ type: CENTERS_ERRORS, err })
+      dispatch({ type: CENTERS_ERRORS, error: err.response.data })
       //history.push('/getcenters')
     })
 
