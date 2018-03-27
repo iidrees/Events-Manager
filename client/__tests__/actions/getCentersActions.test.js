@@ -1,14 +1,15 @@
 import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
-//import expect from 'expect';
 import thunk from 'redux-thunk';
+import { createBrowserHistory } from 'history';
 
 import getCenters from '../../src/actions/getCentersAction';
 import * as types from '../../src/actions/types';
-import  {centers }from './mocks/getCentersMocks';
+import { centers }from './mocks/getCentersMocks';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares)
+const history = createBrowserHistory();
 
 describe('Test for the getCentersAction', () => {
   beforeEach(() => {
@@ -32,8 +33,19 @@ describe('Test for the getCentersAction', () => {
     });
 
     const expectedActions = [ 
-      { type: types.CENTERS_SUCCESS, centers: centers }
+      { 
+        type: types.CENTERS_SUCCESS, 
+        centers: {
+          status: 'Success',
+          message: 'Centers found',
+          data: centers
+        }
+      }
     ]
+
+    
+
+   
 
     const store = mockStore({centers: {} })
 
@@ -68,7 +80,7 @@ describe('Test for the getCentersAction', () => {
 
     return store.dispatch(getCenters()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
-    })
+    });
 
   });
 });

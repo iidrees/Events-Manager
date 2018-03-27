@@ -46,7 +46,7 @@ export const addCenter = (centerData, imgUrl) => {
 }
 
 
-/**
+/**s
  * @export {function} imageUpload function
  * @param {centerData} centerData {the image to be uploaded to cloudinary}
  * @returns {URL} URL link returned is used as a parameter

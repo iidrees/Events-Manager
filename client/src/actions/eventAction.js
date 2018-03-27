@@ -16,7 +16,7 @@ import {
  */
 export const getEvents = () => {
   return (dispatch) => {// axios request is made
-    axios({
+    return axios({
       method: 'GET',
       url: '/api/v1/events',
       headers: {
@@ -24,20 +24,26 @@ export const getEvents = () => {
       },
       withCredentials: true
     })
-    .then((events) => {// when events response is received, dispatcher fires so store can be updated
-      dispatch({ type: GET_EVENTS, events })
+    .then((response) => {// when events response is received, dispatcher fires so store can be updated
+      dispatch({ type: GET_EVENTS, events: response.data.data })
       //history.push('/getevents');
     })
-    .catch((err) => {// if any error is returned, it is shown to the user.
-      dispatch({ type: EVENT_FAILED, err});
-      history.push('/getevents')
+    .catch((error) => {// if any error is returned, it is shown to the user.
+      dispatch({ type: EVENT_FAILED, err: error.response.data});
+      //history.push('/getevents')
     })
   }
 }
 
+/**
+ * Axios will help make GET request for events a user posted
+ * @export {function}
+ * @param {index} index {args}
+ * @returns {JSON} JSON data containing events 
+ */
 export const detailEvent = (index) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'GET',
       url: `/api/v1/events/${index}`,
       headers: {
@@ -45,12 +51,12 @@ export const detailEvent = (index) => {
       },
       withCredentials: true
     })
-    .then((event) => {
-      dispatch({ type: GET_EVENT, event })
+    .then((response) => {
+      dispatch({ type: GET_EVENT, response: response.data })
       //history.push('/eventdetails/:id')
     })
     .catch((err) => {
-      dispatch({ type: EVENT_FAIL, err });
+      dispatch({ type: EVENT_FAIL, error: err.response.data });
       //history.push('/eventdetails/:id');
     })
   }

@@ -19,8 +19,8 @@ const getCenters = () => {// function to get all centers
       method: 'GET',
       url: '/api/v1/centers'
     })
-    .then((response) => {// when response is recieved
-      dispatch({ type: CENTERS_SUCCESS,  centers: response.data.data })
+    .then((response) => {// when response is recieved)
+      dispatch({ type: CENTERS_SUCCESS,  centers: response.data })
       //history.push('/getcenters')
     })
     .catch((err) => {
