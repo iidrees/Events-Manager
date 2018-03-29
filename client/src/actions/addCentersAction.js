@@ -17,7 +17,7 @@ import {
  */
 export const addCenter = (centerData, imgUrl) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'post',
       url: '/api/v1/centers',
       data: {
@@ -27,26 +27,26 @@ export const addCenter = (centerData, imgUrl) => {
         capacity: centerData.capacity,
         owner: centerData.owner,
         description: centerData.description,
-        imgUrl: imgUrl || 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+        imgUrl: imgUrl || 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg' // eslint-disable-line
       },
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
       withCredentials: true
     })
-    .then((res) => {
-      dispatch({ type: ADD_CENTER, res })
-      history.push('/getcenters')
+    .then((response) => {
+      dispatch({ type: ADD_CENTER, center: response.data.data })
+      //history.push('/getcenters')
     })
     .catch((err) => {
-      dispatch({ type: ADD_CENTER_FAIL, err })
-      history.push('/addcenter')
+      dispatch({ type: ADD_CENTER_FAIL, error: err.response.data })
+      //history.push('/addcenter')
     })
   }
 }
 
 
-/**
+/**s
  * @export {function} imageUpload function
  * @param {centerData} centerData {the image to be uploaded to cloudinary}
  * @returns {URL} URL link returned is used as a parameter

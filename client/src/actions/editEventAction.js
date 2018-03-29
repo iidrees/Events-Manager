@@ -18,7 +18,7 @@ import {
 export const editEvent = (eventData,index) => {
   /* disable-eslint */
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'PUT',
       url: `/api/v1/events/${index}`,
       data: eventData,
@@ -27,12 +27,13 @@ export const editEvent = (eventData,index) => {
       },
       withCredentials: true
     })
-    .then(() => {
-      history.push('/getevents')
+    .then((event) => {
+      dispatch({ type: EDIT_EVENT, event: event.data.data })
+      //history.push('/getevents')
     })
     .catch((err) => {
-      dispatch({ type: EDIT_EVENT_FAIL, err });
-      history.push('/addevents')
+      dispatch({ type: EDIT_EVENT_FAIL, error: err.response.data });
+      //history.push('/addevents')
     })
   }
 }

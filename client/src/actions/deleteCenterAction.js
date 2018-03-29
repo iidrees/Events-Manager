@@ -10,7 +10,7 @@ import {
 /* eslint-disable */
 export const deleteCenter = (index) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'DELETE',
       url: `/api/v1/centers/${index}`,
       headers: {
@@ -18,14 +18,14 @@ export const deleteCenter = (index) => {
       },
       withCredentials: true
     })
-    .then((center) => {
-      
-      history.push('/getcenters')
+    .then((response) => {
+      dispatch({ type: DELETE_CENTER, centerDeleted: response.data })
+      //history.push('/getcenters')
     })
     .catch((err) => {
-      dispatch({ type: DELETE_CENTER_FAIL, err});
+      dispatch({ type: DELETE_CENTER_FAIL, error: err.response.data});
       
-      history.push(`/centerdetails/${index}`)
+      //history.push(`/centerdetails/${index}`)
     })
   }
 }

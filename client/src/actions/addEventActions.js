@@ -6,7 +6,8 @@ import { history } from '../routes';
 import { 
   ADD_EVENT, 
   ADD_EVENT_FAIL, 
-  ADD_IMG_FAIL
+  ADD_IMG_FAIL,
+  GET_EVENT
 } from './types';
 
 
@@ -21,7 +22,7 @@ import {
 export const addEvent = (eventData, index, imgUrl ) => {
   /* disable-eslint */
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'post',
       url: `/api/v1/events/${index}`,
       data: { 
@@ -38,12 +39,12 @@ export const addEvent = (eventData, index, imgUrl ) => {
       },
       withCredentials: true
     })
-    .then(() => {
-      history.push('/getevents')
+    .then((response) => {
+      dispatch({ type: GET_EVENT, event: response.data.data})
+      //history.push('/getevents')
     })
     .catch((err) => {
-      dispatch({ type: ADD_EVENT_FAIL, err });
-      history.push('/addevents')
+      dispatch({ type: ADD_EVENT_FAIL, error: err.response.data });
     })
   }
 }

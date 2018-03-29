@@ -10,7 +10,7 @@ import {
 /* eslint-disable */
 export const centerDetails = (index) => {
   return (dispatch) => {
-    axios({
+   return axios({
       method: 'GET',
       url: `/api/v1/centers/${index}`,
       headers: {
@@ -18,11 +18,11 @@ export const centerDetails = (index) => {
       },
       withCredentials: true
     })
-    .then((center) => {
-      dispatch({ type: GET_CENTER, center })
+    .then((response) => {
+      dispatch({ type: GET_CENTER, response: response.data })
     })
     .catch((err) => {
-      dispatch({ type: GET_CENTER_FAIL, err});
+      dispatch({ type: GET_CENTER_FAIL, error: err.response.data});
     })
   }
 }

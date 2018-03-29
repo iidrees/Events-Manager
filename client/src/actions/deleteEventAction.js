@@ -11,7 +11,7 @@ import {
 /* eslint-disable */
 export const deleteEvent = (index) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'DELETE',
       url: `/api/v1/events/${index}`,
       headers: {
@@ -19,14 +19,14 @@ export const deleteEvent = (index) => {
       },
       withCredentials: true
     })
-    .then((center) => {
-      
-      history.push('/getevents')
+    .then((response) => {
+      dispatch({ type: DELETE_EVENT, eventDeleted: response.data })
+      //history.push('/getevents')
     })
     .catch((err) => {
-      dispatch({ type: DELETE_EVENT_FAIL, err});
+      dispatch({ type: DELETE_EVENT_FAIL, error: err.response.data});
       
-      history.push(`/eventdetails/${index}`)
+      //history.push(`/eventdetails/${index}`)
     })
   }
 }
