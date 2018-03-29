@@ -27,7 +27,7 @@ describe('TEST FOR DELETE EVENT', () => {
         }
       });
     });
-
+ 
     const expectedActions = [
       {
         type: types.DELETE_EVENT,
