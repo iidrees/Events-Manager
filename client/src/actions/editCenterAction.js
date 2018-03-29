@@ -10,7 +10,7 @@ import {
 /* eslint-disable */
 export const editCenter = (index, centerData ) => {
   return (dispatch) => {
-    axios({
+    return axios({
       method: 'PUT',
       url: `/api/v1/centers/${index}`,
       data: centerData,
@@ -20,12 +20,12 @@ export const editCenter = (index, centerData ) => {
       withCredentials: true
     })
     .then((center) => {
-      //dispatch({ type: EDIT_CENTER, center })
-      history.push('/getcenters')
+      dispatch({ type: EDIT_CENTER, center: center.data.data })
+      //history.push('/getcenters')
     })
     .catch((err) => {
-      dispatch({ type: EDIT_CENTER_FAIL, err});
-      history.push('/editcenter')
+      dispatch({ type: EDIT_CENTER_FAIL, error: err.response.data});
+      //history.push('/editcenter')
     })
   }
 }
