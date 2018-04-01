@@ -4,8 +4,8 @@
   "description": "An Events Manager Application that allows users host their organised events",
   "main": "server.js",
   "scripts": {
-    "test": "nyc mocha server/test/test.js --timeout 25000 --require babel-register --exit",
-    "test:env": "cross-env NODE_ENV=test nyc mocha server/test/test.js --require babel-register --exit",
+    "test": "npm run seq:db && nyc mocha server/test/test.js --timeout 25000 --require babel-register --exit",
+    "test:env": "npm run seq:db && nyc npm test",
     "test:tester": "nyc cross-env NODE_ENV=test  --reporter=html --reporter=text --reporter=lcov --reporter=text-lcov _mocha server/test/test.js --compilers js:babel-core/register --exit",
     "start": "babel-node  server/src/server.js",
     "start:dev": "nodemon server/src/server.js --exec babel-node",

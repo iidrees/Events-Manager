@@ -1,25 +1,13 @@
 import { assert } from 'chai';
 import request from 'supertest';
 import app from '../src/server';
-import { Users, Events, Centers } from '../src/models';
+import { 
+  Users, 
+  Events, 
+  Centers 
+} from '../src/models';
 
-
-Users.destroy({
-  cascade: true,
-  truncate: true,
-  restartIdentity: true
-});
-Events.destroy({
-  cascade: true,
-  truncate: true,
-  restartIdentity: true
-});
-Centers.destroy({
-  cascade: true,
-  truncate: true,
-  restartIdentity: true
-});
-
+/* eslint-disable */
 let token;
 let newToken;
 let adminToken;
@@ -104,10 +92,11 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(201)
         .then((res) => {
+          console.log('from the tests',res.body.error)
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'You are signed up successfully.');
           assert.deepEqual(res.body.name, 'tester');
-          assert.deepEqual(res.body.id, 1);
+          assert.deepEqual(res.body.id, 2);
           assert.deepEqual(res.status, 201);
           token = res.body.data.token;
 
@@ -262,7 +251,8 @@ describe('TEST FOR ADMIN', () => {
         .then((res) => {
           assert.deepEqual(res.status, 201);
           assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'You have been successfully made an admin. Please signin again.');
+          assert.deepEqual(res.body.message, 'You have been successfully\
+           made an admin. Please signin again.');
           assert.deepEqual(res.body.data.name, 'tester');
           assert.deepEqual(res.body.data.email, 'tester@gmail.com');
           done();
@@ -299,7 +289,6 @@ describe('TEST FOR NONE AVAILABLE CENTERS', () => {
         assert.deepEqual(res.body.message, 'No Centers Found');
         done();
       })
-      .catch(err => done(err))
   });
 });
 
@@ -476,7 +465,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         .expect(401)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Unauthorized');
+          assert.deepEqual(res.body.message, 'No token supplied');
           assert.deepEqual(res.status, 401);
           done();
         });
@@ -565,12 +554,11 @@ describe('TEST EVENT ENDPOINTS', () => {
           type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
-        .expect(400)
+        .expect(409)
         .then((res) => {
-          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.status, 409);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Event could not be added');
-          assert.deepEqual(res.body.error, 'Date already booked, enter another date');
+          assert.deepEqual(res.body.message, 'date already booked for this center, choose another');
           done();
         });
     });
@@ -641,11 +629,11 @@ describe('TEST EVENT ENDPOINTS', () => {
     });
   });
   describe('Test the retrieval of all events', () => {
-    xit('should return "These are your Events" when all events retrieved', () => {
+    it('should return "These are your Events" when all events retrieved', (done) => {
       request(app)
         .get('/api/v1/events')
         .set('x-access-token', token)
-        .expect(404)
+        .expect(200)
         .then((res) => {
           assert.deepEqual(res.status, 200);
           assert.deepEqual(res.body.status, 'Success');
