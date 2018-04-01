@@ -1,4 +1,6 @@
 /* Import modules */
+import moment from 'moment';
+
 import { 
   Events, 
   Centers 
@@ -96,6 +98,7 @@ export class Event {
       }) 
   }
 }
+
 /**
  * This is a EventUpdate class that allows a user
  * update an event he/she created

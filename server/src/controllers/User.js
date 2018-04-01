@@ -1,6 +1,5 @@
 // import dependencies
 import bcrypt from 'bcrypt';
-import validator from 'validator';
 import jwt from 'jsonwebtoken';
 import { Users } from '../models';
 
@@ -20,36 +19,6 @@ export class UserSignup {
   static signUp(req, res) {
     const { name, email, confirmPassword } = req.body;
     let { password } = req.body;
-    /* validates password */
-    if ( name === undefined ||  email === undefined || 
-       password === undefined ||  confirmPassword === undefined ) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Please enter the required input in all required fields'
-      });
-    }
-    if (validator.isEmpty(password + '') || password === undefined) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Please enter a password'
-      });
-    }
-    if (!validator.equals(  password === undefined ||
-      '' + password.toLowerCase().trim(),
-      '' + confirmPassword.toLowerCase().trim())) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Your password do not match'
-      });
-    }
-    if (!validator.isLength('' + password.toLowerCase().trim(), 
-      { min: 8, max: 15 })) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Password cannot be less than 8 characters'
-      });
-    }
-
     /* encrypt password and stores in the database
     along with some user information */
     password = bcrypt.hashSync(password.trim(), 10);
@@ -105,29 +74,12 @@ export class UserSignin {
  */
   static signIn(req, res) {
     /* grab the email and password from the req.body
-      these values are parsed and then if there is an error it is returned
+      these values are parsed and then if there is 
+      an error it is returned
      */
 
     const { email, password } = req.body;
-    if ( email === undefined || 
-      password === undefined  ) {
-     return res.status(400).send({
-       status: 'Unsuccessful',
-       message: 'Please enter a value'
-     });
-   }
-    if (validator.isEmpty(''+password) || password === undefined) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Please enter your password'
-      });
-    }
-    if ( validator.isEmpty(email) ) {
-      return res.status(400).send({
-        status: 'Unsuccessful',
-        message: 'Please enter your email address'
-      });
-    }
+
     return Users // check the db if user has already signedup
       .findOne({
         where: {
