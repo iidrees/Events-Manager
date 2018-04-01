@@ -2,7 +2,7 @@
 
 
 [![Build Status](https://travis-ci.org/iidrees/Events-Manager.svg?branch=develop)](https://travis-ci.org/iidrees/Events-Manager)
-[![Coverage Status](https://coveralls.io/repos/github/iidrees/Events-Manager/badge.svg)](https://coveralls.io/github/iidrees/Events-Manager)
+[![Coverage Status](https://coveralls.io/repos/github/iidrees/Events-Manager/badge.svg?branch=develop)](https://coveralls.io/github/iidrees/Events-Manager?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/507b075d1aa0f1e22e24/maintainability)](https://codeclimate.com/github/iidrees/Events-Manager/maintainability)
 
 ## Introduction
