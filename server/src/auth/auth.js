@@ -26,14 +26,14 @@ export default { // exported into the server module/file
             status: 'Unsuccessful',
             message: 'Session Expired, Please signin again.'
           });
-        }// we store token in the req object for later authentication use
+        }// store token in the req object for later authentication use
         req.decoded = decoded;
         next();
       });
     } else { // when token is not supplied, this error response is returned
       return res.status(401).send({
         status: 'Unsuccessful',
-        message: 'Unauthorized'
+        message: 'No token supplied'
       });
     }
   }

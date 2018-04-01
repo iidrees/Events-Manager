@@ -1,5 +1,8 @@
 /* Import modules */
-import { Events, Centers } from '../models';
+import { 
+  Events, 
+  Centers 
+} from '../models';
 
 
 /**
@@ -25,42 +28,72 @@ export class Event {
       imgUrl
     } = req.body;
     const { id } = req.decoded;
-    return Centers
-      .findOne({
-        where: {
-          id: req.params.centerId,
+    
+    return Events /* 
+    first check if the center is booked for an
+    event for the same date.
+     */
+      .findAll({
+        where:{
+          centerId: req.params.centerId,
+          date,
         }
       })
-      .then((venue) => {
-        if (!venue) {
-          return res.status(404).send({
-            status: 'Unsuccessful',
-            message: 'Center Not Found'
-          });
+      .then((event) => {
+        // create the event exists
+        if(event.length === 0) {
+          return Centers
+            .findOne({
+              where: {
+                id: req.params.centerId,
+              }
+            })
+            .then((venue) => {
+              if (!venue) {
+                return res.status(404).send({
+                  status: 'Unsuccessful',
+                  message: 'Center Not Found'
+                });
+              }
+              return Events
+                .create({
+                  title,
+                  description,
+                  date,
+                  time,
+                  center: venue.name,
+                  type,
+                  imgUrl,
+                  userId: id,
+                  centerId: venue.id
+                })
+                .then(newEvent => res.status(201).send({
+                  status: 'Success',
+                  message: 'Event added successfully',
+                  data: newEvent
+                }))
+                .catch(err => res.status(400).send({
+                  status: 'Unsuccessful',
+                  message: 'Event could not be added',
+                  error: err.errors[0].message
+                }));
+            });
         }
-        return Events
-          .create({
-            title,
-            description,
-            date,
-            time,
-            center: venue.name,
-            type,
-            imgUrl,
-            userId: id,
-            centerId: venue.id
-          })
-          .then(event => res.status(201).send({
-            status: 'Success',
-            message: 'Event added successfully',
+          return res.status(409).send({
+            // find out the correst status code to use here
+            status: 'Unsuccessful',
+            message: 'date already booked for this center, choose another',
             data: event
-          }))
-          .catch(err => res.status(400).send({
+            })
+         })
+        .catch((error) => {
+          return res.status(404).send({
+            // find out the correct status code to be used here
             status: 'Unsuccessful',
             message: 'Event could not be added',
-            error: err.errors[0].message
-          }));
-      });
+            error: error[0].message
+        })
+      }) 
   }
 }
 /**

@@ -13,14 +13,14 @@ export class UserSignup {
   /**
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON - this is returned to notify the user of account creation
+ * @return {object} JSON - this is returned to notify the 
  * @static
  * @memberof UserSignup
  */
   static signUp(req, res) {
     const { name, email, confirmPassword } = req.body;
     let { password } = req.body;
-    /* Checks password */
+    /* validates password */
     if ( name === undefined ||  email === undefined || 
        password === undefined ||  confirmPassword === undefined ) {
       return res.status(400).send({
@@ -34,13 +34,16 @@ export class UserSignup {
         message: 'Please enter a password'
       });
     }
-    if (!validator.equals(  password === undefined ||'' + password.toLowerCase().trim(),'' + confirmPassword.toLowerCase().trim())) {
+    if (!validator.equals(  password === undefined ||
+      '' + password.toLowerCase().trim(),
+      '' + confirmPassword.toLowerCase().trim())) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Your password do not match'
       });
     }
-    if (!validator.isLength('' + password.toLowerCase().trim(), { min: 8, max: undefined })) {
+    if (!validator.isLength('' + password.toLowerCase().trim(), 
+      { min: 8, max: 15 })) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Password cannot be less than 8 characters'
@@ -106,7 +109,7 @@ export class UserSignin {
      */
 
     const { email, password } = req.body;
-    if (  email === undefined || 
+    if ( email === undefined || 
       password === undefined  ) {
      return res.status(400).send({
        status: 'Unsuccessful',
@@ -119,7 +122,7 @@ export class UserSignin {
         message: 'Please enter your password'
       });
     }
-    if (validator.isEmpty(email)) {
+    if ( validator.isEmpty(email) ) {
       return res.status(400).send({
         status: 'Unsuccessful',
         message: 'Please enter your email address'
@@ -154,7 +157,7 @@ export class UserSignin {
           };
           /* Generates token and sends to user */
           const tokens = jwt.sign(payload, process.env.SECRET, {
-            expiresIn: '3h'
+            expiresIn: '10h'
           });
           return res.status(200).send({
             status: 'Success',
