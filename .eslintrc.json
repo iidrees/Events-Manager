@@ -27,7 +27,6 @@
       "max-len": [1, 80, 4],
       "consistent-return": 0,
       "no-param-reassign": 0,
-      "properties": "always",
       "no-duplicate-imports": ["error", { "includeExports": true }],
       "no-unused-vars": 0,
       "comma-dangle": 0,
