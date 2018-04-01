@@ -1,4 +1,7 @@
-import { Centers, Events } from '../models';
+import { 
+  Centers, 
+  Events 
+} from '../models';
 
 /**
  * A class that allows all users get a centers

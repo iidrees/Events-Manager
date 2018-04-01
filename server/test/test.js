@@ -1,25 +1,13 @@
 import { assert } from 'chai';
 import request from 'supertest';
 import app from '../src/server';
-import { Users, Events, Centers } from '../src/models';
+import { 
+  Users, 
+  Events, 
+  Centers 
+} from '../src/models';
 
-
-Users.destroy({
-  cascade: true,
-  truncate: true,
-  restartIdentity: true
-});
-Events.destroy({
-  cascade: true,
-  truncate: true,
-  restartIdentity: true
-});
-Centers.destroy({
-  cascade: true,
-  truncate: true,
-  restartIdentity: true
-});
-
+/* eslint-disable */
 let token;
 let newToken;
 let adminToken;
@@ -107,7 +95,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'You are signed up successfully.');
           assert.deepEqual(res.body.name, 'tester');
-          assert.deepEqual(res.body.id, 1);
+          assert.deepEqual(res.body.id, 2);
           assert.deepEqual(res.status, 201);
           token = res.body.data.token;
 
@@ -144,8 +132,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .expect(400)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'User signup was unsuccessful')
-          assert.deepEqual(res.body.error, 'Please enter a valid email address');
+          assert.deepEqual(res.body.message, 'Please enter your email address')
           assert.deepEqual(res.status, 400);
           done();
         });
@@ -262,7 +249,8 @@ describe('TEST FOR ADMIN', () => {
         .then((res) => {
           assert.deepEqual(res.status, 201);
           assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'You have been successfully made an admin. Please signin again.');
+          assert.deepEqual(res.body.message, 'You have been successfully\
+           made an admin. Please signin again.');
           assert.deepEqual(res.body.data.name, 'tester');
           assert.deepEqual(res.body.data.email, 'tester@gmail.com');
           done();
@@ -299,7 +287,6 @@ describe('TEST FOR NONE AVAILABLE CENTERS', () => {
         assert.deepEqual(res.body.message, 'No Centers Found');
         done();
       })
-      .catch(err => done(err))
   });
 });
 
@@ -347,7 +334,7 @@ describe('TEST add centers', () => {
         done();
       });
   });
-  it('should return an error for wrong input by an admin', (done) => {
+  it('should return an error for empty string input', (done) => {
     request(app)
       .post('/api/v1/centers')
       .set('x-access-token', adminToken)
@@ -363,7 +350,7 @@ describe('TEST add centers', () => {
       .then((res) => {
         assert.deepEqual(res.status, 400);
         assert.deepEqual(res.body.status, 'Unsuccessful');
-        assert.deepEqual(res.body.message, 'Center Could not be added');
+        assert.deepEqual(res.body.message, 'Please fill all input fields');
         done();
       });
   });
@@ -476,7 +463,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         .expect(401)
         .then((res) => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Unauthorized');
+          assert.deepEqual(res.body.message, 'No token supplied');
           assert.deepEqual(res.status, 401);
           done();
         });
@@ -512,10 +499,10 @@ describe('TEST EVENT ENDPOINTS', () => {
         .send({
           title: 'Felabration',
           description: 'Its an event for fela abeg',
-          date: '2018-03-07',
-          time: '12-03 PM',
-          center: 'Club House',
-          type: 'public'
+          date: '07-03-2018',
+          time: '12:03 PM',
+          type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(404)
         .then((res) => {
@@ -532,8 +519,8 @@ describe('TEST EVENT ENDPOINTS', () => {
         .send({
           title: 'Felabration',
           description: 'Its an event for fela abeg',
-          date: '2018-03-02',
-          time: '12-03 PM',
+          date: '07-03-2018',
+          time: '12:03 PM',
           type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -544,8 +531,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.message, 'Event added successfully');
           assert.deepEqual(res.body.data.title, 'Felabration');
           assert.deepEqual(res.body.data.description, 'Its an event for fela abeg');
-          assert.deepEqual(res.body.data.date, '2018-03-02');
-          assert.deepEqual(res.body.data.time, '12-03 PM');
+          assert.deepEqual(res.body.data.date, '2018-07-03');
+          assert.deepEqual(res.body.data.time, '12:03 PM');
           assert.deepEqual(res.body.data.center, 'Muson Center');
           assert.deepEqual(res.body.data.type, 'public');
           assert.deepEqual(res.body.data.imgUrl, 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg')
@@ -559,18 +546,17 @@ describe('TEST EVENT ENDPOINTS', () => {
         .send({
           title: 'Felabration',
           description: 'Its an event for fela abeg',
-          date: '2018-03-02',
-          time: '12-03 PM',
+          date: '07-03-2018',
+          time: '12:03 PM',
           center: 'Muson Center',
           type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
-        .expect(400)
+        .expect(409)
         .then((res) => {
-          assert.deepEqual(res.status, 400);
+          assert.deepEqual(res.status, 409);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Event could not be added');
-          assert.deepEqual(res.body.error, 'Date already booked, enter another date');
+          assert.deepEqual(res.body.message, 'date already booked for this center, choose another');
           done();
         });
     });
@@ -590,8 +576,8 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then((res) => {
           assert.deepEqual(res.status, 400);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Event could not be added');
-          assert.deepEqual(res.body.error, 'Events.imgUrl cannot be null');
+          assert.deepEqual(res.body.message, 'Please fill all input fields');
+          
           done();
         });
     });
@@ -612,8 +598,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then((res) => {
           assert.deepEqual(res.status, 400);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Event could not be added');
-          assert.deepEqual(res.body.error, 'Image is required');
+          assert.deepEqual(res.body.message, 'Please all form fields are required to be filled');
           done();
         });
     });
@@ -625,7 +610,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: '',
           date: '2018-03-08',
-          time: '12-03 PM',
+          time: '12:03 PM',
           center: 'Muson Center',
           type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
@@ -634,18 +619,17 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then((res) => {
           assert.deepEqual(res.status, 400);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Event could not be added')
-          assert.deepEqual(res.body.error, 'Please enter a description');
+          assert.deepEqual(res.body.message, 'Please all form fields are required to be filled')
           done();
         });
     });
   });
   describe('Test the retrieval of all events', () => {
-    xit('should return "These are your Events" when all events retrieved', () => {
+    it('should return "These are your Events" when all events retrieved', (done) => {
       request(app)
         .get('/api/v1/events')
         .set('x-access-token', token)
-        .expect(404)
+        .expect(200)
         .then((res) => {
           assert.deepEqual(res.status, 200);
           assert.deepEqual(res.body.status, 'Success');
@@ -662,10 +646,10 @@ describe('TEST EVENT ENDPOINTS', () => {
         .send({
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          center: 'Muson Center',
+          date: '08-03-2018',
+          time: '12:03 PM',
           type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(404)
         .then((res) => {
@@ -681,10 +665,10 @@ describe('TEST EVENT ENDPOINTS', () => {
         .send({
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          center: 'Muson Center',
+          date: '08-03-2018',
+          time: '12-:3 PM',
           type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(400)
         .then((res) => {
@@ -700,10 +684,10 @@ describe('TEST EVENT ENDPOINTS', () => {
         .send({
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
-          date: '2018-03-08',
-          time: '12-03 PM',
-          center: 'Lagos Lagoon',
+          date: '08-03-2018',
+          time: '12:03 PM',
           type: 'public',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(200)
         .then((res) => {
@@ -711,9 +695,9 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.message, 'Event updated successfully');
           assert.deepEqual(res.body.data.title, 'Felabration');
           assert.deepEqual(res.body.data.description, 'It not fela anymore anymore oo');
-          assert.deepEqual(res.body.data.date, '2018-03-08');
-          assert.deepEqual(res.body.data.time, '12-03 PM');
-          assert.deepEqual(res.body.data.center, 'Lagos Lagoon');
+          assert.deepEqual(res.body.data.date, '2018-08-03');
+          assert.deepEqual(res.body.data.time, '12:03 PM');
+          assert.deepEqual(res.body.data.center, 'Muson Center');
           assert.deepEqual(res.body.data.type, 'public');
           done();
         });

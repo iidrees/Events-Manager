@@ -46,7 +46,8 @@ export default class Admin {
         })
         .then(updateUser => res.status(201).send({
           status: 'Success',
-          message: 'You have been successfully made an admin. Please signin again.',
+          message: 'You have been successfully\
+           made an admin. Please signin again.',
           data: {
             name: updateUser.name,
             email: updateUser.email,
