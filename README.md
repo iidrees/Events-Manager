@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/iidrees/Events-Manager.svg?branch=develop)](https://travis-ci.org/iidrees/Events-Manager)
 [![Coverage Status](https://coveralls.io/repos/github/iidrees/Events-Manager/badge.svg?branch=develop)](https://coveralls.io/github/iidrees/Events-Manager?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/507b075d1aa0f1e22e24/maintainability)](https://codeclimate.com/github/iidrees/Events-Manager/maintainability)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction
 
@@ -147,11 +148,13 @@ Server side testing is done through the use of `supertest`, `mocha` and `chai` p
 
 
 ## Current state
-still in the development stage
+* still in the development stage
 
 
 ## Authors
 
 * Idrees Ibraheem
 
+## License
 
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/iidrees/Events-Manager/blob/develop/LICENSE) file for details.

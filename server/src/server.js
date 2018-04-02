@@ -28,6 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
 
+/* checks if environment is development when testing so bundle is not 
+generated each time test is run */
 if (process.env.NODE_ENV !== 'development') {
   app.use(require('webpack-dev-middleware')(compiler, {
     hot: true,
@@ -42,12 +44,13 @@ if (process.env.NODE_ENV !== 'development') {
 app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Welcome to the Events Manager API' });
 });
+
 // router to the API
 app.use('/api/v1/', router);
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back React's index.html file.
-
+/* The "catchall" handler: for any request that points to react app
+match one above, send back React's index.html file.
+ */
 app.get('*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../../client/index.html'));
   
