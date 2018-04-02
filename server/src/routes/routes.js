@@ -1,9 +1,10 @@
-/* Import dependencies */
+/* Import dependency and module */
 import express from 'express';
 import { 
   UserSignup,
   UserSignin 
 } from '../controllers/User';
+import Admin from '../controllers/Admin';
 import { 
   Event, 
   EventUpdate, 
@@ -16,16 +17,16 @@ import {
   GetAllCenters, 
   CenterDelete 
 } from '../controllers/getCenters';
-import Admin from '../controllers/Admin';
 import Center from '../controllers/Center';
 import ModifyCenter from '../controllers/ModifyCenter';
 import UserValidator from '../middlewares/UserValidator';
 import InputValidation from '../middlewares/InputValidation';
 import auth from '../auth/auth';
 
+// setup router
 const router = express.Router();
 
-
+// signup and login endpoints
 router.post(
   '/users', 
   UserValidator.userSignUpInput,
@@ -38,6 +39,7 @@ router.post(
   UserSignin.signIn
 );
 
+// endpoint that is available to all users
 router.get(
   '/centers/:centerId', 
   GetCenter.getCenter
@@ -52,40 +54,37 @@ router.get(
 // jwt middleware to verify users trying to hit secure endpoints
 router.use(auth.verifyUser);
 
+// upgrade user role to admin role endpoint
+router.put(
+  '/users/admin/:userId', 
+  Admin.addAdmin
+);
+
 // Events endpoints
 router.get(
   '/events/:eventId',
   GetEvent.getEvent
 );
-
 router.get(
   '/events', 
   GetAllEvents.getAllEvents
 );
-
 router.post(
   '/events/:centerId',
   InputValidation.eventInput,
   Event.postEvents
 );
-
 router.put(
   '/events/:eventId',
   InputValidation.eventInput,
   EventUpdate.updateEvent
 );
-
 router.delete(
   '/events/:eventId', 
   EventDelete.deleteEvent
 );
 
 // Centers endpoint
-router.put(
-  '/users/admin/:userId', 
-  Admin.addAdmin
-);
-
 router.post(
   '/centers', 
   InputValidation.centerInput, 
@@ -103,5 +102,5 @@ router.delete(
   CenterDelete.deleteCenter
 );
 
-
+// router exported and made available to the server
 export default router;
