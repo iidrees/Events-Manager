@@ -38,25 +38,21 @@ To view the UI Template, please use a web browser, preferably, Google Chrome and
 rrent-state)
 
 
-## Dependencies
-* Postgres
-* Node
-
 ## Installation
 
 1. Install [**Node JS**](https://nodejs.org/en/).
-1. Install [**Postgres**](https://www.postgresql.org/) .
-1. Clone the [**repository here**](https://github.com/iidrees/Events-Manager)
-1. [**cd**] into the root of the **project directory**.
-1. Run `npm install` on the terminal to install all Dependecies
-1. Install sequelize-cli, Create Postgresql database, and run migrations:
+2. Install [**Postgres**](https://www.postgresql.org/) .
+3. Clone the [**repository here**](https://github.com/iidrees/Events-Manager)
+4. [**cd**] into the root of the **project directory**.
+5. Run `npm install` on the terminal to install all Dependecies
+6. Install sequelize-cli, Create Postgresql database, and run migrations:
 ```
 npm install -g seqeulize-cli
 npm run seq:create 
 ```
-5. Create a `.env` file in the root directory of the application. Use a different database for your testing and development. Example of the content of a .env file is shown in the .env.example
+7. Create a `.env` file in the root directory of the application. Use a different database for your testing and development. Example of the content of a .env file is shown in the .env.example
 
-6. Start the application:
+8. Start the application:
 **_Different Build Environment_**
 
 **Production**
@@ -82,12 +78,6 @@ Sever side tests - run `npm test` on the terminal while within the **project roo
 ### Starting
 In the project root, run `npm run start:dev` for development.
 For production run `npm run start:prod` or `npm start`.
-
-## More Information
-
-
-## The Endpoints
-
 
 
 ### Authentication
@@ -115,6 +105,26 @@ For production run `npm run start:prod` or `npm start`.
 - Run database migration with `npm run seq:create`
 - Start app in development with `npm run start:dev`
 - Install **Postman** and use to test all endpoints
+
+
+##The API Endpoints
+**user signup and login**
+* https://events-manager-cp.herokuapp.com/users
+* https://events-manager-cp.herokuapp.com/api/v1/login
+
+**Centers**
+* `POST` https://events-manager-cp.herokuapp.com/api/v1/centers
+* `GET`  https://events-manager-cp.herokuapp.com/api/v1/centers
+* `GET`  https://events-manager-cp.herokuapp.com/api/v1/centers/:centerId
+* `PUT`  https://events-manager-cp.herokuapp.com/api/v1/centers/:centerId
+* `DEL`  https://events-manager-cp.herokuapp.com/api/v1/centers/:centerId
+
+**Events**
+* `POST` https://events-manager-cp.herokuapp.com/api/v1/events
+* `GET`  https://events-manager-cp.herokuapp.com/api/v1/events
+* `GET`  https://events-manager-cp.herokuapp.com/api/v1/events/;eventId
+* `PUT`  https://events-manager-cp.herokuapp.com/api/v1/events/:eventId
+* `DEL`  https://events-manager-cp.herokuapp.com/api/v1/events/:eventId
 
 
 
@@ -148,7 +158,7 @@ Server side testing is done through the use of `supertest`, `mocha` and `chai` p
 
 
 ## Current state
-* still in the development stage
+* Still in development
 
 
 ## Authors

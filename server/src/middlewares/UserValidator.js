@@ -113,7 +113,7 @@ static userSignInInput(req, res, next) {
   if (!validator.isEmail(email)) {
     return res.status(400).send({
       status: 'Unsuccessful',
-      message: 'Please enter your email address in this format \'joe@example.com\''
+      message: 'Please enter your email address in this format \'joe@example.com\''//eslint-disable-line
     })
   }
    next();

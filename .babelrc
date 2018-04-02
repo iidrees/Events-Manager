@@ -9,8 +9,5 @@
     "test": {
       "plugins": ["istanbul"]
     }
-  },
-  "plugins": [
-    
-  ]
+  }
 }
