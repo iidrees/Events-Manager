@@ -107,7 +107,7 @@ For production run `npm run start:prod` or `npm start`.
 - Install **Postman** and use to test all endpoints
 
 
-##The API Endpoints
+## The API Endpoints
 **user signup and login**
 * `POST` https://events-manager-cp.herokuapp.com/users
 * `POST` https://events-manager-cp.herokuapp.com/api/v1/login
