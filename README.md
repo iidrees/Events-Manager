@@ -109,8 +109,8 @@ For production run `npm run start:prod` or `npm start`.
 
 ##The API Endpoints
 **user signup and login**
-* https://events-manager-cp.herokuapp.com/users
-* https://events-manager-cp.herokuapp.com/api/v1/login
+* `POST` https://events-manager-cp.herokuapp.com/users
+* `POST` https://events-manager-cp.herokuapp.com/api/v1/login
 
 **Centers**
 * `POST` https://events-manager-cp.herokuapp.com/api/v1/centers
