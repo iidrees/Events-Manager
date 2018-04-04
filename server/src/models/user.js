@@ -6,9 +6,6 @@ export default (sequelize, DataTypes) => {
       unique: {
         args: true,
         msg: 'This name already exist, enter a new name'
-      },
-      validate: {
-        is: /^[a-z]+$/i
       }
     },
     email: {
