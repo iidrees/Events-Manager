@@ -57,7 +57,7 @@ export default class Admin {
             role: updateUser.role,
           }
         }))
-        .catch(() => res.status(400).send({
+        .catch(() => res.status(422).send({
           status: 'Unsuccessful',
           message: 'Admin creation failed'
         }))})
