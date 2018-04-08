@@ -126,8 +126,7 @@ export class UserSignin {
       })
       .catch(err => res.status(401).send({
         status: 'Unsuccessful',
-        message: 'Email or Password is invalid',
-        error: err.errors[0].message
+        message: 'Email or Password is invalid'
       }));
   }
 }

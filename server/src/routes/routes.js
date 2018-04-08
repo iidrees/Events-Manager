@@ -57,7 +57,7 @@ router.use(auth.verifyUser);
 // upgrade user role to admin role endpoint
 router.put(
   '/users/admin/:userId', 
-  Admin.addAdmin
+  Admin.upgradeUserRole
 );
 
 // Events endpoints

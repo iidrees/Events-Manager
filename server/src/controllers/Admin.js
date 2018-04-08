@@ -15,28 +15,33 @@ export default class Admin {
  * @returns {*} any
  * @memberof Admin
  */
-  static addAdmin(req, res) {
-    const { id, admin } = req.decoded;
+  static upgradeUserRole(req, res) {
+    const { id, admin, isSuperAdmin } = req.decoded;
     const { userId } = req.params;
-    
+    if (isSuperAdmin === false) {
+      return res.status(403).send({
+        status: 'Unsuccessful',
+        message: 'You are unauthorised to carry out this action'
+      })
+    }
+    if (admin === true) {
+      return res.status(409).send({
+        status: 'Unsuccessful',
+        message: 'User already an Admin'
+      })
+    }
     return Users
       .findOne({
         where: {
-          id,
+          id: userId,
         }
       })
       .then(user => {
-        if (user.isSuperAdmin === false && user.isAdmin) {
+
+        if (user.isSuperAdmin === true) {
           return res.status(403).send({
             status: 'Unsuccessful',
-            message: 'You are unauthorised to carry out this action',
-            data: {
-              name: user.name,
-              email: user.email,
-              admin: user.isAdmin,
-              role: user.role,
-              superAdmin: user.isSuperAdmin
-            }
+            message: 'You are not authorized to perform that action'
           })
         }
         return user
@@ -49,11 +54,7 @@ export default class Admin {
           message: 'You have been successfully\
            made an admin. Please signin again.',
           data: {
-            name: updateUser.name,
-            email: updateUser.email,
-            admin: updateUser.isAdmin,
             role: updateUser.role,
-            superAdmin: updateUser.isSuperAdmin
           }
         }))
         .catch(() => res.status(400).send({
