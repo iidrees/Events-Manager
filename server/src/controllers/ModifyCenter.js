@@ -29,7 +29,7 @@ export default class ModifyCenter {
     if (admin === false) {
       return res.status(403).send({
         status: 'Unsuccessful',
-        message: 'You are not permitted to edit or modify this event center'
+        message: 'You are not permitted to edit or modify this resource'
       });
     }
     return Centers
@@ -65,7 +65,7 @@ export default class ModifyCenter {
             message: err.message
           }));
       })
-      .catch(() => res.status(400).send({
+      .catch(() => res.status(422).send({
         status: 'Unsuccessful',
         message: 'Please input correct value'
       }));

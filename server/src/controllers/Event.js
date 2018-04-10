@@ -74,7 +74,7 @@ export class Event {
                   message: 'Event added successfully',
                   data: newEvent
                 }))
-                .catch(err => res.status(400).send({
+                .catch(err => res.status(422).send({
                   status: 'Unsuccessful',
                   message: 'Event could not be added',
                   error: err.errors[0].message
@@ -89,8 +89,8 @@ export class Event {
             })
          })
         .catch((error) => {
-          return res.status(404).send({
-            // find out the correct status code to be used here
+          return res.status(422).send({
+            // TODO: find out the correct status code to be used here
             status: 'Unsuccessful',
             message: 'Event could not be added',
             error: error[0].message
@@ -156,7 +156,7 @@ export class EventUpdate {
           }))
           .catch(err => res.send(err.errors[0].message));
       })
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(422).send({
         status: 'Unsuccessful',
         message: 'Please ensure you are entering a value',
         
@@ -202,7 +202,7 @@ export class EventDelete {
           }))
           .catch(err => res.status(404).send(err));
       })
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(422).send({
         status: 'Unsuccessful',
         message: 'No such event is available',
         
@@ -245,7 +245,7 @@ export class GetEvent {
           data: event
         });
       })
-      .catch(() => res.status(400).send({
+      .catch(() => res.status(422).send({
         status: 'Unsuccessful',
         message: 'No such event is available'
       }));

@@ -49,7 +49,7 @@ export default class Center {
         message: 'Center Added Successfully',
         data: center
       }))
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(422).send({
         status: 'Unsuccessful',
         message: 'Center Could not be added',
         error: err.errors[0].message

@@ -32,24 +32,23 @@ export class UserSignup {
         const payload = {
           id: user.id,
           admin: user.isAdmin,
+          isSuperAdmin: user.isSuperAdmin,
           name: user.name,
           email: user.email
         };
         /* Generates token and sends to user */
-        const tokens = jwt.sign(payload, process.env.SECRET, {
+        const token = jwt.sign(payload, process.env.SECRET, {
           expiresIn: '3h'
         });
         return res.status(201).send({
           status: 'Success',
           message: 'You are signed up successfully.',
-          name: user.name,
-          id: user.id,
           data: {
-            token: tokens,
+            token,
           }
         });
       })
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(401).send({
         status: 'Unsuccessful',
         message: 'User signup was unsuccessful',
         error: err.errors[0].message
@@ -88,9 +87,9 @@ export class UserSignin {
       })
       .then((user) => {
         if (!user) { // returns an error if user has not signedup yet
-          return res.status(404).send({
+          return res.status(401).send({
             status: 'Unsuccessful',
-            message: 'User Not Found'
+            message: 'Email or Password is invalid'
           });
         }
         if (bcrypt.compareSync(password.trim(), user.password)) {
@@ -119,16 +118,15 @@ export class UserSignin {
             },
           });
         }
-        return res.status(403).send({
+        return res.status(401).send({
           status: 'Unsuccessful',
           message: 'User signin was unsuccessful',
-          error: 'Incorrect Login Credentials',
+          error: 'Email or Password is invalid',
         });
       })
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(401).send({
         status: 'Unsuccessful',
-        message: 'User signin was unsuccessful',
-        error: err.errors[0].message
+        message: 'Email or Password is invalid'
       }));
   }
 }

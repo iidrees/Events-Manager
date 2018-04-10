@@ -38,7 +38,7 @@ class InputValidation {
         typeof capacity !== 'string'||
         typeof imgUrl !== 'string'
          ) {
-      return res.status(400).send({
+      return res.status(422).send({
         status: 'Unsuccessful',
         message: 'Please fill all input fields'
       })
@@ -53,7 +53,7 @@ class InputValidation {
       validator.isEmpty(imgUrl)
       ) {
         // checks if the user input is empty
-        return res.status(400).send({
+        return res.status(422).send({
           status: 'Unsuccessful',
           message: 'Please all form fields are required to be filled'
         })
@@ -64,7 +64,7 @@ class InputValidation {
         validator.isAlphanumeric(name)
       ) {
         // checking if value is alphanumeric
-        return res.status(400).send({
+        return res.status(422).send({
           status: 'Unsuccessful',
           message: 'Please enter a word or number'
         })
@@ -73,7 +73,7 @@ class InputValidation {
       
       if (!validator.isInt(capacity)) {
         // checking if the capacity is an integer
-        return res.status(400).send({
+        return res.status(422).send({
           status: 'Unsuccessful',
           message: 'Capacity of a center should be a number'
         })
@@ -111,7 +111,7 @@ static eventInput(req, res, next) {
       typeof type !== 'string'||
       typeof imgUrl !== 'string'
        ) {
-    return res.status(400).send({
+    return res.status(422).send({
       status: 'Unsuccessful',
       message: 'Please fill all input fields'
     })
@@ -125,17 +125,17 @@ static eventInput(req, res, next) {
     validator.isEmpty(type)||
     validator.isEmpty(imgUrl)
     ) {
-      return res.status(400).send({
+      return res.status(422).send({
         status: 'Unsuccessful',
         message: 'Please all form fields are required to be filled'
       })
     }
     
 
-    if (!moment(date, 'DD-MM-YYYY',true).isValid()) {
-      return res.status(400).send({
+    if (!moment(date, 'YYYY-MM-DD',true).isValid()) {
+      return res.status(422).send({
         status: 'Unsuccessful',
-        message: 'This is the valid date format  \'DD-MM-YYYY\''
+        message: 'This is the valid date format  \'YYYY-MM-DD\''
       })
     }
 

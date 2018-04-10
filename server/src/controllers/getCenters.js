@@ -1,3 +1,5 @@
+import validator from 'validator';
+
 import { 
   Centers, 
   Events 
@@ -44,7 +46,7 @@ export class GetCenter {
           data: center
         });
       })
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(422).send({
         status: 'Unsuccessful',
         data: err.message
       }));
@@ -105,6 +107,13 @@ export class CenterDelete {
         message: 'You are not permitted to delete this event center'
       });
     }
+    if (!validator.isInt(id)) {
+      // checking if the capacity is an integer
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message: 'CenterId must be a number'
+      })
+    }
     return Centers
       .findOne({
         where: {
@@ -127,7 +136,7 @@ export class CenterDelete {
           }))
           .catch(err => res.status(404).send(err));
       })
-      .catch(err => res.status(400).send({
+      .catch(err => res.status(422).send({
         status: 'Unsuccessful',
         message: 'Unable to delete center, please try again later',
         data: err
