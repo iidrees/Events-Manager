@@ -24,12 +24,6 @@ export default class Admin {
         message: 'You are unauthorised to carry out this action'
       })
     }
-    if (admin === true) {
-      return res.status(409).send({
-        status: 'Unsuccessful',
-        message: 'User already an Admin'
-      })
-    }
     return Users
       .findOne({
         where: {
@@ -42,6 +36,13 @@ export default class Admin {
           return res.status(403).send({
             status: 'Unsuccessful',
             message: 'You are not authorized to perform that action'
+          })
+        }
+
+        if (user.admin === true) {
+          return res.status(409).send({
+            status: 'Unsuccessful',
+            message: 'User already an Admin'
           })
         }
         return user
