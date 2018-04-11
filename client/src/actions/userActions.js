@@ -25,11 +25,9 @@ export const userSignup = (userData) => {
     .then((response) => {        
       localStorage.setItem('x-access-token', response.data.data.token);
       dispatch({ type: SIGNED_UP, payload: response.data });
-      history.push('/getevents');
     })
     .catch((err) => {
       dispatch({ type: 'SIGN_UP_FAIL', payload: err.response.data});
-      history.push('/signup');
     });
   };
 };
@@ -52,11 +50,12 @@ export const userSignin = (userData) => {
       .then((response) => {// the response is used to let user access protected resource
         localStorage.setItem('x-access-token', response.data.data.token);
         dispatch({ type: SIGNED_IN, payload: response.data });
-        history.push('/getevents');
+        //history.push('/getevents');
       })
       .catch((err) => {// if there is an error, no access is given to user.
+       
         dispatch({ type: SIGN_IN_FAIL, payload: err.response.data });
-        history.push('/signin');
+        //history.push('/signin');
       });
   };
 };

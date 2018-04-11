@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import  { userSignup }  from '../actions/userActions'
 
 class Signup extends React.Component {
@@ -16,11 +17,18 @@ class Signup extends React.Component {
 	}
 
   render() {
-		const { status } = this.props;
+		const { user } = this.props;
+		console.log('this is from the user component', user)
 		
 
     return (
         <div>
+					<div>
+						{
+							(user.authenticated) &&
+						  <Redirect to='/getevents' push />
+						}
+					</div>
 					<div className='container' id="form-signup">
 						<form id="form-signup" className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} >
 						<div className="row">
@@ -29,18 +37,18 @@ class Signup extends React.Component {
 										<h2 className="signup-text">Let's get started</h2>
 										<hr />
 										<p className="signup-text">enter your name, email and password to Sign-up </p>
-										{(status.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+										{(user.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
 						<button type="button" className="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<strong>{status.message}.</strong></div>}
+						<strong>{user.message} {user.error}.</strong></div>}
 								</div>
 						</div>
-						{(status.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+						{/* {(status.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
 						<button type="button" className="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<strong>{status.message}.</strong></div>}
+						<strong>{status.message}.</strong></div>} */}
 						<div className="row">
 								<div className="col-md-3 field-label-responsive">
 										<label htmlFor="name">Name</label>
@@ -130,7 +138,7 @@ class Signup extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		status: state.userReducer
+		user: state.userReducer
 	}
 }
  const mapDispatchToProps = (dispatch) => {

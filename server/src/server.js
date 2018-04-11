@@ -30,7 +30,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 /* checks if environment is development when testing so bundle is not 
 generated each time test is run */
-if (process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV !== 'test') {
   app.use(require('webpack-dev-middleware')(compiler, {
     hot: true,
     noInfo: false,
