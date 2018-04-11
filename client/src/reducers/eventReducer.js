@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
       return  {
         ...state,
         status: 'Unsuccessful' || undefined,
-        message: action.err.response.data.message,
+        message: action.err.error,
       }
     }
     case ADD_IMG_FAIL: {

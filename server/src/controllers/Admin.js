@@ -39,7 +39,7 @@ export default class Admin {
           })
         }
 
-        if (user.admin === true) {
+        if (user.isAdmin === true) {
           return res.status(409).send({
             status: 'Unsuccessful',
             message: 'User already an Admin'
@@ -61,7 +61,8 @@ export default class Admin {
         .catch(() => res.status(422).send({
           status: 'Unsuccessful',
           message: 'Admin creation failed'
-        }))})
+        }))
+      })
       .catch(err => res.status(404).send({
         status: 'Unsuccessful',
         message: 'Unable to find user, admin creation failed',

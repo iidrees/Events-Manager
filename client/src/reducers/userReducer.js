@@ -36,6 +36,7 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Unsuccessful' || undefined,
         message: action.payload.message,
+        error: action.payload.error,
         authenticated: false
       }
     }
@@ -59,6 +60,7 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Unsuccessful' || undefined,
         message: action.payload.message,
+        error: action.payload.error,
         authenticated: false
       }
     }

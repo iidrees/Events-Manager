@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { userSignin } from '../actions/userActions';
-
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
 
@@ -37,9 +37,17 @@ class Signin extends React.Component {
 	 * @memberof Signin
 	 */
 	render() {
-		const { status } = this.props;
+		const { user } = this.props;
+		console.log('this is from the user component', user)
+
 		return (
 			<div>
+					<div>
+						{
+							(user.authenticated) &&
+							<Redirect to='/getevents' push />
+						}
+					</div>
 					<div id="form-signin" className="container">
 						<form className="form-horizontal" role="form" method="POST" onSubmit={this.onSubmit} >
 								<div className="row">
@@ -48,11 +56,11 @@ class Signin extends React.Component {
 												<h2 className="signup-text">Welcome!</h2>
 												<hr />
 												<p className="signup-text">Please fill the form below to log into Events Manager</p>
-												{(status.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+												{(user.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
 												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
-												<strong>{status.message}.</strong></div>}
+												<strong>{user.message} {user.error}.</strong></div>}
 										</div>
 								</div>
 								<div className="row">
@@ -131,7 +139,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
 	return {
 		signedin: state.userReducer,
-		status: state.userReducer
+		user: state.userReducer
 	}
 }
 
