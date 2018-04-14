@@ -13,9 +13,10 @@ class AdminValidator {
  * 
  * 
  * @static
- * @param {any} req 
- * @param {any} res 
- * @returns 
+ * @param {any} req request object
+ * @param {any} res response object
+ * @param {next} next calls next middleware
+ * @returns {JSON} object
  * @memberof AdminValidator
  */
 static updateToken(req, res, next) {

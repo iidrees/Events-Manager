@@ -26,7 +26,6 @@ export class Event {
       description,
       date,
       time,
-      type,
       imgUrl
     } = req.body;
     const { id } = req.decoded;
@@ -64,7 +63,6 @@ export class Event {
                   date,
                   time,
                   center: venue.name,
-                  type,
                   imgUrl,
                   userId: id,
                   centerId: venue.id
@@ -120,7 +118,6 @@ export class EventUpdate {
       date,
       time,
       center,
-      type
     } = req.body;
     const { id } = req.decoded;
     const { eventId } = req.params;
@@ -146,8 +143,7 @@ export class EventUpdate {
             description: description || event.description,
             date: date || event.date,
             time: time || event.time,
-            center: center || event.center,
-            type: type || event.type
+            center: center || event.center
           })
           .then(updatedEvent => res.status(200).send({
             status: 'Success',

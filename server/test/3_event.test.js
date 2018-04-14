@@ -31,7 +31,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           time: '12:03 PM',
           venue: 'Lagos Lagoon',
           location: 'The Shrine',
-          type: 'Public',
           attendance: '200',
         })
         .expect(401)
@@ -42,7 +41,8 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Unsuccessful" for wrong credentials', (done) => {
+    it('should return "Unsuccessful" when a user enters wrong credentials',
+     (done) => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', expiredToken)
@@ -53,7 +53,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           time: '12:03 PM',
           venue: 'Lagos Lagoon',
           location: 'The Shrine',
-          type: 'Public',
           attendance: '200',
           userId: 1
         })
@@ -75,7 +74,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'Its an event for fela abeg',
           date: '2018-03-07',
           time: '12:03 PM',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(404)
@@ -95,7 +93,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'Its an event for fela abeg',
           date: '2018-03-07',
           time: '12:03 PM',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(201)
@@ -108,7 +105,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.date, '2018-03-07');
           assert.deepEqual(res.body.data.time, '12:03 PM');
           assert.deepEqual(res.body.data.center, 'Muson Center');
-          assert.deepEqual(res.body.data.type, 'public');
           assert.deepEqual(res.body.data.imgUrl, 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg')
           done();
         });
@@ -123,7 +119,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           date: '2018-03-07',
           time: '12:03 PM',
           center: 'Muson Center',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(409)
@@ -144,7 +139,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           date: '2018-03-10',
           time: '12-03 PM',
           center: 'Muson Center',
-          type: 'public',
         })
         .expect(422)
         .then((res) => {
@@ -165,7 +159,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           date: '2018-03-10',
           time: '12-03 PM',
           center: 'Muson Center',
-          type: 'public',
           imgUrl:''
         })
         .expect(422)
@@ -186,7 +179,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           date: '2018-03-08',
           time: '12:03 PM',
           center: 'Muson Center',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(422)
@@ -222,7 +214,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
           time: '12:03 PM',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(404)
@@ -241,7 +232,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
           time: '12-:3 PM',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(422)
@@ -260,7 +250,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
           time: '12:03 PM',
-          type: 'public',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(200)
@@ -272,7 +261,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.data.date, '2018-03-08');
           assert.deepEqual(res.body.data.time, '12:03 PM');
           assert.deepEqual(res.body.data.center, 'Muson Center');
-          assert.deepEqual(res.body.data.type, 'public');
           done();
         });
     });
@@ -286,7 +274,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           date: '2018-03-08',
           time: '12-03 PM',
           center: 'Lagos Lagoon',
-          type: 'public',
         })
         .expect(403)
         .then((res) => {

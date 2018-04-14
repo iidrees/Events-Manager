@@ -98,7 +98,6 @@ static eventInput(req, res, next) {
       description,
       date,
       time,
-      type,
       imgUrl
     } = req.body;
     const center = req.params.centerId;
@@ -108,7 +107,6 @@ static eventInput(req, res, next) {
       typeof date !== 'string' ||
       typeof time !== 'string' ||
       typeof description !== 'string'||
-      typeof type !== 'string'||
       typeof imgUrl !== 'string'
        ) {
     return res.status(422).send({
@@ -122,7 +120,6 @@ static eventInput(req, res, next) {
     validator.isEmpty(date)||
     validator.isEmpty(time)||
     validator.isEmpty(description)||
-    validator.isEmpty(type)||
     validator.isEmpty(imgUrl)
     ) {
       return res.status(422).send({
