@@ -59,20 +59,6 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
-    type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'Please enter an event type'
-        },
-        isIn: {
-          args: [['public', 'private']],
-          msg: 'Must be public or private'
-        }
-      }
-    },
     imgUrl: {
       type: DataTypes.STRING,
       allowNull: false,

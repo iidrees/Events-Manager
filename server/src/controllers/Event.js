@@ -267,8 +267,15 @@ export class GetAllEvents {
    * @memberof GetAllEvents
    */
   static getAllEvents(req, res) {
+    if (isNaN(req.query.page)) {
+      req.query.page = 1;
+    }
     return Events
-      .findAll({}).then((events) => {
+      .findAll({
+        limit: 10,
+        offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
+        order: [['id', 'DESC']]
+      }).then((events) => {
         if (events.length === 0) {
           return res.status(404).send({
             status: 'Unsuccessful',

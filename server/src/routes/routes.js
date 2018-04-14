@@ -21,6 +21,7 @@ import Center from '../controllers/Center';
 import ModifyCenter from '../controllers/ModifyCenter';
 import UserValidator from '../middlewares/UserValidator';
 import InputValidation from '../middlewares/InputValidation';
+import AdminValidator from '../middlewares/adminValidator';
 import auth from '../auth/auth';
 
 // setup router
@@ -53,6 +54,7 @@ router.get(
 
 // jwt middleware to verify users trying to hit secure endpoints
 router.use(auth.verifyUser);
+router.use(AdminValidator.updateToken);
 
 // upgrade user role to admin role endpoint
 router.put(
