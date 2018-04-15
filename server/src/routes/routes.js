@@ -54,7 +54,6 @@ router.get(
 
 // jwt middleware to verify users trying to hit secure endpoints
 router.use(auth.verifyUser);
-router.use(AdminValidator.updateToken);
 
 // upgrade user role to admin role endpoint
 router.put(
@@ -86,6 +85,9 @@ router.delete(
   EventDelete.deleteEvent
 );
 
+// middleware to check if the user role and
+// admin status has been changed
+router.use(AdminValidator.updateUser);
 // Centers endpoint
 router.post(
   '/centers', 

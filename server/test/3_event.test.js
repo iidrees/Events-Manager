@@ -20,7 +20,7 @@ import {expiredToken} from './1_user.test.js'
 
 describe('TEST EVENT ENDPOINTS', () => {
   /* TESTS FOR EVENTS */
-  describe('Test POST "/api/v1/events"', () => {
+  describe('POST "/api/v1/events"', () => {
     it('should return "Unauthorized" for wrong credentials', (done) => {
       request(app)
         .post(`/api/v1/events/${1}`)
@@ -129,6 +129,26 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
+    it('should return "This is the valid date format \'YYYY-MM-DD\" for unique date validation', (done) => {
+      request(app)
+        .post(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '08-08-2018',
+          time: '12:03 PM',
+          center: 'Muson Center',
+          imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        })
+        .expect(422)
+        .then((res) => {
+          assert.deepEqual(res.status, 422);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'This is the valid date format  \'YYYY-MM-DD\'');
+          done();
+        });
+    });
     it('should return "Events.imgUrl cannot be null" for image null model validation', (done) => {
       request(app)
         .post(`/api/v1/events/${1}`)
@@ -190,7 +210,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         });
     });
   });
-  describe('Test the retrieval of all events', () => {
+  describe('POST /api/v1/events', () => {
     it('should return "These are your Events" when all events retrieved', (done) => {
       request(app)
         .get('/api/v1/events')
@@ -283,7 +303,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         });
     });
   });
-  describe('Test for the retrieval of an event', () => {
+  describe('GET /api/v1/events/:<eventId>', () => {
     it('Should return "Success" for getting an event', (done) => {
       request(app)
         .get(`/api/v1/events/${1}`)
@@ -326,7 +346,7 @@ describe('TEST EVENT ENDPOINTS', () => {
 
 
 /* TEST FOR DELETE AN EVENT */
-describe('Test DEL "/api/v1/events/:eventId" endpoint ', () => {
+describe('DEL /api/v1/events/:eventId ', () => {
   it('Should return "Event Not Found" for wrong eventId', (done) => {
     request(app)
       .del(`/api/v1/events/${3}`)
@@ -382,7 +402,7 @@ describe('Test DEL "/api/v1/events/:eventId" endpoint ', () => {
 
 
 /* TEST FOR DELETE A CENTER */
-describe('Test DEL "/api/v1/centers/:centerId" endpoint ', () => {
+describe('DEL /api/v1/centers/:centerId', () => {
   it('Should return "403" unauthorized', (done) => {
     request(app)
       .del(`/api/v1/centers/${3}`)

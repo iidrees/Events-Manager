@@ -1,5 +1,4 @@
-import jwt from 'jsonwebtoken';
-
+/* Import modules */
 import { Users } from '../models';
 
 
@@ -19,8 +18,11 @@ class AdminValidator {
  * @returns {JSON} object
  * @memberof AdminValidator
  */
-static updateToken(req, res, next) {
+static updateUser(req, res, next) {
 
+  /* Using the UserId from the token
+  check find the user from the user table 
+  and then check if they are still an admin */
   return Users
     .findOne({
       where: {

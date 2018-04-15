@@ -150,7 +150,7 @@ export class EventUpdate {
             message: 'Event updated successfully',
             data: updatedEvent
           }))
-          .catch(err => res.send(err.errors[0].message));
+          .catch(err => res.status(422).send(err.errors[0].message));
       })
       .catch(err => res.status(422).send({
         status: 'Unsuccessful',
