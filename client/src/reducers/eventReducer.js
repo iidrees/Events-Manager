@@ -16,18 +16,20 @@ const initialState = { /* The initial state of the component */
 export default (state = initialState, action) => {
   switch (action.type) {/* reducer listening for actions and update the store */
     case  GET_EVENTS: {
+      
       return { 
         ...state,
         status: 'Success',
         message: action.events.message,
-        ...action.events.data
+        ...action.events
       }
     }
     case EVENT_FAILED: {
       return  {
         ...state,
         status: 'Unsuccessful' || undefined,
-        message: action.err.error,
+        message: action.err.message,
+        error: action.err.error
       }
     }
     case ADD_IMG_FAIL: {

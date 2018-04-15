@@ -6,22 +6,21 @@ import {
 
 
   const initialState = { /* The initial state of the component */
-    authenticated: false,
     status: '',
     message: '',
     data: {},
-    events: []
+  
   };
 
   export default (state=initialState, action) => {
     switch (action.type) {
       case GET_CENTER: {
+        console.log('details reducer >>>>', action.response)
         return {
           ...state,
           status: 'Success',
-          message: action.center.message,
-          ...action.center.data,
-          events: [...action.center.data.data.events],
+          message: action.response.message,
+          ...action.response.data,
           authenticated: true
         }
       }

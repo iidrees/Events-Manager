@@ -35,7 +35,8 @@ export const addCenter = (centerData, imgUrl) => {
       withCredentials: true
     })
     .then((response) => {
-      dispatch({ type: ADD_CENTER, center: response.data.data })
+      console.log('the response >>>> ',response.data)
+      dispatch({ type: ADD_CENTER, center: response.data })
       //history.push('/getcenters')
     })
     .catch((err) => {

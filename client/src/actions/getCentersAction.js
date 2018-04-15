@@ -20,12 +20,12 @@ const getCenters = () => {// function to get all centers
       url: '/api/v1/centers'
     })
     .then((response) => {// when response is recieved)
+      console.log('this is the actions',response.data  )
       dispatch({ type: CENTERS_SUCCESS,  centers: response.data })
-      //history.push('/getcenters')
     })
     .catch((err) => {
+      console.log('this is the actions', err.response.data  )
       dispatch({ type: CENTERS_ERRORS, error: err.response.data })
-      //history.push('/getcenters')
     })
 
   }

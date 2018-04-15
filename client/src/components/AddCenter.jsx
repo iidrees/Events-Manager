@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom'
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -65,9 +66,16 @@ onImageChange = (e) => {
  */
 render () {
 
-    const { createCenter } =  this.props;
+    const { createCenter, user } =  this.props;
+    console.log('add center component >>>>', createCenter)
     return (
       <div>
+        <div>
+          {
+            (!user.authenticated) &&
+            <Redirect to='/signin' push />
+          }
+        </div>
         <NavBarMain />
         <div className="container">
           <div className="row">
@@ -93,7 +101,7 @@ render () {
 													<span aria-hidden="true">&times;</span>
 												</button>
 												<strong>{createCenter.message}</strong><span> </span>
-												<strong>{createCenter.error}.</strong></div>} 
+												<strong>{createCenter.error}.</strong></div>}
             <div className="container">{/* <!-- Start container for Add Form --> */}
               <div className="row">
                 <div className="col-md-6">
@@ -147,7 +155,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    createCenter: state.addCenterReducer
+    createCenter: state.addCenterReducer,
+    user: state.userReducer
     
   }
 }

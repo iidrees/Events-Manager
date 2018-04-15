@@ -58,17 +58,6 @@ class InputValidation {
           message: 'Please all form fields are required to be filled'
         })
       }
-      
-
-      if (
-        validator.isAlphanumeric(name)
-      ) {
-        // checking if value is alphanumeric
-        return res.status(422).send({
-          status: 'Unsuccessful',
-          message: 'Please enter a word or number'
-        })
-      }
 
       
       if (!validator.isInt(capacity)) {
