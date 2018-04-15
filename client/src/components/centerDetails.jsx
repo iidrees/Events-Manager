@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -12,6 +12,7 @@ class CenterDetails extends React.Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
+    console.log('This is details dispatch >>>>')
     return dispatch(centerDetails(this.props.match.params.id));
   }
 
@@ -19,15 +20,22 @@ class CenterDetails extends React.Component {
     e.preventDefault();
     let { center } = this.props;
     const { dispatch } = this.props;
-    return dispatch(deleteCenter(center.data.id));
+    return dispatch(deleteCenter(center.id));
   }
 
   render () {
 
-    const { center } = this.props;
-    console.log('this is the component',center )
+    const { center, user } = this.props;
+    console.log('this is the detail component', center )
 
     return (
+      <div>
+        {/* <div>
+          {
+            (!user.authenticated) &&
+            <Redirect to='/signin' push />
+          }
+        </div> */}
       <div className="container">
         <div className="row">
           <div className="container" id="center-details-header">{/* START PAGE HEADER */}
@@ -35,7 +43,7 @@ class CenterDetails extends React.Component {
               <div className="col-sm-12">              
                   <h1 className="text-center head-1">Event center details </h1>
                     <p className="head-para text-center">
-                    The {center.data.name}
+                    The {center.name}
                     </p>
               </div>
             </div>
@@ -79,27 +87,27 @@ class CenterDetails extends React.Component {
               <div className="col-md-6">
                 <p className="center-details-para">
                   <span className="center-details-span">Center:</span>
-                  The {center.data.name}
+                  The {center.name}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span">Description:</span> <br/>
-                  {center.data.description}
+                  {center.description}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span">Location:</span>
-                  {center.data.location}
+                  {center.location}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span">Capacity:</span>
-                  {center.data.capacity}
+                  {center.capacity}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span" >Owner:</span>
-                  {center.data.owner}
+                  {center.owner}
                 </p>
                 <p className="center-details-para">
                 </p>
-                <Link className="btn btn-primary" to={`/editcenter/${center.data.id}`} role="button">Edit Center Details</Link>
+                <Link className="btn btn-primary" to={`/editcenter/${center.id}`} role="button">Edit Center Details</Link>
                 <button className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE EVENT CENTER</button>
               </div>
             </div>
@@ -119,7 +127,7 @@ class CenterDetails extends React.Component {
 
           <div className="container" id="event-holding">
             <div className="row">
-           {center.events.map((event) => {
+           {/* {center.events.map((event) => {
               return (
 
               <div className="col-sm-4" key={event.id}>
@@ -142,12 +150,13 @@ class CenterDetails extends React.Component {
               </div>
             </div>
               )
-            })} 
+            })}  */}
 
             </div>
           </div>
           
         </div>
+      </div>
       </div>
     )
   }
@@ -161,7 +170,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    center: state.centerDetailsReducer
+    center: state.centerDetailsReducer,
+    user: state.userReducer
     
   }
 }

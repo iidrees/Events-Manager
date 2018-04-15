@@ -17,16 +17,17 @@ export default (state= initialState, action) => {
       return {
         ...state, 
         status: 'Success',
-        message: action.res.message,
-        ...action.res.data,
+        message: action.center.message,
+        ...action.center.data,
         authenticated: true
       }
     }
     case ADD_CENTER_FAIL: {
+      console.log('center failed', action.error)
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        ...action.err.response.data
+        message: action.error.message
        
       }
     }

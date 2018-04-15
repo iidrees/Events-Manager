@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 
 import NavBarMain from './NavBarMain.jsx';
@@ -27,7 +28,7 @@ class Addevents extends React.Component {
     let eventData = this.state;
    
     const { dispatch } = this.props;
-    if (!eventData.imgFile) {
+    if (eventData.imgFile === null || eventData.imgFile === undefined || !eventData.imgFile  ) {
       return dispatch(addEvent(eventData, eventData.center));
     }
       return dispatch(imageUpload(eventData, eventData.center));
@@ -77,9 +78,15 @@ onImageChange = (e) => {
    */
   render() {
     
-    const { centers , event} = this.props;
+    const { user, centers , event} = this.props;
   return (
     <div>
+      <div>
+        {
+          (!event.authenticated) &&
+          <Redirect to='/signin' push />
+        }
+      </div>
     <NavBarMain />
     <div className="container">
     <div className="row">
@@ -128,7 +135,7 @@ onImageChange = (e) => {
                 <label htmlFor="event-centers" className=" home-para">Center:</label>
                 <select className="form-control" id="event-center1" onChange={this.onChange}  name="center">
                   <option className="home-para">Choose an event center</option>
-                  {(centers.map((center) => {
+                  {(centers.data.map((center) => {
                     
                     return (<option key={center.id} value={center.id} className="home-para">{center.name}</option>)
                   }))}
@@ -170,7 +177,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     event: state.addEventReducer,
-    status: state.userReducer,
+    user: state.userReducer,
     centers: state.centerReducer
   }
 }

@@ -25,10 +25,12 @@ export const getEvents = () => {
       withCredentials: true
     })
     .then((response) => {// when events response is received, dispatcher fires so store can be updated
+      console.log('this is from the event actions', response.data.data )
       dispatch({ type: GET_EVENTS, events: response.data.data })
-      //history.push('/getevents');
+      
     })
     .catch((error) => {// if any error is returned, it is shown to the user.
+      console.log('this is from the event actions',  error.response.data )
       dispatch({ type: EVENT_FAILED, err: error.response.data});
       //history.push('/getevents')
     })

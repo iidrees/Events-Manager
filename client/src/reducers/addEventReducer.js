@@ -26,7 +26,8 @@ export default (state= initialState, action) => {
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        ...action.err.response.data
+        message: action.error.message,
+        error: action.error.error
        
       }
     }
