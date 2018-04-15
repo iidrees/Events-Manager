@@ -26,7 +26,6 @@ export class Event {
       description,
       date,
       time,
-      type,
       imgUrl
     } = req.body;
     const { id } = req.decoded;
@@ -64,7 +63,6 @@ export class Event {
                   date,
                   time,
                   center: venue.name,
-                  type,
                   imgUrl,
                   userId: id,
                   centerId: venue.id
@@ -120,7 +118,6 @@ export class EventUpdate {
       date,
       time,
       center,
-      type
     } = req.body;
     const { id } = req.decoded;
     const { eventId } = req.params;
@@ -146,15 +143,14 @@ export class EventUpdate {
             description: description || event.description,
             date: date || event.date,
             time: time || event.time,
-            center: center || event.center,
-            type: type || event.type
+            center: center || event.center
           })
           .then(updatedEvent => res.status(200).send({
             status: 'Success',
             message: 'Event updated successfully',
             data: updatedEvent
           }))
-          .catch(err => res.send(err.errors[0].message));
+          .catch(err => res.status(422).send(err.errors[0].message));
       })
       .catch(err => res.status(422).send({
         status: 'Unsuccessful',
@@ -267,8 +263,15 @@ export class GetAllEvents {
    * @memberof GetAllEvents
    */
   static getAllEvents(req, res) {
+    if (isNaN(req.query.page)) {
+      req.query.page = 1;
+    }
     return Events
-      .findAll({}).then((events) => {
+      .findAll({
+        limit: 10,
+        offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
+        order: [['id', 'DESC']]
+      }).then((events) => {
         if (events.length === 0) {
           return res.status(404).send({
             status: 'Unsuccessful',

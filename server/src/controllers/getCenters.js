@@ -68,8 +68,15 @@ export class GetAllCenters {
    * @memberof GetAllCenters
    */
   static getAllCenters(req, res) {
+    if (isNaN(req.query.page)) {
+      req.query.page = 1;
+    }
     return Centers
-      .findAll({}).then((centers) => {
+      .findAll({
+        limit: 10,
+        offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
+        order: [['id', 'ASC']]
+      }).then((centers) => {
         if (centers.length === 0) {
           return res.status(404).send({
             status: 'Unsuccessful',

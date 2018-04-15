@@ -18,7 +18,7 @@ import {expiredToken} from './1_user.test.js'
 
 
 /* TESCT FOR NONE AVAILABLE CENTERS */
-describe('TEST FOR NONE AVAILABLE CENTERS', () => {
+describe('GET /api/v1/centers', () => {
   it('should return "No Centers Found" when query made to an empty database', (done) => {
     request(app)
       .get('/api/v1/centers')
@@ -33,7 +33,7 @@ describe('TEST FOR NONE AVAILABLE CENTERS', () => {
 });
 
 /* TEST POST CENTER */
-describe('TEST add centers', () => {
+describe('POST /api/v1/centers', () => {
   it('should return "Unsuccessful" when a non-admin tries to create a center', (done) => {
     request(app)
       .post('/api/v1/centers')
@@ -83,7 +83,7 @@ describe('TEST add centers', () => {
       .send({
         name: 'Muson Center',
         location: 'Lagos',
-        address: '',
+        address: 3,
         owner: 'The Civil Society',
         capacity: '2000',
         description: 'This venue is a great place to make things happen',
@@ -96,9 +96,52 @@ describe('TEST add centers', () => {
         done();
       });
   });
+  it('should return an error when user enters no address', (done) => {
+    request(app)
+      .post('/api/v1/centers')
+      .set('x-access-token', adminToken)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address:'',
+        owner: 'The Civil Society',
+        capacity: '2000',
+        description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
+      })
+      .expect(422)
+      .then((res) => {
+        assert.deepEqual(res.status, 422);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Please all form fields are required to be filled');
+        done();
+      });
+  });
+  it('should return "capacity of a center should be a number"', (done) => {
+    request(app)
+      .post('/api/v1/centers')
+      .set('x-access-token', adminToken)
+      .send({
+        name: 'Muson Center',
+        location: 'Lagos',
+        address: 'adreesssssss',
+        owner: 'The Civil Society',
+        capacity: '@@@',
+        description: 'This venue is a great place to make things happen',
+        imgUrl: 'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
+      })
+      .expect(422)
+      .then((res) => {
+        assert.deepEqual(res.status, 422);
+        assert.deepEqual(res.body.status, 'Unsuccessful');
+        assert.deepEqual(res.body.message, 'Capacity of a center should be a number');
+        done();
+      });
+  });
 });
+
 /* TEST FOR MODIFY/EDIT/PUT CENTERS */
-describe('TEST PUT/ edit centers endpoint', () => {
+describe('PUT /api/v1/centers/:<centerId>', () => {
   it('Should return "Unauthorized" for wrong token', (done) => {
     request(app)
       .put(`/api/v1/centers/${1}`)
@@ -186,7 +229,7 @@ describe('TEST PUT/ edit centers endpoint', () => {
 });
 
 /* TEST FOR AVAILABILITY OF CENTERS */
-describe('TEST FOR AVAILABILITY OF CENTERS', () => {
+describe('GET /api/v1/centers', () => {
   describe('Get A Single Center', () => {
     it('should return "Center Not Found" for a wrong req.param', (done) => {
       request(app)

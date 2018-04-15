@@ -44,8 +44,47 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Please enter a password');
+          assert.deepEqual(res.status, 401);
+          done();
+        });
+    });
+    it('should return "Please enter the required input in all required fields" when a user sends an empty request',
+     (done) => {
+      request(app)
+        .post('/api/v1/users')
+        .send({
+          name: undefined,
+          email: 'tester@gmail.com',
+          password: '',
+          confirmPassword: ''
+        })
+        .expect(401)
+        .then((res) => {
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Please enter the required input in all required fields');
+          assert.deepEqual(res.status, 401);
+          done();
+        });
+    });
+    it('should return "Please enter a valid email address" when a user sends an empty request',
+     (done) => {
+      request(app)
+        .post('/api/v1/users')
+        .send({
+          name: 'Idrees',
+          email: 'testergmail.com',
+          password: '11111111',
+          confirmPassword: '1111111111'
+        })
+        .expect(401)
+        .then((res) => {
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Please enter a valid email address');
           assert.deepEqual(res.status, 401);
           done();
         });
@@ -62,6 +101,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Your password do not match');
           assert.deepEqual(res.status, 401);
@@ -80,6 +120,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Password cannot be less than 8 characters');
           assert.deepEqual(res.status, 401);
@@ -98,6 +139,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(201)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'You are signed up successfully.');
           assert.deepEqual(res.status, 201);
@@ -118,6 +160,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'User signup was unsuccessful')
           assert.deepEqual(res.body.error, 'This name already exist, enter a new name');
@@ -137,6 +180,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Please enter your email address')
           assert.deepEqual(res.status, 401);
@@ -155,6 +199,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'User signup was unsuccessful')
           assert.deepEqual(res.body.error, 'This email already exist, enter a new email address');
@@ -170,12 +215,28 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .send({
           email: 'test@gmail.com',
           password: 'idreeskun',
-          confirmPassword: 'idreeskun'
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Email or Password is invalid');
+          assert.deepEqual(res.status, 401);
+          done();
+        });
+    });
+    it('should return "please enter all fields" for no email supplied', (done) => {
+      request(app)
+        .post('/api/v1/users/login')
+        .send({
+          email: undefined,
+          password: 'idreeskun',
+        })
+        .expect(401)
+        .then((res) => {
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Please enter all fields');
           assert.deepEqual(res.status, 401);
           done();
         });
@@ -187,16 +248,17 @@ describe('Sign-up and Sign-in Endpoints', () => {
         .send({
           email: 'tester@gmail.com',
           password: '',
-          confirmPassword: ''
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Please enter your password');
           assert.deepEqual(res.status, 401);
           done();
         });        
     });
+    
     it('Should return "Please enter your email"'+
     'when a user enters no email', (done) => {
       request(app)
@@ -207,8 +269,26 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(401)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Please enter your email address');
+          assert.deepEqual(res.status, 401);
+          done();
+        });
+    });
+    it('Should return "Please enter your email in this format  this format \'joe@example.com\'"'+
+    'when a user enters no email', (done) => {
+      request(app)
+        .post('/api/v1/users/login')
+        .send({
+          email: 'idrees.asas.c',
+          password: 'idreeskun'
+        })
+        .expect(401)
+        .then((res) => {
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Please enter your email address in this format \'joe@example.com\'');
           assert.deepEqual(res.status, 401);
           done();
         });
@@ -223,6 +303,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(200)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'Token successfully generated and signin successful');
           assert.deepEqual(res.status, 200);
@@ -240,6 +321,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         })
         .expect(200)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'Token successfully generated and signin successful');
           assert.deepEqual(res.status, 200);
@@ -270,6 +352,20 @@ describe('Sign-up and Sign-in Endpoints', () => {
 
 describe('TEST FOR ADMIN', () => {
   describe('Test creation of an admin', () => {
+    it('should return "Unsuccessful" when an ordinary user tries to create'+
+        ' an admin', (done) => {
+      request(app)
+        .put(`/api/v1/users/admin/${2}`)
+        .set('x-access-token', token)
+        .expect(403)
+        .then((res) => {
+          assert.deepEqual(res.status, 403)
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful')
+          assert.deepEqual(res.body.message, 'You are unauthorised to carry out this action')
+          done();
+        })
+    })
     it('Should return "Success"'+
     ' when a superAdmin successfully creates an admin', (done) => {
       request(app)
@@ -278,9 +374,38 @@ describe('TEST FOR ADMIN', () => {
         .expect(201)
         .then((res) => {
           assert.deepEqual(res.status, 201);
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'You have been successfully\
            made an admin. Please signin again.');
+          done();
+        });
+    });
+    it('Should return "Unsuccessful"'+
+    ' when a superAdmin updates another superAdmin', (done) => {
+      request(app)
+        .put(`/api/v1/users/admin/${1}`)
+        .set('x-access-token', superAdminToken)
+        .expect(403)
+        .then((res) => {
+          assert.deepEqual(res.status, 403);
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'You are not authorized to perform that action');
+          done();
+        });
+    });
+    it('Should return "Unsuccessful"'+
+    ' when a superAdmin updates a user not existing', (done) => {
+      request(app)
+        .put(`/api/v1/users/admin/${4}`)
+        .set('x-access-token', superAdminToken)
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.status, 404);
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Unable to find user, admin creation failed');
           done();
         });
     });
@@ -294,10 +419,25 @@ describe('TEST FOR ADMIN', () => {
         })
         .expect(200)
         .then((res) => {
+          assert.typeOf(res.body, 'object')
           assert.deepEqual(res.body.status, 'Success');
           assert.deepEqual(res.body.message, 'Token successfully generated and signin successful');
           assert.deepEqual(res.status, 200);
           adminToken = res.body.data.token;
+          done();
+        });
+    });
+    it('Should return "Unsuccessful"'+
+    ' when a superAdmin upgrades a user with user role "Admin"', (done) => {
+      request(app)
+        .put(`/api/v1/users/admin/${2}`)
+        .set('x-access-token', superAdminToken)
+        .expect(409)
+        .then((res) => {
+          assert.typeOf(res.body, 'object')
+          assert.deepEqual(res.status, 409);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'User already an Admin');
           done();
         });
     });

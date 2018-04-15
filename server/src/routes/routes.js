@@ -21,6 +21,7 @@ import Center from '../controllers/Center';
 import ModifyCenter from '../controllers/ModifyCenter';
 import UserValidator from '../middlewares/UserValidator';
 import InputValidation from '../middlewares/InputValidation';
+import AdminValidator from '../middlewares/adminValidator';
 import auth from '../auth/auth';
 
 // setup router
@@ -84,6 +85,9 @@ router.delete(
   EventDelete.deleteEvent
 );
 
+// middleware to check if the user role and
+// admin status has been changed
+router.use(AdminValidator.updateUser);
 // Centers endpoint
 router.post(
   '/centers', 
