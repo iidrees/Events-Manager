@@ -35,8 +35,7 @@ class InputValidation {
         typeof address !== 'string' ||
         typeof owner !== 'string' ||
         typeof description !== 'string'||
-        typeof capacity !== 'string'||
-        typeof imgUrl !== 'string'
+        typeof capacity+'' !== 'string'
          ) {
       return res.status(422).send({
         status: 'Unsuccessful',
@@ -48,8 +47,8 @@ class InputValidation {
       validator.isEmpty(location)||
       validator.isEmpty(address)||
       validator.isEmpty(owner)||
-      validator.isEmpty(description)||
-      validator.isEmpty(capacity)||
+      validator.isEmpty(description) ||
+      validator.isEmpty(capacity+'')||
       validator.isEmpty(imgUrl)
       ) {
         // checks if the user input is empty
@@ -60,7 +59,7 @@ class InputValidation {
       }
 
       
-      if (!validator.isInt(capacity)) {
+      if (!validator.isInt(capacity+ '')) {
         // checking if the capacity is an integer
         return res.status(422).send({
           status: 'Unsuccessful',
@@ -95,8 +94,8 @@ static eventInput(req, res, next) {
       typeof title !== 'string' ||
       typeof date !== 'string' ||
       typeof time !== 'string' ||
-      typeof description !== 'string'||
-      typeof imgUrl !== 'string'
+      typeof description !== 'string'
+      //typeof imgUrl !== 'string'
        ) {
     return res.status(422).send({
       status: 'Unsuccessful',
@@ -108,8 +107,8 @@ static eventInput(req, res, next) {
     validator.isEmpty(title)||
     validator.isEmpty(date)||
     validator.isEmpty(time)||
-    validator.isEmpty(description)||
-    validator.isEmpty(imgUrl)
+    validator.isEmpty(description)
+    //validator.isEmpty(imgUrl)
     ) {
       return res.status(422).send({
         status: 'Unsuccessful',
@@ -124,6 +123,26 @@ static eventInput(req, res, next) {
         message: 'This is the valid date format  \'YYYY-MM-DD\''
       })
     }
+
+    
+      const isValid = /^([0-1][0-9])\:[0-5][0-9]\s*[ap]m$/i.test(time);
+
+        if (!isValid) {
+          return res.status(422).send({
+            status: 'Unsuccessful',
+            message: 'Time should be entered in this format "hh:mm AM/PM"'
+          })
+        }
+
+        
+    
+
+    // if (!moment(time, 'hh:mm ',true).isValid()) {
+    //   return res.status(422).send({
+    //     status: 'Unsuccessful',
+    //     message: 'This is the valid date format  \'YYYY-MM-DD\''
+    //   })
+    // }
 
     next();
   }

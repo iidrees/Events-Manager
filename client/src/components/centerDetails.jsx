@@ -7,35 +7,53 @@ import Footer from './footer.jsx';
 import { deleteCenter } from '../actions/deleteCenterAction';
 import {centerDetails } from '../actions/centerDetailsAction';
 
-/* eslint-disable */
+/**
+ * 
+ * 
+ * @class CenterDetails
+ * @extends {React.Component}
+ */
 class CenterDetails extends React.Component {
-
-  componentWillMount() {
+/**
+ * 
+ * 
+ * @returns {JSON} JSON
+ * @memberof CenterDetails
+ */
+componentWillMount() {
     const { dispatch } = this.props;
-    console.log('This is details dispatch >>>>')
     return dispatch(centerDetails(this.props.match.params.id));
   }
-
-  onDelete = (e) => {
-    e.preventDefault();
+/**
+ * 
+ * @returns {null} null
+ * @param {event} event -
+ * @memberof CenterDetails
+ */
+onDelete = (event) => {
+    event.preventDefault();
     let { center } = this.props;
     const { dispatch } = this.props;
     return dispatch(deleteCenter(center.id));
   }
-
-  render () {
+/**
+ * 
+ * 
+ * @returns {JSX} JSX
+ * @memberof CenterDetails
+ */
+render () {
 
     const { center, user } = this.props;
-    console.log('this is the detail component', center )
 
     return (
       <div>
-        {/* <div>
+        <div>
           {
             (!user.authenticated) &&
             <Redirect to='/signin' push />
           }
-        </div> */}
+        </div>
       <div className="container">
         <div className="row">
           <div className="container" id="center-details-header">{/* START PAGE HEADER */}
@@ -108,7 +126,31 @@ class CenterDetails extends React.Component {
                 <p className="center-details-para">
                 </p>
                 <Link className="btn btn-primary" to={`/editcenter/${center.id}`} role="button">Edit Center Details</Link>
-                <button className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE EVENT CENTER</button>
+                {/* <button className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE CENTER</button> */}
+                <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#deleteCenter">
+                    DELETE
+                  </button>
+                {/* <!-- Modal --> */}
+                <div className="modal fade" id="deleteCenter" tabIndex="-1" role="dialog" aria-labelledby="deleteCenterLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="deleteCenterLabel">ARE YOU SURE YOU WANT TO DELETE THIS CENTER?</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                        The {center.name}
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-primary" data-dismiss="modal">No</button>
+                          <button className="btn btn-warning" onClick={this.onDelete} type="button">Delete Center</button>
+                          {/* <button type="button" className="btn btn-primary">Save changes</button> */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
             <hr/>

@@ -38,7 +38,6 @@ class Signin extends React.Component {
 	 */
 	render() {
 		const { user } = this.props;
-		console.log('this is from the user component', user)
 
 		return (
 			<div>

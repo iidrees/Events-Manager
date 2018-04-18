@@ -8,15 +8,14 @@ import {
   } from './types';
 
 
-  /* eslint-disable */
 /**
  * Axios will help make PUT request to add event
  * @export {function}
- * @param {eventData} - JSON
+ * @param {eventData} eventData - JSON
+ * @param {index} index -
  * @returns {JSON} JSON data containing events 
  */
-export const editEvent = (eventData,index) => {
-  /* disable-eslint */
+export const editEvent = (eventData,index) => { // eslint-disable-line
   return (dispatch) => {
     return axios({
       method: 'PUT',
@@ -28,12 +27,10 @@ export const editEvent = (eventData,index) => {
       withCredentials: true
     })
     .then((event) => {
-      dispatch({ type: EDIT_EVENT, event: event.data.data })
-      //history.push('/getevents')
+      dispatch({ type: EDIT_EVENT, event: event.data })
     })
     .catch((err) => {
       dispatch({ type: EDIT_EVENT_FAIL, error: err.response.data });
-      //history.push('/addevents')
     })
   }
 }

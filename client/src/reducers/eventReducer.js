@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Success',
         message: action.events.message,
-        ...action.events
+        data: [...action.events.data]
       }
     }
     case EVENT_FAILED: {

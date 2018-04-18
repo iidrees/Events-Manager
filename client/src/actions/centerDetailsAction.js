@@ -7,8 +7,13 @@ import {
 
   } from './types';
 
-/* eslint-disable */
-export const centerDetails = (index) => {
+/**
+ * 
+ * 
+ * @param {any} index the center's index
+ * @returns {JSON} object
+ */
+export const centerDetails = (index) => { // eslint-disable-line
   return (dispatch) => {
    return axios({
       method: 'GET',
@@ -19,11 +24,9 @@ export const centerDetails = (index) => {
       withCredentials: true
     })
     .then((response) => {
-      console.log('center details', response.data)
       dispatch({ type: GET_CENTER, response: response.data })
     })
     .catch((err) => {
-      console.log('center detail error',  err)
       dispatch({ type: GET_CENTER_FAIL, error: err.response.data});
     })
   }

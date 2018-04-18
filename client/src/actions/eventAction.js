@@ -24,15 +24,12 @@ export const getEvents = () => {
       },
       withCredentials: true
     })
-    .then((response) => {// when events response is received, dispatcher fires so store can be updated
-      console.log('this is from the event actions', response.data.data )
-      dispatch({ type: GET_EVENTS, events: response.data.data })
+    .then((response) => {// when events response is received
+      dispatch({ type: GET_EVENTS, events: response.data})
       
     })
     .catch((error) => {// if any error is returned, it is shown to the user.
-      console.log('this is from the event actions',  error.response.data )
       dispatch({ type: EVENT_FAILED, err: error.response.data});
-      //history.push('/getevents')
     })
   }
 }
@@ -54,12 +51,10 @@ export const detailEvent = (index) => {
       withCredentials: true
     })
     .then((response) => {
-      dispatch({ type: GET_EVENT, response: response.data })
-      //history.push('/eventdetails/:id')
+      dispatch({ type: GET_EVENT, event: response.data })
     })
     .catch((err) => {
       dispatch({ type: EVENT_FAIL, error: err.response.data });
-      //history.push('/eventdetails/:id');
     })
   }
 }

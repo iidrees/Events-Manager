@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -45,10 +45,18 @@ onDelete = (e) => {
  * @memberof DetailEvent
  */
 render() {  
-  const { event, status } = this.props;
+  const { event, user } = this.props;
+
+  
   
   return (
     <div>
+      <div>
+          {
+            (!user.authenticated) &&
+            <Redirect to='/signin' push />
+          }
+        </div>
       <NavBarMain />
       <div className="container" id="myevent">
         <div className="row">          
@@ -80,16 +88,13 @@ render() {
               </div>
               <div className="col-md-6">
                 <p className="font-details">
-                  <span >Event:</span> {event.data.title}
+                  <span >Event:</span> {event.title}
                 </p>
                 <p className="font-details">
-                    <span>DATE:</span> {event.data.time}
+                    <span>DATE:</span> {event.time}
                 </p>
                 <p className="font-details">
-                    <span>Center:</span> {event.data.center}
-                </p>
-                <p className="font-details">
-                    <span>Event Type:</span> {event.data.type}
+                    <span>Center:</span> {event.center}
                 </p>
                 <p className="font-details">
                     <span>Event Organizers:</span> Fela &amp; sons
@@ -102,16 +107,50 @@ render() {
               <div className="col-md-12">
                 <p className="font-details text-center">
                     <span className="font-span">Event Description</span><br />
-                    {event.data.description}
+                    {event.description}
                 </p>
                 <div className="detail-button">
 
+                
+                  {/* <!-- Button trigger modal --> */}
+                  <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#deleteEvent">
+                    DELETE
+                  </button>
+
+                  {/* <!-- Modal --> */}
+                  <div className="modal fade" id="deleteEvent" tabIndex="-1" role="dialog" aria-labelledby="deleteEventLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="deleteEventLabel">Modal title</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          ARE YOU SURE YOU WANT TO DELETE THIS EVENT?
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-primary" data-dismiss="modal">No</button>
+                          <button className="btn btn-warning" onClick={this.onDelete} type="button">Delete Event</button>
+                          {/* <button type="button" className="btn btn-primary">Save changes</button> */}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* <button className="btn btn-primary" type="submit">Delete Event</button> */}
-                  <button className="btn btn-primary" onClick={this.onDelete} type="button">Delete Event</button>
+                  {/* <button className="btn btn-danger" onClick={this.onDelete} type="button">Delete Event</button> */}
                   <span>
 
                   </span>
-                  <Link className="btn btn-primary" to={`/editevent/${event.data.id}`} type="button">Edit Event</Link>                  
+                  
+                  <Link  to={`/editevent/${event.id}`} >
+                  <button className="btn btn-primary" type="button">
+                  Edit Event
+                  </button>
+                  </Link>
+                  
                 </div>
                 </div>
               </div>
@@ -136,7 +175,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     event: state.detailsEventReducer,
-    status: state.userReducer
+    user: state.userReducer
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(DetailEvent);

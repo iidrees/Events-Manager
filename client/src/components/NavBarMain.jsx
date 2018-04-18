@@ -26,9 +26,9 @@ export default () => {
             <li className="nav-item">
                 <Link className="nav-link" to='/addcenter'>Add Center</Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
                 <Link className="nav-link" to='/help'>Help</Link>
-            </li>
+            </li> */}
 					</ul>
 				</div>
 			</nav>

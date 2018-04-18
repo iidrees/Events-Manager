@@ -30,12 +30,11 @@ componentWillMount() {
    */
   render() {
     const { centers, user } = this.props;
-    console.log('the centers >>>>', centers)
     return (
       <div>
       <div>
         {
-          (!user.authenticated) &&
+          (!centers.authenticated) &&
           <Redirect to='/signin' push />
         }
       </div>

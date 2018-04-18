@@ -18,7 +18,7 @@ export default (state= initialState, action) => {
         ...state, 
         status: 'Success',
         message: action.center.message,
-        ...action.center.data,
+        //...action.center.data,
         authenticated: true
       }
     }

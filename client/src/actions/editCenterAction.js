@@ -20,12 +20,10 @@ export const editCenter = (index, centerData ) => {
       withCredentials: true
     })
     .then((center) => {
-      dispatch({ type: EDIT_CENTER, center: center.data.data })
-      //history.push('/getcenters')
+      dispatch({ type: EDIT_CENTER, center: center.data})
     })
     .catch((err) => {
       dispatch({ type: EDIT_CENTER_FAIL, error: err.response.data});
-      //history.push('/editcenter')
     })
   }
 }

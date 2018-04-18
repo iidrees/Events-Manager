@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import NavBarMain from './NavBarMain.jsx';
@@ -8,72 +9,74 @@ import { editEvent } from '../actions/editEventAction';
 import  getCenters  from '../actions/getCentersAction';
 import { detailEvent  } from '../actions/eventAction';
 
-/* eslint-disable */
+
 /**
- * 
+ * @param {event} event - Object
  * @class Addevents
  * @extends { React.Component }
  */
 class EditEvent extends React.Component {
-
-  constructor(props) {
+/**
+ * Creates an instance of EditEvent.
+ * @param {any} props -
+ * @memberof EditEvent
+ */
+constructor(props) {
     super(props);
     this.state = {
       eventData: {
-
+        ...this.props.event
       }
     }
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-
-
-  componentWillMount() {
-    const { dispatch } = this.props;
-    return dispatch(detailEvent(this.props.match.params.id));
-  }
-
-  componentDidUpdate() {
-    if (Object.keys(this.state.eventData).length == 0) {
-      this.setState({
-        eventData:{
-          ...this.props.event.data,
-        }
-      })
+/**
+ * @returns {JSON} Object
+ * @memberof EditEvent
+ */
+componentDidMount() {
     const { dispatch } = this.props;
     return dispatch(getCenters());
-    }
-  } 
+  }
   
-  
-  onChange = (e) => {
+  onChange = (event) => {
+    
     this.setState({
-      eventData: {
+      eventData:{
         ...this.state.eventData,
-        [e.target.name]: e.target.value
+        [event.target.name]: event.target.value
       }
     })
   }
 
-  onSubmit = (e) => {
-		e.preventDefault();
-		let {eventData} = this.state;
+  onSubmit = (event) => {
+		event.preventDefault();
+    let { eventData } = this.state;
 		const { dispatch } = this.props;
 		return dispatch(editEvent(eventData, this.props.match.params.id));
   }
-  /* eslint-disable */
+  
   
 
   /**
-   * 
-   * 
    * @returns {any} - 
    * @memberof Addevents
    */
   render() {
     
-    const { centers, event } = this.props;
+    const { centers, event , user, editEvents } = this.props;
+
   return (
     <div>
+
+      <div>
+        {
+          (!user.authenticated) &&
+          <Redirect to='/signin' push />
+        }
+      </div>
     <NavBarMain />
     <div className="container">
     <div className="row">
@@ -89,6 +92,17 @@ class EditEvent extends React.Component {
           </div>
         </div>
       </div>
+      {(editEvents.status === 'Success' ) && <div className="alert alert-success" role="alert">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{editEvents.message}.</strong></div>}
+        {(editEvents.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{editEvents.message}</strong><span> </span>
+        <strong>{editEvents.error}.</strong></div>} 
     
       
       <div className="container">{/* <!-- Start container for Add Form --> */}
@@ -110,10 +124,10 @@ class EditEvent extends React.Component {
               <div className="form-group">
                 <label htmlFor="event-centers" className=" home-para">Center:</label>
                 <select className="form-control" id="event-center1" onChange={this.onChange}  name="center" >
-                  <option className="home-para" value={this.state.eventData.center}>Choose an event center</option>
-                  {(centers.map((center) => {
+                  <option className="home-para" key={this.state.eventData.centerId} >{this.state.eventData.center}</option>
+                  {(centers.data.map((center) => {
                     
-                    return (<option key={center.id} value={center.id} className="home-para">{center.name}</option>)
+                    return (<option key={center.id} className="home-para">{center.name}</option>)
                   }))}
                   
                 </select>
@@ -123,15 +137,11 @@ class EditEvent extends React.Component {
                 <textarea className="form-control" onChange={this.onChange} id="form-event4" rows="8" name="description" placeholder="brief details about the event" value={this.state.eventData.description}></textarea>
               </div>
               <div className="form-group">
-                <label htmlFor="event-centers" className=" home-para">Event type:</label>                
-                <input className="form-control" onChange={this.onChange}  name="type" type="text" id="event-center2" placeholder="What kind of event is it, 'public' or 'private'?" value={this.state.eventData.type} />          
-              </div>
-              <div className="form-group">
                 <label htmlFor="add-event" className=" home-para">Upload an Image of your event below:</label>
                 <input type="file" className="form-control-file" onChange={this.onChange}  aria-describedby="fileHelp" /> 
               </div>  
           
-              <button type="submit" className="btn btn-primary btn-sm" id="save-event">Save and create event  <span><i className="fa fa-paper-plane" aria-hidden="true"></i></span></button>
+              <button type="submit" className="btn btn-primary btn-sm" id="save-event">Save <span><i className="fa fa-paper-plane" aria-hidden="true"></i></span></button>
             </form>          
           </div>{/* <!-- End Container ADD EVENTS FORM --> */}
         </div>
@@ -153,9 +163,10 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     addevents: state.eventReducer,
-    status: state.userReducer,
+    user: state.userReducer,
     centers: state.centerReducer,
-    event: state.detailsEventReducer
+    event: state.detailsEventReducer,
+    editEvents: state.editEventReducer
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditEvent);

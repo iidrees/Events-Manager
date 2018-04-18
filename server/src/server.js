@@ -22,6 +22,8 @@ dotenv.config();
 
 // Morgan to log requests to the console
 app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'client/src/media')));
+app.use(express.static(path.join(__dirname, 'client/src/styles')));
 
 // set up body-parser to grab incoming requests
 app.use(bodyParser.json());
@@ -33,9 +35,10 @@ generated each time test is run */
 if (process.env.NODE_ENV !== 'test') {
   app.use(require('webpack-dev-middleware')(compiler, {
     hot: true,
-    noInfo: false,
+    noInfo: true,
     publicPath: config.output.publicPath
-  }))  
+  }))
+  app.use(require("webpack-hot-middleware")(compiler));
 }
 
 

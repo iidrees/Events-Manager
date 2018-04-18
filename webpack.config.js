@@ -1,9 +1,11 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: [
+  entry: [ 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true',
     path.join(__dirname, '/client/src/app.js')
   ],
   output: {
@@ -13,6 +15,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new Dotenv(),
     new webpack.optimize.UglifyJsPlugin({
       mangle: true,
