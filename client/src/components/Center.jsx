@@ -34,7 +34,7 @@ componentWillMount() {
       <div>
       <div>
         {
-          (!centers.authenticated) &&
+          (!user.authenticated) &&
           <Redirect to='/signin' push />
         }
       </div>

@@ -67,7 +67,6 @@ onImageChange = (e) => {
 render () {
 
     const { createCenter, user } =  this.props;
-    console.log('add center component >>>>', createCenter, ' and User reducer', user)
     return (
       <div>
         <div>
