@@ -94,8 +94,8 @@ static eventInput(req, res, next) {
       typeof title !== 'string' ||
       typeof date !== 'string' ||
       typeof time !== 'string' ||
-      typeof description !== 'string'
-      //typeof imgUrl !== 'string'
+      typeof description !== 'string' ||
+      typeof imgUrl+'' !== 'string'
        ) {
     return res.status(422).send({
       status: 'Unsuccessful',
@@ -107,8 +107,8 @@ static eventInput(req, res, next) {
     validator.isEmpty(title)||
     validator.isEmpty(date)||
     validator.isEmpty(time)||
-    validator.isEmpty(description)
-    //validator.isEmpty(imgUrl)
+    validator.isEmpty(description)||
+    validator.isEmpty(imgUrl+'')
     ) {
       return res.status(422).send({
         status: 'Unsuccessful',

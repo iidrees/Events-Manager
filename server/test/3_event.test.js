@@ -157,11 +157,12 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-10',
-          time: '12-03 PM',
+          time: '12:03 PM',
           center: 'Muson Center',
         })
         .expect(422)
         .then((res) => {
+          console.log('testttt>>>>', res.body)
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Please fill all input fields');
@@ -177,7 +178,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-10',
-          time: '12-03 PM',
+          time: '12:03 PM',
           center: 'Muson Center',
           imgUrl:''
         })
@@ -210,7 +211,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         });
     });
   });
-  describe('POST /api/v1/events', () => {
+  describe('GET /api/v1/events', () => {
     it('should return "These are your Events" when all events retrieved', (done) => {
       request(app)
         .get('/api/v1/events')
@@ -251,7 +252,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
-          time: '12-:3 PM',
+          time: '12:03 PM',
           imgUrl: 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
         .expect(422)
