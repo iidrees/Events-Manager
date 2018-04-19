@@ -15,7 +15,6 @@ import {
   export default (state=initialState, action) => {
     switch (action.type) {
       case GET_CENTER: {
-        console.log('details reducer >>>>', action.response)
         return {
           ...state,
           status: 'Success',

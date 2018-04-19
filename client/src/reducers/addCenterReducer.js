@@ -23,7 +23,6 @@ export default (state= initialState, action) => {
       }
     }
     case ADD_CENTER_FAIL: {
-      console.log('center failed', action.error)
       return {
         ...state,
         status: 'Unsuccessful' || undefined,

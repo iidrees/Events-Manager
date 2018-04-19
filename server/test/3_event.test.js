@@ -162,7 +162,6 @@ describe('TEST EVENT ENDPOINTS', () => {
         })
         .expect(422)
         .then((res) => {
-          console.log('testttt>>>>', res.body)
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(res.body.message, 'Please fill all input fields');

@@ -40,11 +40,9 @@ export const addEvent = (eventData, index, imgUrl ) => {
       withCredentials: true
     })
     .then((response) => {
-      console.log('this is from the addevents',response.data.data)
       dispatch({ type: GET_EVENT, event: response.data.data})
     })
     .catch((err) => {
-      console.log('this is from the addevents', err.response.data)
       dispatch({ type: ADD_EVENT_FAIL, error: err.response.data });
     })
   }

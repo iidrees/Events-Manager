@@ -22,7 +22,6 @@ class CenterDetails extends React.Component {
  */
 componentWillMount() {
     const { dispatch } = this.props;
-    console.log('This is details dispatch >>>>')
     return dispatch(centerDetails(this.props.match.params.id));
   }
 /**

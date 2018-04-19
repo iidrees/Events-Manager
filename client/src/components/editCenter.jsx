@@ -24,20 +24,8 @@ class EditCenter extends React.Component {
   }
 
 
-  // componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   return dispatch(centerDetails(this.props.match.params.id));
-  // } 
+  
 
-  componentDidUpdate() {
-    // if (Object.keys(this.state.centerData).length == 0) {
-    //   this.setState({
-    //     centerData: {
-    //       ...this.props.center.data,
-    //     }
-    //   });
-    // }
-  }
 
   onChange = (event) => {
     
@@ -53,7 +41,6 @@ class EditCenter extends React.Component {
     event.preventDefault();
     let { centerData } = this.state;
 
-    console.log('the component POST DATA >>>>',centerData)
     const { dispatch } = this.props;
     return dispatch(editCenter(this.props.match.params.id, centerData));
   }
@@ -63,9 +50,6 @@ class EditCenter extends React.Component {
   render () {
     
     const { user, center , editCenter} = this.props;
-    console.log('this is the edit center component>>>>>', center)
-    console.log('this is the edit center component>>>>>', user)
-    console.log('this is the edit center component>>>>>', editCenter)
 
     return (
       <div>

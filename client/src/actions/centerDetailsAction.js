@@ -24,11 +24,9 @@ export const centerDetails = (index) => { // eslint-disable-line
       withCredentials: true
     })
     .then((response) => {
-      console.log('center details', response.data)
       dispatch({ type: GET_CENTER, response: response.data })
     })
     .catch((err) => {
-      console.log('center detail error',  err)
       dispatch({ type: GET_CENTER_FAIL, error: err.response.data});
     })
   }
