@@ -25,13 +25,7 @@ export class GetCenter {
       .findOne({
         where: {
           id: centerId,
-        },
-        include: [
-          {
-            model: Events,
-            as: 'events'
-          }
-        ]
+        }
       })
       .then((center) => {
         if (!center) {

@@ -30,6 +30,7 @@ componentWillMount() {
  * @memberof GetEvents
  */
 render() {  
+  
   const { events, status } = this.props;
   
   return (

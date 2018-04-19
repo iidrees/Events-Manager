@@ -7,8 +7,13 @@ import {
 
   } from './types';
 
-/* eslint-disable */
-export const centerDetails = (index) => {
+/**
+ * 
+ * 
+ * @param {any} index the center's index
+ * @returns {JSON} object
+ */
+export const centerDetails = (index) => { // eslint-disable-line
   return (dispatch) => {
    return axios({
       method: 'GET',

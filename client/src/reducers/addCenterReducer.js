@@ -17,8 +17,8 @@ export default (state= initialState, action) => {
       return {
         ...state, 
         status: 'Success',
-        message: action.res.message,
-        ...action.res.data,
+        message: action.center.message,
+        //...action.center.data,
         authenticated: true
       }
     }
@@ -26,7 +26,7 @@ export default (state= initialState, action) => {
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        ...action.err.response.data
+        message: action.error.message
        
       }
     }

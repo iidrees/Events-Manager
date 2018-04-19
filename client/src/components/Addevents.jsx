@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios';
 
 import NavBarMain from './NavBarMain.jsx';
@@ -27,7 +28,11 @@ class Addevents extends React.Component {
     let eventData = this.state;
    
     const { dispatch } = this.props;
-    if (!eventData.imgFile) {
+    if (
+      eventData.imgFile === null || 
+      eventData.imgFile === undefined || 
+      !eventData.imgFile  
+    ) {
       return dispatch(addEvent(eventData, eventData.center));
     }
       return dispatch(imageUpload(eventData, eventData.center));
@@ -77,9 +82,15 @@ onImageChange = (e) => {
    */
   render() {
     
-    const { centers , event} = this.props;
+    const { user, centers , event} = this.props;
   return (
     <div>
+      <div>
+        {
+          (!user.authenticated) &&
+          <Redirect to='/signin' push />
+        }
+      </div>
     <NavBarMain />
     <div className="container">
     <div className="row">
@@ -96,13 +107,23 @@ onImageChange = (e) => {
         </div>
       </div>
     
-      {(event.status === 'Success' ) && <div className="alert alert-success" role="alert">
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+      {(event.status === 'Success' ) && 
+      <div className="alert alert-success" role="alert">
+        <button 
+          type="button" 
+          className="close" 
+          data-dismiss="alert" 
+          aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <strong>{event.message}.</strong></div>}
-        {(event.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+        {(event.status === 'Unsuccessful' ) && 
+        <div className="alert alert-danger" role="alert">
+        <button 
+        type="button" 
+        className="close" 
+        data-dismiss="alert" 
+        aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <strong>{event.message}</strong><span> </span>
@@ -111,7 +132,7 @@ onImageChange = (e) => {
       <div className="container">{/* <!-- Start container for Add Form --> */}
         <div className="row">
           <div className="col-sm-12">
-            <form method="POST" className="form-horizontal" onSubmit={this.onSubmit} role="form"  action="#">{/* <!-- ADD FORM --> */}
+            <form method="POST" className="form-horizontal" onSubmit={this.onSubmit} role="form">{/* <!-- ADD FORM --> */}
               <div className="form-group">
                 <label htmlFor="add-event" className=" home-para">Name of Event:</label>
                 <input className="form-control" onChange={this.onChange}  name="title" id="form-event1" type="text" placeholder=""  />
@@ -128,7 +149,7 @@ onImageChange = (e) => {
                 <label htmlFor="event-centers" className=" home-para">Center:</label>
                 <select className="form-control" id="event-center1" onChange={this.onChange}  name="center">
                   <option className="home-para">Choose an event center</option>
-                  {(centers.map((center) => {
+                  {(centers.data.map((center) => {
                     
                     return (<option key={center.id} value={center.id} className="home-para">{center.name}</option>)
                   }))}
@@ -138,10 +159,6 @@ onImageChange = (e) => {
               <div className="form-group">
                 <label htmlFor="event-details"  className=" home-para">Events description:</label>
                 <textarea className="form-control" onChange={this.onChange} id="form-event4" rows="8" name="description" placeholder="brief details about the event"></textarea>
-              </div>
-              <div className="form-group">
-                <label htmlFor="event-centers" className=" home-para">Event type:</label>                
-                <input className="form-control" onChange={this.onChange}  name="type" type="text" id="event-center2" placeholder="What kind of event is it, 'public' or 'private'?"  />          
               </div>
               <div className="form-group">
                 <label htmlFor="add-event" className=" home-para">Upload an Image of your event below:</label>
@@ -170,7 +187,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     event: state.addEventReducer,
-    status: state.userReducer,
+    user: state.userReducer,
     centers: state.centerReducer
   }
 }

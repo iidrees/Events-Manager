@@ -6,11 +6,10 @@ import {
 
 
   const initialState = { /* The initial state of the component */
-    authenticated: false,
     status: '',
     message: '',
     data: {},
-    events: []
+  
   };
 
   export default (state=initialState, action) => {
@@ -19,9 +18,8 @@ import {
         return {
           ...state,
           status: 'Success',
-          message: action.center.message,
-          ...action.center.data,
-          events: [...action.center.data.data.events],
+          message: action.response.message,
+          ...action.response.data,
           authenticated: true
         }
       }

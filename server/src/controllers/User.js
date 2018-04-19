@@ -30,11 +30,11 @@ export class UserSignup {
       })
       .then((user) => {
         const payload = {
+          authenticated: true,
           id: user.id,
           admin: user.isAdmin,
           isSuperAdmin: user.isSuperAdmin,
-          name: user.name,
-          email: user.email
+          name: user.name
         };
         /* Generates token and sends to user */
         const token = jwt.sign(payload, process.env.SECRET, {
@@ -99,12 +99,12 @@ export class UserSignin {
             and send this to the user for authentication.
            */
           const payload = {
+            authenticated: true,
             id: user.id,
             admin: user.isAdmin,
             role: user.role,
             isSuperAdmin: user.isSuperAdmin,
-            name: user.name,
-            email: user.email
+            name: user.name
           };
           /* Generates token and sends to user */
           const tokens = jwt.sign(payload, process.env.SECRET, {

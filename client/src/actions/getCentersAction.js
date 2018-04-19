@@ -21,11 +21,9 @@ const getCenters = () => {// function to get all centers
     })
     .then((response) => {// when response is recieved)
       dispatch({ type: CENTERS_SUCCESS,  centers: response.data })
-      //history.push('/getcenters')
     })
     .catch((err) => {
       dispatch({ type: CENTERS_ERRORS, error: err.response.data })
-      //history.push('/getcenters')
     })
 
   }

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run seq:db && nyc mocha server/test/ --timeout 25000 --require babel-register --exit",
     "test:env": "npm run seq:db && nyc npm test",
-    "test:tester": "nyc cross-env NODE_ENV=test  --reporter=html --reporter=text --reporter=lcov --reporter=text-lcov _mocha server/test/test.js --compilers js:babel-core/register --exit",
+    "test:tester": "cross-env NODE_ENV=test npm run seq:db && nyc --reporter=html --reporter=text --reporter=lcov --reporter=text-lcov _mocha server/test/ --compilers js:babel-core/register --exit",
     "start:prod": "NODE_ENV=production babel-node  server/src/server.js",
     "start:dev": "NODE_ENV=development nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
@@ -132,6 +132,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^22.2.0",
     "jest-localstorage-mock": "^2.2.0",
     "moxios": "^0.4.0",

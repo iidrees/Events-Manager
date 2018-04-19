@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
@@ -29,9 +29,15 @@ componentWillMount() {
    * @memberof Center
    */
   render() {
-    const { centers } = this.props;  
+    const { centers, user } = this.props;
     return (
       <div>
+      <div>
+        {
+          (!user.authenticated) &&
+          <Redirect to='/signin' push />
+        }
+      </div>
       <NavBarMain />
       <div className="container">
       <div className="row">
@@ -47,10 +53,21 @@ componentWillMount() {
               
             </div>
           </div>{/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
+          {(centers.status === 'Success' ) && <div className="alert alert-success" role="alert">
+												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+                        <strong>{centers.message}.</strong></div>}
+                        {(centers.status === 'Unsuccessful' ) && <div className="alert alert-danger" role="alert">
+												<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<strong>{centers.message}</strong><span> </span>
+												<strong>{centers.error}.</strong></div>}
           
           <div className="container" id="centerbottom">			
               <div className="row">
-              {centers.map((center) => {
+              {centers.data.map((center) => {
                 return (
                 <div className="col-sm-4" key={center.id}>
                 <div className="card-deck cont-body" id="card-center1" >
@@ -106,7 +123,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 const mapStateToProps = (state) => {
   return {
-    centers: state.centerReducer
+    centers: state.centerReducer,
+    user: state.userReducer
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Center);

@@ -30,7 +30,6 @@ static updateUser(req, res, next) {
       }
     })
     .then((user) => {
-
       if ( user.isAdmin !== true ) {
         return res.status(403).send({
           status: 'Unsuccessful',
@@ -38,8 +37,14 @@ static updateUser(req, res, next) {
         })
       }
       next();
+      return null
     })
-    .catch(null)
+    .catch(() => {
+      return res.status(400).send({
+        message: 'bad request',
+        status: 'Unsuccessful' 
+      })
+    })
   }
 }
 

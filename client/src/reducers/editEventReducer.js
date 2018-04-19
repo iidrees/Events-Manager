@@ -1,6 +1,6 @@
 import { 
-  EDIT_CENTER,
-  EDIT_CENTER_FAIL
+ EDIT_EVENT,
+ EDIT_EVENT_FAIL
 
   } from '../actions/types';
 
@@ -8,22 +8,22 @@ import {
   const initialState = { /* The initial state of the component */
     authenticated: false,
     status: '',
-    message: '',  
+    message: '',
+    
   };
-
 
   export default (state = initialState, action) => {
     switch (action.type) {/* reducer listening for actions  */
-      case  EDIT_CENTER: {
+      case  EDIT_EVENT: {
         return { 
           ...state,
           status: 'Success',
-          message: action.center.message,
-         
+          message: action.event.message,
+        
           authenticated: true
         }
       }
-      case EDIT_CENTER_FAIL: {
+      case EDIT_EVENT_FAIL: {
         return  {
           ...state,
           status: 'Unsuccessful' || undefined,

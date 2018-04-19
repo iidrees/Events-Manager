@@ -20,7 +20,7 @@ import {
  * @returns {JSON} JSON data containing events 
  */
 export const addEvent = (eventData, index, imgUrl ) => {
-  /* disable-eslint */
+  
   return (dispatch) => {
     return axios({
       method: 'post',
@@ -41,7 +41,6 @@ export const addEvent = (eventData, index, imgUrl ) => {
     })
     .then((response) => {
       dispatch({ type: GET_EVENT, event: response.data.data})
-      //history.push('/getevents')
     })
     .catch((err) => {
       dispatch({ type: ADD_EVENT_FAIL, error: err.response.data });

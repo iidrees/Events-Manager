@@ -27,7 +27,7 @@ export const addCenter = (centerData, imgUrl) => {
         capacity: centerData.capacity,
         owner: centerData.owner,
         description: centerData.description,
-        imgUrl: imgUrl || 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg' // eslint-disable-line
+        imgUrl: imgUrl || 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg' 
       },
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
@@ -35,12 +35,10 @@ export const addCenter = (centerData, imgUrl) => {
       withCredentials: true
     })
     .then((response) => {
-      dispatch({ type: ADD_CENTER, center: response.data.data })
-      //history.push('/getcenters')
+      dispatch({ type: ADD_CENTER, center: response.data })
     })
     .catch((err) => {
       dispatch({ type: ADD_CENTER_FAIL, error: err.response.data })
-      //history.push('/addcenter')
     })
   }
 }

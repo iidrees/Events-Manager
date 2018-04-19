@@ -1,32 +1,51 @@
-/* eslint-disable */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import  { userSignup }  from '../actions/userActions'
-
+/**
+ * 
+ * 
+ * @class Signup
+ * @extends {React.Component}
+ */
 class Signup extends React.Component {
-	
-	onChange = (e) => {
-		this.setState({ [e.target.name]: e.target.value })
+	/**
+	 * @param {event} event -
+	 * @returns {JSON} JSON -
+	 * @memberof Signup
+	 */
+	onChange = (event) => {
+		this.setState({ [event.target.name]: event.target.value })
 	}
-	onSubmit = (e) => {
-		e.preventDefault();
+	
+	
+	/**
+	 * @param {event} event -
+	 * @returns {JSON} JSON
+	 * @memberof Signup
+	 */
+	onSubmit = (event) => {
+		event.preventDefault();
 		let userData = this.state;
 		const { dispatch } = this.props;
 		return dispatch(userSignup(userData))
 	}
 
-  render() {
+/**
+ * 
+ * 
+ * @returns {JSX} JSX
+ * @memberof Signup
+ */
+render() {
 		const { user } = this.props;
-		console.log('this is from the user component', user)
-		
-
     return (
         <div>
 					<div>
 						{
 							(user.authenticated) &&
-						  <Redirect to='/getevents' push />
+							<Redirect to='/getevents' push />
 						}
 					</div>
 					<div className='container' id="form-signup">
@@ -142,8 +161,8 @@ const mapStateToProps = (state) => {
 	}
 }
  const mapDispatchToProps = (dispatch) => {
-	 return {
-		 dispatch: (action) => dispatch(action)
-	 }
+		return {
+			dispatch: (action) => dispatch(action)
+		}
  };
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
