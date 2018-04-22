@@ -13,6 +13,7 @@
     "heroku-postbuild": "npm run build",
     "start": "npm run build && node server/lib/server.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "nyc": "nyc report",
     "lint": "node_modules/.bin/eslint client/__tests__",
     "seq:drop": "sequelize db:migrate:undo:all",
@@ -126,6 +127,7 @@
   "devDependencies": {
     "babel-eslint": "^8.0.2",
     "babel-jest": "^22.2.0",
+    "codecov": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-airbnb": "^16.1.0",
