@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/iidrees/Events-Manager/badge.svg?branch=develop)](https://coveralls.io/github/iidrees/Events-Manager?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/507b075d1aa0f1e22e24/maintainability)](https://codeclimate.com/github/iidrees/Events-Manager/maintainability)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+[![codecov](https://codecov.io/gh/iidrees/Events-Manager/branch/develop/graph/badge.svg)](https://codecov.io/gh/iidrees/Events-Manager)
 ## Introduction
 
 This is a project divided into three parts:
