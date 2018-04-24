@@ -9,11 +9,11 @@ import {
 } from '../src/models';
 
 /* eslint-disable */
-import {token }from './1_user.test.js'
-import {newToken} from './1_user.test.js'
-import {adminToken} from './1_user.test.js'
-import {superAdminToken} from './1_user.test.js'
-import {expiredToken} from './1_user.test.js'
+import {token }from './user.test.js'
+import {newToken} from './user.test.js'
+import {adminToken} from './user.test.js'
+import {superAdminToken} from './user.test.js'
+import {expiredToken} from './user.test.js'
 
 
 
