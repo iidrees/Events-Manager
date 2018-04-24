@@ -12,14 +12,21 @@ import router from './routes/routes';
 
 
 
+
+
 /* initialise App and set PORT */
 const app = express();
+const swaggerUi = require('swagger-ui-express');
 const compiler = webpack(config);
 app.use(cors({credentials: true, origin: true}));
 
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
 
+// API DOC
+const swaggerDocument = require('../../converted.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Morgan to log requests to the console
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'client/src/media')));

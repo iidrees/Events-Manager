@@ -1,0 +1,972 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Events manager (Heroku)",
+    "description": "TODO: Add Description",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://events-manager-cp.herokuapp.com/api/v1",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/events/1": {
+      "post": {
+        "tags": [
+          "events-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/events/1",
+        "description": "Allows auth user create an event by passing the centerId as params along with the request",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/events/1",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "title",
+                  "description",
+                  "date",
+                  "time",
+                  "type",
+                  "imgUrl"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "The Phoenix Party"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "This dinner is meant to be attended by all the D0 fellows "
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "2020-05-28"
+                  },
+                  "time": {
+                    "type": "string",
+                    "example": "10:20 PM"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "private"
+                  },
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "This image was posted by Faith as a new event"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/events/2": {
+      "put": {
+        "tags": [
+          "events-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/events/18",
+        "description": "Allows auth user edit/update an event they added",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/events/181",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOaiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOaiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "title",
+                  "description",
+                  "date",
+                  "time",
+                  "type",
+                  "imgUrl"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "The Phoenix Party"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "This dinner is meant to be attended by all the D0 fellows "
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "2020-05-29"
+                  },
+                  "time": {
+                    "type": "string",
+                    "example": "10:20 PM"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "private"
+                  },
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "This image was posted by Faith as a new event"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "tags": [
+          "events-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/events/18",
+        "description": "Allows an auth user delete an event they added",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/events/18",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "title",
+                  "description",
+                  "date",
+                  "time",
+                  "type",
+                  "imgUrl"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "The Phoenix Party"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "This dinner is meant to be attended by all the D0 fellows "
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "2020-05-26"
+                  },
+                  "time": {
+                    "type": "string",
+                    "example": "10:20 PM"
+                  },
+                  "type": {
+                    "type": "string",
+                    "example": "private"
+                  },
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "This image was posted by Faith as a new event"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/centers/1": {
+      "put": {
+        "tags": [
+          "centers-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/centers/<params>",
+        "description": "Allows an admin edit/update a center they added",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/centers/<params>",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "name",
+                  "location",
+                  "address",
+                  "capacity",
+                  "description",
+                  "imgUrl",
+                  "owner"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Ketu-ojota-mall"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Ketu "
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Ketu ojota mai-twef"
+                  },
+                  "capacity": {
+                    "type": "string",
+                    "example": "3000"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "THis is a center from a superAdmin user"
+                  },
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "this is just a placeholder for images"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "example": "SuperAdmin-baba"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "user-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/login",
+        "description": "allows users with an account login ",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/login",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "password",
+                  "email"
+                ],
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "example": "11111111"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "test@test.com"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/centers": {
+      "get": {
+        "tags": [
+          "centers-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/centers",
+        "description": "Allows every user get all centers",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/centers",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "tags": [
+          "centers-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/centers",
+        "description": "Allow a user who is also an Admin create a center",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/centers1",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "name",
+                  "location",
+                  "address",
+                  "capacity",
+                  "description",
+                  "imgUrl",
+                  "owner"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Maryland Mall"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Maryland"
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Lekki, phase 2 Eti Osa Lagos State"
+                  },
+                  "capacity": {
+                    "type": "string",
+                    "example": "3000"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "WE taking over, one city at a time"
+                  },
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "this is just a placeholder for images"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "example": "Me-kun-mi"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/events/": {
+      "get": {
+        "tags": [
+          "events-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/events/<eventId>",
+        "description": "Allows an auth user get a particular event they created by passing the eventId as params",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/events/<eventid>",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/centers/12": {
+      "get": {
+        "tags": [
+          "centers-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/centers/<params>",
+        "description": "Allows all users get a particular center",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/centers/<params>1",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "user-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/users",
+        "description": "Creates a new user",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/users",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0ZXIiLCJlbWFpbCI6InRlc3RlckBnbWFpbC5jb20iLCJpYXQiOjE1MjI0MDY4MjAsImV4cCI6MTUyMjQxNzYyMH0.e8BASJp97vqZmK5NC8vRjxxpxSxGWLwAGllOTJDFBjA"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0ZXIiLCJlbWFpbCI6InRlc3RlckBnbWFpbC5jb20iLCJpYXQiOjE1MjI0MDY4MjAsImV4cCI6MTUyMjQxNzYyMH0.e8BASJp97vqZmK5NC8vRjxxpxSxGWLwAGllOTJDFBjA"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "name",
+                  "password",
+                  "confirmPassword",
+                  "email"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "test"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "11111111"
+                  },
+                  "confirmPassword": {
+                    "type": "string",
+                    "example": "11111111"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "test@test.com"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/centers/2": {
+      "delete": {
+        "tags": [
+          "centers-endpoint"
+        ],
+        "summary": "https://events-manager-cp.herokuapp.com/api/v1/centers/<params>",
+        "description": "Allows an admin who added a center be able to delete that center and the events created at that center.",
+        "operationId": "Https://eventsManagerCp.herokuapp.com/api/v1/centers/<params>2",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "name",
+                  "location",
+                  "address",
+                  "capacity",
+                  "description",
+                  "imgUrl",
+                  "owner"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Ketu-ojota-mall"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Ketu "
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Ketu ojota mai-twef"
+                  },
+                  "capacity": {
+                    "type": "string",
+                    "example": "3000"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "THis is a center from a superAdmin user"
+                  },
+                  "imgUrl": {
+                    "type": "string",
+                    "example": "this is just a placeholder for images"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "example": "SuperAdmin-baba"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/admin/9": {
+      "put": {
+        "tags": [
+          "user-endpoint"
+        ],
+        "summary": "events-manager-cp.herokuapp.com/api/v1/users/admin/1",
+        "description": "Allows a superAdmin upgrade a user to an Admin\npass in the id of the user you want it's role upgraded",
+        "operationId": "EventsManagerCp.herokuapp.com/api/v1/users/admin/1",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOnRydWUsInJvbGUiOiJzdXBlckFkbWluIiwiaXNTdXBlckFkbWluIjp0cnVlLCJuYW1lIjoiSWRyZWVzIiwiZW1haWwiOiJpZHJlZXNrdW5Aa3VuLmNvbSIsImlhdCI6MTUyMzQ1MjE0MiwiZXhwIjoxNTIzNDg4MTQyfQ.6ISB7Ac7hcqteAiXt-9y9Q5EKqCCe2RIA1MCfQcqX20"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOnRydWUsInJvbGUiOiJzdXBlckFkbWluIiwiaXNTdXBlckFkbWluIjp0cnVlLCJuYW1lIjoiSWRyZWVzIiwiZW1haWwiOiJpZHJlZXNrdW5Aa3VuLmNvbSIsImlhdCI6MTUyMzQ1MjE0MiwiZXhwIjoxNTIzNDg4MTQyfQ.6ISB7Ac7hcqteAiXt-9y9Q5EKqCCe2RIA1MCfQcqX20"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "tester@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "idreeskun"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  }
+}
