@@ -25,7 +25,7 @@ describe('Centers Controller', () => {
     done();
   });
   describe('GET /api/v1/centers', () => {
-    it('should return "No Centers Found" when query made to an empty database', done => {
+    it('should return "No Centers Found" when user makes query to an empty database', done => {
       request(app)
         .get('/api/v1/centers')
         .expect(404)
@@ -40,7 +40,7 @@ describe('Centers Controller', () => {
 
   /* TEST POST CENTER */
   describe('POST /api/v1/centers', () => {
-    it('should return "Unsuccessful" when a non-admin tries to create a center', done => {
+    it('should return "Unsuccessful" when a non-admin user makes a POST request to create a center', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', token)
@@ -65,7 +65,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should add center on "/api/v1/centers" endpoint when an admin adds a center', done => {
+    it('should add a new center succesfully on "/api/v1/centers" endpoint when an admin adds a center', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
@@ -87,14 +87,14 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return an error for empty string input', done => {
+    it('should return "Please fill all input fields" when admin user enters no address ', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: 3,
+          address: undefined,
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen'
@@ -107,7 +107,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return an error when user enters no address', done => {
+    it('should return "Please fill all input fields" when admin user enters no address', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
@@ -132,7 +132,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return "capacity of a center should be a number"', done => {
+    it('should return "capacity of a center should be a number" when a user enter entries other than numbers', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
@@ -161,7 +161,7 @@ describe('Centers Controller', () => {
 
   /* TEST FOR MODIFY/EDIT/PUT CENTERS */
   describe('PUT /api/v1/centers/:<centerId>', () => {
-    it('Should return "Unauthorized" for wrong token', done => {
+    it('Should return "Unauthorized" when admin  attempts to edit a center and token has expired', done => {
       request(app)
         .put(`/api/v1/centers/${1}`)
         .set('x-access-token', token)
@@ -186,7 +186,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('Should return "Center Not found" where center not in database', done => {
+    it('Should return "Center Not found" when admin attempts to edit a center not in database', done => {
       request(app)
         .put(`/api/v1/centers/${4}`)
         .set('x-access-token', adminToken)
@@ -208,7 +208,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('Should return "Center successfully updated" when correct credentials supplied', done => {
+    it('Should return "Center successfully updated" when an admin has successfully updated a center', done => {
       request(app)
         .put(`/api/v1/centers/${1}`)
         .set('x-access-token', adminToken)
@@ -230,7 +230,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('Should return "Please input correct value" when wrong input supplied', done => {
+    it('Should return "Please input correct value" when user enters wrong req.parameter supplied', done => {
       request(app)
         .put('/api/v1/centers/$')
         .set('x-access-token', adminToken)
@@ -257,7 +257,7 @@ describe('Centers Controller', () => {
   /* TEST FOR AVAILABILITY OF CENTERS */
   describe('GET /api/v1/centers', () => {
     describe('Get A Single Center', () => {
-      it('should return "Center Not Found" for a wrong req.param', done => {
+      it('should return "Center Not Found" when a user enters a wrong req.param', done => {
         request(app)
           .get(`/api/v1/centers/${3}`)
           .expect(404)
@@ -268,7 +268,7 @@ describe('Centers Controller', () => {
           });
       });
     });
-    it('should return "Success" for a successful query for a single event center', done => {
+    it('should return "Success" for a successful query for a single event center by a user', done => {
       request(app)
         .get(`/api/v1/centers/${1}`)
         .expect(200)
@@ -279,7 +279,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return "Center Not Found" for a "-1" query', done => {
+    it('should return "Center Not Found" for a "-1" request by a user for a center', done => {
       request(app)
         .get(`/api/v1/centers/${-1}`)
         .expect(404)
@@ -290,7 +290,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return "Center Not Found" for a "*" query', done => {
+    it('should return "Center Not Found" for a "*" query by a user for a center', done => {
       request(app)
         .get('/api/v1/centers/*')
         .expect(422)
@@ -305,7 +305,7 @@ describe('Centers Controller', () => {
         });
     });
     describe('Test for getting all centers', () => {
-      it('should return "Success" and centers for a query for all centers', done => {
+      it('should return "Success" and centers for a query by a user for all centers', done => {
         request(app)
           .get('/api/v1/centers')
           .expect(200)
@@ -321,7 +321,7 @@ describe('Centers Controller', () => {
 
   /* TEST FOR DELETE A CENTER */
   describe('DEL /api/v1/centers/:centerId', () => {
-    it('Should return "403" unauthorized', done => {
+    it('Should return "403" unauthorized when an ordinary user attemtps to delete a center', done => {
       request(app)
         .del(`/api/v1/centers/${3}`)
         .set('x-access-token', token)
@@ -336,7 +336,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('Should return "Center Not Found"', done => {
+    it('Should return "Center Not Found" when an authorized admin attemtps to delete a center not in the database', done => {
       request(app)
         .del(`/api/v1/centers/${3}`)
         .set('x-access-token', adminToken)
@@ -348,7 +348,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('Should return "Unable to delete center, please try again later" for wrong params input', done => {
+    it('Should return "Unable to delete center, please try again later" when an admin enters a wrong params input as req.params', done => {
       request(app)
         .del('/api/v1/centers/$')
         .set('x-access-token', adminToken)
@@ -360,7 +360,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('Should return "Unable to delete center, please try again later" for wrong params input', done => {
+    it('Should return "Center Successfully Deleted" when an authorized admin succeeds at deleting a center', done => {
       request(app)
         .del(`/api/v1/centers/${1}`)
         .set('x-access-token', adminToken)

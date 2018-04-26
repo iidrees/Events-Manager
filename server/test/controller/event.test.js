@@ -25,7 +25,7 @@ describe('TEST EVENT ENDPOINTS', () => {
     done();
   });
   describe('POST "/api/v1/events"', () => {
-    it('should return "Unauthorized" for wrong credentials', done => {
+    it('should return "No token supplied" for wrong credentials when a user does not send a token with their request', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .send({
@@ -45,7 +45,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Unsuccessful" when a user enters wrong credentials', done => {
+    it('should return "Session Expired, Please signin again" when a user\'s token has expired', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', expiredToken)
@@ -71,7 +71,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         });
     });
 
-    it('should return "Unsuccessful" for supplying a center not existing', done => {
+    it('should return "Center Not Found" when a user enters a center not in the database', done => {
       request(app)
         .post(`/api/v1/events/${3}`)
         .set('x-access-token', token)
@@ -91,7 +91,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Success" for creating an event', done => {
+    it('should return "Success" for creating an event, when a user succesfully creates a center', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -123,7 +123,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Date already booked, enter another date" for unique data validation', done => {
+    it('should return "date already booked for this center, choose another" for unique data validation', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -147,7 +147,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "This is the valid date format \'YYYY-MM-DD" for unique date validation', done => {
+    it('should return "This is the valid date format YYYY-MM-DD" for unique date validation', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -171,7 +171,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Events.imgUrl cannot be null" for image null model validation', done => {
+    it('should return "Please fill all input fields" when a user does not upload an image', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -191,7 +191,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Image is required" for image null model validation', done => {
+    it('should return "Please all form fields are required to be filled" for image null model validation', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -214,7 +214,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('should return "Enter a description" for unique data validation', done => {
+    it('should return "Please all form fields are required to be filled" when a user enters no description', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -240,7 +240,7 @@ describe('TEST EVENT ENDPOINTS', () => {
     });
   });
   describe('GET /api/v1/events', () => {
-    it('should return "These are your Events" when all events retrieved', done => {
+    it('should return "These are your Events" when  a user retrieves all events with the event', done => {
       request(app)
         .get('/api/v1/events')
         .set('x-access-token', token)
@@ -254,7 +254,7 @@ describe('TEST EVENT ENDPOINTS', () => {
     });
   });
   describe('Test PUT/ modify "/api/v1/events/:eventId" endpoint', () => {
-    it('Should return "Event Not Found" if event not found', done => {
+    it('Should return "Event Not Found" when a user tries to edit an event not present in the database', done => {
       request(app)
         .put(`/api/v1/events/${4}`)
         .set('x-access-token', token)
@@ -273,7 +273,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('Should return "Please ensure you are entering a value" for wrong params input', done => {
+    it('Should return "Please ensure you are entering a value" when a user enters wrong params in the url', done => {
       request(app)
         .put('/api/v1/events/*')
         .set('x-access-token', token)
@@ -295,7 +295,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('Should return "Event updated successfully" if event found and updated', done => {
+    it('Should return "Event updated successfully" if user event is found and updated', done => {
       request(app)
         .put(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -322,7 +322,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('Should return "Unauthorized" if expired token supplied', done => {
+    it('Should return "Session Expired, Please signin again." when user supplies expired token during an edit process', done => {
       request(app)
         .put(`/api/v1/events/${4}`)
         .set('x-access-token', expiredToken)
@@ -345,7 +345,7 @@ describe('TEST EVENT ENDPOINTS', () => {
     });
   });
   describe('GET /api/v1/events/:<eventId>', () => {
-    it('Should return "Success" for getting an event', done => {
+    it('Should return "Success" when a user request for an event they created', done => {
       request(app)
         .get(`/api/v1/events/${1}`)
         .set('x-access-token', token)
@@ -357,7 +357,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('Should return "Unsuccessful" for wrong eventId', done => {
+    it('Should return "No event available, please post an event" when a user enters a wrong eventId', done => {
       request(app)
         .get(`/api/v1/events/${2}`)
         .set('x-access-token', token)
@@ -372,7 +372,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
-    it('Should return "Unsuccessful" for wrong params input  ', done => {
+    it('Should return "No such event is available" for wrong params input  ', done => {
       request(app)
         .get('/api/v1/events/*')
         .set('x-access-token', token)
@@ -389,7 +389,7 @@ describe('TEST EVENT ENDPOINTS', () => {
 
 /* TEST FOR DELETE AN EVENT */
 describe('DEL /api/v1/events/:eventId ', () => {
-  it('Should return "Event Not Found" for wrong eventId', done => {
+  it('Should return "Event Not Found" when a user enters wrong eventId', done => {
     request(app)
       .del(`/api/v1/events/${3}`)
       .set('x-access-token', token)
@@ -401,7 +401,7 @@ describe('DEL /api/v1/events/:eventId ', () => {
         done();
       });
   });
-  it('Should return "No such event is available" for wrong params input', done => {
+  it('Should return "No such event is available" when a user enters a wrong params input in the url', done => {
     request(app)
       .del('/api/v1/events/*')
       .set('x-access-token', token)
@@ -413,7 +413,7 @@ describe('DEL /api/v1/events/:eventId ', () => {
         done();
       });
   });
-  it('Should return "Event Successfully Deleted" for correct eventId', done => {
+  it('Should return "Event Successfully Deleted" when a user enters a correct params input in the url', done => {
     request(app)
       .del(`/api/v1/events/${1}`)
       .set('x-access-token', token)
@@ -426,7 +426,7 @@ describe('DEL /api/v1/events/:eventId ', () => {
       });
   });
 
-  it('Should return "Event Not Found" when no events in the database', done => {
+  it('Should return "Event Not Found" when a user requests for all events and no events in the database', done => {
     request(app)
       .get('/api/v1/events')
       .set('x-access-token', token)
