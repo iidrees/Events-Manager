@@ -36,6 +36,7 @@ static updateUser(req, res, next) {
           message: 'You are unauthorised to carry out this action'
         })
       }
+     // req.decoded.admin = user.isAdmin;
       next();
       return null
     })

@@ -16,6 +16,7 @@ import router from './routes/routes';
 
 /* initialise App and set PORT */
 const app = express();
+
 const swaggerUi = require('swagger-ui-express');
 const compiler = webpack(config);
 app.use(cors({credentials: true, origin: true}));
@@ -24,9 +25,18 @@ app.use(cors({credentials: true, origin: true}));
 dotenv.config();
 
 // API DOC
-const swaggerDocument = require('../../converted.json');
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('this is production')
+  const swaggerDocument = require('../../converted.json');
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+} else {
+  console.log('this is development')
+  const swaggerDocument = require('../../api-doc-dev.json');
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+}
+
 // Morgan to log requests to the console
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'client/src/media')));

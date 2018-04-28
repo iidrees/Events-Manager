@@ -30,7 +30,6 @@ export class UserSignup {
       })
       .then((user) => {
         const payload = {
-          authenticated: true,
           id: user.id,
           admin: user.isAdmin,
           isSuperAdmin: user.isSuperAdmin,
@@ -86,12 +85,7 @@ export class UserSignin {
         }
       })
       .then((user) => {
-        if (!user) { // returns an error if user has not signedup yet
-          return res.status(401).send({
-            status: 'Unsuccessful',
-            message: 'Email or Password is invalid'
-          });
-        }
+
         if (bcrypt.compareSync(password.trim(), user.password)) {
           /*  if user has an account,
             compare password with what we have in the db.

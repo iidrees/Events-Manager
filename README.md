@@ -6,14 +6,16 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/iidrees/Events-Manager/branch/develop/graph/badge.svg)](https://codecov.io/gh/iidrees/Events-Manager)
 
-## Getting Started
+# Getting Started
+---
 
 This is a javascript application built with **Express** framework on the **nodejs** platform. Authentication of users is done via **JSON Web Tokens**.
-To view the UI template for the Events-Manager web application on Github Pages, you should click on this link [Events-Manager](https://iidrees.github.io/Events-Manager/template/landing.html).
+To view the UI template for the Events-Manager web application on Github Pages, you should click on this link **Events-Manager** : https://iidrees.github.io/Events-Manager/template/landing.html.
 
-To get more information on how to use the API, a good place to start would be here: [Events-Manager Doc](https://events-manager-cp.herokuapp.com/api-docs/) on swaggerhub.
+To get more information on how to use the API, a good place to start would be here: [**Events-Manager Doc**](https://events-manager-cp.herokuapp.com/api-docs/) on swaggerhub you could also use **Postman** to test the API endpoints as you go through the documentation.
+Please see how to download and install **Postman** in the **Installation & Starting** section.
 
-## Installation and Starting
+## Installation & Starting
 
 1.  Install [**Node JS**](https://nodejs.org/en/)
 
@@ -72,7 +74,7 @@ To get more information on how to use the API, a good place to start would be he
     npm run start:dev
     ```
 
-6.  Use to test all endpoints
+6.  To try out the API you can either use the API documentation which can be found on Heroku here [**Event-Manager API-DOC**](https://events-manager-cp.herokuapp.com/api-docs/) 
 
 ## Tests
 
@@ -80,6 +82,7 @@ For Sever side tests - run `npm test` on the terminal while within the **project
 Server side testing is done through the use of `supertest`, `mocha` & `chai` packages. `supertest` is used to make requests to the api and `mocha` is the testing framework and `chai` is the assertion library. They will both be installed when you run the `npm install` command while setting up the project above and the tests will run when you run `npm test`.
 
 # Features
+---
 
 #### Authentication
 
@@ -103,7 +106,8 @@ Server side testing is done through the use of `supertest`, `mocha` & `chai` pac
 * Admins can delete a center they added
 * Super-Admins can do all the above and upgrade a `user` to an `admin`
 
-## Technology Stack
+# Technology Stack & State of Project
+---
 
 **Front-End**
 
@@ -135,11 +139,10 @@ The limitations with this current version of Event Manager includes:
 
 * Some extra features that would enable the application to offer more services to the user are still pending.
 
-## CONTRIBUTING
+# CONTRIBUTING
+---
 #### How To Get Started 
 > To contribute to this project, please checkout this project's **[CONTRIBUTING.md](https://github.com/iidrees/Events-Manager/blob/develop/CONTRIBUTING.md)** 
----
-
 ## Authors
 
 * Idrees Ibraheem

@@ -135,7 +135,10 @@ export class CenterDelete {
             status: 'Success',
             message: 'Center Successfuly Deleted'
           }))
-          .catch(err => res.status(404).send(err));
+          .catch(err => res.status(500).send({
+            status: 'Unsuccessful',
+            message: 'Unable to delete center'
+          }));
       })
       .catch(err => res.status(422).send({
         status: 'Unsuccessful',

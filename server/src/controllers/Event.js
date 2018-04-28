@@ -90,8 +90,7 @@ export class Event {
           return res.status(422).send({
             // TODO: find out the correct status code to be used here
             status: 'Unsuccessful',
-            message: 'Event could not be added',
-            error: error[0].message
+            message: 'Please ensure you are entering the centerId as an integer in the req.params',
         })
       }) 
   }
@@ -150,7 +149,10 @@ export class EventUpdate {
             message: 'Event updated successfully',
             data: updatedEvent
           }))
-          .catch(err => res.status(422).send(err.errors[0].message));
+          .catch(err => res.status(422).send({
+            status: 'Unsuccessful',
+            message: 'Event cannot be updated, please check your inputs',
+            error: err.errors[0].message}));
       })
       .catch(err => res.status(422).send({
         status: 'Unsuccessful',
@@ -196,7 +198,6 @@ export class EventDelete {
             status: 'Success',
             message: 'Event Successfully Deleted'
           }))
-          .catch(err => res.status(404).send(err));
       })
       .catch(err => res.status(422).send({
         status: 'Unsuccessful',

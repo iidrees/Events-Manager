@@ -55,7 +55,7 @@ export default (sequelize, DataTypes) => {
         },
         isNumeric: {
           args: true,
-          msg: 'Please enter the Capacity in numbers '
+          msg: 'Please enter the Capacity in numbers'
         }
       }
     },
@@ -87,12 +87,12 @@ export default (sequelize, DataTypes) => {
         model: 'Users',
         key: 'id',
         as: 'userId'
-      },
-    },
+      }
+    }
   });
 
   /* Model Associations for centers */
-  Centers.associate = (model) => {
+  Centers.associate = model => {
     Centers.hasMany(model.Events, {
       foreignKey: 'centerId',
       as: 'events'
