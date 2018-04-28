@@ -95,10 +95,8 @@ export const centers = [
 
 export const seedUser = () => {
   Users.bulkCreate(users);
-  console.log('user seeded >>>>>>>>>>>>>>>>>');
 };
 
 export const seedCenter = () => {
   Centers.bulkCreate(centers);
-  console.log('centers seeded >>>>>>>>>>>>>>>>>');
 };

@@ -195,7 +195,6 @@ describe('TEST MODEL', () => {
           done();
         })
         .catch(error => {
-          //console.log('owner >>>>', error);
           assert.deepEqual(
             error.errors[0].message,
             'Centers.capacity cannot be null'
