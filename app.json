@@ -1,0 +1,26 @@
+{
+  "name": "Events-Manager",
+  "scripts": {
+  },
+  "env": {
+    "SECRET": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
