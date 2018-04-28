@@ -68,7 +68,7 @@ class UserValidator {
       });
     }
     if (!validator.isAlphanumeric(password)){
-      res.status(401).send({
+      return res.status(401).send({
         status: 'Unsuccessful',
         message: 'Password must contain letters and numerals'
       })

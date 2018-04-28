@@ -96,7 +96,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
     });
     it(
       'should return "Please your password do not match"' +
-        'when a user enters no value in the password confirmation field',
+        ' when a user enters no value in the password confirmation field',
       done => {
         request(app)
           .post('/api/v1/users')
@@ -118,7 +118,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
     );
     it(
       'should return "Password cannot be less than 8 characters"' +
-        'when a user enters a password that is less than 8 characters',
+        ' when a user enters a password that is less than 8 characters',
       done => {
         request(app)
           .post('/api/v1/users')
@@ -143,7 +143,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
     );
     it(
       'should return status "Success" for a successful sign-up' +
-        'when a user enters all input fields correctly',
+        ' when a user enters all input fields correctly',
       done => {
         request(app)
           .post('/api/v1/users')
@@ -163,6 +163,31 @@ describe('Sign-up and Sign-in Endpoints', () => {
             );
             assert.deepEqual(res.status, 201);
             token = res.body.data.token;
+
+            done();
+          });
+      }
+    );
+    it(
+      'should return "Password must contain letters and numerals" when entered is not alphanumaric',
+      done => {
+        request(app)
+          .post('/api/v1/users')
+          .send({
+            name: 'tester',
+            email: 'tester@gmail.com',
+            password: '@@@@@@@@',
+            confirmPassword: '@@@@@@@@'
+          })
+          .expect(401)
+          .then(res => {
+            assert.typeOf(res.body, 'object');
+            assert.deepEqual(res.body.status, 'Unsuccessful');
+            assert.deepEqual(
+              res.body.message,
+              'Password must contain letters and numerals'
+            );
+            assert.deepEqual(res.status, 401);
 
             done();
           });
@@ -196,7 +221,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
     );
     it(
       'should return "Please enter your email address"' +
-        'when a user does not enter any value in the email field',
+        ' when a user does not enter any value in the email field',
       done => {
         request(app)
           .post('/api/v1/users')
@@ -221,7 +246,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
     );
     it(
       'should return "the email already exists, enter a new email" ' +
-        'when a user enters an existing email in the database',
+        ' when a user enters an existing email in the database',
       done => {
         request(app)
           .post('/api/v1/users')
@@ -318,7 +343,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
     });
     it(
       'Should return "Please enter your email in this format  this format \'joe@example.com\'"' +
-        'when a user enters an email in the wrong format',
+        ' when a user enters an email in the wrong format',
       done => {
         request(app)
           .post('/api/v1/users/login')

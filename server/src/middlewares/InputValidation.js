@@ -134,16 +134,6 @@ static eventInput(req, res, next) {
           })
         }
 
-        
-    
-
-    // if (!moment(time, 'hh:mm ',true).isValid()) {
-    //   return res.status(422).send({
-    //     status: 'Unsuccessful',
-    //     message: 'This is the valid date format  \'YYYY-MM-DD\''
-    //   })
-    // }
-
     next();
   }
 }

@@ -238,6 +238,47 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
+
+    it('should return "Unsuccesful" when a users enters a non-integer as req.params', done => {
+      request(app)
+        .post(`/api/v1/events/@`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-07',
+          time: '12:03 PM',
+          imgUrl:
+            'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        })
+        .expect(422)
+        .then(res => {
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Please ensure you are entering the centerId as an integer in the req.params');
+          assert.deepEqual(res.status, 422);
+          done();
+        });
+    });
+    it('should return "Unsuccesful" when a users enters a non-integer as req.params', done => {
+      request(app)
+        .post(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          date: '2018-03-07',
+          time: '12-03 PM',
+          imgUrl:
+            'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        })
+        .expect(422)
+        .then(res => {
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Time should be entered in this format "hh:mm AM/PM"');
+          assert.deepEqual(res.status, 422);
+          done();
+        });
+    });
   });
   describe('GET /api/v1/events', () => {
     it('should return "These are your Events" when  a user retrieves all events with the event', done => {
