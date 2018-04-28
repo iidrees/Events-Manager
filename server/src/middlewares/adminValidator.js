@@ -31,7 +31,6 @@ static updateUser(req, res, next) {
     })
     .then((user) => {
       if ( user.isAdmin !== true ) {
-        console.log('this is the admin validation>>>>>>>>>', user.isAdmin)
         return res.status(403).send({
           status: 'Unsuccessful',
           message: 'You are unauthorised to carry out this action'
