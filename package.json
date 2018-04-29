@@ -15,7 +15,8 @@
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "nyc": "nyc report",
-    "lint": "node_modules/.bin/eslint client/__tests__",
+    "lint:client": "node_modules/.bin/eslint client/__tests__",
+    "lint:server": "node_modules/.bin/eslint client/server/src/server.js",
     "seq:drop": "sequelize db:migrate:undo:all",
     "seq:create": "sequelize db:migrate",
     "seq:seed": "sequelize db:seed:all",
@@ -128,6 +129,7 @@
   "devDependencies": {
     "babel-eslint": "^8.0.2",
     "babel-jest": "^22.2.0",
+    "clean-webpack-plugin": "^0.1.19",
     "codecov": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -135,11 +137,14 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.2.0",
     "jest-localstorage-mock": "^2.2.0",
     "moxios": "^0.4.0",
     "nodemon": "^1.12.1",
-    "redux-mock-store": "^1.5.1"
+    "redux-mock-store": "^1.5.1",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack-merge": "^4.1.2"
   }
 }

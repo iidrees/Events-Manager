@@ -275,7 +275,7 @@ describe('Centers Controller', () => {
         .then(res => {
           assert.deepEqual(res.status, 200);
           assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'These are the event centers');
+          assert.deepEqual(res.body.message, 'This is your event center');
           done();
         });
     });

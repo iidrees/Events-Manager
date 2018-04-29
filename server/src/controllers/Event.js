@@ -144,7 +144,7 @@ export class EventUpdate {
             time: time || event.time,
             center: center || event.center
           })
-          .then(updatedEvent => res.status(200).send({
+          .then(updatedEvent => res.status(201).send({
             status: 'Success',
             message: 'Event updated successfully',
             data: updatedEvent
