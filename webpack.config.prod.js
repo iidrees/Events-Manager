@@ -1,37 +1,38 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
 
 module.exports = {
-  entry: [ 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true',
-    path.join(__dirname, '/client/src/app.js')
-  ],
+  entry: path.join(__dirname, '/client/src/app.js'),
+
   output: {
     path: path.join(__dirname, '/client/dist'),
     publicPath: '/dist/', // remember to change it to static to run from server
     filename: 'bundle.js',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new CleanWebpackPlugin(['client/dist/']),
     new Dotenv(),
+    new HtmlWebpackPlugin({
+      template: 'client/index.html'
+    }),
+    new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production')
+        }),
+
     new webpack.optimize.UglifyJsPlugin({
-      mangle: true,
-      compress: {
-        warnings: false, // Suppress uglification warnings
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        screw_ie8: true
-      },
+      sourceMap: true,
       output: {
         comments: false,
-      },
-      exclude: [/\.min\.js$/gi] // skip pre-minified libs
+      }
     })
   ],
+  devtool: 'source-map',
   module: {
     loaders: [{
       test: /\.(js|jsx)$/,
@@ -49,15 +50,5 @@ module.exports = {
         }
       ]
     }]
-  },
-  devtool: 'eval',
-  devServer: {
-    port: 8000,
-    contentBase: 'client/',
-    proxy: {
-      '/api/v1/*': {
-        target: 'http://localhost:5050'
-      },
-    },
   },
 };

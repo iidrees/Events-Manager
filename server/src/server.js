@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import webpack from 'webpack';
 import path from 'path';
 import config from '../../webpack.config';
+import configProd from '../../webpack.config.prod';
 import router from './routes/routes';
 
 
@@ -18,23 +19,41 @@ import router from './routes/routes';
 const app = express();
 
 const swaggerUi = require('swagger-ui-express');
-const compiler = webpack(config);
+const compilerDev = webpack(config);
+const compilerProd = webpack(configProd);
 app.use(cors({credentials: true, origin: true}));
 
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
 
-// API DOC
+
 
 
 if (process.env.NODE_ENV === 'production') {
   console.log('this is production')
+  // API DOC
   const swaggerDocument = require('../../converted.json');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+  app.use(require('webpack-dev-middleware')(compilerProd, {
+    hot: false,
+    noInfo: false,
+    publicPath: config.output.publicPath
+  }))
+  app.use(require("webpack-hot-middleware")(compilerProd));
 } else {
   console.log('this is development')
+
   const swaggerDocument = require('../../api-doc-dev.json');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+  // API DOC
+  app.use(require('webpack-dev-middleware')(compilerDev, {
+    hot: false,
+    noInfo: false,
+    publicPath: config.output.publicPath
+  }))
+  app.use(require("webpack-hot-middleware")(compilerDev));
 }
 
 // Morgan to log requests to the console
@@ -46,19 +65,6 @@ app.use(express.static(path.join(__dirname, 'client/src/styles')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
-
-/* checks if environment is development when testing so bundle is not 
-generated each time test is run */
-if (process.env.NODE_ENV !== 'test') {
-  app.use(require('webpack-dev-middleware')(compiler, {
-    hot: true,
-    noInfo: true,
-    publicPath: config.output.publicPath
-  }))
-  app.use(require("webpack-hot-middleware")(compiler));
-}
-
-
 
 // route
 app.get('/home', (req, res) => {
