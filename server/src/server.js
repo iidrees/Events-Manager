@@ -26,13 +26,11 @@ app.use(cors({credentials: true, origin: true}));
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
 
-
-
-
+// In what env to serve both documentation webpack config
 if (process.env.NODE_ENV === 'production') {
   console.log('this is production')
   // API DOC
-  const swaggerDocument = require('../../converted.json');
+  const swaggerDocument = require('../../api-doc-prod.json');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   app.use(require('webpack-dev-middleware')(compilerProd, {

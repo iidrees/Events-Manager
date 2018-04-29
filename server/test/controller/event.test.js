@@ -348,9 +348,9 @@ describe('TEST EVENT ENDPOINTS', () => {
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
-        .expect(200)
+        .expect(201)
         .then(res => {
-          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.status, 201);
           assert.deepEqual(res.body.message, 'Event updated successfully');
           assert.deepEqual(res.body.data.title, 'Felabration');
           assert.deepEqual(

@@ -61,9 +61,6 @@ export default class ModifyCenter {
             message: 'Center successfully updated',
             data: updateCenter
           }))
-          .catch(err => res.status(400).send({
-            message: 'Center could not be added, please try again later'
-          }));
       })
       .catch(() => res.status(422).send({
         status: 'Unsuccessful',

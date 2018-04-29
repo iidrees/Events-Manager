@@ -36,7 +36,7 @@ export class GetCenter {
         }
         return res.status(200).send({
           status: 'Success',
-          message: 'These are the event centers',
+          message: 'This is your event center',
           data: center
         });
       })
