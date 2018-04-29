@@ -7,7 +7,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 import path from 'path';
-import config from '../../webpack.config';
+import config from '../../webpack.config.dev';
 import configProd from '../../webpack.config.prod';
 import router from './routes/routes';
 
