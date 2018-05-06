@@ -44,7 +44,7 @@ export default class LandingPage extends React.Component {
 						<hr/>
 						<div className="container landing-acc">{/* <!-- Container Div for signup and signup prompt --> */}
 							<div className="row">
-								<div className="col-lg-4 offset-md-7">
+								<div className="col-md-4 ml-md-auto">
 									
 									<p className="landing-auth">Already have an account?</p>
 									<p className="lead">
@@ -53,7 +53,7 @@ export default class LandingPage extends React.Component {
 									</p>
 
 								</div>
-								<div className="">
+								<div className="col-md-4 ml-md-auto">
 									
 									<p className="landing-auth">Have no account? </p>
 									<p className="lead">

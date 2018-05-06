@@ -73,14 +73,17 @@ font-size: 20px;
 	font-weight: 20px;
 }
 
-
+#add-events, #add-centers {
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
 html {
   position: relative;
   min-height: 100%;
 }
 body {
   /* Margin bottom by footer height */
-  // margin-bottom: 70px;
+  margin-bottom: 0px;
 }
 
 
@@ -89,7 +92,7 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 30px; 
+  height: 10px; 
 }
 
 /* Event catalog and My Events page */

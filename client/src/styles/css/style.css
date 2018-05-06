@@ -26,8 +26,9 @@
  }
 
  .landing-acc {
-   margin-bottom: 15%;
-   margin-top: 25%;
+   margin-bottom: 3%;
+   margin-top: 20%;
+   /* margin-left: 50%; */
  }
  body #landing-background {
   /* Margin bottom by footer height */
