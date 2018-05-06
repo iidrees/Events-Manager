@@ -20,7 +20,6 @@ class InputValidation {
     const {
       name,
       location,
-      address,
       owner,
       capacity,
       description,
@@ -32,7 +31,6 @@ class InputValidation {
     if (
         typeof name !== 'string' ||
         typeof location !== 'string'||
-        typeof address !== 'string' ||
         typeof owner !== 'string' ||
         typeof description !== 'string'||
         typeof capacity+'' !== 'string'
@@ -45,7 +43,6 @@ class InputValidation {
     if (
       validator.isEmpty(name)||
       validator.isEmpty(location)||
-      validator.isEmpty(address)||
       validator.isEmpty(owner)||
       validator.isEmpty(description) ||
       validator.isEmpty(capacity+'')||

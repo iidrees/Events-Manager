@@ -8,7 +8,8 @@ import {
   const initialState = { /* The initial state of the component */
     status: '',
     message: '',
-    data: {},
+    center: {},
+    events: []
   
   };
 
@@ -19,7 +20,9 @@ import {
           ...state,
           status: 'Success',
           message: action.response.message,
-          ...action.response.data,
+          center: action.response.data.center,
+          events: [...action.response.data.events.rows],
+          count: action.response.data.events.count,
           authenticated: true
         }
       }

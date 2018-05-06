@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Pagination from 'rc-pagination';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -13,6 +14,25 @@ import { getEvents  } from '../actions/eventAction';
  * @extends {React.Component}
  */
 class GetEvents extends React.Component {
+
+
+
+   /**
+ * Creates an instance of Center.
+ * @param {any} props -
+ * @memberof GetEvents
+ */
+constructor(props){
+  super(props)
+  this.state = {
+    currentPage: 1,
+    itemsPerPage: 10,
+  }
+  //this.handleClick = this.handleClick.bind(this)
+  this.onChange = this.onChange.bind(this);
+
+}
+
 /**
  * A method that lets a user get their events
  * @memberof GetEvents
@@ -29,9 +49,32 @@ componentWillMount() {
  * @returns {*} method
  * @memberof GetEvents
  */
+
+  /**
+ * 
+ * @returns {any} -
+ * @param {any} page -
+ * @memberof Center
+ */
+onChange = (page) => {
+  console.log(page);
+  this.setState({
+    currentPage: page,
+  }, () => {
+    const { dispatch } = this.props;
+    console.log('current page>>>>', this.state.currentPage)
+    return dispatch(getEvents(this.state.currentPage));
+  });
+}
+
+/**
+ * @returns {JSX} -
+ * @memberof GetEvents
+ */
 render() {  
   
   const { events, status } = this.props;
+  console.log('the component center >>', events, events.count)
   
   return (
     <div>
@@ -61,7 +104,7 @@ render() {
           </div>{/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
           <div className="container" >			
               <div className="row">            
-            {events.data.map((event) => {
+            {events.events.map((event) => {
               return (
               <div className="col-sm-4" key={event.id}>
               <div className="card-deck cont-body" id="card-body" >
@@ -94,6 +137,14 @@ render() {
           </div>
         </div>
       </div>
+        <div style={{marginLeft:"35rem"}}>
+          {<Pagination 
+            onChange={this.onChange}  
+            current={this.state.currentPage} 
+            total={events.count}
+            locale={{items_per_page: "items"}}
+            />}
+        </div>
       <div id="card-body1">
       </div>
       <Footer />

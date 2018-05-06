@@ -13,13 +13,15 @@ import {
  * @export {function} -
  * @returns {JSON} JSON
  */
-const getCenters = () => {// function to get all centers
+const getCenters = (index) => {// function to get all centers
+  console.log('>>>>>>>>>', index)
   return (dispatch) => {// axios request is made
    return axios({
       method: 'GET',
-      url: '/api/v1/centers'
+      url: `/api/v1/centers?page=${index}`
     })
     .then((response) => {// when response is recieved)
+      console.log('the details actions>>>', response.data)
       dispatch({ type: CENTERS_SUCCESS,  centers: response.data })
     })
     .catch((err) => {

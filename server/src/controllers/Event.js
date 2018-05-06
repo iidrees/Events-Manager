@@ -268,10 +268,10 @@ export class GetAllEvents {
       req.query.page = 1;
     }
     return Events
-      .findAll({
+      .findAndCountAll({
         limit: 10,
         offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
-        order: [['id', 'DESC']]
+        order: [['id', 'ASC']]
       }).then((events) => {
         if (events.length === 0) {
           return res.status(404).send({

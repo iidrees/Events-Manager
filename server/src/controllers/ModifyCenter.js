@@ -17,7 +17,6 @@ export default class ModifyCenter {
     const {
       name,
       location,
-      address,
       status,
       owner,
       capacity,
@@ -49,7 +48,6 @@ export default class ModifyCenter {
           .update({
             name: name || center.name,
             location: location || center.location,
-            address: address || center.address,
             status: status || center.status,
             owner: owner || center.owner,
             capacity: capacity || center.capacity,

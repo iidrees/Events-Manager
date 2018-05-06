@@ -8,7 +8,7 @@ import {
 const initialState = {
   status: '',
   message: '',
-  data: [],
+  centers: [],
   error: ''
 }; // the initial state of the component
 
@@ -21,7 +21,8 @@ export default (state = initialState, action) => {
         authenticated: true,
         status: 'Success',
         message: action.centers.message,
-        data: [...action.centers.data]
+        centers: [...action.centers.data.rows],
+        count: action.centers.data.count
       }
     }
     case CENTERS_ERRORS: {
