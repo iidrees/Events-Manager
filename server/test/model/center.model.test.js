@@ -24,7 +24,6 @@ describe('TEST MODEL', () => {
         owner: 'Model-man',
         capacity: 250000,
         location: 'Sanfrancisco, Bay Area',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       }).then(center => {
         assert.property(center.dataValues, 'name');
@@ -33,7 +32,6 @@ describe('TEST MODEL', () => {
         assert.property(center.dataValues, 'imgUrl');
         assert.property(center.dataValues, 'owner');
         assert.property(center.dataValues, 'location');
-        assert.property(center.dataValues, 'address');
         assert.property(center.dataValues, 'userId');
         assert.property(center.dataValues, 'capacity');
         done();
@@ -47,7 +45,6 @@ describe('TEST MODEL', () => {
         owner: 'Model-man',
         capacity: 250000,
         location: 'Sanfrancisco, Bay Area',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -71,7 +68,6 @@ describe('TEST MODEL', () => {
         owner: 'Model-man',
         capacity: 250000,
         location: 'Sanfrancisco, Bay Area',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -94,7 +90,6 @@ describe('TEST MODEL', () => {
         imgUrl: 'this is just a placeholder for images',
         owner: 'Model-man',
         capacity: 250000,
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -118,7 +113,6 @@ describe('TEST MODEL', () => {
         owner: 'Model-man',
         capacity: 250000,
         location: '',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -127,7 +121,7 @@ describe('TEST MODEL', () => {
         .catch(error => {
           assert.deepEqual(
             error.errors[0].message,
-            'Please enter a Location i.e a state where the center is located'
+            'Please enter a Location'
           );
           assert.deepEqual(error.errors[0].type, 'Validation error');
           done();
@@ -141,7 +135,6 @@ describe('TEST MODEL', () => {
         imgUrl: 'this is just a placeholder for images',
         capacity: 250000,
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -165,7 +158,6 @@ describe('TEST MODEL', () => {
         owner: '',
         capacity: 250000,
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -188,7 +180,6 @@ describe('TEST MODEL', () => {
         imgUrl: 'this is just a placeholder for images',
         owner: 'Baba-cass',
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -211,7 +202,6 @@ describe('TEST MODEL', () => {
         owner: 'Baba-cass',
         capacity: '',
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -235,7 +225,6 @@ describe('TEST MODEL', () => {
         owner: 'Baba-cass',
         capacity: 'string',
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -259,7 +248,6 @@ describe('TEST MODEL', () => {
         owner: 'Baba-cass',
         capacity: 'string',
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -282,7 +270,6 @@ describe('TEST MODEL', () => {
         owner: 'Baba-cass',
         capacity: 4545454,
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {
@@ -306,7 +293,6 @@ describe('TEST MODEL', () => {
         owner: 'Baba-cass',
         capacity: 4545454,
         location: 'Abuka',
-        address: 'Lekki, phase 2 Eti Osa Lagos State',
         userId: 1
       })
         .then(() => {

@@ -93,7 +93,7 @@ export class GetAllCenters {
         offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
         order: [['id', 'ASC']]
       }).then((centers) => {
-        if (centers.length === 0) {
+        if (centers.rows.length === 0) {
           return res.status(404).send({
             status: 'Unsuccessful',
             message: 'No Centers Found'
@@ -157,15 +157,6 @@ export class CenterDelete {
             status: 'Success',
             message: 'Center Successfuly Deleted'
           }))
-          .catch(err => res.status(500).send({
-            status: 'Unsuccessful',
-            message: 'Unable to delete center'
-          }));
       })
-      .catch(err => res.status(422).send({
-        status: 'Unsuccessful',
-        message: 'Unable to delete center, please try again later',
-        data: err
-      }));
   }
 }

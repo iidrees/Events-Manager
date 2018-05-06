@@ -283,7 +283,7 @@ describe('TEST EVENT ENDPOINTS', () => {
   describe('GET /api/v1/events', () => {
     it('should return "These are your Events" when  a user retrieves all events with the event', done => {
       request(app)
-        .get('/api/v1/events')
+        .get(`/api/v1/events?page=${1}`)
         .set('x-access-token', token)
         .expect(200)
         .then(res => {
@@ -469,7 +469,7 @@ describe('DEL /api/v1/events/:eventId ', () => {
 
   it('Should return "Event Not Found" when a user requests for all events and no events in the database', done => {
     request(app)
-      .get('/api/v1/events')
+      .get(`/api/v1/events?page=${1}`)
       .set('x-access-token', token)
       .expect(404)
       .then(res => {
