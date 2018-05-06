@@ -18,7 +18,6 @@ export default class Center {
     const {
       name,
       location,
-      address,
       owner,
       capacity,
       description,
@@ -33,26 +32,42 @@ export default class Center {
         message: 'You are not permitted to create a center'
       });
     }
+    
     return Centers
-      .create({
-        name,
-        location,
-        address,
-        owner,
-        capacity,
-        description,
-        imgUrl,
-        userId: id
-      })
-      .then(center => res.status(201).send({
-        status: 'Success',
-        message: 'Center Added Successfully',
-        data: center
-      }))
-      .catch(err => res.status(422).send({
-        status: 'Unsuccessful',
-        message: 'Center Could not be added',
-        error: err.errors[0].message
-      }));
+      .find({
+        where: {
+          location,
+          name
+        }
+      }).then((center) => {
+        
+        if (center) {
+          return res.status(409).send({
+            status: ' Unsuccessful',
+            message: 'Center already exist'
+          })
+        }
+        Centers
+          .create({
+            name,
+            location,
+            owner,
+            capacity,
+            description,
+            imgUrl,
+            userId: id
+          })
+          .then(newCenter => res.status(201).send({
+            status: 'Success',
+            message: 'Center Added Successfully',
+            data: newCenter
+          }))
+          .catch(err => res.status(422).send({
+            status: 'Unsuccessful',
+            message: 'Center Could not be added',
+            error: err.errors[0].message
+          }));
+          })
+      
   }
 }

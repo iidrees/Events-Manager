@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import Pagination from 'rc-pagination';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -14,6 +15,22 @@ import {centerDetails } from '../actions/centerDetailsAction';
  * @extends {React.Component}
  */
 class CenterDetails extends React.Component {
+
+  /**
+ * Creates an instance of Center.
+ * @param {any} props -
+ * @memberof Center
+ */
+  constructor(props){
+    super(props)
+    this.state = {
+      currentPage: 1,
+      itemsPerPage: 10,
+    }
+    //this.handleClick = this.handleClick.bind(this)
+
+}
+
 /**
  * 
  * 
@@ -21,9 +38,40 @@ class CenterDetails extends React.Component {
  * @memberof CenterDetails
  */
 componentWillMount() {
-    const { dispatch } = this.props;
-    return dispatch(centerDetails(this.props.match.params.id));
+    let { dispatch, currentPage  } = this.props;
+    
+    return dispatch(centerDetails(this.props.match.params.id, this.state.currentPage));
   }
+
+  /**
+ * 
+ * @returns {*} - 
+ * @param {any} event -
+ * @memberof Center
+ */
+// onChange(event) {
+//   event.preventDefault()
+//   this.setState({
+//     page: this.props.initialPage + 1
+//   })
+// }
+/**
+ * 
+ * @returns {any} -
+ * @param {any} page -
+ * @memberof CenterDetails
+ */
+onChange = (page) => {
+  console.log(page);
+  this.setState({
+    currentPage: page,
+  });
+  const { dispatch } = this.props;
+  console.log('current page>>>>', this.state.currentPage)
+  
+  return dispatch(centerDetails(this.props.match.params.id, this.state.currentPage));
+}
+
 /**
  * 
  * @returns {null} null
@@ -45,15 +93,17 @@ onDelete = (event) => {
 render () {
 
     const { center, user } = this.props;
+    console.log('the component center >>', center)
 
     return (
       <div>
         <div>
-          {
+          {/* {
             (!user.authenticated) &&
             <Redirect to='/signin' push />
-          }
+          } */}
         </div>
+        <NavBarMain />
       <div className="container">
         <div className="row">
           <div className="container" id="center-details-header">{/* START PAGE HEADER */}
@@ -61,7 +111,7 @@ render () {
               <div className="col-sm-12">              
                   <h1 className="text-center head-1">Event center details </h1>
                     <p className="head-para text-center">
-                    The {center.name}
+                    The {center.center.name}
                     </p>
               </div>
             </div>
@@ -70,7 +120,7 @@ render () {
 
           <div className="container" id="center-details-slider"> {/* <!-- START OF EVENT CENTER DETAILS --> */}
             <div className="row">
-              <div className="col-md-6">{/* <!--  START OF SLIDER COLUMN --> */}
+              <div className="col-md-6 col-sm-12 col-lg-4">{/* <!--  START OF SLIDER COLUMN --> */}
                   <div id="carousel-landing" className="carousel slide" data-ride="carousel">{/* <!-- START TAG FOR CAROUSEL SLIDER   --> */}
                     <ol className="carousel-indicators">
                       <li data-target="#carousel-landing" data-slide-to="0" className="active"></li>
@@ -102,32 +152,32 @@ render () {
                 </div>{/* <!--  END Carousel slider Tag --> */}
               </div>{/* <!-- END OF SLIDER COLUMN --> */}
               
-              <div className="col-md-6">
+              <div className="col-md-6 col-sm-12 col-lg-4">
                 <p className="center-details-para">
                   <span className="center-details-span">Center:</span>
-                  The {center.name}
+                  The {center.center.name}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span">Description:</span> <br/>
-                  {center.description}
+                  {center.center.description}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span">Location:</span>
-                  {center.location}
+                  {center.center.location}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span">Capacity:</span>
-                  {center.capacity}
+                  {center.center.capacity}
                 </p>
                 <p className="center-details-para">
                   <span className="center-details-span" >Owner:</span>
-                  {center.owner}
+                  {center.center.owner}
                 </p>
                 <p className="center-details-para">
                 </p>
-                <Link className="btn btn-primary" to={`/editcenter/${center.id}`} role="button">Edit Center Details</Link>
+                <Link className="btn btn-primary col-sm-6" to={`/editcenter/${center.id}`} role="button">Edit Center Details</Link>
                 {/* <button className="btn btn-danger" onClick={this.onDelete}  role="button">DELETE CENTER</button> */}
-                <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#deleteCenter">
+                <button type="button" className="btn btn-danger col-sm-6" data-toggle="modal" data-target="#deleteCenter">
                     DELETE
                   </button>
                 {/* <!-- Modal --> */}
@@ -141,7 +191,7 @@ render () {
                           </button>
                         </div>
                         <div className="modal-body">
-                        The {center.name}
+                        The {center.center.name}
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-primary" data-dismiss="modal">No</button>
@@ -158,7 +208,7 @@ render () {
 
           <div className="container" id="event-holding-header">
             <div className="row">
-              <div className="col-sm-12">              
+              <div className=" col-sm offset-md-3 col-lg-12">              
                 <h4 className="text-center" id="head-holding">
                   Events At This Event Center
                 </h4>
@@ -169,14 +219,14 @@ render () {
 
           <div className="container" id="event-holding">
             <div className="row">
-           {/* {center.events.map((event) => {
+           {center.events.map((event) => {
               return (
-
-              <div className="col-sm-4" key={event.id}>
-              <div className="card-deck cont-body" id="card-body">
-                <div className="card" id="card1" style={{height: "10rem"}}>
+              <div className="col-md-6 col-sm-4 col-lg-4" key={event.id}>
+              <div className="card-deck cont-body" id="center-details-events">
+                <div className="card" style={{width: "18rem"}}>
                   <img className="card-img-top" src="https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg" alt="Card image cap"/>
-                  <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
+                  <br/>
+                  <div className="card-body">
                     <h5 className="card-title even-font">
                       <span >Event:</span>
                       {event.title}
@@ -184,17 +234,24 @@ render () {
                     <p className="card-title date-font">
                         <span>DATE:</span>
                       {event.date}</p>
-                    <p className="card-text">
-                        <span>tags:</span>
-                      <small className="text-muted">{event.type}</small></p>
                   </div>              
                 </div>
               </div>
             </div>
               )
-            })}  */}
-
+            })} 
             </div>
+          </div>
+          <div className="paginator">
+            {<Pagination 
+              className="pagination"
+              onChange={this.onChange}
+              showTitle={true} 
+              showPrevNextJumpers={true}
+              current={this.state.currentPage} 
+              total={center.count}
+              locale={{items_per_page: "items", prev_page: "Previous", next_page: "Next", page: "page"}}
+              />}
           </div>
           
         </div>

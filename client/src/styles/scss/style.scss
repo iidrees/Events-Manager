@@ -46,9 +46,10 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
   font-weight: bolder;
 }
 .head-1 {
-	font-family: $font-cantarell;
+	font-family: $font-Encode;
 	font-weight: 50px;
-	font-size: 70px;  
+	font-size: 50px;
+	color: $header-color
 }
 .head-para {
 font-family: $font-maven-pro;
@@ -79,8 +80,10 @@ html {
 }
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 70px;
+  // margin-bottom: 70px;
 }
+
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -141,6 +144,7 @@ Event Details Page
 	font-family: $font-Encode;
 	font-size: 30px;
 	font-weight: bold;
+
 }
 
 
@@ -152,11 +156,7 @@ Event Details Page
 .center-details-span {
 	font-family: $font-cantarell;
 }
-#head-holding{
-	font-family: $font-Encode;
-	font-size: 30px;
-	font-weight: bold;
-}
+
 
 /* GET all events center page */
 .all-centers-font {
@@ -165,19 +165,6 @@ Event Details Page
 }
 
 
-/* Center Details page */
-.center-details-para {
-	font-family: $font-maven-pro;
-	font-weight: bolder;
-}
-.center-details-span {
-	font-family: $font-cantarell;
-}
-#head-holding{
-	font-family: $font-Encode;
-	font-size: 30px;
-	font-weight: bold;
-}
 
 /* GET all events center page */
 .all-centers-font {
@@ -185,6 +172,12 @@ Event Details Page
 	font-weight: bold;
 }
 
+.paginator {
+	text-align: center;
+	display: inline-block;
+	margin-left: 40%;
+
+}
 
 /* View point for  desktop*/
 @media(min-width: 768px) {
@@ -205,8 +198,11 @@ Event Details Page
 	}
 
 	/*events catalog  */
-	#event-page,  #details, #add-center-header, #event-holding-header,#event-holding {
+	#event-page,  #details, #add-center-header, #event-holding {
 		margin-top: $header-top;
+	}
+	#event-holding-header {
+		margin-top: 20px;
 	}
 	
 	#myevent {
@@ -229,16 +225,19 @@ Event Details Page
 			border-color: $header-color;
 	}
 	 #event-holding {
-		margin-bottom: 150px;
+		margin-bottom: 50px;
 	}
 	#details-ev {
 		margin-bottom: 50px;
 	}
-	
-	#card-body {
-		margin-bottom: 300px;
+	#card-center1, #center-details-events {
+		margin-bottom: 30px;
 	}
-	#card-center1, #card-center2 {
+
+	#card-body {
+		margin-bottom: 250px;
+	}
+	 #card-center2 {
 		margin-bottom: 120px;
 	}
 	#cadcad-body, #cadcad {
@@ -252,19 +251,24 @@ Event Details Page
 	#center-details-slider, #center-details-header {
 		margin-top: $header-top;
 	}
-	#center-details-slider, #center-details-header {
-		margin-top: $header-top;
-	}
+	
 	#form-event1, #form-event2, #form-event3, #form-event4, #form-event5, #event-center1,#event-center2, #form-event7
 	{
 		width: 600px;
 		border: solid purple 1px;
 	}
 	
+	// .paginator {
+	// 	text-align: center;
+	// 	display: block;
+	// 	margin-left: 50%;
+	// 	margin-right: 50%
+	
+	// }
 	
 }
 
-@media(max-width: 576px) {
+@media only screen and (max-width: 576px) {
 	#navbar-signup, #navbar-myevents {
 		margin-left: 30px;
 	}
@@ -298,18 +302,18 @@ Event Details Page
 		width: 100%;
 		border-color: $header-color;
 	}	
-  
+   #center-details-header {
+		margin-top: 60px;
+	}
 
 	.card {
-		height: 20rem;
-		width: 20rem;
-		margin-left: 70px;
-		margin-top: 100px;
+		margin-left: 50px;
+		margin-top: 50px;
 	}
 	
-	#card-body, #event-holding {
-		margin-bottom: 200px;
-		margin-top: 50px;
+ #event-holding {
+		margin-bottom: 100px;
+		margin-top: 0px;
 	}
 	#card-body1{
 		margin-bottom: 120px;
@@ -326,4 +330,46 @@ Event Details Page
 		width: 300px;
 		border: solid purple 1px;
 	}
+
+	.paginator {
+		text-align: center;
+		display: inline-block;
+		margin-left: 30%;
+	
+	}
+}
+
+[class*="col-"] {
+	width: 100%;
+}
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	.col-s-1 {width: 8.33%;}
+	.col-s-2 {width: 16.66%;}
+	.col-s-3 {width: 25%;}
+	.col-s-4 {width: 33.33%;}
+	.col-s-5 {width: 41.66%;}
+	.col-s-6 {width: 50%;}
+	.col-s-7 {width: 58.33%;}
+	.col-s-8 {width: 66.66%;}
+	.col-s-9 {width: 75%;}
+	.col-s-10 {width: 83.33%;}
+	.col-s-11 {width: 91.66%;}
+	.col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 768px) {
+	/* For desktop: */
+	.col-1 {width: 8.33%;}
+	.col-2 {width: 16.66%;}
+	.col-3 {width: 25%;}
+	.col-4 {width: 33.33%;}
+	.col-5 {width: 41.66%;}
+	.col-6 {width: 50%;}
+	.col-7 {width: 58.33%;}
+	.col-8 {width: 66.66%;}
+	.col-9 {width: 75%;}
+	.col-10 {width: 83.33%;}
+	.col-11 {width: 91.66%;}
+	.col-12 {width: 100%;}
 }

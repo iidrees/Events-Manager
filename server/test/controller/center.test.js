@@ -24,10 +24,10 @@ describe('Centers Controller', () => {
     superAdminToken = userSuperAdmin;
     done();
   });
-  describe('GET /api/v1/centers', () => {
+  describe('GET /api/v1/centers?page=${index}', () => {
     it('should return "No Centers Found" when user makes query to an empty database', done => {
       request(app)
-        .get('/api/v1/centers')
+        .get(`/api/v1/centers?page=${1}`)
         .expect(404)
         .then(res => {
           assert.deepEqual(res.status, 404);
@@ -47,7 +47,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: "Fela's shrine",
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -72,7 +71,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: "Fela's shrine",
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -87,14 +85,13 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return "Please fill all input fields" when admin user enters no address ', done => {
+    xit('should return "Please fill all input fields" when admin user enters no address ', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: undefined,
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen'
@@ -107,14 +104,13 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return "Please fill all input fields" when admin user enters no address', done => {
+    xit('should return "Please fill all input fields" when admin user enters no address', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: '',
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -123,6 +119,7 @@ describe('Centers Controller', () => {
         })
         .expect(422)
         .then(res => {
+          console.log('the controller test>>>',)
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(
@@ -139,7 +136,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: 'adreesssssss',
           owner: 'The Civil Society',
           capacity: '@@@',
           description: 'This venue is a great place to make things happen',
@@ -168,7 +164,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: 'The Shrine',
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -193,7 +188,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: 'The Shrine',
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -215,7 +209,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: 'The Shrine',
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -237,7 +230,6 @@ describe('Centers Controller', () => {
         .send({
           name: 'Muson Center',
           location: 'Lagos',
-          address: 'The Shrine',
           owner: 'The Civil Society',
           capacity: '2000',
           description: 'This venue is a great place to make things happen',
@@ -259,7 +251,7 @@ describe('Centers Controller', () => {
     describe('Get A Single Center', () => {
       it('should return "Center Not Found" when a user enters a wrong req.param', done => {
         request(app)
-          .get(`/api/v1/centers/${3}`)
+          .get(`/api/v1/centers/${3}?page=${3}`)
           .expect(404)
           .then(res => {
             assert.deepEqual(res.status, 404);
@@ -270,7 +262,7 @@ describe('Centers Controller', () => {
     });
     it('should return "Success" for a successful query for a single event center by a user', done => {
       request(app)
-        .get(`/api/v1/centers/${1}`)
+        .get(`/api/v1/centers/${1}?page=${1}`)
         .expect(200)
         .then(res => {
           assert.deepEqual(res.status, 200);
@@ -281,7 +273,7 @@ describe('Centers Controller', () => {
     });
     it('should return "Center Not Found" for a "-1" request by a user for a center', done => {
       request(app)
-        .get(`/api/v1/centers/${-1}`)
+        .get(`/api/v1/centers/${-1}?page=${1}`)
         .expect(404)
         .then(res => {
           assert.deepEqual(res.status, 404);
@@ -292,7 +284,7 @@ describe('Centers Controller', () => {
     });
     it('should return "Center Not Found" for a "*" query by a user for a center', done => {
       request(app)
-        .get('/api/v1/centers/*')
+        .get(`/api/v1/centers/*?page=${1}`)
         .expect(422)
         .then(res => {
           assert.deepEqual(res.status, 422);
@@ -307,7 +299,7 @@ describe('Centers Controller', () => {
     describe('Test for getting all centers', () => {
       it('should return "Success" and centers for a query by a user for all centers', done => {
         request(app)
-          .get('/api/v1/centers')
+          .get(`/api/v1/centers?page=${1}`)
           .expect(200)
           .then(res => {
             assert.deepEqual(res.status, 200);

@@ -20,10 +20,6 @@ module.exports = {
         allowNull: false,
         defaultValue: 'Free'
       },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       owner: {
         type: Sequelize.STRING,
         allowNull: false

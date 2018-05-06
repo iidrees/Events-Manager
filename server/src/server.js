@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === 'production') {
   const swaggerDocument = require('../../api-doc-dev.json');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-  // API DOC
+ 
   app.use(require('webpack-dev-middleware')(compilerDev, {
     hot: false,
     noInfo: false,

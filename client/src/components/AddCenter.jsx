@@ -112,10 +112,6 @@ render () {
                     <div className="form-group">
                       <label htmlFor="add-center" className=" home-para">Location:</label>
                       <input className="form-control" type="text" placeholder=" Enter Location" id="example-text-input" name="location" onChange={this.onChange}  />
-                    </div>                
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">Address:</label>
-                      <input className="form-control" type="text" placeholder="Enter Address" id="example-text-input" name="address" onChange={this.onChange}/>
                     </div>
                     <div className="form-group">
                       <label htmlFor="add-center" className=" home-para">Capacity:</label>

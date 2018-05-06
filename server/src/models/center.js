@@ -16,7 +16,7 @@ export default (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Please enter a Location i.e a state where the center is located'
+          msg: 'Please enter a Location'
         }
       }
     },
@@ -24,16 +24,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'Free'
-    },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'Please enter a clear address'
-        }
-      }
     },
     owner: {
       type: DataTypes.STRING,

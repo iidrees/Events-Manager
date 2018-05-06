@@ -149,7 +149,7 @@ onImageChange = (e) => {
                 <label htmlFor="event-centers" className=" home-para">Center:</label>
                 <select className="form-control" id="event-center1" onChange={this.onChange}  name="center">
                   <option className="home-para">Choose an event center</option>
-                  {(centers.data.map((center) => {
+                  {(centers.centers.map((center) => {
                     
                     return (<option key={center.id} value={center.id} className="home-para">{center.name}</option>)
                   }))}

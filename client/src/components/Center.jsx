@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import Pagination from 'rc-pagination';
 
 import NavBarOne from './NavBarOne';
 import Footer from './footer.jsx'
@@ -14,13 +15,46 @@ import NavBarMain from './NavBarMain.jsx';
  */
 class Center extends React.Component {
 
+  /**
+ * Creates an instance of Center.
+ * @param {any} props -
+ * @memberof Center
+ */
+constructor(props){
+  super(props)
+  this.state = {
+    currentPage: 1,
+    itemsPerPage: 10,
+  }
+  this.onChange = this.onChange.bind(this);
+
+}
+
 /**
  * @returns {*} function
  * @memberof Center
  */
 componentWillMount() {
-    const { dispatch } = this.props;
-    return dispatch(getCenters());
+    const { dispatch, currentPage } = this.props;
+    return dispatch(getCenters(currentPage));
+  }
+
+
+ /**
+ * 
+ * @returns {any} -
+ * @param {any} page -
+ * @memberof Center
+ */
+  onChange = (page) => {
+    console.log(page);
+    this.setState({
+      currentPage: page,
+    }, () => {
+      const { dispatch } = this.props;
+      console.log('current page>>>>', this.state.currentPage)
+      return dispatch(getCenters(this.state.currentPage));
+    });
   }
 
 
@@ -29,13 +63,15 @@ componentWillMount() {
    * @memberof Center
    */
   render() {
-    const { centers, user } = this.props;
+    const { centers, user, currentPage, itemsPerPage } = this.props;
+    
+    console.log('the component center >>', centers, centers.count)
     return (
       <div>
       <div>
         {
-          (!user.authenticated) &&
-          <Redirect to='/signin' push />
+          // (!user.authenticated) &&
+          // <Redirect to='/signin' push />
         }
       </div>
       <NavBarMain />
@@ -67,13 +103,14 @@ componentWillMount() {
           
           <div className="container" id="centerbottom">			
               <div className="row">
-              {centers.data.map((center) => {
+              {centers.centers.map((center) => {
                 return (
-                <div className="col-sm-4" key={center.id}>
+                <div className="col-sm-12 col-md-6 col-lg-4" key={center.id}>
                 <div className="card-deck cont-body" id="card-center1" >
-                  <div className="card" id="card1" style={{height: "10rem"}}>
-                    <Link to={`/centerdetails/${center.id}`}><img className="card-img-top" src={center.imgUrl} alt="Center image" /></Link>
-                    <div className="card-block" style={{borderBottom: "solid grey 0.5px"}}>
+                  <div className="card" id="card1" style={{ width: "18rem"}}>
+                    {/* <Link to={`/centerdetails/${center.id}`}><img className="card-img-top" src={center.imgUrl} alt="Center image" /></Link> */}
+                    <Link to={`/centerdetails/${center.id}`}><img className="card-img-top" src="https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg" alt="Center image" /></Link>
+                    <div className="card-body" style={{borderBottom: "solid grey 0.5px"}}>
                       <h5 className="card-title even-font">
                         <span  className="all-centers-font">Center: </span>
                        {center.name}
@@ -87,11 +124,7 @@ componentWillMount() {
                         
                       <p className=" location-font">
                           <span  className="all-centers-font">Description: </span>
-                        {center.description}</p> 
-
-                      <p className=" location-font">
-                          <span  className="all-centers-font">ADDRESS: </span>
-                        {center.address}</p>
+                        {center.description}</p>
 
                       <p className=" location-font">
                           <span  className="all-centers-font">OWNER: </span>
@@ -106,9 +139,18 @@ componentWillMount() {
               </div>
                 )
               })}
-              </div>			
+              </div>
             </div>
       </div>
+    </div>
+    <div className="col-sm-12 col-md-6 col-lg-4 paginator" >
+      {<Pagination 
+        onChange={this.onChange}  
+        current={this.state.currentPage}
+        className="pagination"
+        total={centers.count}
+        locale={{items_per_page: "items"}}
+        />}
     </div>
     </div>
     );

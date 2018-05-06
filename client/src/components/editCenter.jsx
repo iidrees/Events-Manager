@@ -98,10 +98,6 @@ class EditCenter extends React.Component {
                     <div className="form-group">
                       <label htmlFor="add-center" className=" home-para">Location:</label>
                       <input className="form-control" type="text" id="example-text-input" name="location" onChange={this.onChange}  value={this.state.centerData.location}/>
-                    </div>                
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">Address:</label>
-                      <input className="form-control" type="text" id="example-text-input" name="address" onChange={this.onChange} value={this.state.centerData.address}/>
                     </div>
                     <div className="form-group">
                       <label htmlFor="add-center" className=" home-para">Capacity:</label>

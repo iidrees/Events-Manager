@@ -15,10 +15,10 @@ export default () => {
         <div className="collapse navbar-collapse left" id="navbar-signup">
           <ul className="navbar-nav mr-auto ">
             <li className="nav-item nav-link">
-            <Link to='/getevents' className=" nav-link">See Events</Link>
+            <Link to='/signup' className=" nav-link">signup</Link>
             </li>
             <li className="nav-item nav-link">
-            <Link to='/getcenters' className=" nav-link">See Centers</Link>
+            <Link to='/signin' className=" nav-link">signin</Link>
             </li>
           </ul>
         </div>

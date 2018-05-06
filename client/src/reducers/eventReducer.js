@@ -9,7 +9,7 @@ import {
 const initialState = { /* The initial state of the component */
   status: '',
   message: '',
-  data: [],
+  events: [],
   error: ''
 }; 
 
@@ -21,7 +21,8 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Success',
         message: action.events.message,
-        data: [...action.events.data]
+        events: [...action.events.data.rows],
+        count: action.events.data.count
       }
     }
     case EVENT_FAILED: {

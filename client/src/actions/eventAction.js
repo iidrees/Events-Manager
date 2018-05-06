@@ -14,17 +14,18 @@ import {
  * @export {function}
  * @returns {JSON} JSON data containing events 
  */
-export const getEvents = () => {
+export const getEvents = (index) => {
   return (dispatch) => {// axios request is made
     return axios({
       method: 'GET',
-      url: '/api/v1/events',
+      url: `/api/v1/events?page=${index}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
       withCredentials: true
     })
     .then((response) => {// when events response is received
+      console.log('the events actions >>>', response.data)
       dispatch({ type: GET_EVENTS, events: response.data})
       
     })
