@@ -33,8 +33,10 @@ class Addevents extends React.Component {
       eventData.imgFile === undefined || 
       !eventData.imgFile  
     ) {
+      console.log('the fisrt submit >>>>')
       return dispatch(addEvent(eventData, eventData.center));
     }
+    console.log('the second submit>>>>>>>>>')
       return dispatch(imageUpload(eventData, eventData.center));
   }
 
@@ -87,16 +89,16 @@ onImageChange = (e) => {
     <div>
       <div>
         {
-          (!user.authenticated) &&
-          <Redirect to='/signin' push />
+          // (!user.authenticated) &&
+          // <Redirect to='/signin' push />
         }
       </div>
     <NavBarMain />
-    <div className="container">
+    <div className="container" id="add-events">
     <div className="row">
-      <div className="container" id="add-event-header">
+      <div className="container col-sm-12 col-md-12 col-lg-12" id="add-event-header">
         <div className="row">
-          <div className="col-sm-12">              
+          <div className="col-md-12">              
             <h1 className="text-center head-1">Add your events </h1>
             <p className="head-para text-center">
               Are you in need of a location to host your event? 

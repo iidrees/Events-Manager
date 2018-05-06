@@ -76,7 +76,7 @@ render () {
           }
         </div>
         <NavBarMain />
-        <div className="container">
+        <div className="container" id="add-centers">
           <div className="row">
             <div className="container" id="add-center-header">
               <div className="row">
@@ -136,6 +136,7 @@ render () {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
 
