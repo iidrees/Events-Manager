@@ -98,10 +98,10 @@ render () {
     return (
       <div>
         <div>
-          {/* {
+          {
             (!user.authenticated) &&
             <Redirect to='/signin' push />
-          } */}
+          }
         </div>
         <NavBarMain />
       <div className="container">
