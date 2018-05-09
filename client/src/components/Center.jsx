@@ -70,8 +70,8 @@ componentWillMount() {
       <div>
       <div>
         {
-          // (!user.authenticated) &&
-          // <Redirect to='/signin' push />
+          (!user.authenticated) &&
+          <Redirect to='/signin' push />
         }
       </div>
       <NavBarMain />

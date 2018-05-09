@@ -118,15 +118,15 @@ render() {
                     <p className=" even-font">
                         <span>Description: </span>
                       {event.description}</p>
-                    <p className="card-title even-font">
+                    {/* <p className="card-title even-font">
                         <span>DATE: </span>
-                      {event.date}</p>
+                      {event.date}</p> */}
                     <p className=" even-font">
                         <span>LOCATION: </span>
                       {event.center}</p>
-                    <p className="card-text">
+                    {/* <p className="card-text">
                         <span>tags:  </span>
-                      <small className=" event-tag">#{event.type} event</small></p>
+                      <small className=" event-tag">#{event.type} event</small></p> */}
                   </div>              
                 </div>
               </div>
