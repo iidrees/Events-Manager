@@ -64,8 +64,8 @@ export const getMyEvents = index => {
       })
       .catch(error => {
         // if any error is returned, it is shown to the user.
-        console.log(error);
-        //xdispatch({ type: MY_EVENT_FAIL, err: error.response.data});
+
+        dispatch({ type: MY_EVENT_FAIL, err: error.response.data });
       });
   };
 };
@@ -87,11 +87,9 @@ export const detailEvent = index => {
       withCredentials: true
     })
       .then(response => {
-        console.log('the details response data', response.data);
         dispatch({ type: GET_EVENT_DETAIL, event: response.data });
       })
       .catch(err => {
-        console.log('the details response error data', err.response.data);
         dispatch({ type: EVENT_DETAIL_FAIL, error: err.response.data });
       });
   };

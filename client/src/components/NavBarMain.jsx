@@ -33,12 +33,19 @@ class NavBarMain extends React.Component {
    */
   render() {
     const { location, match } = this.props;
-    let token, user, adminLinks, userLinks, signinLink, signupLink, landing;
+    let token,
+      user,
+      adminLinks,
+      userLinks,
+      signinLink,
+      signupLink,
+      landing,
+      decodedToken;
     try {
       token = localStorage.getItem('x-access-token');
       user = decode(token);
     } catch (error) {
-      console.log('the navbar error', error);
+      decodedToken = null;
     }
 
     if (token) {

@@ -166,7 +166,7 @@ class GetEvents extends React.Component {
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 paginator ">
+        <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
           {
             <Pagination
               onChange={this.onChange}
