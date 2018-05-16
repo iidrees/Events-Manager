@@ -7,8 +7,9 @@ import detailsEventReducer from './detailsEventReducer';
 import addCenterReducer from './addCenterReducer';
 import centerDetailsReducer from './centerDetailsReducer';
 import addEventReducer from './addEventReducer';
-import editEventReducer from './editEventReducer'
-import editCenterReducer from './editCenterReducer'
+import editEventReducer from './editEventReducer';
+import editCenterReducer from './editCenterReducer';
+import myEventsReducer from './myEventsReducer';
 
 const indexReducer = combineReducers({
   userReducer,
@@ -19,7 +20,8 @@ const indexReducer = combineReducers({
   addEventReducer,
   centerDetailsReducer,
   editEventReducer,
-  editCenterReducer
+  editCenterReducer,
+  myEventsReducer
 });
 
 export default indexReducer;

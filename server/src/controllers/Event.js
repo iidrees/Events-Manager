@@ -287,3 +287,47 @@ export class GetAllEvents {
       });
   }
 }
+
+/**
+ * 
+ * 
+ * @export
+ * @class GetAllEvents
+ */
+export class AllUsersEvents {
+  /**
+   * @static
+   * @param {any} req {request object}
+   * @param {any} res {response object}
+   * @returns {*} JSON
+   * @memberof GetAllUsersEvents
+   */
+  static getAllUserEvents(req, res) {
+
+    if (isNaN(req.query.page)) {
+      req.query.page = 1;
+    }
+    console.log('this is the get all user')
+    return Events
+      .findAndCountAll({
+        limit: 10,
+        offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
+        order: [['id', 'ASC']],
+        where: {
+          userId: req.decoded.id
+        }
+      }).then((events) => {
+        if (events.rows.length === 0) {
+          return res.status(404).send({
+            status: 'Unsuccessful',
+            message: 'No Event(s) Found'
+          });
+        }
+        return res.status(200).send({
+          status: 'Success',
+          message: 'These are your Events',
+          data: events
+        });
+      });
+  }
+}

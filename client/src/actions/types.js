@@ -58,3 +58,19 @@ export const DELETE_EVENT_FAIL = 'DELETE_EVENT_FAIL';
 
 // ADD IMAGE FAIL
 export const ADD_IMG_FAIL = 'ADD_IMG_FAIL';
+
+
+
+// Get one events type
+export const GET_MY_EVENTS = 'GET_MY_EVENT';
+export const MY_EVENT_FAIL = 'MY_EVENT_FAIL';
+
+
+// Get one events type
+export const GET_EVENT_DETAIL = 'GET_EVENT_DETAIL';
+export const EVENT_DETAIL_FAIL = 'EVENT_DETAIL_FAIL';
+
+
+//Signout 
+
+export const SIGN_OUT = 'SIGN_OUT';

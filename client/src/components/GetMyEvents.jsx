@@ -6,7 +6,7 @@ import decode from 'jwt-decode';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
-import { getEvents } from '../actions/eventAction';
+import { getMyEvents } from '../actions/eventAction';
 import { history } from '../routes';
 
 /**
@@ -15,11 +15,11 @@ import { history } from '../routes';
  * @className GetEvents
  * @extends {React.Component}
  */
-class GetEvents extends React.Component {
+class GetMyEvents extends React.Component {
   /**
    * Creates an instance of Center.
    * @param {any} props -
-   * @memberof GetEvents
+   * @memberof GetMyEvents
    */
   constructor(props) {
     super(props);
@@ -37,7 +37,7 @@ class GetEvents extends React.Component {
    */
   componentDidMount() {
     const { dispatch } = this.props;
-    return dispatch(getEvents());
+    return dispatch(getMyEvents());
   }
 
   /**
@@ -51,7 +51,7 @@ class GetEvents extends React.Component {
    *
    * @returns {any} -
    * @param {any} page -
-   * @memberof Center
+   * @memberof GetMyEvents
    */
   onChange = page => {
     this.setState(
@@ -60,17 +60,18 @@ class GetEvents extends React.Component {
       },
       () => {
         const { dispatch } = this.props;
-        return dispatch(getEvents(this.state.currentPage));
+        return dispatch(getMyEvents(this.state.currentPage));
       }
     );
   };
 
   /**
    * @returns {JSX} -
-   * @memberof GetEvents
+   * @memberof GetMyEvents
    */
   render() {
-    const { events, status } = this.props;
+    const { myEvents, status } = this.props;
+
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');
@@ -92,7 +93,7 @@ class GetEvents extends React.Component {
                     Check your pending events below.
                   </p>
                   <hr />
-                  {events.status === 'Success' && (
+                  {myEvents.status === 'Success' && (
                     <div className="alert alert-success" role="alert">
                       <button
                         type="button"
@@ -102,10 +103,10 @@ class GetEvents extends React.Component {
                       >
                         <span aria-hidden="true">&times;</span>
                       </button>
-                      <strong>{events.message}.</strong>
+                      <strong>{myEvents.message}.</strong>
                     </div>
                   )}
-                  {events.status === 'Unsuccessful' && (
+                  {myEvents.status === 'Unsuccessful' && (
                     <div className="alert alert-danger" role="alert">
                       <button
                         type="button"
@@ -115,7 +116,7 @@ class GetEvents extends React.Component {
                       >
                         <span aria-hidden="true">&times;</span>
                       </button>
-                      <strong>{events.message}.</strong>
+                      <strong>{myEvents.message}.</strong>
                     </div>
                   )}
                 </div>
@@ -124,21 +125,21 @@ class GetEvents extends React.Component {
             {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
             <div className="container">
               <div className="row">
-                {events.events.map(event => {
+                {myEvents.events.map(event => {
                   return (
                     <div className="col-sm-12 col-md-6 col-lg-4" key={event.id}>
                       <div className="card-deck cont-body" id="card-body">
                         <div className="card" style={{ width: '18rem' }}>
                           {userId !== event.userId ? (
                             <img
-                              className="card-img-top img-fluid"
+                              className="card-img-top"
                               src={`${event.imgUrl}`}
                               alt="Card image cap"
                             />
                           ) : (
                             <Link to={`/eventdetails/${event.id}`}>
                               <img
-                                className="card-img-top img-fluid"
+                                className="card-img-top"
                                 src={`${event.imgUrl}`}
                                 alt="Card image cap"
                               />
@@ -153,6 +154,10 @@ class GetEvents extends React.Component {
                               {event.title}
                             </h5>
                             <p className=" even-font">
+                              <span>Description: </span>
+                              {event.description}
+                            </p>
+                            <p className=" even-font">
                               <span>LOCATION: </span>
                               {event.center}
                             </p>
@@ -166,12 +171,12 @@ class GetEvents extends React.Component {
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 paginator ">
+        <div className="col-sm-12 col-md-6 col-lg-4 paginator">
           {
             <Pagination
               onChange={this.onChange}
               current={this.state.currentPage}
-              total={events.count}
+              total={myEvents.count}
               locale={{ items_per_page: 'items' }}
             />
           }
@@ -190,10 +195,10 @@ const mapDispatchToProps = dispatch => {
 };
 const mapStateToProps = state => {
   return {
-    events: state.eventReducer,
+    myEvents: state.myEventsReducer,
     status: state.userReducer
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(GetEvents)
+  connect(mapStateToProps, mapDispatchToProps)(GetMyEvents)
 );

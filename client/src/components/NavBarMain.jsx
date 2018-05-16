@@ -1,37 +1,179 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Pagination from 'rc-pagination';
+import decode from 'jwt-decode';
 
-/*
- The Navigation Bar component
+import { history } from '../routes';
+
+import { signOut } from '../actions/userActions';
+
+/**
+ *
+ *
+ * @class NavBarMain
+ * @extends {React.Component}
  */
-export default () => {
-  return (
-<header >{/* <!-- Start HEADER for NAVBAR --> */}
-			<nav id="nav-bar" className="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " >        
-				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-myevents" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
-				<a id="nav-logo" className="navbar-brand" href="/">Events Manager!</a>
-				<div className="collapse navbar-collapse left" id="navbar-myevents">
-					<ul className="navbar-nav mr-auto ">
-            <li className="nav-item">
-              <Link className="nav-link" to='/getcenters'>See Centers</Link>
-            </li>
-            <li>
-              <Link className="nav-link" to='/addevents'>Add Events</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to='/getevents'>My Events</Link>
-            </li> 
-            <li className="nav-item">
-                <Link className="nav-link" to='/addcenter'>Add Center</Link>
-            </li>
-            {/* <li className="nav-item">
-                <Link className="nav-link" to='/help'>Help</Link>
-            </li> */}
-					</ul>
-				</div>
-			</nav>
-    </header>/* <!-- END HEADER FOR NAVBAR --> */
-     );
+class NavBarMain extends React.Component {
+  /**
+   *
+   *
+   * @returns {void}
+   * @memberof NavBarMain
+   */
+  logOut = () => {
+    const { dispatch } = this.props;
+    return dispatch(signOut());
+  };
+
+  /**
+   *
+   * @returns {void}
+   * @memberof NavBarMain
+   */
+  render() {
+    const { location, match } = this.props;
+    let token, user, adminLinks, userLinks, signinLink, signupLink, landing;
+    try {
+      token = localStorage.getItem('x-access-token');
+      user = decode(token);
+    } catch (error) {
+      console.log('the navbar error', error);
     }
+
+    if (token) {
+      if (user.admin === true) {
+        adminLinks = (
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/addcenter">
+                Add Center
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={this.logOut.bind(this)}
+              >
+                Sign Out
+              </Link>
+            </li>
+          </ul>
+        );
+      } else {
+        userLinks = (
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/getcenters">
+                Centers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/addevents">
+                Add Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/myevents">
+                My Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={this.logOut.bind(this)}
+              >
+                Sign Out
+              </Link>
+            </li>
+          </ul>
+        );
+      }
+    } else {
+      if (location.pathname === '/signin') {
+        signinLink = (
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to="/signup" className=" nav-link">
+                signup
+              </Link>
+            </li>
+          </ul>
+        );
+      }
+      if (location.pathname === '/signup') {
+        signupLink = (
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to="/signin" className="nav-link">
+                signin
+              </Link>
+            </li>
+          </ul>
+        );
+      }
+      if (location.pathname === '/') {
+        landing = (
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to="/signup" className="nav-link">
+                signup
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/signin" className="nav-link">
+                signin
+              </Link>
+            </li>
+          </ul>
+        );
+      }
+    }
+    return (
+      <header>
+        {/* <!-- Start HEADER for NAVBAR --> */}
+        <nav
+          id="nav-bar"
+          className="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+        >
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-myevents"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+          <a id="nav-logo" className="navbar-brand" href="/">
+            Events Manager!
+          </a>
+          <div className="collapse navbar-collapse left" id="navbar-myevents">
+            {adminLinks}
+            {userLinks}
+            {signinLink}
+            {signupLink}
+            {landing}
+          </div>
+        </nav>
+      </header> /* <!-- END HEADER FOR NAVBAR --> */
+    );
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch: action => dispatch(action)
+  };
+};
+const mapStateToProps = state => {
+  return {
+    status: state.userReducer
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(NavBarMain)
+);

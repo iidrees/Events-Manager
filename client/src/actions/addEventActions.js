@@ -32,7 +32,7 @@ export const addEvent = (eventData, index, imgUrl ) => {
         center: eventData.center,
         description: eventData.description,
         type: eventData.type,
-        imgUrl: imgUrl || 'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        imgUrl: imgUrl 
       },
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
@@ -72,6 +72,7 @@ export const imageUpload = (eventData,index) => {
     })
     .then(response => {
       let imageURL = response.data.secure_url;
+      console.log('cloudinary is done here>>>>>>')
       return dispatch(addEvent(eventData,index,imageURL))
     })
     .catch(err => {

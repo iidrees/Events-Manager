@@ -27,7 +27,7 @@ export const addCenter = (centerData, imgUrl) => {
         capacity: centerData.capacity,
         owner: centerData.owner,
         description: centerData.description,
-        imgUrl: imgUrl || 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg' 
+        imgUrl: imgUrl 
       },
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')

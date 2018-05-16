@@ -10,7 +10,8 @@ import {
   EventUpdate, 
   EventDelete, 
   GetEvent, 
-  GetAllEvents 
+  GetAllEvents,
+  AllUsersEvents
 } from '../controllers/Event';
 import { 
   GetCenter, 
@@ -63,6 +64,10 @@ router.put(
 
 // Events endpoints
 router.get(
+  '/events/userevents',
+  AllUsersEvents.getAllUserEvents
+);
+router.get(
   '/events/:eventId',
   GetEvent.getEvent
 );
@@ -70,6 +75,7 @@ router.get(
   '/events', 
   GetAllEvents.getAllEvents
 );
+
 router.post(
   '/events/:centerId',
   InputValidation.eventInput,
