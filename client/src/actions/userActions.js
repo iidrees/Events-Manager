@@ -2,10 +2,14 @@
 import axios from 'axios';
 import { history } from '../routes';
 
-import { 
-  SIGN_UP, SIGNED_UP, 
-  SIGN_UP_FAIL, SIGN_IN, 
-  SIGNED_IN, SIGN_IN_FAIL 
+import {
+  SIGN_UP,
+  SIGNED_UP,
+  SIGN_UP_FAIL,
+  SIGN_IN,
+  SIGNED_IN,
+  SIGN_IN_FAIL,
+  SIGN_OUT
 } from './types';
 
 /**
@@ -14,21 +18,21 @@ import {
  * @param {any} userData {Object data sent to the server}
  * @returns {JSON} userData
  */
-export const userSignup = (userData) => {
-  return (dispatch) => {
+export const userSignup = userData => {
+  return dispatch => {
     axios({
       method: 'post',
       url: '/api/v1/users',
       data: userData,
-      withCredentials: true,
+      withCredentials: true
     })
-    .then((response) => {        
-      localStorage.setItem('x-access-token', response.data.data.token);
-      dispatch({ type: SIGNED_UP, payload: response.data });
-    })
-    .catch((err) => {
-      dispatch({ type: 'SIGN_UP_FAIL', payload: err.response.data});
-    });
+      .then(response => {
+        localStorage.setItem('x-access-token', response.data.data.token);
+        dispatch({ type: SIGNED_UP, payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: 'SIGN_UP_FAIL', payload: err.response.data });
+      });
   };
 };
 
@@ -38,25 +42,39 @@ export const userSignup = (userData) => {
  * @param {any} userData {Object data sent to the server}
  * @returns {JSON} userData
  */
-export const userSignin = (userData) => {
-  return (dispatch) => {// dispatcher sends action to userReducer
+export const userSignin = userData => {
+  return dispatch => {
+    // dispatcher sends action to userReducer
     dispatch({ type: 'SIGN_IN' });
-    axios({// axios request is made
+    axios({
+      // axios request is made
       method: 'POST',
       url: '/api/v1/users/login',
       data: userData,
-      withCredentials: true,      
+      withCredentials: true
     })
-      .then((response) => {// the response is used to let user access protected resource
+      .then(response => {
+        // the response is used to let user access protected resource
         localStorage.setItem('x-access-token', response.data.data.token);
+        const token1 = localStorage.getItem('x-access-token');
+        console.log('token from signin actions>>>>', token1);
+
         dispatch({ type: SIGNED_IN, payload: response.data });
         //history.push('/getevents');
       })
-      .catch((err) => {// if there is an error, no access is given to user.
-       
+      .catch(err => {
+        // if there is an error, no access is given to user.
+
         dispatch({ type: SIGN_IN_FAIL, payload: err.response.data });
         //history.push('/signin');
       });
   };
 };
 
+export const signOut = () => {
+  return dispatch => {
+    console.log('this fires signout >>>>>>');
+    localStorage.removeItem('x-access-token');
+    dispatch({ type: SIGN_OUT });
+  };
+};

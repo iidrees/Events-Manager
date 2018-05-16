@@ -9,7 +9,8 @@ import indexReducer from './reducers/indexReducer';
 
 
 
-const store = createStore( // create store and make state available to all components
+const store = createStore( 
+  // create store and make state available to all components
   indexReducer, composeWithDevTools(
   applyMiddleware(thunk))
 );
