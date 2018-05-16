@@ -24,15 +24,6 @@
   opacity: 9;
 }
 
-.landing-acc {
-  /* margin-bottom: 3%;
-  margin-top: 20%; */
-  /* margin-left: 50%; */
-}
-body #landing-background {
-  /* Margin bottom by footer height */
-  /* margin-bottom: 0px; */
-}
 .main-text {
   position: absolute;
   top: 90px;
@@ -116,12 +107,7 @@ header {
   #navbar-signup {
     margin-left: 30px;
   }
-  .nav-link {
-    /* border-radius: 5px;
-    max-width: 130px;
-    text-align: center;
-    margin: 10px 0 0 0; */
-  }
+
   #landing-background {
     margin-top: 150;
   }

@@ -46,6 +46,11 @@ class NavBarMain extends React.Component {
         adminLinks = (
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
+              <Link className="nav-link" to="/getcenters">
+                Centers
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/addcenter">
                 Add Center
               </Link>
