@@ -55,7 +55,7 @@ export const imageUpload = (eventData, index) => {
   return dispatch => {
     axios({
       method: 'post',
-      url: process.env.CLOUDINARY_URL,
+      url: 'https://api.cloudinary.com/v1_1/idreeskun/upload',
       data: formData,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
