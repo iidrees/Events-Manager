@@ -63,14 +63,9 @@ export const imageUpload = (eventData, index) => {
     })
       .then(response => {
         let imageURL = response.data.secure_url;
-        console.log('the claudinary env PRESET>>>>', process.env.UPLOAD_PRESET);
-        console.log('the claudinary env URL>>>>', process.env.CLOUDINARY_URL);
         return dispatch(addEvent(eventData, index, imageURL));
       })
       .catch(err => {
-        console.log('error the error>>>>>', err);
-        console.log('the claudinary env PRESET>>>>', process.env.UPLOAD_PRESET);
-        console.log('the claudinary env URL>>>>', process.env.CLOUDINARY_URL);
         dispatch({
           type: ADD_IMG_FAIL,
           error: 'Image upload failed'
