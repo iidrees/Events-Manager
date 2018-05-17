@@ -66,6 +66,7 @@ export const imageUpload = (eventData, index) => {
         return dispatch(addEvent(eventData, index, imageURL));
       })
       .catch(err => {
+        console.log('error the error>>>>>', err);
         dispatch({
           type: ADD_IMG_FAIL,
           error: 'Image upload failed'
