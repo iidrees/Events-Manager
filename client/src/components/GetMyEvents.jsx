@@ -9,6 +9,9 @@ import Footer from './footer.jsx';
 import { getMyEvents } from '../actions/eventAction';
 import { history } from '../routes';
 
+import EventComponent from './EventsComponents/EventComponent.jsx';
+import MyEventHeader from './EventsComponents/MyEventHeader.jsx';
+
 /**
  *
  *
@@ -84,91 +87,12 @@ class GetMyEvents extends React.Component {
       <div>
         <div className="container" id="myevent">
           <div className="row">
-            <div className="container">
-              {/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
-              <div className="row">
-                <div className="col-sm-12">
-                  <h1 className=" head1 text-center">My Events</h1>
-                  <p id="p-head" className="head1 text-center">
-                    Check your pending events below.
-                  </p>
-                  <hr />
-                  {myEvents.status === 'Success' && (
-                    <div className="alert alert-success" role="alert">
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                      <strong>{myEvents.message}.</strong>
-                    </div>
-                  )}
-                  {myEvents.status === 'Unsuccessful' && (
-                    <div className="alert alert-danger" role="alert">
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                      <strong>{myEvents.message}.</strong>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
-            <div className="container">
-              <div className="row">
-                {myEvents.events.map(event => {
-                  return (
-                    <div className="col-sm-12 col-md-6 col-lg-4" key={event.id}>
-                      <div className="card-deck cont-body" id="card-body">
-                        <div className="card" style={{ width: '18rem' }}>
-                          {userId !== event.userId ? (
-                            <img
-                              className="card-img-top"
-                              src={`${event.imgUrl}`}
-                              alt="Card image cap"
-                            />
-                          ) : (
-                            <Link to={`/eventdetails/${event.id}`}>
-                              <img
-                                className="card-img-top"
-                                src={`${event.imgUrl}`}
-                                alt="Card image cap"
-                              />
-                            </Link>
-                          )}
-                          <div
-                            className="card-body"
-                            style={{ borderBottom: 'solid grey 0.5px' }}
-                          >
-                            <h5 className="card-title even-font">
-                              <span className="">Event: </span>
-                              {event.title}
-                            </h5>
-                            <p className=" even-font">
-                              <span>Description: </span>
-                              {event.description}
-                            </p>
-                            <p className=" even-font">
-                              <span>LOCATION: </span>
-                              {event.center}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <MyEventHeader myEvents={myEvents} />
+            <EventComponent
+              onChange={this.onChange}
+              userId={userId}
+              events={myEvents}
+            />
           </div>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-4 paginator">

@@ -33,7 +33,7 @@ export const addEvent = (eventData, index, imgUrl) => {
       withCredentials: true
     })
       .then(response => {
-        dispatch({ type: GET_EVENT, event: response.data.data });
+        dispatch({ type: ADD_EVENT, event: response.data });
       })
       .catch(err => {
         dispatch({ type: ADD_EVENT_FAIL, error: err.response.data });

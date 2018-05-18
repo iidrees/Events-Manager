@@ -1,21 +1,17 @@
 import axios from 'axios';
 import { history } from '../routes';
 
-import { 
-  GET_CENTER,
-  GET_CENTER_FAIL
-
-  } from './types';
+import { GET_CENTER, GET_CENTER_FAIL } from './types';
 
 /**
- * 
- * 
- * @param {any} index the center's index
+ *  @param {index} index the center's index
+ * @param {page} page - page number
  * @returns {JSON} object
  */
-export const centerDetails = (index,page) => { // eslint-disable-line
-  return (dispatch) => {
-   return axios({
+export const centerDetails = (index, page) => {// eslint-disable-line
+
+  return dispatch => {
+    return axios({
       method: 'GET',
       url: `/api/v1/centers/${index}?page=${page}`,
       headers: {
@@ -23,12 +19,11 @@ export const centerDetails = (index,page) => { // eslint-disable-line
       },
       withCredentials: true
     })
-    .then((response) => {
-      console.log('the details actions>>>', response.data)
-      dispatch({ type: GET_CENTER, response: response.data })
-    })
-    .catch((err) => {
-      dispatch({ type: GET_CENTER_FAIL, error: err.response.data});
-    })
-  }
-}
+      .then(response => {
+        dispatch({ type: GET_CENTER, response: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: GET_CENTER_FAIL, error: err.response.data });
+      });
+  };
+};
