@@ -32,7 +32,7 @@ const EventComponent = props => (
                     <span className="">Event: </span>
                     {event.title}
                   </h5>
-                  <p className=" even-font">
+                  <p className="card-title even-font">
                     <span>LOCATION: </span>
                     {event.center}
                   </p>

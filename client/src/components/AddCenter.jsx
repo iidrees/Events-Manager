@@ -9,6 +9,8 @@ import Footer from './footer.jsx';
 import { addCenter, imageUpload } from '../actions/addCentersAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 import { history } from '../routes';
+import AddCenterComponent from './CentersComponents/AddCenterComponent.jsx';
+import AddCenterHeaderComponent from './CentersComponents/AddCenterHeaderComponent.jsx';
 
 /**
  *
@@ -25,7 +27,11 @@ class AddCenter extends React.Component {
     e.preventDefault();
     let centerData = this.state;
     const { dispatch } = this.props;
-    if (!centerData.imgFile) {
+    if (
+      centerData.imgFile === null ||
+      centerData.imgFile === undefined ||
+      !centerData.imgFile
+    ) {
       return dispatch(addCenter(centerData));
     }
     return dispatch(imageUpload(centerData));
@@ -71,152 +77,12 @@ class AddCenter extends React.Component {
       <div>
         <div className="container" id="add-centers">
           <div className="row">
-            <div className="container" id="add-center-header">
-              <div className="row">
-                <div className="col-sm-12">
-                  <h1 className="text-center head-1" id="admin-add-head">
-                    Add New Event Centers Below{' '}
-                  </h1>
-                  <p className="head-para text-center" />
-                  <hr />
-                </div>
-              </div>
-            </div>
-
-            {createCenter.status === 'Success' && (
-              <div className="alert alert-success" role="alert">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{createCenter.message}.</strong>
-              </div>
-            )}
-            {createCenter.status === 'Unsuccessful' && (
-              <div className="alert alert-danger" role="alert">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{createCenter.message}</strong>
-                <span> </span>
-                <strong>{createCenter.error}.</strong>
-              </div>
-            )}
-            <div className="container">
-              {/* <!-- Start container for Add Form --> */}
-              <div className="row">
-                <div className="col-md-6">
-                  <form
-                    method="POST"
-                    className="form form-center"
-                    onSubmit={this.onSubmit}
-                    role="form"
-                    id="admin-form"
-                    action="#"
-                  >
-                    {/* <!-- ADD FORM --> */}
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Name of Center:
-                      </label>
-                      <input
-                        className="form-control"
-                        onChange={this.onChange}
-                        name="name"
-                        type="text"
-                        placeholder="Enter Name of Center"
-                        id="example-text-input"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Location:
-                      </label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        placeholder=" Enter Location"
-                        id="example-text-input"
-                        name="location"
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Capacity:
-                      </label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        placeholder="Enter Capacity"
-                        id="example-text-input"
-                        name="capacity"
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Owner:
-                      </label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        placeholder="Enter Owner"
-                        id="example-text-input"
-                        name="owner"
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="event-details" className=" home-para">
-                        {' '}
-                        Description:
-                      </label>
-                      <textarea
-                        className="form-control"
-                        id="eventTextarea"
-                        rows="8"
-                        placeholder="brief details about the event"
-                        name="description"
-                        onChange={this.onChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Upload an Image of event center below:
-                      </label>
-                      <input
-                        type="file"
-                        className="form-control-file"
-                        onChange={this.onImageChange}
-                        id="input-file"
-                        name="images"
-                        aria-describedby="fileHelp"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-primary btn-sm"
-                      id="save-event"
-                    >
-                      Save and create Event Center<span>
-                        <i className="fa fa-paper-plane" aria-hidden="true" />
-                      </span>
-                    </button>
-                  </form>
-                </div>
-                {/* <!-- End Container ADD EVENTS FORM --> */}
-              </div>
-            </div>
+            <AddCenterHeaderComponent createCenter={createCenter} />
+            <AddCenterComponent
+              onChange={this.onChange}
+              onSubmit={this.onSubmit}
+              onImageChange={this.onImageChange}
+            />
           </div>
         </div>
       </div>

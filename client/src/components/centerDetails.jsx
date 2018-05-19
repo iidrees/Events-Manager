@@ -9,6 +9,8 @@ import Footer from './footer.jsx';
 import { deleteCenter } from '../actions/deleteCenterAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 import { history } from '../routes';
+import CenterDetailsComponent from './CentersComponents/CenterDetailsComponent.jsx';
+import CenterDetailsBodyComponent from './CentersComponents/CenterDetailsBodyComponent.jsx';
 
 /**
  *
@@ -90,10 +92,8 @@ class CenterDetails extends React.Component {
               {/* START PAGE HEADER */}
               <div className="row">
                 <div className="col-sm-12">
-                  <h1 className="text-center head-1">Event center details </h1>
-                  <p className="head-para text-center">
-                    The {center.center.name}
-                  </p>
+                  <h1 className="text-center head-1">Center details </h1>
+                  <p className="head-para text-center">{center.center.name}</p>
                 </div>
               </div>
               <hr />
@@ -102,178 +102,7 @@ class CenterDetails extends React.Component {
 
             <div className="container" id="center-details-slider">
               {' '}
-              {/* <!-- START OF EVENT CENTER DETAILS --> */}
-              <div className="row">
-                <div className="col-md-6 col-sm-12 col-lg-4">
-                  {/* <!--  START OF SLIDER COLUMN --> */}
-                  <div
-                    id="carousel-landing"
-                    className="carousel slide"
-                    data-ride="carousel"
-                  >
-                    {/* <!-- START TAG FOR CAROUSEL SLIDER   --> */}
-                    <ol className="carousel-indicators">
-                      <li
-                        data-target="#carousel-landing"
-                        data-slide-to="0"
-                        className="active"
-                      />
-                      <li data-target="#carousel-landing" data-slide-to="1" />
-                      <li data-target="#carousel-landing" data-slide-to="2" />
-                    </ol>
-                    <div className="carousel-inner" role="listbox">
-                      <div className="carousel-item active">
-                        <img
-                          id="img-landing1"
-                          className="d-block img-fluid"
-                          src={`${center.center.imgUrl}`}
-                          style={{ width: '100%', height: '65%' }}
-                          alt="First slide"
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          id="img-landing2"
-                          className="d-block img-fluid"
-                          src="https://static.pexels.com/photos/274192/pexels-photo-274192.jpeg"
-                          style={{ width: '100%', height: '65%' }}
-                          alt="Second slide"
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          id="img-landing3"
-                          className="d-block img-fluid"
-                          src={`${center.center.imgUrl}`}
-                          style={{ width: '100%', height: '65%' }}
-                          alt="Third slide"
-                        />
-                      </div>
-                      <div className="carousel-item">
-                        <img
-                          id="img-landing4"
-                          className="d-block img-fluid"
-                          src="https://static.pexels.com/photos/169211/pexels-photo-169211.jpeg"
-                          style={{ width: '100%', height: '65%' }}
-                          alt="Third slide"
-                        />
-                      </div>
-                    </div>
-                    <a
-                      className="carousel-control-prev"
-                      href="#carousel-landing"
-                      role="button"
-                      data-slide="prev"
-                    >
-                      <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only">Previous</span>
-                    </a>
-                    <a
-                      className="carousel-control-next"
-                      href="#carousel-landing"
-                      role="button"
-                      data-slide="next"
-                    >
-                      <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only">Next</span>
-                    </a>
-                  </div>
-                  {/* <!--  END Carousel slider Tag --> */}
-                </div>
-                {/* <!-- END OF SLIDER COLUMN --> */}
-
-                <div className="col-md-6 col-sm-12 col-lg-4">
-                  <p className="center-details-para">
-                    <span className="center-details-span">Center:</span>
-                    The {center.center.name}
-                  </p>
-                  <p className="center-details-para">
-                    <span className="center-details-span">Description:</span>{' '}
-                    <br />
-                    {center.center.description}
-                  </p>
-                  <p className="center-details-para">
-                    <span className="center-details-span">Location:</span>
-                    {center.center.location}
-                  </p>
-                  <p className="center-details-para">
-                    <span className="center-details-span">Capacity:</span>
-                    {center.center.capacity}
-                  </p>
-                  <p className="center-details-para">
-                    <span className="center-details-span">Owner:</span>
-                    {center.center.owner}
-                  </p>
-                  <p className="center-details-para" />
-                  <Link
-                    className="btn btn-primary col-sm-6"
-                    to={`/editcenter/${center.center.id}`}
-                    role="button"
-                  >
-                    Edit Center Details
-                  </Link>
-                  <button
-                    type="button"
-                    className="btn btn-danger col-sm-6"
-                    data-toggle="modal"
-                    data-target="#deleteCenter"
-                  >
-                    DELETE
-                  </button>
-                  {/* <!-- Modal --> */}
-                  <div
-                    className="modal fade"
-                    id="deleteCenter"
-                    tabIndex="-1"
-                    role="dialog"
-                    aria-labelledby="deleteCenterLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="deleteCenterLabel">
-                            ARE YOU SURE YOU WANT TO DELETE THIS CENTER?
-                          </h5>
-                          <button
-                            type="button"
-                            className="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          The {center.center.name}
-                        </div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-primary"
-                            data-dismiss="modal"
-                          >
-                            No
-                          </button>
-                          <button
-                            className="btn btn-warning"
-                            onClick={this.onDelete}
-                            type="button"
-                          >
-                            Delete Center
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CenterDetailsComponent center={center} />
               <hr />
             </div>
             {/* <!-- END OF EVENT CENTER DETAILS --> */}
@@ -282,46 +111,14 @@ class CenterDetails extends React.Component {
               <div className="row">
                 <div className=" col-sm offset-md-3 col-lg-12">
                   <h4 className="text-center" id="head-holding">
-                    Events At This Event Center
+                    Events At This Center
                   </h4>
                 </div>
               </div>
               <hr />
             </div>
 
-            <div className="container" id="event-holding">
-              <div className="row">
-                {center.events.map(event => {
-                  return (
-                    <div className="col-md-6 col-sm-4 col-lg-4" key={event.id}>
-                      <div
-                        className="card-deck cont-body"
-                        id="center-details-events"
-                      >
-                        <div className="card" style={{ width: '18rem' }}>
-                          <img
-                            className="card-img-top"
-                            src={`${event.imgUrl}`}
-                            alt="Card image cap"
-                          />
-                          <br />
-                          <div className="card-body">
-                            <h5 className="card-title even-font">
-                              <span>Event:</span>
-                              {event.title}
-                            </h5>
-                            <p className="card-title date-font">
-                              <span>DATE:</span>
-                              {event.date}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <CenterDetailsBodyComponent center={center} />
             <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
               {
                 <Pagination

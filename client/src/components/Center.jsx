@@ -8,7 +8,8 @@ import Footer from './footer.jsx';
 import getCenters from '../actions/getCentersAction';
 import NavBarMain from './NavBarMain.jsx';
 import { history } from '../routes';
-
+import GetCentersComponent from './CentersComponents/GetCentersComponent.jsx';
+import GetCentersHeaderComponent from './CentersComponents/GetCentersHeaderComponent.jsx';
 /**
  * @class Center
  * @extends {React.Component}
@@ -73,102 +74,9 @@ class Center extends React.Component {
     return (
       <div>
         <div className="container">
-          <div className="row">
-            <div className="container" id="event-page">
-              {/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
-              <div className="row">
-                <div className="col-sm-12">
-                  <h1 className=" head1 text-center" id="centerid" />
-                  <p id="p-head" className="head1 text-center">
-                    Are you looking for a location to host your events? <br />
-                    Checkout these popular event centers in Lagos
-                  </p>
-                  <hr />
-                </div>
-              </div>
-            </div>
-            {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
-            {centers.status === 'Success' && (
-              <div className="alert alert-success" role="alert">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{centers.message}.</strong>
-              </div>
-            )}
-            {centers.status === 'Unsuccessful' && (
-              <div className="alert alert-danger" role="alert">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{centers.message}</strong>
-                <span> </span>
-                <strong>{centers.error}.</strong>
-              </div>
-            )}
-
-            <div className="container" id="centerbottom">
-              <div className="row">
-                {centers.centers.map(center => {
-                  return (
-                    <div
-                      className="col-sm-12 col-md-6 col-lg-4"
-                      key={center.id}
-                    >
-                      <div className="card-deck cont-body" id="card-center1">
-                        <div
-                          className="card"
-                          id="card1"
-                          style={{ width: '18rem' }}
-                        >
-                          {userId !== event.userId ? (
-                            <img
-                              className="card-img-top img-fluid"
-                              src={`${center.imgUrl}`}
-                              alt="Card image cap"
-                            />
-                          ) : (
-                            <Link to={`/centerdetails/${center.id}`}>
-                              <img
-                                className="card-img-top img-fluid"
-                                src={`${center.imgUrl}`}
-                                alt="Center image"
-                              />
-                            </Link>
-                          )}
-                          <div
-                            className="card-body"
-                            style={{ borderBottom: 'solid grey 0.5px' }}
-                          >
-                            <h5 className="card-title even-font">
-                              <span className="all-centers-font">Center: </span>
-                              {center.name}
-                            </h5>
-
-                            <p className=" location-font">
-                              <span className="all-centers-font">
-                                LOCATION:{' '}
-                              </span>
-                              {center.location}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+          <div>
+            <GetCentersHeaderComponent centers={centers} />
+            <GetCentersComponent centers={centers} userId={userId} />
           </div>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-4 paginator">
