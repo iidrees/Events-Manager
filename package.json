@@ -25,7 +25,7 @@
     "seq:db": "npm run seq:drop && npm run seq:create && npm run seq:seed",
     "watch": "webpack -d && webpack-dev-server --hot --inline",
     "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps",
-    "jest": "jest && codecove",
+    "jest": "jest && codecov",
     "jest:cover": "jest --coverage",
     "jest:watch": "jest --watch"
   },
