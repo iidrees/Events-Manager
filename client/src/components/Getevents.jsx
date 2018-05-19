@@ -9,6 +9,9 @@ import Footer from './footer.jsx';
 import { getEvents } from '../actions/eventAction';
 import { history } from '../routes';
 
+import EventComponent from './EventsComponents/EventComponent.jsx';
+import EventHeader from './EventsComponents/MyEventHeader.jsx';
+
 /**
  *
  *
@@ -83,8 +86,8 @@ class GetEvents extends React.Component {
       <div>
         <div className="container" id="myevent">
           <div className="row">
+            {/* <!-- START BODY-HEADER --> */}
             <div className="container">
-              {/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
               <div className="row">
                 <div className="col-sm-12">
                   <h1 className=" head1 text-center">My Events</h1>
@@ -121,49 +124,13 @@ class GetEvents extends React.Component {
                 </div>
               </div>
             </div>
-            {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
-            <div className="container">
-              <div className="row">
-                {events.events.map(event => {
-                  return (
-                    <div className="col-sm-12 col-md-6 col-lg-4" key={event.id}>
-                      <div className="card-deck cont-body" id="card-body">
-                        <div className="card" style={{ width: '18rem' }}>
-                          {userId !== event.userId ? (
-                            <img
-                              className="card-img-top img-fluid"
-                              src={`${event.imgUrl}`}
-                              alt="Card image cap"
-                            />
-                          ) : (
-                            <Link to={`/eventdetails/${event.id}`}>
-                              <img
-                                className="card-img-top img-fluid"
-                                src={`${event.imgUrl}`}
-                                alt="Card image cap"
-                              />
-                            </Link>
-                          )}
-                          <div
-                            className="card-body"
-                            style={{ borderBottom: 'solid grey 0.5px' }}
-                          >
-                            <h5 className="card-title even-font">
-                              <span className="">Event: </span>
-                              {event.title}
-                            </h5>
-                            <p className=" even-font">
-                              <span>LOCATION: </span>
-                              {event.center}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            {/* <!-- END BODY-HEADER --> */}
+            {/* <EventHeader events={events} /> */}
+            <EventComponent
+              onChange={this.onChange}
+              userId={userId}
+              events={events}
+            />
           </div>
         </div>
         <div className="col-sm-12 col-md-6 col-lg-4 paginator ">

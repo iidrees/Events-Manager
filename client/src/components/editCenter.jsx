@@ -9,7 +9,7 @@ import Footer from './footer.jsx';
 import { editCenter } from '../actions/editCenterAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 import { history } from '../routes';
-
+import EditCenterComponent from './CentersComponents/EditCenterComponent.jsx';
 /**
  * @class EditCenter
  * @extends {React.Component}
@@ -113,105 +113,12 @@ class EditCenter extends React.Component {
             <div className="container">
               {/* <!-- Start container for Add Form --> */}
               <div className="row">
-                <div className="col-md-6">
-                  <form
-                    method="POST"
-                    className="form form-center"
-                    onSubmit={this.onSubmit}
-                    role="form"
-                    id="admin-form"
-                    action="#"
-                  >
-                    {/* <!-- ADD FORM --> */}
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Name of Center:
-                      </label>
-                      <input
-                        className="form-control"
-                        onChange={this.onChange}
-                        name="name"
-                        type="text"
-                        id="example-text-input"
-                        value={this.state.centerData.name}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Location:
-                      </label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        id="example-text-input"
-                        name="location"
-                        onChange={this.onChange}
-                        value={this.state.centerData.location}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Capacity:
-                      </label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        id="example-text-input"
-                        name="capacity"
-                        onChange={this.onChange}
-                        value={this.state.centerData.capacity}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Owner:
-                      </label>
-                      <input
-                        className="form-control"
-                        type="text"
-                        id="example-text-input"
-                        name="owner"
-                        onChange={this.onChange}
-                        value={this.state.centerData.owner}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="event-details" className=" home-para">
-                        {' '}
-                        Description:
-                      </label>
-                      <textarea
-                        className="form-control"
-                        id="eventTextarea"
-                        rows="8"
-                        name="description"
-                        onChange={this.onChange}
-                        value={this.state.centerData.description}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="add-center" className=" home-para">
-                        Upload an Image of event center below:
-                      </label>
-                      <input
-                        type="file"
-                        className="form-control-file"
-                        onChange={this.onChange}
-                        id="exampleInputFile"
-                        aria-describedby="fileHelp"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      className="btn btn-primary btn-sm"
-                      id="save-event"
-                    >
-                      Update Center<span>
-                        <i className="fa fa-paper-plane" aria-hidden="true" />
-                      </span>
-                    </button>
-                  </form>
-                </div>
+                <EditCenterComponent
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                  {...this.state}
+                  {...center}
+                />
                 {/* <!-- End Container ADD EVENTS FORM --> */}
               </div>
             </div>

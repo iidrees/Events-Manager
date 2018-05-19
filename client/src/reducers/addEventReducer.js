@@ -1,8 +1,4 @@
-import {
-  ADD_EVENT,
-  ADD_EVENT_FAIL,
-  ADD_IMG_FAIL
-} from '../actions/types';
+import { ADD_EVENT, ADD_EVENT_FAIL, ADD_IMG_FAIL } from '../actions/types';
 
 const initialState = {
   authenticated: false,
@@ -11,16 +7,16 @@ const initialState = {
   data: [],
   error: ''
 };
-export default (state= initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_EVENT: {
       return {
-        ...state, 
+        ...state,
         status: 'Success',
-        message: action.res.message,
+        message: action.event.message,
         ...action.res.data,
         authenticated: true
-      }
+      };
     }
     case ADD_EVENT_FAIL: {
       return {
@@ -28,17 +24,16 @@ export default (state= initialState, action) => {
         status: 'Unsuccessful' || undefined,
         message: action.error.message,
         error: action.error.error
-       
-      }
+      };
     }
     case ADD_IMG_FAIL: {
       return {
         ...state,
         status: 'Unsuccessful',
         error: action.error
-
-      }
+      };
     }
-    default: return state;
+    default:
+      return state;
   }
-}
+};

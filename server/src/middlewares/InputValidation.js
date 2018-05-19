@@ -7,84 +7,69 @@ import moment from 'moment';
  * @class InputValidation
  */
 class InputValidation {
-/**
- * 
- * @static
- * @param {any} req { request object }
- * @param {any} res { response object }
- * @param {any} next { handler function }
- * @returns { object } JSON response
- * @memberof InputValidation
- */
+  /**
+   *
+   * @static
+   * @param {any} req { request object }
+   * @param {any} res { response object }
+   * @param {any} next { handler function }
+   * @returns { object } JSON response
+   * @memberof InputValidation
+   */
   static centerInput(req, res, next) {
-    const {
-      name,
-      location,
-      owner,
-      capacity,
-      description,
-      imgUrl
-    } = req.body;
+    const { name, location, owner, capacity, description, imgUrl } = req.body;
 
     const alphaNum = /^[a-zA-Z0-9]+$/i;
 
     if (
-        typeof name !== 'string' ||
-        typeof location !== 'string'||
-        typeof owner !== 'string' ||
-        typeof description !== 'string'||
-        typeof capacity+'' !== 'string'
-         ) {
+      typeof name !== 'string' ||
+      typeof location !== 'string' ||
+      typeof owner !== 'string' ||
+      typeof description !== 'string' ||
+      typeof capacity + '' !== 'string'
+    ) {
       return res.status(422).send({
         status: 'Unsuccessful',
         message: 'Please fill all input fields'
-      })
+      });
     }
     if (
-      validator.isEmpty(name)||
-      validator.isEmpty(location)||
-      validator.isEmpty(owner)||
+      validator.isEmpty(name) ||
+      validator.isEmpty(location) ||
+      validator.isEmpty(owner) ||
       validator.isEmpty(description) ||
-      validator.isEmpty(capacity+'')||
+      validator.isEmpty(capacity + '') ||
       validator.isEmpty(imgUrl)
-      ) {
-        // checks if the user input is empty
-        return res.status(422).send({
-          status: 'Unsuccessful',
-          message: 'Please all form fields are required to be filled'
-        })
-      }
+    ) {
+      // checks if the user input is empty
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message: 'Please all form fields are required to be filled'
+      });
+    }
 
-      
-      if (!validator.isInt(capacity+ '')) {
-        // checking if the capacity is an integer
-        return res.status(422).send({
-          status: 'Unsuccessful',
-          message: 'Capacity of a center should be a number'
-        })
-      }
-      next();
+    if (!validator.isInt(capacity + '')) {
+      // checking if the capacity is an integer
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message: 'Capacity of a center should be a number'
+      });
+    }
+    next();
   }
 
-  
-/**
- * 
- * 
- * @static
- * @param {any} req { request object }
- * @param {any} res { response object }
- * @param {any} next { handler function }
- * @returns {object} JSON object
- * @memberof InputValidation
- */
-static eventInput(req, res, next) {
-    const {
-      title,
-      description,
-      date,
-      time,
-      imgUrl
-    } = req.body;
+  /**
+   *
+   *
+   * @static
+   * @param {any} req { request object }
+   * @param {any} res { response object }
+   * @param {any} next { handler function }
+   * @returns {object} JSON object
+   * @memberof InputValidation
+   */
+  static eventInput(req, res, next) {
+    const { title, description, date, time, imgUrl } = req.body;
     const center = req.params.centerId;
 
     if (
@@ -92,44 +77,42 @@ static eventInput(req, res, next) {
       typeof date !== 'string' ||
       typeof time !== 'string' ||
       typeof description !== 'string' ||
-      typeof imgUrl+'' !== 'string'
-       ) {
-    return res.status(422).send({
-      status: 'Unsuccessful',
-      message: 'Please fill all input fields'
-    })
-  }
+      typeof imgUrl + '' !== 'string'
+    ) {
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message: 'Please fill all input fields'
+      });
+    }
 
-  if (
-    validator.isEmpty(title)||
-    validator.isEmpty(date)||
-    validator.isEmpty(time)||
-    validator.isEmpty(description)||
-    validator.isEmpty(imgUrl+'')
+    if (
+      validator.isEmpty(title) ||
+      validator.isEmpty(date) ||
+      validator.isEmpty(time) ||
+      validator.isEmpty(description) ||
+      validator.isEmpty(imgUrl + '')
     ) {
       return res.status(422).send({
         status: 'Unsuccessful',
         message: 'Please all form fields are required to be filled'
-      })
+      });
     }
-    
 
-    if (!moment(date, 'YYYY-MM-DD',true).isValid()) {
+    if (!moment(date, 'YYYY-MM-DD', true).isValid()) {
       return res.status(422).send({
         status: 'Unsuccessful',
-        message: 'This is the valid date format  \'YYYY-MM-DD\''
-      })
+        message: "This is the valid date format  'YYYY-MM-DD'"
+      });
     }
 
-    
-      const isValid = /^([0-1][0-9])\:[0-5][0-9]\s*[ap]m$/i.test(time);
+    const isValid = /^([0-1][0-9])\:[0-5][0-9]\s*[ap]m$/i.test(time);
 
-        if (!isValid) {
-          return res.status(422).send({
-            status: 'Unsuccessful',
-            message: 'Time should be entered in this format "hh:mm AM/PM"'
-          })
-        }
+    if (!isValid) {
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message: 'Time should be entered in this format "hh:mm AM/PM"'
+      });
+    }
 
     next();
   }
