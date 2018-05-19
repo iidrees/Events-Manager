@@ -35,7 +35,7 @@ const EditEventComponent = props => (
               className="form-control"
               onChange={props.onChange}
               name="date"
-              type="text"
+              type="date"
               id="form-event2"
               placeholder="YY/MM/DD"
               value={props.eventData.date}

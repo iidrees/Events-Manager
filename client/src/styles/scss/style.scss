@@ -29,7 +29,9 @@ $font-pt-sans: 'PT Sans Caption', sans-serif;
 	position: absolute;
 	z-index: -1;
 } */
-
+.toast-top-left {
+  margin-top: 50px;
+}
 #add-event-header {
   margin-top: 70px;
 }
@@ -180,9 +182,6 @@ Event Details Page
   display: inline-block;
   margin-left: 40%;
 }
-// #myevent {
-//   //  margin-bottom: 200px;
-// }
 
 img {
   height: 150px !important;

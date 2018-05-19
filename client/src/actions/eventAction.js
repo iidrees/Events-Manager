@@ -64,7 +64,6 @@ export const getMyEvents = index => {
       })
       .catch(error => {
         // if any error is returned, it is shown to the user.
-
         dispatch({ type: MY_EVENT_FAIL, err: error.response.data });
       });
   };

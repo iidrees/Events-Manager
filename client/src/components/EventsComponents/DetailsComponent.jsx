@@ -81,6 +81,7 @@ const DetailsComponent = props => (
                     <button
                       className="btn btn-warning"
                       onClick={props.onDelete}
+                      data-dismiss="modal"
                       type="button"
                     >
                       Delete Event

@@ -32,3 +32,4 @@ before_script:
 after_success:
   - NODE_ENV=development npm run coverage
   - NODE_ENV=test npm run coverage
+  - npm run jest:cover

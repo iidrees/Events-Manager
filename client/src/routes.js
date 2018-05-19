@@ -5,7 +5,7 @@ import { createBrowserHistory } from 'history';
 import Signin from './components/Signin.jsx';
 import Signup from './components/Signup.jsx';
 import authRoute from './components/auth/authenticate.jsx';
-// import Getevents from './components/Getevents.jsx';
+import Getevents from './components/Getevents.jsx';
 import Addevents from './components/Addevents.jsx';
 import Center from './components/Center.jsx';
 import Landing from './components/Landing.jsx';
@@ -25,6 +25,7 @@ export const Routes = () => {
       <Route exact path="/getcenters" component={Center} />
       <Route exact path="/signin" component={Signin} />
       <Route exact path="/myevents" component={authRoute(GetMyEvents)} />
+      <Route exact path="/events" component={authRoute(Getevents)} />
       <Route exact path="/addevents" component={authRoute(Addevents)} />
       <Route
         exact

@@ -7,8 +7,14 @@ import {
 
   } from './types';
 
-/* eslint-disable */
-export const editCenter = (index, centerData ) => {
+/**
+ * 
+ * 
+ * @param {any} index - the centerId 
+ * @param {any} centerData -the centerData is the update
+ * @returns {void} 
+ */
+export const editCenter = (index, centerData ) => {// eslint-disable-line
   return (dispatch) => {
     return axios({
       method: 'PUT',

@@ -32,7 +32,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-02',
-          time: '12:03 PM',
           venue: 'Lagos Lagoon',
           location: 'The Shrine',
           attendance: '200'
@@ -53,7 +52,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-02',
-          time: '12:03 PM',
           venue: 'Lagos Lagoon',
           location: 'The Shrine',
           attendance: '200',
@@ -79,7 +77,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-07',
-          time: '12:03 PM',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -99,7 +96,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-07',
-          time: '12:03 PM',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -114,7 +110,6 @@ describe('TEST EVENT ENDPOINTS', () => {
             'Its an event for fela abeg'
           );
           assert.deepEqual(res.body.data.date, '2018-03-07');
-          assert.deepEqual(res.body.data.time, '12:03 PM');
           assert.deepEqual(res.body.data.center, 'Ketu-ojota-mall');
           assert.deepEqual(
             res.body.data.imgUrl,
@@ -131,7 +126,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-07',
-          time: '12:03 PM',
           center: 'Ketu-ojota-mall',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
@@ -155,7 +149,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '08-08-2018',
-          time: '12:03 PM',
           center: 'Ketu-ojota-mall',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
@@ -179,7 +172,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-10',
-          time: '12:03 PM',
           center: 'Ketu-ojota-mall'
         })
         .expect(422)
@@ -199,7 +191,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-10',
-          time: '12:03 PM',
           center: 'Ketu-ojota-mall',
           imgUrl: ''
         })
@@ -222,7 +213,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: '',
           date: '2018-03-08',
-          time: '12:03 PM',
           center: 'Ketu-ojota-mall',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
@@ -247,41 +237,23 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'Its an event for fela abeg',
           date: '2018-03-07',
-          time: '12:03 PM',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
-        .expect(422)
+        .expect(400)
         .then(res => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Please ensure you are entering the centerId as an integer in the req.params');
-          assert.deepEqual(res.status, 422);
-          done();
-        });
-    });
-    it('should return "Unsuccesful" when a users enters a non-integer as req.params', done => {
-      request(app)
-        .post(`/api/v1/events/${1}`)
-        .set('x-access-token', token)
-        .send({
-          title: 'Felabration',
-          description: 'Its an event for fela abeg',
-          date: '2018-03-07',
-          time: '12-03 PM',
-          imgUrl:
-            'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
-        })
-        .expect(422)
-        .then(res => {
-          assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Time should be entered in this format "hh:mm AM/PM"');
-          assert.deepEqual(res.status, 422);
+          assert.deepEqual(
+            res.body.message,
+            'Please ensure you are entering the centerId as an integer in the req.params'
+          );
+          assert.deepEqual(res.status, 400);
           done();
         });
     });
   });
   describe('GET /api/v1/events', () => {
-    it('should return "These are your Events" when  a user retrieves all events with the event', done => {
+    it('should return "These are all Events" when  a user retrieves all events with the event', done => {
       request(app)
         .get(`/api/v1/events?page=${1}`)
         .set('x-access-token', token)
@@ -289,7 +261,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then(res => {
           assert.deepEqual(res.status, 200);
           assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'These are your Events');
+          assert.deepEqual(res.body.message, 'These are all Events');
           done();
         });
     });
@@ -303,7 +275,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
-          time: '12:03 PM',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -322,7 +293,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
-          time: '12:03 PM',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -344,7 +314,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: 'It not fela anymore anymore oo',
           date: '2018-03-08',
-          time: '12:03 PM',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -358,7 +327,6 @@ describe('TEST EVENT ENDPOINTS', () => {
             'It not fela anymore anymore oo'
           );
           assert.deepEqual(res.body.data.date, '2018-03-08');
-          assert.deepEqual(res.body.data.time, '12:03 PM');
           assert.deepEqual(res.body.data.center, 'Ketu-ojota-mall');
           done();
         });
@@ -371,7 +339,6 @@ describe('TEST EVENT ENDPOINTS', () => {
           title: 'Felabration',
           description: '',
           date: '2018-03-08',
-          time: '12-03 PM',
           center: 'Lagos Lagoon'
         })
         .expect(403)

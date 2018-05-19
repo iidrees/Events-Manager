@@ -119,7 +119,6 @@ describe('Centers Controller', () => {
         })
         .expect(422)
         .then(res => {
-          console.log('the controller test>>>',)
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(

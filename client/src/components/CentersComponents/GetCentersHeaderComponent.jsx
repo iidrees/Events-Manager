@@ -17,34 +17,6 @@ const GetCentersHeaderComponent = props => (
       </div>
     </div>
     {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
-    {props.centers.status === 'Success' && (
-      <div className="alert alert-success" role="alert">
-        <button
-          type="button"
-          className="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>{props.centers.message}.</strong>
-      </div>
-    )}
-    {props.centers.status === 'Unsuccessful' && (
-      <div className="alert alert-danger" role="alert">
-        <button
-          type="button"
-          className="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>{props.centers.message}</strong>
-        <span> </span>
-        <strong>{props.centers.error}.</strong>
-      </div>
-    )}
   </div>
 );
 

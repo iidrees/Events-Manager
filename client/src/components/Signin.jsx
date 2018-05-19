@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 import { userSignin } from '../actions/userActions';
 
 import Footer from './footer.jsx';
@@ -25,7 +26,27 @@ class Signin extends React.Component {
       token: {}
     };
   }
+  /**
+   * @returns {void}
+   * @memberof Signin
+   */
+  componentDidMount() {
+    let token;
+    let noToken;
+    try {
+      token = localStorage.getItem('x-access-token');
+      let decodedToken = jwt.decode(token);
+      noToken = false;
 
+      if (jwt.decode(token).admin === true) {
+        history.push('/getCenters');
+      } else {
+        history.push('/myevents');
+      }
+    } catch (error) {
+      return (noToken = null);
+    }
+  }
   /**
    * @returns {void}
    * @param {any} nextProps -
@@ -34,10 +55,16 @@ class Signin extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { user } = nextProps;
     if (user.authenticated) {
-      if (decode(user.token).admin === true) {
+      if (jwt.decode(user.token).admin === true) {
+        toastr.options.preventDuplicates = true;
+        toastr.options.positionClass = 'toast-top-left';
+        toastr.success('Signin was successful');
         history.push('/getcenters');
       }
-      if (decode(user.token).role === 'User') {
+      if (jwt.decode(user.token).role === 'User') {
+        toastr.options.preventDuplicates = true;
+        toastr.options.positionClass = 'toast-top-left';
+        toastr.success('Signin was successful');
         history.push('/myevents');
       }
     }
@@ -69,6 +96,12 @@ class Signin extends React.Component {
    */
   render() {
     const { user, token1 } = this.props;
+    if (user.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${user.message}`);
+      user.status = '';
+    }
     return (
       <div>
         <div id="form-signin" className="container">

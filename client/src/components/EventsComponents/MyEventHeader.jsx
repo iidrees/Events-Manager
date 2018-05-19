@@ -11,32 +11,6 @@ const MyEventHeader = props => (
           Check your pending events below.
         </p>
         <hr />
-        {props.myEvents.status === 'Success' && (
-          <div className="alert alert-success" role="alert">
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>{props.myEvents.message}.</strong>
-          </div>
-        )}
-        {props.myEvents.status === 'Unsuccessful' && (
-          <div className="alert alert-danger" role="alert">
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>{props.myEvents.message}.</strong>
-          </div>
-        )}
       </div>
     </div>
     {/* <!-- END BODY-HEADER --> */}

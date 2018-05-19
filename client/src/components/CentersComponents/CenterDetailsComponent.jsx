@@ -82,6 +82,7 @@ const CenterDetailsComponent = props => (
                   </button>
                   <button
                     className="btn btn-warning"
+                    data-dismiss="modal"
                     onClick={props.onDelete}
                     type="button"
                   >

@@ -1,7 +1,8 @@
 /*  eslint-disable */
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import jwt from 'jsonwebtoken';
+import { history } from '../routes';
 import Footer from './footer.jsx';
 /**
  *
@@ -11,6 +12,23 @@ import Footer from './footer.jsx';
  * @extends {React.Component}
  */
 export default class LandingPage extends React.Component {
+  componentDidMount() {
+    let token;
+    let noToken;
+    try {
+      token = localStorage.getItem('x-access-token');
+      let decodedToken = jwt.decode(token);
+      noToken = false;
+
+      if (decodedToken.admin === true && decodedToken.role === 'Admin') {
+        history.push('/getCenters');
+      } else {
+        history.push('/myevents');
+      }
+    } catch (error) {
+      return (noToken = null);
+    }
+  }
   /**
    *
    *

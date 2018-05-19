@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
-import decode from 'jwt-decode';
-
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
 import { getEvents } from '../actions/eventAction';
 import { history } from '../routes';
 
 import EventComponent from './EventsComponents/EventComponent.jsx';
-import EventHeader from './EventsComponents/MyEventHeader.jsx';
+import GetEventsHeaderComponent from './EventsComponents/GetEventsHeaderComponent.jsx';
 
 /**
  *
@@ -77,55 +77,33 @@ class GetEvents extends React.Component {
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');
-      userId = decode(token).id;
+      userId = jwt.decode(token).id;
+
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
     } catch (error) {
       decoded = null;
     }
-
+    if (events.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error('You currently have no events');
+      events.status = '';
+    }
+    if (events.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${events.message}`);
+      events.status = '';
+    }
     return (
       <div>
         <div className="container" id="myevent">
           <div className="row">
             {/* <!-- START BODY-HEADER --> */}
-            <div className="container">
-              <div className="row">
-                <div className="col-sm-12">
-                  <h1 className=" head1 text-center">My Events</h1>
-                  <p id="p-head" className="head1 text-center">
-                    Check your pending events below.
-                  </p>
-                  <hr />
-                  {events.status === 'Success' && (
-                    <div className="alert alert-success" role="alert">
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                      <strong>{events.message}.</strong>
-                    </div>
-                  )}
-                  {events.status === 'Unsuccessful' && (
-                    <div className="alert alert-danger" role="alert">
-                      <button
-                        type="button"
-                        className="close"
-                        data-dismiss="alert"
-                        aria-label="Close"
-                      >
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                      <strong>{events.message}.</strong>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+            <GetEventsHeaderComponent events={events} />
             {/* <!-- END BODY-HEADER --> */}
-            {/* <EventHeader events={events} /> */}
             <EventComponent
               onChange={this.onChange}
               userId={userId}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Pagination from 'rc-pagination';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
 
 import { history } from '../routes';
 
@@ -43,7 +43,7 @@ class NavBarMain extends React.Component {
       decodedToken;
     try {
       token = localStorage.getItem('x-access-token');
-      user = decode(token);
+      user = jwt.decode(token);
     } catch (error) {
       decodedToken = null;
     }
@@ -84,6 +84,11 @@ class NavBarMain extends React.Component {
             <li className="nav-item">
               <Link className="nav-link" to="/addevents">
                 Add Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/events">
+                Events
               </Link>
             </li>
             <li className="nav-item">

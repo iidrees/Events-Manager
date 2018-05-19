@@ -1,16 +1,17 @@
 import axios from 'axios';
+import toastr from 'toastr';
 import { history } from '../routes';
 
-import { 
-  DELETE_EVENT,
-  DELETE_EVENT_FAIL
+import { DELETE_EVENT, DELETE_EVENT_FAIL } from './types';
 
-  } from './types';
-
-  
-/* eslint-disable */
-export const deleteEvent = (index) => {
-  return (dispatch) => {
+/**
+ * 
+ * 
+ * @param {any} index - eventId
+ * @returns {void}
+ */
+export const deleteEvent = index => {// eslint-disable-line
+  return dispatch => {
     return axios({
       method: 'DELETE',
       url: `/api/v1/events/${index}`,
@@ -19,14 +20,11 @@ export const deleteEvent = (index) => {
       },
       withCredentials: true
     })
-    .then((response) => {
-      dispatch({ type: DELETE_EVENT, eventDeleted: response.data })
-      //history.push('/getevents')
-    })
-    .catch((err) => {
-      dispatch({ type: DELETE_EVENT_FAIL, error: err.response.data});
-      
-      //history.push(`/eventdetails/${index}`)
-    })
-  }
-}
+      .then(response => {
+        dispatch({ type: DELETE_EVENT, eventDeleted: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: DELETE_EVENT_FAIL, error: err.response.data });
+      });
+  };
+};

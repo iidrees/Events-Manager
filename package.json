@@ -13,7 +13,7 @@
     "heroku-postbuild": "npm run build",
     "start": "npm run build && node server/lib/server.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov",
     "nyc": "nyc report",
     "lint:client": "node_modules/.bin/eslint client/__tests__",
     "lint:server": "node_modules/.bin/eslint client/server/src/server.js",
@@ -25,7 +25,7 @@
     "seq:db": "npm run seq:drop && npm run seq:create && npm run seq:seed",
     "watch": "webpack -d && webpack-dev-server --hot --inline",
     "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps",
-    "jest": "jest",
+    "jest": "jest && codecove",
     "jest:cover": "jest --coverage",
     "jest:watch": "jest --watch"
   },
@@ -46,7 +46,9 @@
     "modulePathIgnorePatterns": [
       "server/test/",
       "client/__tests__/actions/mocks/"
-    ]
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "repository": {
     "type": "git",
@@ -122,6 +124,7 @@
     "supertest": "^3.0.0",
     "swagger-jsdoc": "^1.9.7",
     "swagger-ui-express": "^3.0.8",
+    "toastr": "^2.1.4",
     "validator": "^9.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.1",

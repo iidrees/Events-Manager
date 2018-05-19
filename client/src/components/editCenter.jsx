@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Link, Redirect, withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './footer.jsx';
@@ -64,6 +65,31 @@ class EditCenter extends React.Component {
    */
   render() {
     const { user, center, updateCenter } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
+
+      userId = jwt.decode(token).id;
+
+      if (!jwt.decode(token).admin) {
+        return <Redirect to="/myevents" push />;
+      }
+    } catch (error) {
+      decoded = null;
+    }
+    if (updateCenter.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${updateCenter.message}`);
+      updateCenter.status = '';
+    }
+    if (updateCenter.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${updateCenter.message}`);
+      updateCenter.status = '';
+      return <Redirect to="/getCenters" push />;
+    }
 
     return (
       <div>
@@ -80,35 +106,6 @@ class EditCenter extends React.Component {
                 </div>
               </div>
             </div>
-
-            {updateCenter.status === 'Success' && (
-              <div className="alert alert-success" role="alert">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{updateCenter.message}.</strong>
-              </div>
-            )}
-            {updateCenter.status === 'Unsuccessful' && (
-              <div className="alert alert-danger" role="alert">
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <strong>{updateCenter.message}</strong>
-                <span> </span>
-                <strong>{updateCenter.error}.</strong>
-              </div>
-            )}
 
             <div className="container">
               {/* <!-- Start container for Add Form --> */}

@@ -8,6 +8,8 @@ import 'rc-pagination/assets/index.css';
 import { Routes, history } from './routes';
 import './styles/scss/style.scss';
 import './styles/css/style.css';
+import '../../node_modules/toastr/build/toastr.min.css';
+import '../../node_modules/toastr/build/toastr.min.js';
 
 import store from './store';
 import NavBarMain from './components/NavBarMain.jsx';
