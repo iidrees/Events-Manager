@@ -1,0 +1,1111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Events manager Production",
+    "description": "An Events Manager API that helps events planners plan their events."
+  },
+  "host": "events-manager-cp.herokuapp.com",
+  "basePath": "/api/v1",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/events": {
+      "get": {
+        "description": "Allows an auth user get a particular event they created by passing the eventId as params",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/events/{eventId}",
+        "tags": [
+          "Events"
+        ],
+        "operationId": "EventsGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "an event's id is used to retrieve an event from the database"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "copy and paste user token here"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This is your event",
+            "schema": {
+              "title": "Event",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "description": "",
+                  "type": "string"
+                },
+                "date": {
+                  "description": "",
+                  "type": "string"
+                },
+                "time": {
+                  "description": "",
+                  "type": "string"
+                },
+                "center": {
+                  "description": "",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "No such event is available"
+          },
+          "404": {
+            "description": "No event available, please post an event"
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "put": {
+        "description": "Allows auth user edit/update an event they added",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/events/{eventId}",
+        "tags": [
+          "Events"
+        ],
+        "operationId": "Events18Put",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "an event's id is used to retrieve an event from the database"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter event title"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter event description"
+          },
+          {
+            "name": "date",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter event date"
+          },
+          {
+            "name": "time",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter event time"
+          },
+          {
+            "name": "imgUrl",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter an image link"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "copy and paste user token"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Event updated successfully",
+            "schema":{
+              "title": "Event",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "description": "",
+                  "type": "string"
+                },
+                "date": {
+                  "description": "",
+                  "type": "string"
+                },
+                "time": {
+                  "description": "",
+                  "type": "string"
+                },
+                "center": {
+                  "description": "",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Please ensure you are entering a value"
+          },
+          "404": {
+            "description": "Event Not Found"
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "description": "Allows an auth user delete an event they added",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/events/{eventId}",
+        "tags": [
+          "Events"
+        ],
+        "operationId": "Events0Delete",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "An event's id is used to find and delete the event"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "copy and paste user token here"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event Successfully Deleted"
+          },
+          "422":{
+            "description": "No such event is available"
+          },
+          "404":{
+            "description": "Event Not Found"
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/centers/{centerId}": {
+      "get": {
+        "description": "Allows all users get a particular center",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/centers/{centerId}",
+        "tags": [
+          "Centers"
+        ],
+        "operationId": "Centers1Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "copy and paste user token here"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "These is your event centers",
+            "schema": { 
+              "title": "Events center",
+              "type":"object",
+              "properties": {
+                "name": {
+                  "description": "",
+                  "type": "string"
+                },
+                "location": {
+                  "description": "",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "",
+                  "type": "string"
+                },
+                "owner": {
+                  "description": "",
+                  "type": "string"
+                },
+                "address": {
+                  "description": "",
+                  "type": "string"
+                },
+                "capacity": {
+                  "description": "",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description":"Center Not Found"
+          },
+          "422": {
+            "description": "This request cannot be processed"
+          },
+          "403": {
+            "description": "Session Expired, Please signin again."
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "description": "Allows an admin who added a center be able to delete that center and the events created at that center.",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/centers/{centerId}",
+        "tags": [
+          "Centers"
+        ],
+        "operationId": "Centers7Delete",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "centerId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "enter centerId"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "Admin should enter token"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Center Successfuly Deleted"
+          },
+          "404": {
+            "description":"Center Not Found"
+          },
+          "500": {
+            "description":"Unable to delete center"
+          },
+          "422": {
+            "description":"Unable to delete center, please try again later"
+          },
+          "403": {
+            "description": "Session Expired, Please signin again."
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "put": {
+        "description": "Allows an admin edit/update a center they added",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/centers/{centerId}",
+        "tags": [
+          "Centers"
+        ],
+        "operationId": "Centers30Put",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "centerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "enter centerId"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter name"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter location"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter address"
+          },
+          {
+            "name": "capacity",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "description": "enter capacity"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter description"
+          },
+          {
+            "name": "imgUrl",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter imgUrl"
+          },
+          {
+            "name": "owner",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter owner"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "copy and paste Admin token here"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Center Successfuly updated"
+          },
+          "404": {
+            "description":"Center Not Found"
+          },
+          "422": {
+            "description":"Please input correct value"
+          },
+          "403": {
+            "description": "Session Expired, Please signin again."
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/admin/{userId}": {
+      "put": {
+        "description": "Allows a superAdmin upgrade a regular user to an Admin",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/users/admin/{userId}",
+        "tags": [
+          "user"
+        ],
+        "operationId": "UsersAdmin2Put",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "enter userId of the user to be made Admin"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "superAdmin pastes her token here"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "You have been successfully made an admin",
+            "schema": {
+              "type": "array",
+              "properties" : {
+               "role": {
+                 "description": "Admin",
+                 "type": "string"
+               }
+              }
+            }
+          },
+          "422": {
+            "description": "Admin creation failed"
+          },
+          "404": {
+            "description": "Unable to find user, admin creation failed"
+          },
+          "403": {
+            "description1":"You are not authorized to perform that action"
+          },
+          "409": {
+            "description":"User already an Admin"
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "description": "Logs in a new user to their account",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/users/login",
+        "tags": [
+          "user"
+        ],
+        "operationId": "UsersLoginPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter email address"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter correct password"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json "
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 OK login was successful and the user bio and token are returned",
+            "schema": {
+              "type": "object",
+              "properties" : {
+                "email": {
+                  "description": "",
+                  "type":"string"
+                },
+                "password": {
+                  "description": "",
+                  "type":"string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Incorrect Login Credentials"
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/users/login",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              "body": "email=idreeskun@kun.com&password=password"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "events-manager-cp.herokuapp.com/api/v1/users/login",
+            "x-testDescription": "allows users with an account login "
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "description":"It is a sign-up endpoint that allows users create an account",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/users",
+        "tags": [
+          "user"
+        ],
+        "operationId": "UsersPost2",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter name"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter email"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter password"
+          },
+          {
+            "name": "confirmPassword",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "reenter password"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Returns a status, message, user name, id and a token"
+          },
+          "401":{
+            "description":"user signup was unsuccessful"
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/users",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0ZXIiLCJlbWFpbCI6InRlc3RlckBnbWFpbC5jb20iLCJpYXQiOjE1MjI0MDY4MjAsImV4cCI6MTUyMjQxNzYyMH0.e8BASJp97vqZmK5NC8vRjxxpxSxGWLwAGllOTJDFBjA"
+              },
+              "body": "name=newtester&password=abcd1234@&confirmPassword=abcd1234@&email=faith.andela@andela.com"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "events-manager-cp.herokuapp.com/api/v1/users1"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/events/{centerId}": {
+      "post": {
+        "description": "Allows auth user create an event by passing the centerId as params along with the request",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/events/{centerId}",
+        "tags": [
+          "Events"
+        ],
+        "operationId": "Events3Post",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter title of event"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter description"
+          },
+          {
+            "name": "date",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter date"
+          },
+          {
+            "name": "time",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter time"
+          },
+          {
+            "name": "imgUrl",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter image url"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "copy and paste user token here"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Event added successfully"
+          },
+          "422": {
+            "description": "Please ensure you are entering the centerId as an integer in the req.params"
+          },
+          "409": {
+            "description": "date already booked for this center, choose another"
+          },
+          "404": {
+            "description": "Center Not Found"
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/centers": {
+      "get": {
+        "description": "Allows every user get all centers",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/centers?page=<pageNumber>",
+        "tags": [
+          "Centers"
+        ],
+        "operationId": "CentersGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": "enter page number"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Centers found",
+            "schema": {
+              "type": "array",
+              "items": {
+                "title": "Events centers",
+                "type":"object",
+                "properties": {
+                  "name": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "location": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "status": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "owner": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "address": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "capacity": {
+                    "description": "",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No Centers Found"
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "description": "Allow a user who is also an Admin create a center",
+        "summary": "events-manager-cp.herokuapp.com/api/v1/centers",
+        "tags": [
+          "Centers"
+        ],
+        "operationId": "CentersPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter name here"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter location"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter address"
+          },
+          {
+            "name": "capacity",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "description": "enter capacity"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter description"
+          },
+          {
+            "name": "imgUrl",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "paste link tp image"
+          },
+          {
+            "name": "owner",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "enter owner"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "enter admin token"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": "application/json"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Center Added Successfully",
+            "schema": { 
+              "title": "Events center",
+              "type":"object",
+              "properties": {
+                "name": {
+                  "description": "",
+                  "type": "string"
+                },
+                "location": {
+                  "description": "",
+                  "type": "string"
+                },
+                "status": {
+                  "description": "",
+                  "type": "string"
+                },
+                "owner": {
+                  "description": "",
+                  "type": "string"
+                },
+                "address": {
+                  "description": "",
+                  "type": "string"
+                },
+                "capacity": {
+                  "description": "",
+                  "type": "string"
+                },
+                "description": {
+                  "description": "",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Center Could not be added",
+            "schema": {}
+          },
+          "403": {
+            "description": "You are not permitted to create a center",
+            "schema": {}
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  }
+}

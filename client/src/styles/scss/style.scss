@@ -1,0 +1,438 @@
+/* 
+import fonts
+ */
+
+/* Variables */
+$font-head-color: #393939;
+$header-color: black;
+$navbar-border: grey;
+$header-top: 70px;
+$font-Encode: 'Encode Sans Expanded', Helvetica, Tahoma, sans-serif;
+$font-cantarell: 'Cantarell', sans-serif;
+$font-patrick: 'Patrick Hand', cursive;
+$font-maven-pro: 'Maven Pro', sans-serif;
+$font-pt-sans: 'PT Sans Caption', sans-serif;
+
+/* 
+#event-details::after {
+	content: "";
+	background: url('.././images/pexels-photo-64769.jpeg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	opacity: 0.3;
+	top: 0;
+  left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;
+} */
+
+#add-event-header {
+  margin-top: 70px;
+}
+
+.home-para {
+  font-family: $font-Encode;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.head-1 {
+  font-family: $font-Encode;
+  font-weight: 50px;
+  font-size: 50px;
+  color: $header-color;
+}
+.head-para {
+  font-family: $font-maven-pro;
+  font-weight: 200px;
+  font-size: 20px;
+}
+
+#admin-add-head,
+#centerbottom {
+  margin-bottom: $header-top;
+}
+/* FOOTER */
+.head1 {
+  font-family: $font-Encode;
+  color: $font-head-color;
+}
+#centerid {
+  font-size: 20;
+}
+#p-head {
+  font-size: 20px;
+  font-weight: 20px;
+}
+
+#add-events,
+#add-centers {
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 70px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+}
+
+#h3-signup,
+#h2-signin {
+  font-weight: bolder;
+  margin-top: 40px;
+  font-family: 'Encode Sans Expanded', Helvetica, Tahoma, sans-serif;
+  color: #393939;
+}
+/* Event catalog and My Events page */
+.even-font {
+  font-family: $font-Encode;
+  font-weight: bold;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.date-font {
+  font-family: $font-cantarell;
+  font-weight: bold;
+}
+
+.location-font,
+.search-font {
+  font-family: $font-maven-pro;
+  font-weight: bold;
+}
+
+small {
+  font-family: $font-patrick;
+  font-weight: bolder;
+  color: purple;
+}
+
+/* 
+Event Details Page
+ */
+#img-details {
+  max-width: 400px;
+}
+.font-details {
+  font-family: $font-cantarell;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+/* Center Details page */
+.center-details-para {
+  font-family: $font-maven-pro;
+  font-weight: bolder;
+}
+.center-details-span {
+  font-family: $font-cantarell;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#head-holding {
+  font-family: $font-Encode;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Center Details page */
+.center-details-para {
+  font-family: $font-maven-pro;
+  font-weight: bolder;
+}
+.center-details-span {
+  font-family: $font-cantarell;
+}
+
+/* GET all events center page */
+.all-centers-font {
+  font-family: $font-cantarell;
+  font-weight: bold;
+}
+
+/* GET all events center page */
+.all-centers-font {
+  font-family: $font-cantarell;
+  font-weight: bold;
+}
+
+.paginator {
+  text-align: center;
+  display: inline-block;
+  margin-left: 40%;
+}
+// #myevent {
+//   //  margin-bottom: 200px;
+// }
+
+img {
+  height: 150px !important;
+}
+.card-title {
+  text-overflow: ellipsis;
+  width: 100%;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* View point for  desktop*/
+@media (min-width: 768px) {
+  /* landing page */
+  #nav-events,
+  #navbar-addevents,
+  #navbar-details,
+  #navbar-admin-center,
+  #nav-center-details,
+  #navbar-myevents {
+    margin-left: 500px;
+  }
+  .nav-link {
+    margin: 3px 0px 0px 0px;
+  }
+  #nav-logo {
+    padding-right: 78px;
+  }
+
+  /*events catalog  */
+  #event-page,
+  #details,
+  #add-center-header,
+  #event-holding {
+    margin-top: $header-top;
+  }
+  #event-holding-header {
+    margin-top: 20px;
+  }
+
+  #myevent {
+    margin-top: 120px;
+  }
+
+  input[type='text'] {
+    width: 300px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  .detail-button {
+    margin-left: 400px;
+    margin-bottom: $header-top;
+  }
+  /* When the input field gets focus, change its width to 70% */
+  input[type='text']:focus {
+    width: 70%;
+  }
+  #event-holding {
+    margin-bottom: 50px;
+  }
+  #details-ev {
+    margin-bottom: 50px;
+  }
+  #card-center1,
+  #center-details-events {
+    margin-bottom: 30px;
+  }
+
+  #card-body {
+    margin-bottom: 25px;
+  }
+  #card-center2 {
+    margin-bottom: 120px;
+  }
+  #cadcad-body,
+  #cadcad {
+    margin-bottom: 170px;
+  }
+
+  #admin-form .form-control,
+  #name-form,
+  #email-form,
+  #text-form {
+    width: 600px;
+  }
+  #center-details-slider,
+  #center-details-header {
+    margin-top: $header-top;
+  }
+
+  #form-event1,
+  #form-event2,
+  #form-event3,
+  #form-event4,
+  #form-event5,
+  #event-center1,
+  #event-center2,
+  #form-event7 {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #navbar-signup,
+  #navbar-myevents {
+    margin-left: 30px;
+  }
+  .nav-link {
+    max-width: 130px;
+    text-align: center;
+    margin: 10px 0 0 150px;
+  }
+  #nav-logo {
+    margin-left: 120px;
+  }
+
+  #event-page,
+  #myevent,
+  #details,
+  #add-center-header {
+    margin-top: $header-top;
+  }
+  input[type='text'] {
+    width: 300px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+
+  /* When the input field gets focus, change its width to 70% */
+  input[type='text']:focus {
+    width: 100%;
+  }
+  #center-details-header {
+    margin-top: 60px;
+  }
+
+  .card {
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+
+  #event-holding {
+    margin-bottom: 100px;
+    margin-top: 0px;
+  }
+  #card-body1 {
+    margin-bottom: 120px;
+  }
+  .detail-button {
+    margin-left: 120px;
+    margin-bottom: $header-top;
+  }
+  #details-ev {
+    margin-bottom: 70px;
+  }
+
+  #admin-form,
+  .form-control,
+  #name-form,
+  #email-form,
+  #text-form {
+    width: 300px;
+  }
+
+  .paginator {
+    text-align: center;
+    display: inline-block;
+    margin-left: 30%;
+  }
+}
+
+[class*='col-'] {
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {
+    width: 8.33%;
+  }
+  .col-s-2 {
+    width: 16.66%;
+  }
+  .col-s-3 {
+    width: 25%;
+  }
+  .col-s-4 {
+    width: 33.33%;
+  }
+  .col-s-5 {
+    width: 41.66%;
+  }
+  .col-s-6 {
+    width: 50%;
+  }
+  .col-s-7 {
+    width: 58.33%;
+  }
+  .col-s-8 {
+    width: 66.66%;
+  }
+  .col-s-9 {
+    width: 75%;
+  }
+  .col-s-10 {
+    width: 83.33%;
+  }
+  .col-s-11 {
+    width: 91.66%;
+  }
+  .col-s-12 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {
+    width: 8.33%;
+  }
+  .col-2 {
+    width: 16.66%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33%;
+  }
+  .col-5 {
+    width: 41.66%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33%;
+  }
+  .col-8 {
+    width: 66.66%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33%;
+  }
+  .col-11 {
+    width: 91.66%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+}
