@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { deleteCenter } from '../actions/deleteCenterAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 import { history } from '../routes';

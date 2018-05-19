@@ -5,7 +5,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { editEvent } from '../actions/editEventAction';
 import getCenters from '../actions/getCentersAction';
 import { detailEvent } from '../actions/eventAction';

@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { detailEvent } from '../actions/eventAction';
 import { deleteEvent } from '../actions/deleteEventAction';
 import { history } from '../routes';

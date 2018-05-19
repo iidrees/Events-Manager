@@ -5,7 +5,7 @@ import Pagination from 'rc-pagination';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { getEvents } from '../actions/eventAction';
 import { history } from '../routes';
 

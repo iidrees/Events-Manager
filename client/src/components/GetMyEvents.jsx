@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { getMyEvents } from '../actions/eventAction';
 import { history } from '../routes';
 
@@ -75,7 +75,6 @@ class GetMyEvents extends React.Component {
    */
   render() {
     const { myEvents, status } = this.props;
-    console.log('the myevents component', myEvents);
 
     let userId, token, decoded;
     try {

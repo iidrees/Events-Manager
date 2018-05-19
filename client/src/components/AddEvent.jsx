@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { addEvent, imageUpload } from '../actions/addEventActions';
 import getCenters from '../actions/getCentersAction';
 import { history } from '../routes';
@@ -18,7 +18,7 @@ import AddEventHeaderComponent from './EventsComponents/AddEventHeaderComponent.
  * @class Addevents
  * @extends { React.Component }
  */
-class Addevents extends React.Component {
+class AddEvent extends React.Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -149,5 +149,5 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Addevents)
+  connect(mapStateToProps, mapDispatchToProps)(AddEvent)
 );

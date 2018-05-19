@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import { history } from '../routes';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 /**
  *
  *
