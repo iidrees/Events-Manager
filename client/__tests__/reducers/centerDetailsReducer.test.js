@@ -1,4 +1,4 @@
-import centerDetailsReducer from '../../src/reducers/CenterDetailsReducer';
+import centerDetailsReducer from '../../src/reducers/centerDetailsReducer';
 import * as types from '../../src/actions/types';
 
 describe('Test for Center Details reducer', () => {
