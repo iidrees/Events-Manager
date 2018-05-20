@@ -85,26 +85,28 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    it('should return "Please fill all input fields" when admin user enters no address ', done => {
+    it('should return "Please fill all input fields" when admin user enters no Location', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
         .send({
           name: 'Muson Center',
-          location: 'Lagos',
+          location: '',
           owner: 'The Civil Society',
           capacity: '2000',
-          description: 'This venue is a great place to make things happen'
+          description: 'This venue is a great place to make things happen',
+          imgUrl:
+            'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
         })
         .expect(422)
         .then(res => {
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Please fill all input fields');
+          assert.deepEqual(res.body.message, 'Please all form fields are required to be filled');
           done();
         });
     });
-    it('should return "Please fill all input fields" when admin user enters no address', done => {
+    it('should return the status code of "409" when admin duplicates a center', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
@@ -117,13 +119,13 @@ describe('Centers Controller', () => {
           imgUrl:
             'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
         })
-        .expect(422)
+        .expect(409)
         .then(res => {
-          assert.deepEqual(res.status, 422);
-          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.status, 409);
+          assert.deepEqual(res.body.status, ' Unsuccessful');
           assert.deepEqual(
             res.body.message,
-            'Please all form fields are required to be filled'
+            'Center already exist'
           );
           done();
         });
