@@ -94,19 +94,15 @@ class CenterDetails extends React.Component {
    * @memberof CenterDetails
    */
   render() {
-    const { center, user } = this.props;
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
+    const { center, user, token } = this.props;
 
-      userId = jwt.decode(token).id;
+    const { decodedToken } = token;
+    let userId = decodedToken;
 
-      if (!jwt.decode(token).admin) {
-        return <Redirect to="/myevents" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (!decodedToken.admin) {
+      return <Redirect to="/myevents" push />;
     }
+
     if (center.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -185,7 +181,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     center: state.centerDetailsReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 

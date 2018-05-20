@@ -51,18 +51,15 @@ class DetailEvent extends React.Component {
    * @memberof DetailEvent
    */
   render() {
-    const { event, user } = this.props;
-    let userId, token, decoded;
+    const { event, user, token } = this.props;
 
-    try {
-      token = localStorage.getItem('x-access-token');
-      userId = jwt.decode(token).id;
-      if (jwt.decode(token).admin) {
-        return <Redirect to="/getCenters" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    const { decodedToken } = token;
+    let userId = decodedToken;
+
+    if (decodedToken.admin) {
+      return <Redirect to="/getCenters" push />;
     }
+
     if (event.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -98,7 +95,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     event: state.detailsEventReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

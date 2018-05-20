@@ -64,18 +64,12 @@ class EditCenter extends React.Component {
    * @memberof EditCenter
    */
   render() {
-    const { user, center, updateCenter } = this.props;
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
+    const { user, center, updateCenter, token } = this.props;
+    const { decodedToken } = token;
+    let userId = decodedToken.id;
 
-      userId = jwt.decode(token).id;
-
-      if (!jwt.decode(token).admin) {
-        return <Redirect to="/myevents" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (!decodedToken.admin) {
+      return <Redirect to="/myevents" push />;
     }
     if (updateCenter.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
@@ -135,7 +129,8 @@ const mapStateToProps = state => {
   return {
     center: state.centerDetailsReducer,
     updateCenter: state.editCenterReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

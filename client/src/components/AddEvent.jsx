@@ -84,20 +84,15 @@ class AddEvent extends React.Component {
    * @memberof Addevents
    */
   render() {
-    const { user, centers, event } = this.props;
+    const { user, centers, event, token } = this.props;
 
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
+    const { decodedToken } = token;
+    let userId = decodedToken.id;
 
-      userId = jwt.decode(token).id;
-
-      if (jwt.decode(token).admin) {
-        return <Redirect to="/getCenters" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (decodedToken.admin) {
+      return <Redirect to="/getCenters" push />;
     }
+
     if (event.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -145,7 +140,8 @@ const mapStateToProps = state => {
   return {
     event: state.addEventReducer,
     user: state.userReducer,
-    centers: state.centerReducer
+    centers: state.centerReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

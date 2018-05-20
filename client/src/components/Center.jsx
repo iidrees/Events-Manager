@@ -63,14 +63,12 @@ class Center extends React.Component {
    * @memberof Center
    */
   render() {
-    const { centers, user, currentPage, itemsPerPage } = this.props;
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
-      userId = jwt.decode(token).id;
-    } catch (error) {
-      decoded = null;
-    }
+    const { centers, user, currentPage, itemsPerPage, token } = this.props;
+
+    const { decodedToken } = token;
+
+    let userId = decodedToken.id;
+
     if (centers.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -117,7 +115,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     centers: state.centerReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Center));

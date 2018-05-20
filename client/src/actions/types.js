@@ -74,3 +74,7 @@ export const EVENT_DETAIL_FAIL = 'EVENT_DETAIL_FAIL';
 //Signout 
 
 export const SIGN_OUT = 'SIGN_OUT';
+
+// TOKEN 
+export const SET_TOKEN = 'SET_TOKEN';
+export const REMOVE_TOKEN = 'REMOVE_TOKEN';

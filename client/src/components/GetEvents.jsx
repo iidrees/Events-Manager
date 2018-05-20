@@ -73,18 +73,14 @@ class GetEvents extends React.Component {
    * @memberof GetEvents
    */
   render() {
-    const { events, status } = this.props;
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
-      userId = jwt.decode(token).id;
+    const { events, status, token } = this.props;
+    const { decodedToken } = token;
+    let userId = decodedToken.id;
 
-      if (jwt.decode(token).admin) {
-        return <Redirect to="/getCenters" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (decodedToken.admin) {
+      return <Redirect to="/getCenters" push />;
     }
+
     if (events.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -136,7 +132,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     events: state.eventReducer,
-    status: state.userReducer
+    status: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

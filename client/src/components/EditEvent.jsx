@@ -64,18 +64,14 @@ class EditEvent extends React.Component {
    * @memberof Addevents
    */
   render() {
-    const { centers, event, user, editEvents } = this.props;
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
-      userId = jwt.decode(token).id;
+    const { centers, event, user, editEvents, token } = this.props;
+    const { decodedToken } = token;
+    let userId = decodedToken;
 
-      if (jwt.decode(token).admin) {
-        return <Redirect to="/getCenters" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (decodedToken.admin) {
+      return <Redirect to="/getCenters" push />;
     }
+
     if (editEvents.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -120,7 +116,8 @@ const mapStateToProps = state => {
     user: state.userReducer,
     centers: state.centerReducer,
     event: state.detailsEventReducer,
-    editEvents: state.editEventReducer
+    editEvents: state.editEventReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

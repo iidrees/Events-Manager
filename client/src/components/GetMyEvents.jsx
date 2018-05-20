@@ -74,19 +74,13 @@ class GetMyEvents extends React.Component {
    * @memberof GetMyEvents
    */
   render() {
-    const { myEvents, status } = this.props;
+    const { myEvents, status, token } = this.props;
 
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
+    const { decodedToken } = token;
+    let userId = decodedToken.id;
 
-      userId = jwt.decode(token).id;
-
-      if (jwt.decode(token).admin) {
-        return <Redirect to="/getCenters" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (decodedToken.admin) {
+      return <Redirect to="/getCenters" push />;
     }
 
     if (myEvents.status === 'Unsuccessful') {
@@ -95,6 +89,7 @@ class GetMyEvents extends React.Component {
       toastr.error('You currently have no events');
       myEvents.status = '';
     }
+
     if (myEvents.status === 'Success') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -139,7 +134,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     myEvents: state.myEventsReducer,
-    status: state.userReducer
+    status: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

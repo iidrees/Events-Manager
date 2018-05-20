@@ -72,8 +72,7 @@ export const centers = [
     owner: 'SuperAdmin-baba',
     capacity: 3000,
     location: 'Ketu',
-    address: 'Ketu ojota mai-twef',
-    userId: 1,
+    userId: 4,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -86,8 +85,7 @@ export const centers = [
     owner: 'Me-kun-mi',
     capacity: 3000,
     location: 'Maryland',
-    address: 'Lekki, phase 2 Eti Osa Lagos State',
-    userId: 1,
+    userId: 4,
     createdAt: new Date(),
     updatedAt: new Date()
   }

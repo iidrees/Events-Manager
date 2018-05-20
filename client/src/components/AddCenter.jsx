@@ -73,19 +73,13 @@ class AddCenter extends React.Component {
    * @memberof AddCenter
    */
   render() {
-    const { createCenter, user } = this.props;
+    const { createCenter, user, token } = this.props;
 
-    let userId, token, decoded;
-    try {
-      token = localStorage.getItem('x-access-token');
+    const { decodedToken } = token;
+    let userId = decodedToken.id;
 
-      userId = jwt.decode(token).id;
-
-      if (!jwt.decode(token).admin) {
-        return <Redirect to="/myevents" push />;
-      }
-    } catch (error) {
-      decoded = null;
+    if (!decodedToken.admin) {
+      return <Redirect to="/myevents" push />;
     }
     if (createCenter.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
@@ -125,7 +119,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     createCenter: state.addCenterReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(
