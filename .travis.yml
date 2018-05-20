@@ -6,7 +6,6 @@ node_js:
 script:
   - NODE_ENV=test npm test
   - NODE_ENV=development npm test
-  - npm run report-coverage
   - npm run jest
 
 install:
@@ -32,4 +31,4 @@ before_script:
 after_success:
   - NODE_ENV=development npm run coverage
   - NODE_ENV=test npm run coverage
-  - npm run jest:cover
+  - npm run jest

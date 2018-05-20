@@ -7,7 +7,7 @@ import * as types from '../../src/actions/types';
 import * as edit from './mocks/addCenterMock';
 
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 
 describe('TEST FOR ADD CENTER', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('TEST FOR ADD CENTER', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 201,
-        response:{
+        response: {
           status: 'Success',
           Message: 'Center added successfully updated',
           data: edit.center[0]
@@ -32,13 +32,17 @@ describe('TEST FOR ADD CENTER', () => {
     const expectedActions = [
       {
         type: types.EDIT_CENTER,
-        center: edit.center[0]
+        center: {
+          status: 'Success',
+          Message: 'Center added successfully updated',
+          data: edit.center[0]
+        }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
-    return store.dispatch(editCenter(1,edit.center[0])).then(() => {
+    return store.dispatch(editCenter(1, edit.center[0])).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -48,7 +52,7 @@ describe('TEST FOR ADD CENTER', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 400,
-        response:{
+        response: {
           status: 'Unsuccessful',
           message: 'Center could not be added'
         }
@@ -60,16 +64,15 @@ describe('TEST FOR ADD CENTER', () => {
         type: types.EDIT_CENTER_FAIL,
         error: {
           status: 'Unsuccessful',
-          message: 'Center could not be added',
+          message: 'Center could not be added'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
-    return store.dispatch(editCenter(1,edit.center[0])).then(() => {
+    return store.dispatch(editCenter(1, edit.center[0])).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
-  })
-
-})
+  });
+});

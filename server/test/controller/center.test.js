@@ -85,7 +85,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    xit('should return "Please fill all input fields" when admin user enters no address ', done => {
+    it('should return "Please fill all input fields" when admin user enters no address ', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)
@@ -104,7 +104,7 @@ describe('Centers Controller', () => {
           done();
         });
     });
-    xit('should return "Please fill all input fields" when admin user enters no address', done => {
+    it('should return "Please fill all input fields" when admin user enters no address', done => {
       request(app)
         .post('/api/v1/centers')
         .set('x-access-token', adminToken)

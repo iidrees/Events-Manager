@@ -7,7 +7,7 @@ import * as types from '../../src/actions/types';
 import { event } from './mocks/addEventMock';
 
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 
 describe('TEST FOR ADD EVENTS', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('TEST FOR ADD EVENTS', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response:{
+        response: {
           status: 'Success',
           Message: 'Event added successfully',
           data: event[0]
@@ -31,14 +31,18 @@ describe('TEST FOR ADD EVENTS', () => {
 
     const expectedActions = [
       {
-        type: types.GET_EVENT,
-        event: event[0]
+        type: types.ADD_EVENT,
+        event: {
+          status: 'Success',
+          Message: 'Event added successfully',
+          data: event[0]
+        }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
-    return store.dispatch(addEvent(event[0],1)).then(() => {
+    return store.dispatch(addEvent(event[0], 1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -48,7 +52,7 @@ describe('TEST FOR ADD EVENTS', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 400,
-        response:{
+        response: {
           status: 'Unsuccessful',
           message: 'Event could not be added'
         }
@@ -60,16 +64,15 @@ describe('TEST FOR ADD EVENTS', () => {
         type: types.ADD_EVENT_FAIL,
         error: {
           status: 'Unsuccessful',
-          message: 'Event could not be added',
+          message: 'Event could not be added'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
-    return store.dispatch(addEvent(event[0],1)).then(() => {
+    return store.dispatch(addEvent(event[0], 1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
-  })
-
-})
+  });
+});
