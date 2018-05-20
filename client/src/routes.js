@@ -4,9 +4,9 @@ import { createBrowserHistory } from 'history';
 
 import Signin from './components/Signin.jsx';
 import Signup from './components/Signup.jsx';
-import authRoute from './components/auth/authenticate.jsx';
+import authRoute from './components/auth/authRoute.jsx';
 import GetEvents from './components/GetEvents.jsx';
-import AddEvent from './components/Addevent.jsx';
+import AddEvent from './components/AddEvent.jsx';
 import Center from './components/Center.jsx';
 import Landing from './components/Landing.jsx';
 import DetailEvent from './components/DetailEvent.jsx';
