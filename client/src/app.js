@@ -17,7 +17,6 @@ import store from './store';
 import NavBarMain from './components/NavBarMain.jsx';
 import Footer from './components/Footer.jsx';
 
-//
 if (localStorage.getItem('x-access-token')) {
   const decodedToken = jwt.decode(localStorage.getItem('x-access-token'));
 
@@ -28,7 +27,7 @@ if (localStorage.getItem('x-access-token')) {
 } else {
   toastr.options.preventDuplicates = true;
   toastr.options.positionClass = 'toast-top-left';
-  toastr.info('Please login again to continue');
+  toastr.info('Have an Account?, <br/> please login or signup ');
   history.push('/');
 }
 

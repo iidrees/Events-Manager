@@ -64,13 +64,20 @@ class EditCenter extends React.Component {
    * @memberof EditCenter
    */
   render() {
-    const { user, center, updateCenter, token } = this.props;
-    const { decodedToken } = token;
-    let userId = decodedToken.id;
+    const { user, center, updateCenter } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
 
-    if (!decodedToken.admin) {
-      return <Redirect to="/myevents" push />;
+      userId = jwt.decode(token).id;
+
+      if (!jwt.decode(token).admin) {
+        return <Redirect to="/myevents" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
+
     if (updateCenter.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';

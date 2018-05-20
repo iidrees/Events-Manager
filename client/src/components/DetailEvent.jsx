@@ -51,15 +51,18 @@ class DetailEvent extends React.Component {
    * @memberof DetailEvent
    */
   render() {
-    const { event, user, token } = this.props;
+    const { event, user } = this.props;
+    let userId, token, decoded;
 
-    const { decodedToken } = token;
-    let userId = decodedToken;
-
-    if (decodedToken.admin) {
-      return <Redirect to="/getCenters" push />;
+    try {
+      token = localStorage.getItem('x-access-token');
+      userId = jwt.decode(token).id;
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
-
     if (event.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';

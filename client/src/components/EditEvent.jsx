@@ -64,14 +64,18 @@ class EditEvent extends React.Component {
    * @memberof Addevents
    */
   render() {
-    const { centers, event, user, editEvents, token } = this.props;
-    const { decodedToken } = token;
-    let userId = decodedToken;
+    const { centers, event, user, editEvents } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
+      userId = jwt.decode(token).id;
 
-    if (decodedToken.admin) {
-      return <Redirect to="/getCenters" push />;
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
-
     if (editEvents.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';

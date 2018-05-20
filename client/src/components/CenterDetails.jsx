@@ -94,13 +94,18 @@ class CenterDetails extends React.Component {
    * @memberof CenterDetails
    */
   render() {
-    const { center, user, token } = this.props;
+    const { center, user } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
 
-    const { decodedToken } = token;
-    let userId = decodedToken;
+      userId = jwt.decode(token).id;
 
-    if (!decodedToken.admin) {
-      return <Redirect to="/myevents" push />;
+      if (!jwt.decode(token).admin) {
+        return <Redirect to="/myevents" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
 
     if (center.status === 'Unsuccessful') {

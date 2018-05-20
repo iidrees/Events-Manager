@@ -73,14 +73,21 @@ class AddCenter extends React.Component {
    * @memberof AddCenter
    */
   render() {
-    const { createCenter, user, token } = this.props;
+    const { createCenter, user } = this.props;
 
-    const { decodedToken } = token;
-    let userId = decodedToken.id;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
 
-    if (!decodedToken.admin) {
-      return <Redirect to="/myevents" push />;
+      userId = jwt.decode(token).id;
+
+      if (!jwt.decode(token).admin) {
+        return <Redirect to="/myevents" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
+
     if (createCenter.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';

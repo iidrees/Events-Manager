@@ -41,6 +41,7 @@ class GetMyEvents extends React.Component {
    */
   componentDidMount() {
     const { dispatch } = this.props;
+
     return dispatch(getMyEvents());
   }
 
@@ -74,13 +75,19 @@ class GetMyEvents extends React.Component {
    * @memberof GetMyEvents
    */
   render() {
-    const { myEvents, status, token } = this.props;
+    const { myEvents, status } = this.props;
 
-    const { decodedToken } = token;
-    let userId = decodedToken.id;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
 
-    if (decodedToken.admin) {
-      return <Redirect to="/getCenters" push />;
+      userId = jwt.decode(token).id;
+
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
 
     if (myEvents.status === 'Unsuccessful') {

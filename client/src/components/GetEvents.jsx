@@ -73,12 +73,17 @@ class GetEvents extends React.Component {
    * @memberof GetEvents
    */
   render() {
-    const { events, status, token } = this.props;
-    const { decodedToken } = token;
-    let userId = decodedToken.id;
+    const { events, status } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
+      userId = jwt.decode(token).id;
 
-    if (decodedToken.admin) {
-      return <Redirect to="/getCenters" push />;
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
 
     if (events.status === 'Unsuccessful') {

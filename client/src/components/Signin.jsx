@@ -59,7 +59,7 @@ class Signin extends React.Component {
         toastr.options.preventDuplicates = true;
         toastr.options.positionClass = 'toast-top-left';
         toastr.success('Signin was successful');
-        history.push('/getcenters');
+        history.replace('/getcenters');
       }
       if (jwt.decode(user.token).role === 'User') {
         toastr.options.preventDuplicates = true;

@@ -84,13 +84,19 @@ class AddEvent extends React.Component {
    * @memberof Addevents
    */
   render() {
-    const { user, centers, event, token } = this.props;
+    const { user, centers, event } = this.props;
 
-    const { decodedToken } = token;
-    let userId = decodedToken.id;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
 
-    if (decodedToken.admin) {
-      return <Redirect to="/getCenters" push />;
+      userId = jwt.decode(token).id;
+
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
     }
 
     if (event.status === 'Unsuccessful') {
