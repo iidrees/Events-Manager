@@ -21,10 +21,6 @@ module.exports = {
         isDate: true,
         unique: true
       },
-      time: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       center: {
         type: Sequelize.STRING,
         allowNull: false
@@ -62,5 +58,5 @@ module.exports = {
         }
       }
     }),
-  down: (queryInterface /* , Sequelize */ => queryInterface.dropTable('Events'))
+  down: (queryInterface) /* , Sequelize */ => queryInterface.dropTable('Events')
 };

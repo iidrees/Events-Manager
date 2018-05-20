@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Success',
         message: action.event.message,
-        ...action.res.data,
+        ...action.event.data,
         authenticated: true
       };
     }

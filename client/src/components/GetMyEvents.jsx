@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { getMyEvents } from '../actions/eventAction';
 import { history } from '../routes';
 
@@ -78,9 +79,27 @@ class GetMyEvents extends React.Component {
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');
-      userId = decode(token).id;
+
+      userId = jwt.decode(token).id;
+
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
     } catch (error) {
       decoded = null;
+    }
+
+    if (myEvents.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error('You currently have no events');
+      myEvents.status = '';
+    }
+    if (myEvents.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${myEvents.message}`);
+      myEvents.status = '';
     }
 
     return (

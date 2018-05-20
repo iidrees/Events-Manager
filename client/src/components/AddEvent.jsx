@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { addEvent, imageUpload } from '../actions/addEventActions';
 import getCenters from '../actions/getCentersAction';
 import { history } from '../routes';
@@ -17,7 +18,7 @@ import AddEventHeaderComponent from './EventsComponents/AddEventHeaderComponent.
  * @class Addevents
  * @extends { React.Component }
  */
-class Addevents extends React.Component {
+class AddEvent extends React.Component {
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -84,11 +85,37 @@ class Addevents extends React.Component {
    */
   render() {
     const { user, centers, event } = this.props;
+
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
+
+      userId = jwt.decode(token).id;
+
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
+    }
+    if (event.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${event.message}`);
+      event.status = '';
+    }
+    if (event.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${event.message}`);
+      event.status = '';
+      return <Redirect to="/myevents" push />;
+    }
     return (
       <div>
         <div className="container" id="add-events">
           <div className="row">
-            <AddEventHeaderComponent event={event} />
+            <AddEventHeaderComponent />
             <div className="container">
               {/* <!-- Start container for Add Form --> */}
               <div className="row">
@@ -122,5 +149,5 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Addevents)
+  connect(mapStateToProps, mapDispatchToProps)(AddEvent)
 );

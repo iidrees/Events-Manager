@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { Redirect, withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { addCenter, imageUpload } from '../actions/addCentersAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 import { history } from '../routes';
@@ -73,6 +74,32 @@ class AddCenter extends React.Component {
    */
   render() {
     const { createCenter, user } = this.props;
+
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
+
+      userId = jwt.decode(token).id;
+
+      if (!jwt.decode(token).admin) {
+        return <Redirect to="/myevents" push />;
+      }
+    } catch (error) {
+      decoded = null;
+    }
+    if (createCenter.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${createCenter.message}`);
+      createCenter.status = '';
+    }
+    if (createCenter.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${createCenter.message}`);
+      createCenter.status = '';
+      return <Redirect to="/getCenters" push />;
+    }
     return (
       <div>
         <div className="container" id="add-centers">

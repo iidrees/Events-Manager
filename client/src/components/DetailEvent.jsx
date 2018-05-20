@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { detailEvent } from '../actions/eventAction';
 import { deleteEvent } from '../actions/deleteEventAction';
 import { history } from '../routes';
@@ -24,20 +25,23 @@ class DetailEvent extends React.Component {
    */
   componentDidMount() {
     const { dispatch } = this.props;
-
     return dispatch(detailEvent(this.props.match.params.id));
   }
 
   /**
-   * @param {e} e is the event
+   * @param {events} events is the event
    * @returns {action} returns a dispatched action
    * @memberof DetailEvent
    */
-  onDelete = e => {
-    e.preventDefault();
+  onDelete = events => {
+    events.preventDefault();
     let { event } = this.props;
     const { dispatch } = this.props;
-    return dispatch(deleteEvent(event.id));
+    toastr.options.preventDuplicates = true;
+    toastr.options.positionClass = 'toast-top-left';
+    toastr.success('Event Deleted Successfully');
+    dispatch(deleteEvent(event.id));
+    return history.push('/myevents');
   };
 
   /**
@@ -48,6 +52,23 @@ class DetailEvent extends React.Component {
    */
   render() {
     const { event, user } = this.props;
+    let userId, token, decoded;
+
+    try {
+      token = localStorage.getItem('x-access-token');
+      userId = jwt.decode(token).id;
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
+    }
+    if (event.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${event.message}`);
+      event.status = '';
+    }
     return (
       <div>
         <div className="container" id="myevent">

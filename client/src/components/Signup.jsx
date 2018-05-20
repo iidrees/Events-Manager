@@ -1,17 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 import { userSignup } from '../actions/userActions';
 import { history } from '../routes';
 import NavBarMain from './NavBarMain.jsx';
 /**
- *
- *
  * @class Signup
  * @extends {React.Component}
  */
 class Signup extends React.Component {
+  /**
+   * @returns {void}
+   * @memberof Signup
+   */
+  componentDidMount() {
+    let token;
+    let noToken;
+    try {
+      token = localStorage.getItem('x-access-token');
+      let decodedToken = jwt.decode(token);
+      noToken = false;
+
+      if (jwt.decode(token).admin === true) {
+        history.push('/getCenters');
+      } else {
+        history.push('/myevents');
+      }
+    } catch (error) {
+      return (noToken = null);
+    }
+  }
+
   /**
    * @param {event} event -
    * @returns {JSON} JSON -
@@ -34,13 +55,25 @@ class Signup extends React.Component {
   };
 
   /**
-   *
-   *
    * @returns {JSX} JSX
    * @memberof Signup
    */
   render() {
     const { user } = this.props;
+
+    if (user.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${user.message}`);
+      user.status = '';
+      return <Redirect to="/myevents" push />;
+    }
+    if (user.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${user.message}`);
+      user.status = '';
+    }
     return (
       <div>
         <div className="container" id="form-signup">

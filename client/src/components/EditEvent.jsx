@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
-import decode from 'jwt-decode';
-
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { editEvent } from '../actions/editEventAction';
 import getCenters from '../actions/getCentersAction';
 import { detailEvent } from '../actions/eventAction';
@@ -65,6 +65,30 @@ class EditEvent extends React.Component {
    */
   render() {
     const { centers, event, user, editEvents } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
+      userId = jwt.decode(token).id;
+
+      if (jwt.decode(token).admin) {
+        return <Redirect to="/getCenters" push />;
+      }
+    } catch (error) {
+      decoded = null;
+    }
+    if (editEvents.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${editEvents.message}`);
+      editEvents.status = '';
+    }
+    if (editEvents.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success(`${editEvents.message}`);
+      editEvents.status = '';
+      return <Redirect to="/myevents" push />;
+    }
 
     return (
       <div>

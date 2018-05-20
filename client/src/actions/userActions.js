@@ -57,23 +57,17 @@ export const userSignin = userData => {
         // the response is used to let user access protected resource
         localStorage.setItem('x-access-token', response.data.data.token);
         const token1 = localStorage.getItem('x-access-token');
-        console.log('token from signin actions>>>>', token1);
-
         dispatch({ type: SIGNED_IN, payload: response.data });
-        //history.push('/getevents');
       })
       .catch(err => {
         // if there is an error, no access is given to user.
-
         dispatch({ type: SIGN_IN_FAIL, payload: err.response.data });
-        //history.push('/signin');
       });
   };
 };
 
 export const signOut = () => {
   return dispatch => {
-    console.log('this fires signout >>>>>>');
     localStorage.removeItem('x-access-token');
     dispatch({ type: SIGN_OUT });
   };

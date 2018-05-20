@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import getCenters from '../actions/getCentersAction';
 import NavBarMain from './NavBarMain.jsx';
 import { history } from '../routes';
@@ -39,7 +40,6 @@ class Center extends React.Component {
     const { dispatch, currentPage } = this.props;
     return dispatch(getCenters(currentPage));
   }
-
   /**
    *
    * @returns {any} -
@@ -67,9 +67,23 @@ class Center extends React.Component {
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');
-      userId = decode(token).id;
+      userId = jwt.decode(token).id;
     } catch (error) {
       decoded = null;
+    }
+    if (centers.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(
+        'No Event Centers Available at the Moment, check back later'
+      );
+      centers.status = '';
+    }
+    if (centers.status === 'Success') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.success('These are the event centers available');
+      centers.status = '';
     }
     return (
       <div>

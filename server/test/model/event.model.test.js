@@ -21,7 +21,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: '2018-07-01',
-        time: '12:30 PM',
         center: 'The Blue Center',
         imgUrl: 'Image baba',
         userId: 1
@@ -29,7 +28,6 @@ describe('TEST MODEL', () => {
         assert.property(event.dataValues, 'title');
         assert.property(event.dataValues, 'description');
         assert.property(event.dataValues, 'date');
-        assert.property(event.dataValues, 'time');
         assert.property(event.dataValues, 'center');
         assert.property(event.dataValues, 'imgUrl');
         done();
@@ -41,7 +39,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: '2018-07-02',
-        time: '12:30 PM',
         center: 'The Blue Center',
         imgUrl: 'Image baba',
         userId: 1
@@ -64,7 +61,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: '',
         date: '2018-07-03',
-        time: '12:30 PM',
         center: 'The Blue Center',
         imgUrl: 'Image baba',
         userId: 1
@@ -87,7 +83,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: '2018-07-04',
-        time: '12:30 PM',
         center: '',
         imgUrl: 'Image baba',
         userId: 1
@@ -102,32 +97,11 @@ describe('TEST MODEL', () => {
         });
     });
 
-    it('should check validation on time, time should not be empty', done => {
-      Events.create({
-        title: 'The Avangers Infinity War AFter PArry',
-        description: 'THe party of the century',
-        date: '2018-07-05',
-        time: '',
-        center: 'asasdsadasds',
-        imgUrl: 'Image baba',
-        userId: 1
-      })
-        .then(() => {
-          done();
-        })
-        .catch(error => {
-          assert.deepEqual(error.errors[0].message, 'Please enter a time');
-          assert.deepEqual(error.errors[0].type, 'Validation error');
-          done();
-        });
-    });
-
     it('should check validation on imgUrl, imgUrl should not be empty', done => {
       Events.create({
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: '2018-07-06',
-        time: '12:30 PM',
         center: 'Image is required',
         imgUrl: '',
         userId: 1
@@ -147,7 +121,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: '2018-07-06',
-        time: '12:30 PM',
         center: 'ImageAss center',
         imgUrl: 'image baba',
         userId: 1
@@ -170,7 +143,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: '',
-        time: '12:30 PM',
         center: 'ImageAss center',
         imgUrl: 'image baba',
         userId: 1
@@ -190,7 +162,6 @@ describe('TEST MODEL', () => {
         title: 'The Avangers Infinity War AFter PArry',
         description: 'THe party of the century',
         date: 'yeasjfhaskjhfjas',
-        time: '12:30 PM',
         center: 'ImageAss center',
         imgUrl: 'image baba',
         userId: 1

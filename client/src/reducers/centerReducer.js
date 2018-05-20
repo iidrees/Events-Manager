@@ -1,5 +1,5 @@
 /*  import types  from Actions directory */
-import { 
+import {
   GET_ALL_CENTERS,
   CENTERS_SUCCESS,
   CENTERS_ERRORS
@@ -13,8 +13,10 @@ const initialState = {
 }; // the initial state of the component
 
 export default (state = initialState, action) => {
-  switch (action.type) {/* reducer types listening for 
+  switch (
+    action.type /* reducer types listening for 
                         actions and payload in order to update store */
+  ) {
     case CENTERS_SUCCESS: {
       return {
         ...state,
@@ -23,7 +25,7 @@ export default (state = initialState, action) => {
         message: action.centers.message,
         centers: [...action.centers.data.rows],
         count: action.centers.data.count
-      }
+      };
     }
     case CENTERS_ERRORS: {
       return {
@@ -32,9 +34,9 @@ export default (state = initialState, action) => {
         status: 'Unsuccessful',
         message: action.error.message,
         error: action.error.error
-      }
-    } 
+      };
+    }
     default:
-     return state;
+      return state;
   }
-}
+};

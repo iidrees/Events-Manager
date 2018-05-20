@@ -39,16 +39,6 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
-    time: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          args: true,
-          msg: 'Please enter a time'
-        }
-      }
-    },
     center: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -91,7 +81,7 @@ export default (sequelize, DataTypes) => {
     }
   });
   /* Event Associations */
-  Events.associate = (model) => {
+  Events.associate = model => {
     Events.belongsTo(model.Users, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'

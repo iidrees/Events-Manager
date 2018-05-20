@@ -75,7 +75,6 @@ class InputValidation {
     if (
       typeof title !== 'string' ||
       typeof date !== 'string' ||
-      typeof time !== 'string' ||
       typeof description !== 'string' ||
       typeof imgUrl + '' !== 'string'
     ) {
@@ -88,7 +87,6 @@ class InputValidation {
     if (
       validator.isEmpty(title) ||
       validator.isEmpty(date) ||
-      validator.isEmpty(time) ||
       validator.isEmpty(description) ||
       validator.isEmpty(imgUrl + '')
     ) {
@@ -102,15 +100,6 @@ class InputValidation {
       return res.status(422).send({
         status: 'Unsuccessful',
         message: "This is the valid date format  'YYYY-MM-DD'"
-      });
-    }
-
-    const isValid = /^([0-1][0-9])\:[0-5][0-9]\s*[ap]m$/i.test(time);
-
-    if (!isValid) {
-      return res.status(422).send({
-        status: 'Unsuccessful',
-        message: 'Time should be entered in this format "hh:mm AM/PM"'
       });
     }
 

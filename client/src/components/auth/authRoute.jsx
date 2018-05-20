@@ -1,11 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
-import decode from 'jwt-decode';
-import jwt from 'jsonwebtoken';
-
-import { userSignin } from '../../actions/userActions';
-import Footer from '../footer.jsx';
 import { history } from '../../routes';
 import checkUser from './checkUser';
 
@@ -42,11 +37,7 @@ export default function authRoute(Compo) {
      * @memberof Authenticate
      */
     render() {
-      return (
-       
-          <Compo {...this.props} />
-       
-      );
+      return <Compo {...this.props} />;
     }
   }
 

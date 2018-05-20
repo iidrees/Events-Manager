@@ -79,7 +79,7 @@ export class Event {
         });
       })
       .catch(error => {
-        return res.status(422).send({
+        return res.status(400).send({
           // TODO: find out the correct status code to be used here
           status: 'Unsuccessful',
           message:
@@ -273,7 +273,7 @@ export class GetAllEvents {
       }
       return res.status(200).send({
         status: 'Success',
-        message: 'These are your Events',
+        message: 'These are all Events',
         data: events
       });
     });
@@ -284,7 +284,7 @@ export class GetAllEvents {
  *
  *
  * @export
- * @class GetAllEvents
+ * @class GetAllUsersEvents
  */
 export class AllUsersEvents {
   /**

@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
-import decode from 'jwt-decode';
+import jwt from 'jsonwebtoken';
+import toastr from 'toastr';
 
 import NavBarMain from './NavBarMain.jsx';
-import Footer from './footer.jsx';
+import Footer from './Footer.jsx';
 import { deleteCenter } from '../actions/deleteCenterAction';
 import { centerDetails } from '../actions/centerDetailsAction';
 import { history } from '../routes';
@@ -30,6 +31,8 @@ class CenterDetails extends React.Component {
       currentPage: 1,
       itemsPerPage: 10
     };
+    this.onDelete = this.onDelete.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   /**
@@ -40,6 +43,10 @@ class CenterDetails extends React.Component {
    */
   componentDidMount() {
     let { dispatch, currentPage } = this.props;
+
+    toastr.options.preventDuplicates = true;
+    toastr.options.positionClass = 'toast-top-left';
+    toastr.success('This is the details of center');
 
     return dispatch(
       centerDetails(this.props.match.params.id, this.state.currentPage)
@@ -73,7 +80,12 @@ class CenterDetails extends React.Component {
     event.preventDefault();
     let { center } = this.props;
     const { dispatch } = this.props;
-    return dispatch(deleteCenter(center.id));
+
+    toastr.options.preventDuplicates = true;
+    toastr.options.positionClass = 'toast-top-left';
+    toastr.success('Center Deleted Successfully');
+    dispatch(deleteCenter(center.center.id));
+    return this.props.history.push('/getCenters');
   };
   /**
    *
@@ -83,7 +95,24 @@ class CenterDetails extends React.Component {
    */
   render() {
     const { center, user } = this.props;
+    let userId, token, decoded;
+    try {
+      token = localStorage.getItem('x-access-token');
 
+      userId = jwt.decode(token).id;
+
+      if (!jwt.decode(token).admin) {
+        return <Redirect to="/myevents" push />;
+      }
+    } catch (error) {
+      decoded = null;
+    }
+    if (center.status === 'Unsuccessful') {
+      toastr.options.preventDuplicates = true;
+      toastr.options.positionClass = 'toast-top-left';
+      toastr.error(`${center.message}`);
+      center.status = '';
+    }
     return (
       <div>
         <div className="container">
@@ -102,7 +131,11 @@ class CenterDetails extends React.Component {
 
             <div className="container" id="center-details-slider">
               {' '}
-              <CenterDetailsComponent center={center} />
+              <CenterDetailsComponent
+                center={center}
+                onChange={this.onchange}
+                onDelete={this.onDelete}
+              />
               <hr />
             </div>
             {/* <!-- END OF EVENT CENTER DETAILS --> */}

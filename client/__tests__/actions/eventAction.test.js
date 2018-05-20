@@ -7,7 +7,7 @@ import * as types from '../../src/actions/types';
 import { events } from './mocks/getEventsMock';
 
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 
 describe('TEST FOR THE GET EVENT ACTION', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response:{
+        response: {
           status: 'Success',
           Message: 'This are your events',
           data: events
@@ -32,11 +32,15 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
     const expectedActions = [
       {
         type: types.GET_EVENTS,
-        events: events
+        events: {
+          status: 'Success',
+          Message: 'This are your events',
+          data: events
+        }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
     return store.dispatch(getEvents()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -63,14 +67,13 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
           message: 'No event(s) Found'
         }
       }
-    ]
-    const store = mockStore({ });
+    ];
+    const store = mockStore({});
     return store.dispatch(getEvents()).then(() => {
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()).toEqual(expectedActions);
     });
   });
 });
-
 
 /* EVENT DETAILS TESTS */
 
@@ -86,7 +89,7 @@ describe('TEST FOR THE EVENT DETAIL ACTION', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response:{
+        response: {
           status: 'Success',
           Message: 'This is your event',
           data: events[0]
@@ -96,16 +99,16 @@ describe('TEST FOR THE EVENT DETAIL ACTION', () => {
 
     const expectedActions = [
       {
-        type: types.GET_EVENT,
-        response: {
+        type: types.GET_EVENT_DETAIL,
+        event: {
           status: 'Success',
           Message: 'This is your event',
           data: events[0]
         }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
     return store.dispatch(detailEvent()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -126,20 +129,20 @@ describe('TEST FOR THE EVENT DETAIL ACTION', () => {
 
     const expectedActions = [
       {
-        type: types.EVENT_FAIL,
+        type: types.EVENT_DETAIL_FAIL,
         error: {
           status: 'Unsuccessful',
           message: 'No event available, please post an event'
         }
       }
-    ]
-    const store = mockStore({ });
+    ];
+    const store = mockStore({});
     return store.dispatch(detailEvent()).then(() => {
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-   it('should return 400 error response', () => {
+  it('should return 400 error response', () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -153,18 +156,17 @@ describe('TEST FOR THE EVENT DETAIL ACTION', () => {
 
     const expectedActions = [
       {
-        type: types.EVENT_FAIL,
+        type: types.EVENT_DETAIL_FAIL,
         error: {
           status: 'Unsuccessful',
           message: 'No such event is available'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({ });
+    const store = mockStore({});
     return store.dispatch(detailEvent()).then(() => {
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()).toEqual(expectedActions);
     });
-
-   })
+  });
 });

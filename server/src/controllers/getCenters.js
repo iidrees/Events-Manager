@@ -1,9 +1,6 @@
 import validator from 'validator';
 
-import { 
-  Centers, 
-  Events 
-} from '../models';
+import { Centers, Events } from '../models';
 
 /**
  * A class that allows all users get a centers
@@ -24,13 +21,12 @@ export class GetCenter {
     let events;
     // let page =  math.ceil((parseInt(req.query.page, 10) - 1 ) * 10)
 
-    return Centers
-      .findOne({
-        where: {
-          id: centerId,
-        }
-      })
-      .then((center) => {
+    return Centers.findOne({
+      where: {
+        id: centerId
+      }
+    })
+      .then(center => {
         if (!center) {
           return res.status(404).send({
             status: 'Unsuccessful',
@@ -38,34 +34,31 @@ export class GetCenter {
           });
         }
 
-        return Events
-          .findAndCountAll({
-            limit: 10,
-            offset: Math.ceil((parseInt(req.query.page, 10) - 1 ) * 10),
-            order: [['id', 'ASC']],
-            where: {
-              centerId
+        return Events.findAndCountAll({
+          limit: 10,
+          offset: Math.ceil((parseInt(req.query.page, 10) - 1) * 10),
+          order: [['id', 'ASC']],
+          where: {
+            centerId
+          }
+        }).then(event => {
+          events = event;
+          return res.status(200).send({
+            status: 'Success',
+            message: 'This is your event center',
+            data: {
+              center,
+              events: events
             }
-          })
-          .then((event) => {
-            console.log('this the event', event)
-            events = event;
-            return res.status(200).send({
-              status: 'Success',
-              message: 'This is your event center',
-              data: {
-                center,
-                events: events
-                
-              }
-            });
-          })
-       
+          });
+        });
       })
-      .catch(err => res.status(422).send({
-        status: 'Unsuccessful',
-        data: err.message
-      }));
+      .catch(err =>
+        res.status(422).send({
+          status: 'Unsuccessful',
+          data: err.message
+        })
+      );
   }
 }
 
@@ -87,24 +80,23 @@ export class GetAllCenters {
     if (isNaN(req.query.page)) {
       req.query.page = 1;
     }
-    return Centers
-      .findAndCountAll({
-        limit: 10,
-        offset: (parseInt(req.query.page, 10) - 1 ) * 10, 
-        order: [['id', 'ASC']]
-      }).then((centers) => {
-        if (centers.rows.length === 0) {
-          return res.status(404).send({
-            status: 'Unsuccessful',
-            message: 'No Centers Found'
-          });
-        }
-        return res.status(200).send({
-          status: 'Success',
-          message: 'Centers found',
-          data: centers
+    return Centers.findAndCountAll({
+      limit: 10,
+      offset: (parseInt(req.query.page, 10) - 1) * 10,
+      order: [['id', 'ASC']]
+    }).then(centers => {
+      if (centers.rows.length === 0) {
+        return res.status(404).send({
+          status: 'Unsuccessful',
+          message: 'No Centers Found'
         });
+      }
+      return res.status(200).send({
+        status: 'Success',
+        message: 'Centers found',
+        data: centers
       });
+    });
   }
 }
 
@@ -135,28 +127,26 @@ export class CenterDelete {
       return res.status(422).send({
         status: 'Unsuccessful',
         message: 'CenterId must be a number'
-      })
+      });
     }
-    return Centers
-      .findOne({
-        where: {
-          id,
-          userId
-        },
-      })
-      .then((center) => {
-        if (!center) {
-          return res.status(404).send({
-            status: 'Unsuccessful',
-            message: 'Center Not Found'
-          });
-        }
-        return center
-          .destroy()
-          .then(() => res.status(200).send({
-            status: 'Success',
-            message: 'Center Successfuly Deleted'
-          }))
-      })
+    return Centers.findOne({
+      where: {
+        id,
+        userId
+      }
+    }).then(center => {
+      if (!center) {
+        return res.status(404).send({
+          status: 'Unsuccessful',
+          message: 'Center Not Found'
+        });
+      }
+      return center.destroy().then(() =>
+        res.status(200).send({
+          status: 'Success',
+          message: 'Center Successfuly Deleted'
+        })
+      );
+    });
   }
 }
