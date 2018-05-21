@@ -85,6 +85,7 @@ class GetEvents extends React.Component {
     } catch (error) {
       decoded = null;
     }
+
     if (events.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -136,7 +137,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     events: state.eventReducer,
-    status: state.userReducer
+    status: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

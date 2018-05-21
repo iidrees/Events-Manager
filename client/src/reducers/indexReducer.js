@@ -10,6 +10,7 @@ import addEventReducer from './addEventReducer';
 import editEventReducer from './editEventReducer';
 import editCenterReducer from './editCenterReducer';
 import myEventsReducer from './myEventsReducer';
+import userTokenReducer from './userTokenReducer';
 
 const indexReducer = combineReducers({
   userReducer,
@@ -21,7 +22,8 @@ const indexReducer = combineReducers({
   centerDetailsReducer,
   editEventReducer,
   editCenterReducer,
-  myEventsReducer
+  myEventsReducer,
+  userTokenReducer
 });
 
 export default indexReducer;

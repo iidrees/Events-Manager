@@ -98,6 +98,7 @@ class AddEvent extends React.Component {
     } catch (error) {
       decoded = null;
     }
+
     if (event.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -145,7 +146,8 @@ const mapStateToProps = state => {
   return {
     event: state.addEventReducer,
     user: state.userReducer,
-    centers: state.centerReducer
+    centers: state.centerReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

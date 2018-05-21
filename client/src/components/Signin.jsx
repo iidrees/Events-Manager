@@ -59,7 +59,7 @@ class Signin extends React.Component {
         toastr.options.preventDuplicates = true;
         toastr.options.positionClass = 'toast-top-left';
         toastr.success('Signin was successful');
-        history.push('/getcenters');
+        history.replace('/getcenters');
       }
       if (jwt.decode(user.token).role === 'User') {
         toastr.options.preventDuplicates = true;
@@ -99,7 +99,7 @@ class Signin extends React.Component {
     if (user.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
-      toastr.error(`${user.message}`);
+      toastr.error(`${user.message}<br/>${user.error}`);
       user.status = '';
     }
     return (

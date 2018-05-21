@@ -1,4 +1,5 @@
 import { Users, Centers, Events } from '../../src/models';
+const bcrypt = require('bcrypt');
 
 export const users = [
   {
@@ -22,7 +23,7 @@ export const users = [
     name: 'idreessan'
   },
   {
-    password: '$2a$10$25ITZ2TUYUW54qlVWTGVX.CwoKhoIS4PZ0IFZszMqqAeoBNMv7Gu',
+    password: bcrypt.hashSync('password', 10),
     isSuperAdmin: false,
     isAdmin: true,
     role: 'Admin',
@@ -72,8 +73,7 @@ export const centers = [
     owner: 'SuperAdmin-baba',
     capacity: 3000,
     location: 'Ketu',
-    address: 'Ketu ojota mai-twef',
-    userId: 1,
+    userId: 3,
     createdAt: new Date(),
     updatedAt: new Date()
   },
@@ -86,8 +86,7 @@ export const centers = [
     owner: 'Me-kun-mi',
     capacity: 3000,
     location: 'Maryland',
-    address: 'Lekki, phase 2 Eti Osa Lagos State',
-    userId: 1,
+    userId: 2,
     createdAt: new Date(),
     updatedAt: new Date()
   }

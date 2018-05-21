@@ -120,7 +120,8 @@ const mapStateToProps = state => {
     user: state.userReducer,
     centers: state.centerReducer,
     event: state.detailsEventReducer,
-    editEvents: state.editEventReducer
+    editEvents: state.editEventReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

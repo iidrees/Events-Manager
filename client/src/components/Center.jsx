@@ -71,6 +71,7 @@ class Center extends React.Component {
     } catch (error) {
       decoded = null;
     }
+
     if (centers.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -117,7 +118,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     centers: state.centerReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Center));

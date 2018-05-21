@@ -98,7 +98,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     event: state.detailsEventReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

@@ -77,6 +77,7 @@ class EditCenter extends React.Component {
     } catch (error) {
       decoded = null;
     }
+
     if (updateCenter.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -135,7 +136,8 @@ const mapStateToProps = state => {
   return {
     center: state.centerDetailsReducer,
     updateCenter: state.editCenterReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

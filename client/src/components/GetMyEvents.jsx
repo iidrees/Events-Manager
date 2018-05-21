@@ -41,6 +41,7 @@ class GetMyEvents extends React.Component {
    */
   componentDidMount() {
     const { dispatch } = this.props;
+
     return dispatch(getMyEvents());
   }
 
@@ -95,6 +96,7 @@ class GetMyEvents extends React.Component {
       toastr.error('You currently have no events');
       myEvents.status = '';
     }
+
     if (myEvents.status === 'Success') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -139,7 +141,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     myEvents: state.myEventsReducer,
-    status: state.userReducer
+    status: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 export default withRouter(

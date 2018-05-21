@@ -107,6 +107,7 @@ class CenterDetails extends React.Component {
     } catch (error) {
       decoded = null;
     }
+
     if (center.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
@@ -185,7 +186,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     center: state.centerDetailsReducer,
-    user: state.userReducer
+    user: state.userReducer,
+    token: state.userTokenReducer
   };
 };
 
