@@ -18,11 +18,26 @@ const expiredToken =
 /* TEST FOR NONE AVAILABLE CENTERS */
 describe('Centers Controller', () => {
   before(done => {
-    seedUser();
+    Users.destroy({
+      truncate: true,
+      cascade: true,
+      restartIdentity: true
+    })
+
+    Centers.destroy({
+      truncate: true,
+      cascade: true,
+      restartIdentity: true
+    }).then(() => {
+      seedUser();
     token = user1Token;
     adminToken = userAdmin;
     superAdminToken = userSuperAdmin;
     done();
+    });
+
+
+    
   });
   describe('GET /api/v1/centers?page=${index}', () => {
     it('should return "No Centers Found" when user makes query to an empty database', done => {
@@ -59,7 +74,7 @@ describe('Centers Controller', () => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(
             res.body.message,
-            'You are not permitted to create a center'
+            'You are unauthorised to carry out this action'
           );
           done();
         });
@@ -161,7 +176,7 @@ describe('Centers Controller', () => {
     it('Should return "Unauthorized" when admin  attempts to edit a center and token has expired', done => {
       request(app)
         .put(`/api/v1/centers/${1}`)
-        .set('x-access-token', token)
+        .set('x-access-token', expiredToken)
         .send({
           name: 'Muson Center',
           location: 'Lagos',
@@ -177,7 +192,7 @@ describe('Centers Controller', () => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(
             res.body.message,
-            'You are not permitted to edit or modify this resource'
+            'Session Expired, Please signin again.'
           );
           done();
         });
@@ -324,7 +339,7 @@ describe('Centers Controller', () => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(
             res.body.message,
-            'You are not permitted to delete this event center'
+            'You are unauthorised to carry out this action'
           );
           done();
         });

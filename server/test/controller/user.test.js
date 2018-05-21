@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import app from '../../src/server';
 import { Users, Events, Centers } from '../../src/models';
 import { users, seedUser } from '../testHelpers/testSeed';
+import { userSuperAdmin } from '../testHelpers/auth';
 
 /* eslint-disable */
 let token;
@@ -395,7 +396,7 @@ describe('Sign-up and Sign-in Endpoints', () => {
         request(app)
           .post('/api/v1/users/login')
           .send({
-            email: 'idreeskun@kun.com',
+            email: 'test@test.com',
             password: 'password'
           })
           .expect(200)
@@ -463,8 +464,8 @@ describe('TEST FOR ADMIN', () => {
         ' when a superAdmin successfully upgrades an ordinary User to an admin',
       done => {
         request(app)
-          .put(`/api/v1/users/admin/${2}`)
-          .set('x-access-token', superAdminToken)
+          .put(`/api/v1/users/admin/${1}`)
+          .set('x-access-token', userSuperAdmin)
           .expect(201)
           .then(res => {
             assert.deepEqual(res.status, 201);
@@ -484,8 +485,8 @@ describe('TEST FOR ADMIN', () => {
         ' when a superAdmin attempts to upgrade another superAdmin',
       done => {
         request(app)
-          .put(`/api/v1/users/admin/${1}`)
-          .set('x-access-token', superAdminToken)
+          .put(`/api/v1/users/admin/${2}`)
+          .set('x-access-token', userSuperAdmin)
           .expect(403)
           .then(res => {
             assert.deepEqual(res.status, 403);
@@ -505,7 +506,7 @@ describe('TEST FOR ADMIN', () => {
       done => {
         request(app)
           .put(`/api/v1/users/admin/${20}`)
-          .set('x-access-token', superAdminToken)
+          .set('x-access-token', userSuperAdmin)
           .expect(404)
           .then(res => {
             assert.deepEqual(res.status, 404);
@@ -547,8 +548,8 @@ describe('TEST FOR ADMIN', () => {
         ' when a superAdmin upgrades a user with user role "Admin"',
       done => {
         request(app)
-          .put(`/api/v1/users/admin/${2}`)
-          .set('x-access-token', superAdminToken)
+          .put(`/api/v1/users/admin/${3}`)
+          .set('x-access-token', userSuperAdmin)
           .expect(409)
           .then(res => {
             assert.typeOf(res.body, 'object');

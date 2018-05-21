@@ -27,7 +27,7 @@ describe('TEST MODEL', () => {
     it('should successfully create a new user in the database', done => {
       Users.create({
         name: 'Idrees',
-        email: 'idreeskun@kun.com',
+        email: 'narutokun@kun.com',
         password: bcrypt.hashSync('password', 10)
       }).then(user => {
         name = user.dataValues.name;
