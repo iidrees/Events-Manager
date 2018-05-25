@@ -2,11 +2,9 @@ import axios from 'axios';
 import toastr from 'toastr';
 import { history } from '../routes';
 
-import { DELETE_EVENT, DELETE_EVENT_FAIL } from './types';
+import { DELETE_EVENT, DELETE_EVENT_FAIL, GET_EVENTS_ON_DELETE } from './types';
 
 /**
- * 
- * 
  * @param {any} index - eventId
  * @returns {void}
  */

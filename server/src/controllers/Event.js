@@ -17,9 +17,16 @@ export class Event {
    */
   static postEvents(req, res) {
     // grab values from the req object
-    const { title, description, date, time, imgUrl } = req.body;
+    const { title, description, startDate, endDate, time, imgUrl } = req.body;
     const { id } = req.decoded;
-
+    if (startDate <= new Date().toISOString().slice(0, 10)) {
+      return res.status(422).send({
+        status: 'unsuccessful',
+        message:
+          'Invalid date entered, please enter a date from the current date',
+        startDate
+      });
+    }
     return Events /* 
     first check if the center is booked for an
     event for the same date.
@@ -27,7 +34,7 @@ export class Event {
       {
         where: {
           centerId: req.params.centerId,
-          date
+          startDate
         }
       }
     )
@@ -48,8 +55,8 @@ export class Event {
             return Events.create({
               title,
               description,
-              date,
-              time,
+              startDate,
+              endDate,
               center: venue.name,
               imgUrl,
               userId: id,
@@ -83,7 +90,8 @@ export class Event {
           // TODO: find out the correct status code to be used here
           status: 'Unsuccessful',
           message:
-            'Please ensure you are entering the centerId as an integer in the req.params'
+            'Please ensure you are entering the centerId as an integer in the req.params',
+          error
         });
       });
   }
@@ -104,14 +112,13 @@ export class EventUpdate {
    * @memberof EventUpdate
    */
   static updateEvent(req, res) {
-    const { title, description, date, time, center } = req.body;
+    const { title, description, startDate, endDate, center, imgUrl } = req.body;
     const { id } = req.decoded;
     const { eventId } = req.params;
     /* Find Events */
-    return Events.find({
+    return Events.findOne({
       where: {
-        id: parseInt(eventId, 10),
-        userId: id
+        id: parseInt(eventId, 10)
       }
     })
       .then(event => {
@@ -121,14 +128,21 @@ export class EventUpdate {
             message: 'Event Not Found'
           });
         }
+        if (event.userId !== id) {
+          return res.status(403).send({
+            status: 'Unsuccessful',
+            message: 'you are not authorized to perform this action'
+          });
+        }
         /* Update recipe if found and return update */
         return event
           .update({
             title: title || event.title,
             description: description || event.description,
-            date: date || event.date,
-            time: time || event.time,
-            center: center || event.center
+            startDate: startDate || event.startDate,
+            endDate: endDate || event.endDate,
+            center: center || event.center,
+            imgUrl: imgUrl || event.imgUrl
           })
           .then(updatedEvent =>
             res.status(201).send({
@@ -148,7 +162,8 @@ export class EventUpdate {
       .catch(err =>
         res.status(422).send({
           status: 'Unsuccessful',
-          message: 'Please ensure you are entering a value'
+          message: 'Please ensure you are entering a value',
+          error: err
         })
       );
   }
@@ -170,28 +185,30 @@ export class EventDelete {
    */
   static deleteEvent(req, res) {
     const userId = req.decoded.id;
+    let eventId;
     return Events.findOne({
       where: {
-        id: req.params.eventId,
-        userId
+        id: req.params.eventId
       }
     })
       .then(event => {
-        if (!event) {
-          return res.status(404).send({
+        if (event.userId !== userId) {
+          return res.status(403).send({
             status: 'Unsuccessful',
-            message: 'Event Not Found'
+            message: 'You are unauthorised from performing this action'
           });
         }
+        eventId = event.id;
         return event.destroy().then(() =>
           res.status(200).send({
             status: 'Success',
-            message: 'Event Successfully Deleted'
+            message: 'Event Successfully Deleted',
+            eventId
           })
         );
       })
       .catch(err =>
-        res.status(422).send({
+        res.status(404).send({
           status: 'Unsuccessful',
           message: 'No such event is available'
         })
@@ -216,15 +233,14 @@ export class GetEvent {
   static getEvent(req, res) {
     return Events.findOne({
       where: {
-        id: req.params.eventId,
-        userId: req.decoded.id
+        id: req.params.eventId
       }
     })
       .then(event => {
-        if (!event) {
-          return res.status(404).send({
+        if (event.userId !== req.decoded.id) {
+          return res.status(403).send({
             status: 'Unsuccessful',
-            message: 'No event available, please post an event'
+            message: 'You are not authorized to carry out this action'
           });
         }
         return res.status(200).send({
@@ -234,7 +250,7 @@ export class GetEvent {
         });
       })
       .catch(() =>
-        res.status(422).send({
+        res.status(404).send({
           status: 'Unsuccessful',
           message: 'No such event is available'
         })

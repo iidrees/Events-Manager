@@ -4,6 +4,8 @@ import { Redirect, Link, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import _ from 'lodash';
+
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
 import { getEvents } from '../actions/eventAction';
@@ -100,30 +102,45 @@ class GetEvents extends React.Component {
     }
     return (
       <div>
-        <div className="container" id="myevent">
-          <div className="row">
-            {/* <!-- START BODY-HEADER --> */}
-            <GetEventsHeaderComponent events={events} />
-            {/* <!-- END BODY-HEADER --> */}
-            <EventComponent
-              onChange={this.onChange}
-              userId={userId}
-              events={events}
-            />
+        {_.isEmpty(events.events) ? (
+          // I still need to test this
+          <h1
+            style={{
+              paddingTop: '200px',
+              marginLeft: '400px',
+              fontSize: '100px'
+            }}
+          >
+            404 Not found
+          </h1>
+        ) : (
+          <div>
+            <div className="container" id="myevent">
+              <div className="row">
+                {/* <!-- START BODY-HEADER --> */}
+                <GetEventsHeaderComponent events={events} />
+                {/* <!-- END BODY-HEADER --> */}
+                <EventComponent
+                  onChange={this.onChange}
+                  userId={userId}
+                  events={events}
+                />
+              </div>
+            </div>
+            <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
+              {
+                <Pagination
+                  onChange={this.onChange}
+                  current={this.state.currentPage}
+                  total={events.count}
+                  locale={{ items_per_page: 'items' }}
+                />
+              }
+            </div>
+            <div id="card-body1" />
+            <Footer />
           </div>
-        </div>
-        <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
-          {
-            <Pagination
-              onChange={this.onChange}
-              current={this.state.currentPage}
-              total={events.count}
-              locale={{ items_per_page: 'items' }}
-            />
-          }
-        </div>
-        <div id="card-body1" />
-        <Footer />
+        )}
       </div>
     );
   }

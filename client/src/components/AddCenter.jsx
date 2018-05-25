@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Redirect, withRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import { Wave, Third } from 'react-preloading-component';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
@@ -100,6 +101,14 @@ class AddCenter extends React.Component {
       toastr.success(`${createCenter.message}`);
       createCenter.status = '';
       return <Redirect to="/getCenters" push />;
+    }
+    if (createCenter.isLoading) {
+      createCenter.isLoading = false;
+      return (
+        <div style={{ paddingTop: '350px' }}>
+          <Wave />
+        </div>
+      );
     }
     return (
       <div>

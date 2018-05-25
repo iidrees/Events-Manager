@@ -1,7 +1,9 @@
 // import depdendencies
 import validator from 'validator';
 import moment from 'moment';
+import Sequelize from 'sequelize';
 
+import { Events } from '../models';
 /**
  * @export
  * @class InputValidation
@@ -19,7 +21,7 @@ class InputValidation {
   static centerInput(req, res, next) {
     const { name, location, owner, capacity, description, imgUrl } = req.body;
 
-    const alphaNum = /^[a-zA-Z0-9]+$/i;
+    const alphaNum = /^[a-zA-Z0-9]/;
 
     if (
       typeof name !== 'string' ||
@@ -39,7 +41,7 @@ class InputValidation {
       validator.isEmpty(owner) ||
       validator.isEmpty(description) ||
       validator.isEmpty(capacity + '') ||
-      validator.isEmpty(imgUrl)
+      validator.isEmpty(imgUrl + '')
     ) {
       // checks if the user input is empty
       return res.status(422).send({
@@ -69,12 +71,13 @@ class InputValidation {
    * @memberof InputValidation
    */
   static eventInput(req, res, next) {
-    const { title, description, date, time, imgUrl } = req.body;
+    const { title, description, startDate, endDate, time, imgUrl } = req.body;
     const center = req.params.centerId;
 
     if (
       typeof title !== 'string' ||
-      typeof date !== 'string' ||
+      typeof startDate !== 'string' ||
+      typeof endDate !== 'string' ||
       typeof description !== 'string' ||
       typeof imgUrl + '' !== 'string'
     ) {
@@ -86,7 +89,8 @@ class InputValidation {
 
     if (
       validator.isEmpty(title) ||
-      validator.isEmpty(date) ||
+      validator.isEmpty(startDate) ||
+      validator.isEmpty(endDate) ||
       validator.isEmpty(description) ||
       validator.isEmpty(imgUrl + '')
     ) {
@@ -96,11 +100,47 @@ class InputValidation {
       });
     }
 
-    if (!moment(date, 'YYYY-MM-DD', true).isValid()) {
+    if (
+      !moment(startDate, 'YYYY-MM-DD', true).isValid() ||
+      !moment(endDate, 'YYYY-MM-DD', true).isValid()
+    ) {
       return res.status(422).send({
         status: 'Unsuccessful',
         message: "This is the valid date format  'YYYY-MM-DD'"
       });
+    }
+
+    if (startDate && endDate) {
+      const Op = Sequelize.Op;
+
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      return Events.findOne({
+        where: {
+          [Op.or]: {
+            startDate: {
+              [Op.between]: [startDate, endDate]
+            },
+            endDate: {
+              [Op.between]: [startDate, endDate]
+            }
+          }
+        }
+      })
+        .then(event => {
+          if (event) {
+            return res.status(422).send({
+              status: 'Unsuccessful',
+              message:
+                'There is an event already scheduled for this day, kindly pick another date.',
+              event
+            });
+          }
+          return next();
+        })
+        .catch(err => {
+          return err;
+        });
     }
 
     next();

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 const DetailsComponent = props => (
   <div>
@@ -17,7 +19,12 @@ const DetailsComponent = props => (
             <span>Event:</span> {props.event.title}
           </p>
           <p className="font-details">
-            <span>DATE:</span> {props.event.date}
+            <span>Event starts on :</span>{' '}
+            <Moment format="DD/MM/YYYY">{props.event.startDate}</Moment>
+          </p>
+          <p className="font-details">
+            <span>Event ends on:</span>{' '}
+            <Moment format="DD/MM/YYYY">{props.event.endDate}</Moment>
           </p>
           <p className="font-details">
             <span>Center:</span> {props.event.center}

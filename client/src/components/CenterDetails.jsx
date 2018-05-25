@@ -4,6 +4,8 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import _ from 'lodash';
+import { Wave } from 'react-preloading-component';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
@@ -96,14 +98,10 @@ class CenterDetails extends React.Component {
   render() {
     const { center, user } = this.props;
     let userId, token, decoded;
+
     try {
       token = localStorage.getItem('x-access-token');
-
       userId = jwt.decode(token).id;
-
-      if (!jwt.decode(token).admin) {
-        return <Redirect to="/myevents" push />;
-      }
     } catch (error) {
       decoded = null;
     }
@@ -114,65 +112,73 @@ class CenterDetails extends React.Component {
       toastr.error(`${center.message}`);
       center.status = '';
     }
+
     return (
       <div>
-        <div className="container">
-          <div className="row">
-            <div className="container" id="center-details-header">
-              {/* START PAGE HEADER */}
-              <div className="row">
-                <div className="col-sm-12">
-                  <h1 className="text-center head-1">Center details </h1>
-                  <p className="head-para text-center">{center.center.name}</p>
+        {_.isEmpty(center.center) ? (
+          <Redirect to="/getCenters" push />
+        ) : (
+          <div className="container">
+            <div className="row">
+              <div className="container" id="center-details-header">
+                {/* START PAGE HEADER */}
+                <div className="row">
+                  <div className="col-sm-12">
+                    <h1 className="text-center head-1">Center details </h1>
+                    <p className="head-para text-center">
+                      {center.center.name}
+                    </p>
+                  </div>
                 </div>
+                <hr />
               </div>
-              <hr />
-            </div>
-            {/* END PAGE-HEADER */}
+              {/* END PAGE-HEADER */}
 
-            <div className="container" id="center-details-slider">
-              {' '}
-              <CenterDetailsComponent
-                center={center}
-                onChange={this.onchange}
-                onDelete={this.onDelete}
-              />
-              <hr />
-            </div>
-            {/* <!-- END OF EVENT CENTER DETAILS --> */}
-
-            <div className="container" id="event-holding-header">
-              <div className="row">
-                <div className=" col-sm offset-md-3 col-lg-12">
-                  <h4 className="text-center" id="head-holding">
-                    Events At This Center
-                  </h4>
-                </div>
-              </div>
-              <hr />
-            </div>
-
-            <CenterDetailsBodyComponent center={center} />
-            <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
-              {
-                <Pagination
-                  className="pagination"
-                  onChange={this.onChange}
-                  showTitle={true}
-                  showPrevNextJumpers={true}
-                  current={this.state.currentPage}
-                  total={center.count}
-                  locale={{
-                    items_per_page: 'items',
-                    prev_page: 'Previous',
-                    next_page: 'Next',
-                    page: 'page'
-                  }}
+              <div className="container" id="center-details-slider">
+                {' '}
+                <CenterDetailsComponent
+                  center={center}
+                  onChange={this.onchange}
+                  onDelete={this.onDelete}
+                  userId={userId}
                 />
-              }
+                <hr />
+              </div>
+              {/* <!-- END OF EVENT CENTER DETAILS --> */}
+
+              <div className="container" id="event-holding-header">
+                <div className="row">
+                  <div className=" col-sm offset-md-3 col-lg-12">
+                    <h4 className="text-center" id="head-holding">
+                      Events At This Center
+                    </h4>
+                  </div>
+                </div>
+                <hr />
+              </div>
+
+              <CenterDetailsBodyComponent center={center} />
+              <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
+                {
+                  <Pagination
+                    className="pagination"
+                    onChange={this.onChange}
+                    showTitle={true}
+                    showPrevNextJumpers={true}
+                    current={this.state.currentPage}
+                    total={center.count}
+                    locale={{
+                      items_per_page: 'items',
+                      prev_page: 'Previous',
+                      next_page: 'Next',
+                      page: 'page'
+                    }}
+                  />
+                }
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }

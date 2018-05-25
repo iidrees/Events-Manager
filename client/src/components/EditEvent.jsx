@@ -4,9 +4,12 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import { Wave, Third } from 'react-preloading-component';
+import _ from 'lodash';
+
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { editEvent } from '../actions/editEventAction';
+import { editEvent, imageUpload } from '../actions/editEventAction';
 import getCenters from '../actions/getCentersAction';
 import { detailEvent } from '../actions/eventAction';
 import { history } from '../routes';
@@ -14,7 +17,7 @@ import EditEventComponent from './EventsComponents/EditEventComponent.jsx';
 import EditEventHeaderComponent from './EventsComponents/EditEventHeaderComponent.jsx';
 /**
  * @param {event} event - Object
- * @class Addevents
+ * @class EditEvents
  * @extends { React.Component }
  */
 class EditEvent extends React.Component {
@@ -56,15 +59,49 @@ class EditEvent extends React.Component {
     event.preventDefault();
     let { eventData } = this.state;
     const { dispatch } = this.props;
-    return dispatch(editEvent(eventData, this.props.match.params.id));
+    if (
+      eventData.imgFile === null ||
+      eventData.imgFile === undefined ||
+      !eventData.imgFile
+    ) {
+      return dispatch(editEvent(eventData, eventData.center));
+    }
+    return dispatch(imageUpload(eventData, this.props.match.params.id));
+  };
+
+  onImageChange = e => {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let imgFile = e.target.files[0];
+
+    try {
+      if (imgFile.type === 'image/jpeg' || imgFile.type === 'image/png') {
+        reader.onloadend = () => {
+          this.setState({
+            eventData: {
+              ...this.state.eventData,
+              imgFile: imgFile,
+              imgUrl: reader.result
+            }
+          });
+        };
+        reader.readAsDataURL(imgFile);
+      } else {
+        alert('Please upload an image with the .jpeg or .png file format');
+      }
+    } catch (error) {
+      alert('Please upload an image with the .jpeg or .png file format');
+    }
   };
 
   /**
    * @returns {any} -
-   * @memberof Addevents
+   * @memberof EditEvents
    */
   render() {
     const { centers, event, user, editEvents } = this.props;
+
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');
@@ -89,7 +126,17 @@ class EditEvent extends React.Component {
       editEvents.status = '';
       return <Redirect to="/myevents" push />;
     }
-
+    if (editEvents.isLoading) {
+      editEvents.isLoading = false;
+      return (
+        <div style={{ paddingTop: '350px' }}>
+          <Wave />
+        </div>
+      );
+    }
+    if (event.status === '') {
+      return <Redirect to="/myevents" push />;
+    }
     return (
       <div>
         <div className="container">
@@ -98,6 +145,7 @@ class EditEvent extends React.Component {
             onSubmit={this.onSubmit}
             onChange={this.onChange}
             centers={centers}
+            onImageChange={this.onImageChange}
             {...this.state}
             editEvents={editEvents}
           />

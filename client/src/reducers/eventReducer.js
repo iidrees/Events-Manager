@@ -4,7 +4,8 @@ import {
   EVENT_RETRIEVED,
   EVENT_FAILED,
   ADD_EVENT,
-  ADD_IMG_FAIL
+  ADD_IMG_FAIL,
+  GET_EVENTS_ON_DELETE
 } from '../actions/types';
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
   status: '',
   message: '',
   events: [],
-  error: ''
+  error: '',
+  eventId: ''
 };
 
 export default (state = initialState, action) => {
@@ -43,6 +45,7 @@ export default (state = initialState, action) => {
         error: action.error
       };
     }
+
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import Pagination from 'rc-pagination';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import _ from 'lodash';
 
 import Footer from './Footer.jsx';
 import getCenters from '../actions/getCentersAction';
@@ -64,6 +65,7 @@ class Center extends React.Component {
    */
   render() {
     const { centers, user, currentPage, itemsPerPage } = this.props;
+
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');

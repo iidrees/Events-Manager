@@ -20,14 +20,29 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
-    date: {
+    startDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       isDate: true,
       unique: {
         args: true,
         msg: 'Date already booked, enter another date'
       },
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Please enter a date'
+        },
+        isDate: {
+          args: true,
+          msg: 'Please enter a valid date'
+        }
+      }
+    },
+    endDate: {
+      type: DataTypes.DATEONLY,
+      allowNull: true,
+      isDate: true,
       validate: {
         notEmpty: {
           args: true,
@@ -48,6 +63,11 @@ export default (sequelize, DataTypes) => {
           msg: 'Please enter a center'
         }
       }
+    },
+    isCancelled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: true
     },
     imgUrl: {
       type: DataTypes.STRING,

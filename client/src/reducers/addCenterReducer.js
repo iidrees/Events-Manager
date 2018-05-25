@@ -1,14 +1,25 @@
-import { ADD_CENTER, ADD_CENTER_FAIL, ADD_IMG_FAIL } from '../actions/types';
+import {
+  ADD_CENTER,
+  ADD_CENTER_FAIL,
+  ADD_IMG_FAIL,
+  ADD_CENTER_START
+} from '../actions/types';
 
 const initialState = {
   authenticated: false,
   status: '',
   message: '',
   data: [],
-  error: ''
+  error: '',
+  isLoading: false
 };
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_CENTER_START: {
+      return {
+        isLoading: true
+      };
+    }
     case ADD_CENTER: {
       return {
         ...state,

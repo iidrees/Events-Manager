@@ -1,7 +1,13 @@
 /* Import action types from the action type module */
-import { GET_MY_EVENTS, MY_EVENT_FAIL } from '../actions/types';
+import {
+  GET_MY_EVENTS,
+  MY_EVENT_FAIL,
+  DELETE_EVENT,
+  DELETE_EVENT_FAIL,
+  GET_EVENTS_ON_DELETE
+} from '../actions/types';
 
-const initialState = {
+export const initialState = {
   /* The initial state of the component */
   status: '',
   message: '',
@@ -28,6 +34,26 @@ export default (state = initialState, action) => {
         status: 'Unsuccessful' || undefined,
         message: action.err.message,
         error: action.err.error
+      };
+    }
+    case DELETE_EVENT: {
+      let newEvents = state.events.filter(
+        obj => obj.id !== action.eventDeleted.eventId
+      );
+      return {
+        ...state,
+        status: 'Success',
+        message: action.eventDeleted.message,
+        authenticated: true,
+        events: [...newEvents]
+      };
+    }
+    case DELETE_EVENT_FAIL: {
+      return {
+        ...state,
+        status: 'Unsuccessful' || undefined,
+        error: action.error.error,
+        authenticated: false
       };
     }
     default:

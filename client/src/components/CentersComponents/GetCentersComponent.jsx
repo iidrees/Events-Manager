@@ -8,35 +8,36 @@ const GetCentersComponent = props => (
         return (
           <div className="col-sm-12 col-md-6 col-lg-4" key={center.id}>
             <div className="card-deck cont-body" id="card-center1">
-              <div className="card" id="card1" style={{ width: '18rem' }}>
-                {props.userId !== center.userId ? (
+              <div
+                className="card "
+                id="card1"
+                // style={{ width: '18rem' }}
+              >
+                <div className="image-show">
                   <img
                     className="card-img-top img-fluid"
                     src={`${center.imgUrl}`}
-                    alt="Card image cap"
+                    alt="Center image"
                   />
-                ) : (
-                  <Link to={`/centerdetails/${center.id}`}>
-                    <img
-                      className="card-img-top img-fluid"
-                      src={`${center.imgUrl}`}
-                      alt="Center image"
-                    />
-                  </Link>
-                )}
+                </div>
+
                 <div
                   className="card-body"
                   style={{ borderBottom: 'solid grey 0.5px' }}
                 >
-                  <h5 className="card-title even-font">
-                    <span className="all-centers-font">Center: </span>
-                    {center.name}
-                  </h5>
-
-                  <p className=" card-title location-font">
-                    <span className="all-centers-font">LOCATION: </span>
-                    {center.location}
-                  </p>
+                  <Link
+                    to={`/centerdetails/${center.id}`}
+                    style={{ textDecoration: 'none', color: 'black' }}
+                  >
+                    <h5 className="card-title even-font">
+                      <span className="all-centers-font">Center: </span>
+                      {center.name}
+                    </h5>
+                    <p className=" card-title location-font">
+                      <span className="all-centers-font">LOCATION: </span>
+                      {center.location}
+                    </p>{' '}
+                  </Link>
                 </div>
               </div>
             </div>

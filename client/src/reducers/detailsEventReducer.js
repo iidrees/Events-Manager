@@ -3,16 +3,15 @@ import {
   GET_EVENT,
   EVENT_FAIL,
   GET_EVENT_DETAIL,
-  EVENT_DETAIL_FAIL,
-  DELETE_EVENT,
-  DELETE_EVENT_FAIL
+  EVENT_DETAIL_FAIL
 } from '../actions/types';
 
 const initialState = {
   /* The initial state of the component */
   authenticated: false,
   status: '',
-  message: ''
+  message: '',
+  error: ''
 };
 
 export default (state = initialState, action) => {
@@ -32,22 +31,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
-        authenticated: false
-      };
-    }
-    case DELETE_EVENT: {
-      return {
-        ...state,
-        status: 'Success',
-        message: action.eventDeleted.message,
-        authenticated: true
-      };
-    }
-    case DELETE_EVENT_FAIL: {
-      return {
-        ...state,
-        status: 'Unsuccessful' || undefined,
-        error: action.error.error,
         authenticated: false
       };
     }
