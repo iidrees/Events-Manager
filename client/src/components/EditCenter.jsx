@@ -15,6 +15,7 @@ import { history } from '../routes';
 import EditCenterComponent from './CentersComponents/EditCenterComponent.jsx';
 /**
  * @class EditCenter
+ * @param {event} event -
  * @extends {React.Component}
  */
 class EditCenter extends React.Component {

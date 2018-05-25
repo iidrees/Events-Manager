@@ -13,6 +13,7 @@ import {
  * @export {function}
  * @param {eventData} eventData - JSON
  * @param {index} index -
+ * @param {any} imgUrl - the url for the image uploaded on cloudinary
  * @returns {JSON} JSON data containing events
  */
 export const editEvent = (eventData, index, imgUrl) => {
