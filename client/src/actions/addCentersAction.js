@@ -1,7 +1,12 @@
 import axios from 'axios';
 import { history } from '../routes';
 
-import { ADD_CENTER, ADD_CENTER_FAIL, ADD_IMG_FAIL } from './types';
+import {
+  ADD_CENTER_START,
+  ADD_CENTER,
+  ADD_CENTER_FAIL,
+  ADD_IMG_FAIL
+} from './types';
 
 /**
  * Axios will help make POST request to add a center
@@ -49,6 +54,7 @@ export const imageUpload = centerData => {
   formData.append('file', centerData.imgFile);
   formData.append('upload_preset', process.env.UPLOAD_PRESET);
   return dispatch => {
+    dispatch({ type: ADD_CENTER_START });
     axios({
       method: 'post',
       url: process.env.CLOUDINARY_URL,

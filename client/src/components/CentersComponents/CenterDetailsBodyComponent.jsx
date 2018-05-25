@@ -10,7 +10,7 @@ const CenterDetailsBodyComponent = props => (
             <div className="card-deck cont-body" id="center-details-events">
               <div className="card" style={{ width: '18rem' }}>
                 <img
-                  className="card-img-top"
+                  className="card-img-top image-show"
                   src={`${event.imgUrl}`}
                   alt="Card image cap"
                 />

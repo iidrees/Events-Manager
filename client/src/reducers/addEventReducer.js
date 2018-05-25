@@ -1,14 +1,23 @@
-import { ADD_EVENT, ADD_EVENT_FAIL, ADD_IMG_FAIL } from '../actions/types';
+import {
+  ADD_EVENT,
+  ADD_EVENT_FAIL,
+  ADD_IMG_FAIL,
+  ADD_EVENT_LOAD
+} from '../actions/types';
 
 const initialState = {
   authenticated: false,
   status: '',
   message: '',
   data: [],
-  error: ''
+  error: '',
+  isLoading: false
 };
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ADD_EVENT_LOAD: {
+      return { isLoading: true };
+    }
     case ADD_EVENT: {
       return {
         ...state,
@@ -23,14 +32,16 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Unsuccessful' || undefined,
         message: action.error.message,
-        error: action.error.error
+        error: action.error.error,
+        isLoading: false
       };
     }
     case ADD_IMG_FAIL: {
       return {
         ...state,
         status: 'Unsuccessful',
-        error: action.error
+        error: action.error,
+        isLoading: false
       };
     }
     default:

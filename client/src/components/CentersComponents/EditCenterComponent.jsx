@@ -85,8 +85,9 @@ const EditCenterComponent = props => (
         <input
           type="file"
           className="form-control-file"
-          onChange={props.onChange}
-          id="exampleInputFile"
+          onChange={props.onImageChange}
+          id="input-file"
+          name="images"
           aria-describedby="fileHelp"
         />
       </div>

@@ -123,7 +123,7 @@ export class CenterDelete {
       });
     }
     if (!validator.isInt(id)) {
-      // checking if the capacity is an integer
+      // checking if the id is an integer
       return res.status(422).send({
         status: 'Unsuccessful',
         message: 'CenterId must be a number'
@@ -144,7 +144,8 @@ export class CenterDelete {
       return center.destroy().then(() =>
         res.status(200).send({
           status: 'Success',
-          message: 'Center Successfuly Deleted'
+          message: 'Center Successfuly Deleted',
+          centerId: id
         })
       );
     });

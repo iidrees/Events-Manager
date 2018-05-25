@@ -29,16 +29,30 @@ const EditEventComponent = props => (
           </div>
           <div className="form-group">
             <label htmlFor="add-event" className=" home-para">
-              Date of event:
+              Event starts:
             </label>
             <input
               className="form-control"
               onChange={props.onChange}
-              name="date"
+              name="startDate"
               type="date"
               id="form-event2"
               placeholder="YY/MM/DD"
-              value={props.eventData.date}
+              value={props.eventData.startDate}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="add-event" className=" home-para">
+              Event ends:
+            </label>
+            <input
+              className="form-control"
+              onChange={props.onChange}
+              name="endDate"
+              type="date"
+              id="form-event2"
+              placeholder="YY/MM/DD"
+              value={props.eventData.endDate}
             />
           </div>
           <div className="form-group">
@@ -84,7 +98,9 @@ const EditEventComponent = props => (
             <input
               type="file"
               className="form-control-file"
-              onChange={props.onChange}
+              onChange={props.onImageChange}
+              id="input-file"
+              name="images"
               aria-describedby="fileHelp"
             />
           </div>

@@ -4,6 +4,8 @@ import { Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import validator from 'validator';
+import { Wave, Third } from 'react-preloading-component';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
@@ -85,7 +87,6 @@ class AddEvent extends React.Component {
    */
   render() {
     const { user, centers, event } = this.props;
-
     let userId, token, decoded;
     try {
       token = localStorage.getItem('x-access-token');
@@ -112,6 +113,14 @@ class AddEvent extends React.Component {
       event.status = '';
       return <Redirect to="/myevents" push />;
     }
+    if (event.isLoading) {
+      event.isLoading = false;
+      return (
+        <div style={{ paddingTop: '350px' }}>
+          <Wave />
+        </div>
+      );
+    }
     return (
       <div>
         <div className="container" id="add-events">
@@ -131,7 +140,6 @@ class AddEvent extends React.Component {
           </div>
           {/* <!-- End container for the Head section --> */}
         </div>
-        <Footer />
       </div>
     );
   }

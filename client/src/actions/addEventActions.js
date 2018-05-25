@@ -3,7 +3,13 @@
 import axios from 'axios';
 import { history } from '../routes';
 
-import { ADD_EVENT, ADD_EVENT_FAIL, ADD_IMG_FAIL, GET_EVENT } from './types';
+import {
+  ADD_EVENT,
+  ADD_EVENT_FAIL,
+  ADD_IMG_FAIL,
+  GET_EVENT,
+  ADD_EVENT_LOAD
+} from './types';
 
 /**
  * Axios will help make POST request to add event
@@ -20,11 +26,10 @@ export const addEvent = (eventData, index, imgUrl) => {
       url: `/api/v1/events/${index}`,
       data: {
         title: eventData.title,
-        date: eventData.date,
-        time: eventData.time,
+        startDate: eventData.startDate,
+        endDate: eventData.endDate,
         center: eventData.center,
         description: eventData.description,
-        type: eventData.type,
         imgUrl: imgUrl
       },
       headers: {
@@ -53,6 +58,7 @@ export const imageUpload = (eventData, index) => {
   formData.append('file', eventData.imgFile);
   formData.append('upload_preset', process.env.UPLOAD_PRESET);
   return dispatch => {
+    dispatch({ type: ADD_EVENT_LOAD });
     axios({
       method: 'post',
       url: process.env.CLOUDINARY_URL,

@@ -29,12 +29,26 @@ const AddEventComponent = props => (
           </div>
           <div className="form-group">
             <label htmlFor="add-event" className=" home-para">
-              Date of event:
+              Event starts:
             </label>
             <input
               className="form-control"
               onChange={props.onChange}
-              name="date"
+              name="startDate"
+              type="date"
+              id="form-event2"
+              placeholder="YY/MM/DD"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="add-event" className=" home-para">
+              Event ends:
+            </label>
+            <input
+              className="form-control"
+              onChange={props.onChange}
+              name="endDate"
               type="date"
               id="form-event2"
               placeholder="YY/MM/DD"

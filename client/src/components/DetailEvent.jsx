@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
+import _ from 'lodash';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
@@ -52,6 +53,7 @@ class DetailEvent extends React.Component {
    */
   render() {
     const { event, user } = this.props;
+
     let userId, token, decoded;
 
     try {
@@ -66,25 +68,33 @@ class DetailEvent extends React.Component {
     if (event.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
-      toastr.error(`${event.message}`);
+      toastr.error(`${event.message} Event not available`);
       event.status = '';
     }
+
     return (
       <div>
-        <div className="container" id="myevent">
-          <div className="row">
-            <div className="container">
-              {/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
+        {_.isEmpty(event.message) ? (
+          <Redirect to="/myevents" push />
+        ) : (
+          <div>
+            {' '}
+            <div className="container" id="myevent">
               <div className="row">
-                <DetailsHeaderComponent event={event} />
+                <div className="container">
+                  {/* <!-- START BODY-HEADER WITH SEARCH FORM --> */}
+                  <div className="row">
+                    <DetailsHeaderComponent event={event} />
+                  </div>
+                  <DetailsComponent event={event} onDelete={this.onDelete} />
+                </div>
+                {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
               </div>
-              <DetailsComponent event={event} onDelete={this.onDelete} />
             </div>
-            {/* <!-- END BODY-HEADER WITH SEARCH FORM --> */}
+            <div id="card-body1" />
+            <Footer />
           </div>
-        </div>
-        <div id="card-body1" />
-        <Footer />
+        )}
       </div>
     );
   }

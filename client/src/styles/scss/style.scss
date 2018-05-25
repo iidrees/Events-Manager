@@ -183,8 +183,12 @@ Event Details Page
   margin-left: 40%;
 }
 
-img {
-  height: 150px !important;
+img.card-img-top.img-fluid {
+  transform: translateY(-25%);
+}
+.image-show {
+  height: 200px;
+  overflow: hidden;
 }
 .card-title {
   text-overflow: ellipsis;

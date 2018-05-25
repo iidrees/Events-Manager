@@ -15,15 +15,26 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      date: {
+      startDate: {
         type: Sequelize.DATEONLY,
-        allowNull: false,
+        allowNull: true,
+        isDate: true,
+        unique: true
+      },
+      endDate: {
+        type: Sequelize.DATEONLY,
+        allowNull: true,
         isDate: true,
         unique: true
       },
       center: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      isCancelled: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: true
       },
       imgUrl: {
         type: Sequelize.STRING,
