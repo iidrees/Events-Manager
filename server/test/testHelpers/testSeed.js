@@ -1,4 +1,5 @@
 import { Users, Centers, Events } from '../../src/models';
+
 const bcrypt = require('bcrypt');
 
 export const users = [
@@ -41,7 +42,8 @@ export const events = [
     time: '10:20 PM',
     type: 'private',
     title: 'The Phoenix Party',
-    date: '2020-05-26',
+    startDate: new Date('2020-05-26'),
+    endDate: new Date('2020-05-30'),
     center: 'Ketu-ojota-mall',
     userId: 9,
     centerId: 1,
@@ -54,7 +56,8 @@ export const events = [
     time: '10:20 PM',
     type: 'private',
     title: 'The Phoenix Party',
-    date: '2020-05-26',
+    startDate: new Date('2020-06-26'),
+    endDate: new Date('2020-06-30'),
     center: 'Ketu-ojota-mall',
     userId: 1,
     centerId: 1,

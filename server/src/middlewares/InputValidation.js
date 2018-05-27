@@ -117,14 +117,24 @@ class InputValidation {
       const end = new Date(endDate);
       return Events.findOne({
         where: {
-          [Op.or]: {
-            startDate: {
-              [Op.between]: [startDate, endDate]
+          [Op.or]: [
+            {
+              startDate: {
+                [Op.between]: [startDate, endDate]
+              },
+              endDate: {
+                [Op.between]: [startDate, endDate]
+              }
             },
-            endDate: {
-              [Op.between]: [startDate, endDate]
+            {
+              startDate: {
+                [Op.lte]: startDate
+              },
+              endDate: {
+                [Op.gte]: endDate
+              }
             }
-          }
+          ]
         }
       })
         .then(event => {

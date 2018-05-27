@@ -69,11 +69,11 @@ class EditEvent extends React.Component {
     return dispatch(imageUpload(eventData, this.props.match.params.id));
   };
 
-  onImageChange = e => {
-    e.preventDefault();
+  onImageChange = event => {
+    event.preventDefault();
 
     let reader = new FileReader();
-    let imgFile = e.target.files[0];
+    let imgFile = event.target.files[0];
 
     try {
       if (imgFile.type === 'image/jpeg' || imgFile.type === 'image/png') {

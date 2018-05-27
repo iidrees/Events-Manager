@@ -9,8 +9,7 @@ import { DELETE_CENTER, DELETE_CENTER_FAIL } from './types';
  * @param {any} index - centerId
  * @returns {void} -
  */
-export const deleteCenter = index => {
-  // eslint-disable-line
+export const deleteCenter = index => {// eslint-disable-line
   return dispatch => {
     return axios({
       method: 'DELETE',

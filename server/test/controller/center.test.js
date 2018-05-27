@@ -22,7 +22,7 @@ describe('Centers Controller', () => {
       truncate: true,
       cascade: true,
       restartIdentity: true
-    })
+    });
 
     Centers.destroy({
       truncate: true,
@@ -30,14 +30,11 @@ describe('Centers Controller', () => {
       restartIdentity: true
     }).then(() => {
       seedUser();
-    token = user1Token;
-    adminToken = userAdmin;
-    superAdminToken = userSuperAdmin;
-    done();
+      token = user1Token;
+      adminToken = userAdmin;
+      superAdminToken = userSuperAdmin;
+      done();
     });
-
-
-    
   });
   describe('GET /api/v1/centers?page=${index}', () => {
     it('should return "No Centers Found" when user makes query to an empty database', done => {
@@ -79,6 +76,27 @@ describe('Centers Controller', () => {
           done();
         });
     });
+
+    it('should return "Unsuccessful" when an a value was not entered', done => {
+      request(app)
+        .post('/api/v1/centers')
+        .set('x-access-token', adminToken)
+        .send({
+          name: 'Muson Center',
+          location: 'Lagos',
+          owner: 'The Civil Society',
+          description: 'This venue is a great place to make things happen',
+          imgUrl:
+            'http://res.cloudinary.com/idreeskun/image/upload/v1521067975/tpffsaf7hmkoksqzq7sq.jpg'
+        })
+        .expect(422)
+        .then(res => {
+          assert.deepEqual(res.status, 422);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(res.body.message, 'Please fill all input fields');
+          done();
+        });
+    });
     it('should add a new center succesfully on "/api/v1/centers" endpoint when an admin adds a center', done => {
       request(app)
         .post('/api/v1/centers')
@@ -117,7 +135,10 @@ describe('Centers Controller', () => {
         .then(res => {
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Please all form fields are required to be filled');
+          assert.deepEqual(
+            res.body.message,
+            'Please all form fields are required to be filled'
+          );
           done();
         });
     });
@@ -138,10 +159,7 @@ describe('Centers Controller', () => {
         .then(res => {
           assert.deepEqual(res.status, 409);
           assert.deepEqual(res.body.status, ' Unsuccessful');
-          assert.deepEqual(
-            res.body.message,
-            'Center already exist'
-          );
+          assert.deepEqual(res.body.message, 'Center already exist');
           done();
         });
     });

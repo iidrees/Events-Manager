@@ -13,6 +13,7 @@ import {
  *
  * @param {any} index - the centerId
  * @param {any} centerData -the centerData is the update
+ * @param {any} imgUrl - the url for the image uploaded on cloudinary
  * @returns {void}
  */
 export const editCenter = (index, centerData, imgUrl) => {
@@ -44,8 +45,8 @@ export const editCenter = (index, centerData, imgUrl) => {
 
 /**
  * @export {function} imageUpload function
- * @param {centerData} centerData object sent to the server
  * @param {index}  index {centerId}
+ * @param {centerData} centerData object sent to the server
  * @returns {URL} URL link returned is used as a parameter
  */
 export const imageUpload = (index, centerData) => {

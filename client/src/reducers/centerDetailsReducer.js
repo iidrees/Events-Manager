@@ -1,8 +1,8 @@
 import {
   GET_CENTER,
-  GET_CENTER_FAIL
-  // DELETE_CENTER,
-  // DELETE_CENTER_FAIL
+  GET_CENTER_FAIL,
+  CANCEL_EVENT,
+  CANCEL_EVENT_FAIL
 } from '../actions/types';
 
 const initialState = {
@@ -10,8 +10,7 @@ const initialState = {
   status: '',
   message: '',
   center: {},
-  events: [],
-  isLoading: true
+  events: []
 };
 
 export default (state = initialState, action) => {
@@ -24,17 +23,36 @@ export default (state = initialState, action) => {
         center: action.response.data.center,
         events: [...action.response.data.events.rows],
         count: action.response.data.events.count,
-        authenticated: true,
-        isLoading: true
+        authenticated: true
       };
     }
-    case GET_CENTER_FAIL: {
+    case CANCEL_EVENT: {
+      const newEvent = state.events.map(obj => {
+        if (obj.id === action.response.newEvent.id) {
+          return action.response.newEvent;
+        }
+        return obj;
+      });
+      return {
+        events: [...newEvent],
+        center: state.center
+      };
+    }
+    case CANCEL_EVENT_FAIL: {
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
         message: action.error.message,
-        authenticated: false,
-        isLoading: false
+        authenticated: false
+      };
+    }
+    case GET_CENTER_FAIL: {
+      console.log(action);
+      return {
+        ...state,
+        status: 'Unsuccessful' || undefined,
+        message: action.error.message,
+        authenticated: false
       };
     }
     default:

@@ -72,4 +72,8 @@ export const SIGN_OUT = 'SIGN_OUT';
 
 // TOKEN
 export const SET_TOKEN = 'SET_TOKEN';
-export const REMOVE_TOKEN = 'REMOVE_TOKEN';
+
+// Cancel Event
+
+export const CANCEL_EVENT = 'CANCEL_EVENT';
+export const CANCEL_EVENT_FAIL = 'CANCEL_EVENT_FAIL';

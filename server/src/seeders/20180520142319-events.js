@@ -11,7 +11,6 @@ module.exports = {
           imgUrl:
             'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg',
           title: 'The Phoenix Party',
-          // date: '2020-05-26',
           center: 'Ketu-ojota-mall',
           startDate: new Date('2020-05-26'),
           endDate: new Date('2020-05-30'),
@@ -26,7 +25,6 @@ module.exports = {
           imgUrl:
             'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg',
           title: 'The Phoenix Party',
-          // date: '2020-05-27',
           startDate: new Date('2020-06-26'),
           endDate: new Date('2020-06-30'),
           center: 'Ketu-ojota-mall',

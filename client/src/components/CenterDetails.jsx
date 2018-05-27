@@ -10,14 +10,13 @@ import { Wave } from 'react-preloading-component';
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
 import { deleteCenter } from '../actions/deleteCenterAction';
-import { centerDetails } from '../actions/centerDetailsAction';
+import { centerDetails, cancelEvent } from '../actions/centerDetailsAction';
 import { history } from '../routes';
 import CenterDetailsComponent from './CentersComponents/CenterDetailsComponent.jsx';
 import CenterDetailsBodyComponent from './CentersComponents/CenterDetailsBodyComponent.jsx';
 
 /**
- *
- *
+ * @param {index} index -
  * @class CenterDetails
  * @extends {React.Component}
  */
@@ -35,6 +34,7 @@ class CenterDetails extends React.Component {
     };
     this.onDelete = this.onDelete.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onCancel = this.onCancel.bind(this);
   }
 
   /**
@@ -89,6 +89,15 @@ class CenterDetails extends React.Component {
     dispatch(deleteCenter(center.center.id));
     return this.props.history.push('/getCenters');
   };
+
+  onCancel = index => {
+    let { dispatch } = this.props;
+    toastr.options.preventDuplicates = true;
+    toastr.options.positionClass = 'toast-top-left';
+    toastr.success(`Event cancelled successfully`);
+    return dispatch(cancelEvent(index));
+  };
+
   /**
    *
    *
@@ -98,7 +107,6 @@ class CenterDetails extends React.Component {
   render() {
     const { center, user } = this.props;
     let userId, token, decoded;
-
     try {
       token = localStorage.getItem('x-access-token');
       userId = jwt.decode(token).id;
@@ -115,7 +123,7 @@ class CenterDetails extends React.Component {
 
     return (
       <div>
-        {_.isEmpty(center.center) ? (
+        {_.isEmpty(center.center) && center.status !== 'Success' ? (
           <Redirect to="/getCenters" push />
         ) : (
           <div className="container">
@@ -157,7 +165,11 @@ class CenterDetails extends React.Component {
                 <hr />
               </div>
 
-              <CenterDetailsBodyComponent center={center} />
+              <CenterDetailsBodyComponent
+                center={center}
+                onCancel={this.onCancel}
+                userId={userId}
+              />
               <div className="col-sm-12 col-md-6 col-lg-4 paginator ">
                 {
                   <Pagination

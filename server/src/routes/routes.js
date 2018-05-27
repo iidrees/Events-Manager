@@ -14,9 +14,9 @@ import {
   GetCenter,
   GetAllCenters,
   CenterDelete
-} from '../controllers/getCenters';
+} from '../controllers/GetCenters';
 import Center from '../controllers/Center';
-// import CancelEvent from '../controllers/CancelEvent';
+import CancelEvent from '../controllers/CancelEvent';
 import ModifyCenter from '../controllers/ModifyCenter';
 import UserValidator from '../middlewares/UserValidator';
 import InputValidation from '../middlewares/InputValidation';
@@ -69,6 +69,6 @@ router.put(
 
 router.delete('/centers/:centerId', CenterDelete.deleteCenter);
 
-// router.put('/cancelEvent/:eventId', CancelEvent.cancelEvent);
+router.put('/cancelEvent/:eventId', CancelEvent.cancelEvent);
 // router exported and made available to the server
 export default router;
