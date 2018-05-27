@@ -10,8 +10,7 @@ const initialState = {
   status: '',
   message: '',
   center: {},
-  events: [],
-  isLoading: true
+  events: []
 };
 
 export default (state = initialState, action) => {
@@ -24,8 +23,7 @@ export default (state = initialState, action) => {
         center: action.response.data.center,
         events: [...action.response.data.events.rows],
         count: action.response.data.events.count,
-        authenticated: true,
-        isLoading: true
+        authenticated: true
       };
     }
     case CANCEL_EVENT: {
@@ -49,12 +47,12 @@ export default (state = initialState, action) => {
       };
     }
     case GET_CENTER_FAIL: {
+      console.log(action);
       return {
         ...state,
         status: 'Unsuccessful' || undefined,
         message: action.error.message,
-        authenticated: false,
-        isLoading: false
+        authenticated: false
       };
     }
     default:
