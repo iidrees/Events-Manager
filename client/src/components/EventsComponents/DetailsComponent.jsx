@@ -1,31 +1,46 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import 'moment-timezone';
 
 const DetailsComponent = props => (
   <div>
     <div className="container" id="details-ev">
       <div className="row">
         <div className="col-md-6">
-          <img
-            id="img-details"
-            src={`${props.event.imgUrl}`}
-            alt="felabration"
-          />
+          <div className="img-details">
+            <img
+              id="img-details"
+              src={`${props.event.imgUrl}`}
+              alt="felabration"
+            />
+          </div>
         </div>
         <div className="col-md-6">
           <p className="font-details">
             <span>Event:</span> {props.event.title}
           </p>
-          <p className="font-details">
-            <span>Event starts on :</span>{' '}
-            <Moment format="DD/MM/YYYY">{props.event.startDate}</Moment>
-          </p>
-          <p className="font-details">
-            <span>Event ends on:</span>{' '}
-            <Moment format="DD/MM/YYYY">{props.event.endDate}</Moment>
-          </p>
+
+          {props.event.isCancelled ? (
+            <p className="font-details">
+              {' '}
+              <span>Event Status: </span>
+              Event has been cancelled, edit event below to choose another
+              center
+            </p>
+          ) : (
+            <div>
+              {' '}
+              <p className="font-details">
+                <span>Event starts on :</span>{' '}
+                <Moment format="DD MMMM YYYY">{props.event.startDate}</Moment>
+              </p>
+              <p className="font-details">
+                <span>Event ends on:</span>{' '}
+                <Moment format="DD MMMM YYYY">{props.event.endDate}</Moment>
+              </p>
+            </div>
+          )}
+
           <p className="font-details">
             <span>Center:</span> {props.event.center}
           </p>

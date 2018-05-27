@@ -1,19 +1,19 @@
 import nodemailer from 'nodemailer';
 import moment from 'moment';
 
-const mailer = (date, center) => {
+const mailer = (email, date, center) => {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'idrees.ibraheem@andela.com',
-      pass: 'iidreesibraheem'
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD
     }
   });
 
   var mailOptions = {
     from: 'idrees.ibraheem@gmail.com',
-    to: 'idreesibraheem@gmail.com',
-    subject: 'Sending Email using Node.js',
+    to: `${email}`,
+    subject: 'Notification of Center Bookings',
     html: `<h1>Notice of Cancellation of Your Event</h1><p>Hi, <br/>
           Due to circumstances beyond our control we regret to inform you 
           hat your event 
@@ -26,7 +26,7 @@ const mailer = (date, center) => {
   <br />
   <span />
     Signed<br />
-    Events Manager</p>`
+    Events-Manager</p>`
   };
 
   transporter.sendMail(mailOptions, function(error, info) {

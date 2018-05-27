@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import { Events } from '../models';
+import { Events, Users } from '../models';
 import mailer from '../config/mailer';
 
 const Op = Sequelize.Op;
@@ -41,19 +41,24 @@ export default class CancelEvent {
             event
           });
         }
-        mailer(date.startDate, date.center);
+
         return event
           .update({
-            startDate: null,
-            endDate: null,
             isCancelled: true
           })
           .then(newEvent => {
-            return res.status(201).send({
-              status: 'Success',
-              message: 'This is your cancelled event',
-              newEvent
-            });
+            return Users.findOne({
+              where: { id: newEvent.userId }
+            })
+              .then(user => {
+                mailer(user.email, date.startDate, date.center);
+                return res.status(201).send({
+                  status: 'Success',
+                  message: 'This is your cancelled event',
+                  newEvent
+                });
+              })
+              .catch(err => console.log('the error from the mail>>', err)); // eslint-disable-line
           })
           .catch(err => {
             return res.status(400).send({
@@ -62,12 +67,6 @@ export default class CancelEvent {
               err: err.message
             });
           });
-
-        // return res.status(200).send({
-        //   status: 'Unsuccessful',
-        //   message: 'This is the event you are looking for',
-        //   event
-        // });
       })
       .catch(err => {
         return res.status(400).send({

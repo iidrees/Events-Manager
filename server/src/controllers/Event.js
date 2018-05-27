@@ -21,7 +21,7 @@ export class Event {
     const { id } = req.decoded;
     if (startDate <= new Date().toISOString().slice(0, 10)) {
       return res.status(422).send({
-        status: 'unsuccessful',
+        status: 'Unsuccessful',
         message:
           'Invalid date entered, please enter a date from the current date',
         startDate

@@ -4,7 +4,7 @@ import { Users, Events, Centers } from '../../src/models';
 import { users, seedUser, seedCenter } from '../testHelpers/testSeed';
 
 describe('TEST MODEL', () => {
-  describe('TEST CENTERS', () => {
+  describe('TEST EVENTS', () => {
     before(done => {
       Centers.destroy({
         where: {},
@@ -27,7 +27,9 @@ describe('TEST MODEL', () => {
       }).then(event => {
         assert.property(event.dataValues, 'title');
         assert.property(event.dataValues, 'description');
-        assert.property(event.dataValues, 'date');
+        assert.property(event.dataValues, 'startDate');
+        assert.property(event.dataValues, 'endDate');
+        assert.property(event.dataValues, 'isCancelled');
         assert.property(event.dataValues, 'center');
         assert.property(event.dataValues, 'imgUrl');
         done();

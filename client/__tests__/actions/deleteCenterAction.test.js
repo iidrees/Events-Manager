@@ -5,9 +5,8 @@ import thunk from 'redux-thunk';
 import { deleteCenter } from '../../src/actions/deleteCenterAction';
 import * as types from '../../src/actions/types';
 
-
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 
 describe('TEST FOR DELETE CENTER', () => {
   beforeEach(() => {
@@ -21,7 +20,7 @@ describe('TEST FOR DELETE CENTER', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response:{
+        response: {
           status: 'Success',
           Message: 'Center Successfuly Deleted'
         }
@@ -36,9 +35,9 @@ describe('TEST FOR DELETE CENTER', () => {
           Message: 'Center Successfuly Deleted'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({ })
+    const store = mockStore({});
 
     return store.dispatch(deleteCenter()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -50,7 +49,7 @@ describe('TEST FOR DELETE CENTER', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 400,
-        response:{
+        response: {
           status: 'Unsuccessful',
           message: 'Center could not be deleted'
         }
@@ -60,19 +59,17 @@ describe('TEST FOR DELETE CENTER', () => {
     const expectedActions = [
       {
         type: types.DELETE_CENTER_FAIL,
-        //error: undefined
         error: {
-           status: 'Unsuccessful',
-           message: 'Center could not be deleted',
+          status: 'Unsuccessful',
+          message: 'Center could not be deleted'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
     return store.dispatch(deleteCenter(1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
-  })
-
-})
+  });
+});

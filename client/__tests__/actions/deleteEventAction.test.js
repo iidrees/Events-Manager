@@ -5,9 +5,8 @@ import thunk from 'redux-thunk';
 import { deleteEvent } from '../../src/actions/deleteEventAction';
 import * as types from '../../src/actions/types';
 
-
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 
 describe('TEST FOR DELETE EVENT', () => {
   beforeEach(() => {
@@ -21,13 +20,13 @@ describe('TEST FOR DELETE EVENT', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response:{
+        response: {
           status: 'Success',
           Message: 'Event Successfuly Deleted'
         }
       });
     });
- 
+
     const expectedActions = [
       {
         type: types.DELETE_EVENT,
@@ -36,9 +35,9 @@ describe('TEST FOR DELETE EVENT', () => {
           Message: 'Event Successfuly Deleted'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({ })
+    const store = mockStore({});
 
     return store.dispatch(deleteEvent()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -50,7 +49,7 @@ describe('TEST FOR DELETE EVENT', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 400,
-        response:{
+        response: {
           status: 'Unsuccessful',
           message: 'Event could not be deleted'
         }
@@ -60,19 +59,17 @@ describe('TEST FOR DELETE EVENT', () => {
     const expectedActions = [
       {
         type: types.DELETE_EVENT_FAIL,
-        //error: undefined
         error: {
-           status: 'Unsuccessful',
-           message: 'Event could not be deleted',
+          status: 'Unsuccessful',
+          message: 'Event could not be deleted'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
     return store.dispatch(deleteEvent(1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
-  })
-
-})
+  });
+});
