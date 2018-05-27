@@ -35,6 +35,7 @@ const EventComponent = props => (
                     <Link
                       to={`/eventdetails/${event.id}`}
                       style={{ textDecoration: 'none' }}
+                      id={`event-det-${event.id}`}
                     >
                       <h5 className="card-title even-font">
                         <span className="">Event: </span>

@@ -74,7 +74,7 @@ class DetailEvent extends React.Component {
 
     return (
       <div>
-        {_.isEmpty(event.message) ? (
+        {_.isEmpty(event.message) && event.status !== 'Success' ? (
           <Redirect to="/myevents" push />
         ) : (
           <div>

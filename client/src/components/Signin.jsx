@@ -114,7 +114,9 @@ class Signin extends React.Component {
             <div className="row">
               <div className="col-md-3" />
               <div className="col-md-6">
-                <h1 className="event-header">Events Manager</h1>{' '}
+                <h1 className="event-header" id="signin-event">
+                  Events Manager
+                </h1>{' '}
                 <h2 className="" id="h2-signin">
                   Welcome!
                 </h2>
@@ -203,7 +205,11 @@ class Signin extends React.Component {
             <div className="row" style={{ paddingTop: '1rem' }}>
               <div className="col-md-3"> </div>
               <div className="col-md-6">
-                <button type="submit" className="btn btn-primary">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  id="signin-btn"
+                >
                   {' '}
                   Sign-in{' '}
                   <span>

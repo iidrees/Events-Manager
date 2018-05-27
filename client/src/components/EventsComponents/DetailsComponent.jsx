@@ -62,6 +62,7 @@ const DetailsComponent = props => (
               className="btn btn-danger"
               data-toggle="modal"
               data-target="#deleteEvent"
+              name="del-event"
             >
               DELETE
             </button>
@@ -97,6 +98,7 @@ const DetailsComponent = props => (
                       type="button"
                       className="btn btn-primary"
                       data-dismiss="modal"
+                      name="del-decline"
                     >
                       No
                     </button>
@@ -114,7 +116,7 @@ const DetailsComponent = props => (
             </div>
             <span /> {''}
             <Link to={`/editevent/${props.event.id}`}>
-              <button className="btn btn-primary" type="button">
+              <button id="ed-event" className="btn btn-primary" type="button">
                 Edit Event
               </button>
             </Link>
