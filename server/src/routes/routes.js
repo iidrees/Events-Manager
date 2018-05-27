@@ -14,7 +14,7 @@ import {
   GetCenter,
   GetAllCenters,
   CenterDelete
-} from '../controllers/getCenters';
+} from '../controllers/GetCenters';
 import Center from '../controllers/Center';
 import CancelEvent from '../controllers/CancelEvent';
 import ModifyCenter from '../controllers/ModifyCenter';
