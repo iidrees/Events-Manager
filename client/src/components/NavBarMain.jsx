@@ -52,17 +52,17 @@ class NavBarMain extends React.Component {
       if (user.admin === true) {
         adminLinks = (
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="nav-item" id="admin-getcenters">
               <Link className="nav-link" to="/getcenters">
                 Centers
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" id="admin-addcenter">
               <Link className="nav-link" to="/addcenter">
                 Add Center
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" id="admin-logout">
               <Link
                 className="nav-link"
                 to="/"
@@ -76,27 +76,27 @@ class NavBarMain extends React.Component {
       } else {
         userLinks = (
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="nav-item" id="user-getcenters">
               <Link className="nav-link" to="/getcenters">
                 Centers
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" id="user-addevent">
               <Link className="nav-link" to="/addevents">
                 Add Events
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" id="user-event">
               <Link className="nav-link" to="/events">
                 Events
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" id="user-myevents">
               <Link className="nav-link" to="/myevents">
                 My Events
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" id="user-logout">
               <Link
                 className="nav-link"
                 to="/"
@@ -112,7 +112,7 @@ class NavBarMain extends React.Component {
       if (location.pathname === '/signin') {
         signinLink = (
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="nav-item" id="signup">
               <Link to="/signup" className=" nav-link">
                 signup
               </Link>
@@ -123,7 +123,7 @@ class NavBarMain extends React.Component {
       if (location.pathname === '/signup') {
         signupLink = (
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className="nav-item" id="signin">
               <Link to="/signin" className="nav-link">
                 signin
               </Link>
@@ -135,12 +135,12 @@ class NavBarMain extends React.Component {
         landing = (
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link to="/signup" className="nav-link">
+              <Link to="/signup" className="nav-link" id="signup">
                 signup
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/signin" className="nav-link">
+              <Link to="/signin" className="nav-link" id="signin">
                 signin
               </Link>
             </li>

@@ -76,7 +76,7 @@ class Signup extends React.Component {
     }
     return (
       <div>
-        <div className="container" id="form-signup">
+        <div className="container">
           <form
             id="form-signup"
             className="form-horizontal"
@@ -87,7 +87,9 @@ class Signup extends React.Component {
             <div className="row">
               <div className="col-md-3" />
               <div className="col-md-6">
-                <h1 className="event-header">Events Manager</h1>{' '}
+                <h1 className="event-header" id="signup-event">
+                  Events Manager
+                </h1>{' '}
                 <h3 className="" id="h3-signup">
                   Let's get started
                 </h3>
@@ -219,7 +221,11 @@ class Signup extends React.Component {
               <div className="col-md-3" />
               <br />
               <div className="col-md-6">
-                <button type="submit" className="btn btn-primary">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  id="signup-btn"
+                >
                   {' '}
                   Sign-up{' '}
                   <span>

@@ -33,3 +33,5 @@ server/src/migrations/20171119220658-create-event.js
 
 server/lib
 coverage.lcov
+reports/
+selenium-debug.log
