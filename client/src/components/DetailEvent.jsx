@@ -7,15 +7,16 @@ import _ from 'lodash';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { detailEvent } from '../actions/eventAction';
-import { deleteEvent } from '../actions/deleteEventAction';
+import { detailEvent } from '../actions/event';
+import deleteEvent from '../actions/deleteEvent';
 import { history } from '../routes';
 import DetailsComponent from './EventsComponents/DetailsComponent.jsx';
 import DetailsHeaderComponent from './EventsComponents/DetailsHeaderComponent.jsx';
+
 /**
  *
  *
- * @className GetEvents
+ * @class DetailEvents
  * @extends {React.Component}
  */
 class DetailEvent extends React.Component {
@@ -100,11 +101,22 @@ class DetailEvent extends React.Component {
   }
 }
 
+/**
+ * maps dispatch to props exposing the function to the component
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ * Maps state to props exposing the store to the component
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     event: state.detailsEventReducer,

@@ -9,16 +9,15 @@ import _ from 'lodash';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { getMyEvents } from '../actions/eventAction';
+import { getMyEvents } from '../actions/event';
 import { history } from '../routes';
 
 import EventComponent from './EventsComponents/EventComponent.jsx';
 import MyEventHeader from './EventsComponents/MyEventHeader.jsx';
 
 /**
- *
- *
- * @className GetEvents
+ * Gets all user events
+ * @class GetMyEvents
  * @extends {React.Component}
  */
 class GetMyEvents extends React.Component {
@@ -31,32 +30,21 @@ class GetMyEvents extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      itemsPerPage: 10,
-      isLoading: false
+      itemsPerPage: 10
     };
     this.onChange = this.onChange.bind(this);
   }
 
   /**
-   * A method that lets a user get their events
-   * @memberof GetEvents
-   * @returns {any} {}
+   * A method that gets user events
+   * @memberof GetMyEvents
+   * @returns {void}
    */
   componentDidMount() {
-    const { dispatch, isLoading } = this.props;
-    this.setState({
-      isLoading: true
-    });
+    const { dispatch } = this.props;
 
     return dispatch(getMyEvents());
   }
-
-  /**
-   *
-   *
-   * @returns {*} method
-   * @memberof GetEvents
-   */
 
   /**
    *
@@ -112,15 +100,20 @@ class GetMyEvents extends React.Component {
     return (
       <div>
         {_.isEmpty(myEvents.events) ? (
-          // I still need to test this
+          //TODO: I still need to test this
           <h1
             style={{
-              paddingTop: '200px',
-              marginLeft: '300px',
-              fontSize: '100px'
+              paddingTop: '60px',
+              fontSize: '20px'
             }}
           >
-            You Have No Event
+            <div
+              className="alert alert-success"
+              role="alert"
+              style={{ textAlign: 'center' }}
+            >
+              <strong style={{ textAlign: 'center' }}>You Have No Event</strong>
+            </div>
           </h1>
         ) : (
           <div>
@@ -153,11 +146,24 @@ class GetMyEvents extends React.Component {
   }
 }
 
+/**
+ *
+ * Maps dispatch to props
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ *
+ * Maps state and the store to props
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     myEvents: state.myEventsReducer,

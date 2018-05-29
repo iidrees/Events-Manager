@@ -8,8 +8,8 @@ import { Wave, Third } from 'react-preloading-component';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { addCenter, imageUpload } from '../actions/addCentersAction';
-import { centerDetails } from '../actions/centerDetailsAction';
+import { addCenter, imageUpload } from '../actions/addCenters';
+import { centerDetails } from '../actions/centerDetails';
 import { history } from '../routes';
 import AddCenterComponent from './CentersComponents/AddCenterComponent.jsx';
 import AddCenterHeaderComponent from './CentersComponents/AddCenterHeaderComponent.jsx';
@@ -21,12 +21,22 @@ import AddCenterHeaderComponent from './CentersComponents/AddCenterHeaderCompone
  * @extends {React.Component}
  */
 class AddCenter extends React.Component {
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  /**
+   * @returns {void}
+   * @param {event} event -
+   * @memberof AddCenter
+   */
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  onSubmit = e => {
-    e.preventDefault();
+  /**
+   * @returns {void}
+   * @param {event} event -
+   * @memberof AddCenter
+   */
+  onSubmit = event => {
+    event.preventDefault();
     let centerData = this.state;
     const { dispatch } = this.props;
     if (
@@ -127,11 +137,24 @@ class AddCenter extends React.Component {
   }
 }
 
+/**
+ *
+ * Maps dispatch display
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ *
+ * Maps the state and the store to props
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     createCenter: state.addCenterReducer,

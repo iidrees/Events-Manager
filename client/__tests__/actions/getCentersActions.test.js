@@ -3,12 +3,12 @@ import moxios from 'moxios';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 
-import getCenters from '../../src/actions/getCentersAction';
+import getCenters from '../../src/actions/getCenters';
 import * as types from '../../src/actions/types';
-import { centers }from './mocks/getCentersMocks';
+import { centers } from './mocks/getCentersMocks';
 
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 const history = createBrowserHistory();
 
 describe('Test for the getCentersAction', () => {
@@ -22,32 +22,27 @@ describe('Test for the getCentersAction', () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
-        status:200,
+        status: 200,
         response: {
           status: 'Success',
           message: 'Centers found',
           data: centers
         }
-
       });
     });
 
-    const expectedActions = [ 
-      { 
-        type: types.CENTERS_SUCCESS, 
+    const expectedActions = [
+      {
+        type: types.CENTERS_SUCCESS,
         centers: {
           status: 'Success',
           message: 'Centers found',
           data: centers
         }
       }
-    ]
+    ];
 
-    
-
-   
-
-    const store = mockStore({centers: {} })
+    const store = mockStore({ centers: {} });
 
     return store.dispatch(getCenters()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -67,20 +62,19 @@ describe('Test for the getCentersAction', () => {
     });
 
     const expectedActions = [
-      { 
-        type: types.CENTERS_ERRORS, 
+      {
+        type: types.CENTERS_ERRORS,
         error: {
           status: 'Unsuccessful',
           message: 'No Centers Found'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({centers: {} })
+    const store = mockStore({ centers: {} });
 
     return store.dispatch(getCenters()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
-
   });
 });

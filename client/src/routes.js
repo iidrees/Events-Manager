@@ -5,7 +5,6 @@ import { createBrowserHistory } from 'history';
 import Signin from './components/Signin.jsx';
 import Signup from './components/Signup.jsx';
 import authRoute from './components/auth/authRoute.jsx';
-import GetEvents from './components/GetEvents.jsx';
 import AddEvent from './components/AddEvent.jsx';
 import Center from './components/Center.jsx';
 import Landing from './components/Landing.jsx';
@@ -18,6 +17,10 @@ import GetMyEvents from './components/GetMyEvents.jsx';
 
 export const history = createBrowserHistory();
 
+/**
+ * Application client-side routes exported to the App.js the entry point
+ * @returns {void}
+ */
 export const Routes = () => {
   return (
     <Switch>
@@ -25,7 +28,6 @@ export const Routes = () => {
       <Route exact path="/getcenters" component={Center} />
       <Route exact path="/signin" component={Signin} />
       <Route exact path="/myevents" component={authRoute(GetMyEvents)} />
-      <Route exact path="/events" component={authRoute(GetEvents)} />
       <Route exact path="/addevents" component={authRoute(AddEvent)} />
       <Route
         exact
@@ -41,6 +43,7 @@ export const Routes = () => {
       <Route exact path="/editevent/:id" component={authRoute(EditEvent)} />
       <Route exact path="/addcenter" component={authRoute(AddCenter)} />
       <Route exact path="/" component={Landing} />
+      <Route exact path="*" component={Landing} />
     </Switch>
   );
 };

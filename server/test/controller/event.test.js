@@ -143,6 +143,29 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
+    it('should return "Unsuccessful" for an endDate in the past', done => {
+      request(app)
+        .post(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'Its an event for fela abeg',
+          startDate: '2018-08-07',
+          endDate: '2018-02-14',
+          imgUrl:
+            'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        })
+        .expect(422)
+        .then(res => {
+          assert.deepEqual(res.status, 422);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(
+            res.body.message,
+            'your event start date cannot be after the end date and vice versa'
+          );
+          done();
+        });
+    });
     it('should return "date already booked for this center, choose another" for unique data validation', done => {
       request(app)
         .post(`/api/v1/events/${1}`)
@@ -156,13 +179,13 @@ describe('TEST EVENT ENDPOINTS', () => {
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
-        .expect(422)
+        .expect(409)
         .then(res => {
-          assert.deepEqual(res.status, 422);
+          assert.deepEqual(res.status, 409);
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(
             res.body.message,
-            'There is an event already scheduled for this day, kindly pick another date.'
+            'date already booked for this center, choose another'
           );
           done();
         });
@@ -186,7 +209,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           assert.deepEqual(res.body.status, 'Unsuccessful');
           assert.deepEqual(
             res.body.message,
-            "This is the valid date format  'YYYY-MM-DD'"
+            "Please ensure that your dates are not in the past and are in this date format  'YYYY-MM-DD'"
           );
           done();
         });
@@ -363,6 +386,30 @@ describe('TEST EVENT ENDPOINTS', () => {
           done();
         });
     });
+    it('Should return "Unsuccessful" if startDate supplied are in the past', done => {
+      request(app)
+        .put(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'It not fela anymore anymore oo',
+          startDate: '2018-02-28',
+          endDate: '2018-09-29',
+          center: 'Ketu-ojota-mall',
+          imgUrl:
+            'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        })
+        .expect(422)
+        .then(res => {
+          assert.deepEqual(res.status, 422);
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(
+            res.body.message,
+            'Your start and/or end date cannot be dates in the past, please enter a valid start date'
+          );
+          done();
+        });
+    });
     it('Should return "Event updated successfully" if user event is found and updated', done => {
       request(app)
         .put(`/api/v1/events/${1}`)
@@ -372,6 +419,7 @@ describe('TEST EVENT ENDPOINTS', () => {
           description: 'It not fela anymore anymore oo',
           startDate: '2018-08-28',
           endDate: '2018-08-29',
+          center: 'Ketu-ojota-mall',
           imgUrl:
             'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
         })
@@ -386,6 +434,27 @@ describe('TEST EVENT ENDPOINTS', () => {
           );
           assert.deepEqual(res.body.data.startDate, '2018-08-28');
           assert.deepEqual(res.body.data.center, 'Ketu-ojota-mall');
+          done();
+        });
+    });
+
+    it('Should return "center not found" if center supplied is not existing', done => {
+      request(app)
+        .put(`/api/v1/events/${1}`)
+        .set('x-access-token', token)
+        .send({
+          title: 'Felabration',
+          description: 'It not fela anymore anymore oo',
+          startDate: '2018-08-28',
+          endDate: '2018-08-29',
+          center: 'Ketu-ojota-malllll',
+          imgUrl:
+            'https://static.pexels.com/photos/122250/pexels-photo-122250.jpeg'
+        })
+        .expect(404)
+        .then(res => {
+          assert.deepEqual(res.status, 404);
+          assert.deepEqual(res.body.message, 'Center Not Found');
           done();
         });
     });

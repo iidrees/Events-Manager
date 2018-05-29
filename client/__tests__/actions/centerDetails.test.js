@@ -2,12 +2,12 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { centerDetails } from '../../src/actions/centerDetailsAction';
+import { centerDetails } from '../../src/actions/centerDetails';
 import * as types from '../../src/actions/types';
 import { centers } from './mocks/getCentersMocks';
 
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares)
+const mockStore = configureMockStore(middlewares);
 /* EVENT DETAILS TESTS */
 
 describe('TEST FOR THE CENTER DETAIL ACTION', () => {
@@ -22,7 +22,7 @@ describe('TEST FOR THE CENTER DETAIL ACTION', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
-        response:{
+        response: {
           status: 'Success',
           Message: 'This is your center detail',
           data: centers[0]
@@ -39,9 +39,9 @@ describe('TEST FOR THE CENTER DETAIL ACTION', () => {
           data: centers[0]
         }
       }
-    ]
+    ];
 
-    const store = mockStore({})
+    const store = mockStore({});
 
     return store.dispatch(centerDetails(1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
@@ -68,14 +68,14 @@ describe('TEST FOR THE CENTER DETAIL ACTION', () => {
           message: 'Center Not Found'
         }
       }
-    ]
-    const store = mockStore({ });
+    ];
+    const store = mockStore({});
     return store.dispatch(centerDetails(1)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-   it('should return 400 error response', () => {
+  it('should return 400 error response', () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -95,12 +95,11 @@ describe('TEST FOR THE CENTER DETAIL ACTION', () => {
           message: 'Please try again'
         }
       }
-    ]
+    ];
 
-    const store = mockStore({ });
+    const store = mockStore({});
     return store.dispatch(centerDetails(1)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions)
+      expect(store.getActions()).toEqual(expectedActions);
     });
-
-   })
+  });
 });

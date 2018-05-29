@@ -12,15 +12,15 @@ import {
  * Axios will help make PUT request to add event
  * @export {function}
  * @param {eventData} eventData - JSON
- * @param {index} index -
+ * @param {eventId} eventId -
  * @param {any} imgUrl - the url for the image uploaded on cloudinary
  * @returns {JSON} JSON data containing events
  */
-export const editEvent = (eventData, index, imgUrl) => {
+export const editEvent = (eventData, eventId, imgUrl) => {
   return dispatch => {
     return axios({
       method: 'PUT',
-      url: `/api/v1/events/${index}`,
+      url: `/api/v1/events/${eventId}`,
       data: {
         title: eventData.title,
         startDate: eventData.startDate,
@@ -46,10 +46,10 @@ export const editEvent = (eventData, index, imgUrl) => {
 /**
  * @export {function} imageUpload function
  * @param {eventData} eventData object sent to the server
- * @param {index}  index {centerId}
+ * @param {eventId}  eventId {eventId}
  * @returns {URL} URL link returned is used as a parameter
  */
-export const imageUpload = (eventData, index) => {
+export const imageUpload = (eventData, eventId) => {
   let formData = new FormData();
 
   formData.append('file', eventData.imgFile);
@@ -66,7 +66,7 @@ export const imageUpload = (eventData, index) => {
     })
       .then(response => {
         let imageURL = response.data.secure_url;
-        return dispatch(editEvent(eventData, index, imageURL));
+        return dispatch(editEvent(eventData, eventId, imageURL));
       })
       .catch(err => {
         dispatch({

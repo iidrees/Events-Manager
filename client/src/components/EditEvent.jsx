@@ -9,9 +9,9 @@ import _ from 'lodash';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { editEvent, imageUpload } from '../actions/editEventAction';
-import getCenters from '../actions/getCentersAction';
-import { detailEvent } from '../actions/eventAction';
+import { editEvent, imageUpload } from '../actions/editEvent';
+import getCenters from '../actions/getCenters';
+import { detailEvent } from '../actions/event';
 import { history } from '../routes';
 import EditEventComponent from './EventsComponents/EditEventComponent.jsx';
 import EditEventHeaderComponent from './EventsComponents/EditEventHeaderComponent.jsx';
@@ -38,6 +38,7 @@ class EditEvent extends React.Component {
   }
 
   /**
+   * allows the component renders before making a request for the centers
    * @returns {JSON} Object
    * @memberof EditEvent
    */
@@ -46,6 +47,11 @@ class EditEvent extends React.Component {
     return dispatch(getCenters());
   }
 
+  /**
+   * @returns {void}
+   * @param {event} event -
+   * @memberof EditEvent
+   */
   onChange = event => {
     this.setState({
       eventData: {
@@ -55,6 +61,11 @@ class EditEvent extends React.Component {
     });
   };
 
+  /**
+   * @return {void}
+   * @param {event} event -
+   * @memberof EditEvent
+   */
   onSubmit = event => {
     event.preventDefault();
     let { eventData } = this.state;
@@ -69,6 +80,11 @@ class EditEvent extends React.Component {
     return dispatch(imageUpload(eventData, this.props.match.params.id));
   };
 
+  /**
+   * @return {void}
+   * @param {event} event -
+   * @memberof EditEvent
+   */
   onImageChange = event => {
     event.preventDefault();
 
@@ -157,11 +173,25 @@ class EditEvent extends React.Component {
   }
 }
 
+/**
+ *
+ * maps dispatch to props making it possibele to make
+ * action calls from the component
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ *
+ * Maps the state to props allowing the component have access to the store
+ * @param {any} state - the store
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     addevents: state.eventReducer,
@@ -172,6 +202,7 @@ const mapStateToProps = state => {
     token: state.userTokenReducer
   };
 };
+
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(EditEvent)
 );

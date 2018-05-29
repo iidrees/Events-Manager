@@ -6,18 +6,18 @@ import jwt from 'jsonwebtoken';
 
 import { history } from '../routes';
 
-import { signOut } from '../actions/userActions';
+import { signOut } from '../actions/user';
 
 /**
  *
- *
+ * The navigation bar component
  * @class NavBarMain
  * @extends {React.Component}
  */
 class NavBarMain extends React.Component {
   /**
    *
-   *
+   * logs out users
    * @returns {void}
    * @memberof NavBarMain
    */
@@ -47,7 +47,9 @@ class NavBarMain extends React.Component {
     } catch (error) {
       decodedToken = null;
     }
-
+    /* checks if there is token before rendering the navigation 
+    * bar based on the role of the user 
+    * */
     if (token) {
       if (user.admin === true) {
         adminLinks = (
@@ -84,11 +86,6 @@ class NavBarMain extends React.Component {
             <li className="nav-item" id="user-addevent">
               <Link className="nav-link" to="/addevents">
                 Add Events
-              </Link>
-            </li>
-            <li className="nav-item" id="user-event">
-              <Link className="nav-link" to="/events">
-                Events
               </Link>
             </li>
             <li className="nav-item" id="user-myevents">
@@ -181,11 +178,25 @@ class NavBarMain extends React.Component {
     );
   }
 }
+
+/**
+ *
+ * Maps dispatch to props
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ * maps state to props
+ *
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     status: state.userReducer

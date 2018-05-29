@@ -1,6 +1,5 @@
 /* eslint-disable */
-/* getEvents() Events Mock Data */
-
+/* Events Mock Data */
 
 export const events = [
   {
@@ -53,4 +52,4 @@ export const events = [
     description: 'This is going to be the weirdest parry on the month of March',
     imgUrl: 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
   }
-]
+];

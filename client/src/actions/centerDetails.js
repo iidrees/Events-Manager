@@ -9,15 +9,15 @@ import {
 } from './types';
 
 /**
- *  @param {index} index the center's index
+ *  @param {centerId} centerId the center's index
  * @param {page} page - page number
  * @returns {JSON} object
  */
-export const centerDetails = (index, page) => {
+export const centerDetails = (centerId, page) => {
   return dispatch => {
     return axios({
       method: 'GET',
-      url: `/api/v1/centers/${index}?page=${page}`,
+      url: `/api/v1/centers/${centerId}?page=${page}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
@@ -33,14 +33,14 @@ export const centerDetails = (index, page) => {
 };
 
 /**
- * @param {index} index -
+ * @param {index} eventId - eventId
  * @returns {void}
  */
-export const cancelEvent = index => {
+export const cancelEvent = eventId => {
   return dispatch => {
     return axios({
       method: 'PUT',
-      url: `/api/v1/cancelEvent/${index}`,
+      url: `/api/v1/cancelEvent/${eventId}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },

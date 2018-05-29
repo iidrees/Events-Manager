@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import app from '../../src/server';
 import { Users, Events, Centers } from '../../src/models';
 import { users, seedUser } from '../testHelpers/testSeed';
-import { userSuperAdmin } from '../testHelpers/auth';
+import { user1Token, userAdmin, userSuperAdmin } from '../testHelpers/auth';
 
 /* eslint-disable */
 let token;
@@ -16,6 +16,12 @@ const expiredToken =
 // testing the server
 describe('Server and status', () => {
   describe('GET "/home/" ', () => {
+    before(done => {
+      token = user1Token;
+      adminToken = userAdmin;
+      superAdminToken = userSuperAdmin;
+      done();
+    });
     it('should return 200 OK', done => {
       request(app)
         .get('/home/')
@@ -25,6 +31,27 @@ describe('Server and status', () => {
             res.body.message,
             'Welcome to the Events Manager API'
           );
+          assert.deepEqual(res.status, 200);
+          done();
+        });
+    });
+    it('should return 404 Not Found when a route is not matched', done => {
+      request(app)
+        .post('/alkjdlajsld')
+        .set('x-access-token', token)
+        .expect(404)
+        .then(res => {
+          assert.deepEqual(res.body.message, 'Page Not Found');
+          assert.deepEqual(res.status, 404);
+          done();
+        });
+    });
+    it('should return the html for the react view when route matched', done => {
+      request(app)
+        .get('/getCenters')
+        .set('x-access-token', token)
+        .expect(200)
+        .then(res => {
           assert.deepEqual(res.status, 200);
           done();
         });
@@ -169,31 +196,28 @@ describe('Sign-up and Sign-in Endpoints', () => {
           });
       }
     );
-    it(
-      'should return "Password must contain letters and numerals" when entered is not alphanumaric',
-      done => {
-        request(app)
-          .post('/api/v1/users')
-          .send({
-            name: 'tester',
-            email: 'tester@gmail.com',
-            password: '@@@@@@@@',
-            confirmPassword: '@@@@@@@@'
-          })
-          .expect(401)
-          .then(res => {
-            assert.typeOf(res.body, 'object');
-            assert.deepEqual(res.body.status, 'Unsuccessful');
-            assert.deepEqual(
-              res.body.message,
-              'Password must contain letters and numerals'
-            );
-            assert.deepEqual(res.status, 401);
+    it('should return "Password must contain letters and numerals" when entered is not alphanumaric', done => {
+      request(app)
+        .post('/api/v1/users')
+        .send({
+          name: 'tester',
+          email: 'tester@gmail.com',
+          password: '@@@@@@@@',
+          confirmPassword: '@@@@@@@@'
+        })
+        .expect(401)
+        .then(res => {
+          assert.typeOf(res.body, 'object');
+          assert.deepEqual(res.body.status, 'Unsuccessful');
+          assert.deepEqual(
+            res.body.message,
+            'Password must contain letters and numerals'
+          );
+          assert.deepEqual(res.status, 401);
 
-            done();
-          });
-      }
-    );
+          done();
+        });
+    });
     it(
       'should return "name already exists" when a user enters' +
         ' a name already existing in the database',

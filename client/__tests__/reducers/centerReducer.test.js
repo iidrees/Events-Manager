@@ -96,4 +96,51 @@ describe('Show and return event centers', () => {
 
     expect(result).toEqual(error);
   });
+
+  xit('should delete a center', () => {
+    const initialState = {};
+
+    const centers = [
+      {
+        id: 1,
+        name: 'The UNILAG CENTER',
+        location: 'Lagos',
+        address: 'Akoka, Yaba Lagos State',
+        owner: 'The Idrees entertainment',
+        capacity: 10000,
+        description:
+          'This is a center that can allow you grove as much as you may need to',
+        userId: 1
+      },
+      {
+        id: 2,
+        name: 'The UNILAG CENTER',
+        location: 'Lagos',
+        address: 'Akoka, Yaba Lagos State',
+        owner: 'The Idrees entertainment',
+        capacity: 10000,
+        description:
+          'This is a center that can allow you grove as much as you may need to',
+        userId: 2
+      }
+    ];
+    const centerDeleted = {
+      message: 'center deleted successfully',
+      status: 'Success',
+      centers,
+      authenticated: true
+    };
+
+    const result = centerReducer((initialState.state['centers'] = centers), {
+      type: types.DELETE_CENTER,
+      centerDeleted
+    });
+
+    expect(result).toEqual({
+      message: 'center deleted successfully',
+      status: 'Success',
+      centers: centers,
+      authenticated: true
+    });
+  });
 });

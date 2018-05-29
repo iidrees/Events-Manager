@@ -47,7 +47,6 @@ export default (state = initialState, action) => {
       };
     }
     case GET_CENTER_FAIL: {
-      console.log(action);
       return {
         ...state,
         status: 'Unsuccessful' || undefined,

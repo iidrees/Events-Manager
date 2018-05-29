@@ -7,6 +7,7 @@
 [![codecov](https://codecov.io/gh/iidrees/Events-Manager/branch/develop/graph/badge.svg)](https://codecov.io/gh/iidrees/Events-Manager)
 
 # Getting Started
+
 ---
 
 This is a javascript application built with **Express** framework on the **nodejs** platform. Authentication of users is done via **JSON Web Tokens**.
@@ -74,14 +75,20 @@ Please see how to download and install **Postman** in the **Installation & Start
     npm run start:dev
     ```
 
-6.  To try out the API you can either use the API documentation which can be found on Heroku here [**Event-Manager API-DOC**](https://events-manager-cp.herokuapp.com/api-docs/) 
+6.  To try out the API you can either use the API documentation which can be found on Heroku here [**Event-Manager API-DOC**](https://events-manager-cp.herokuapp.com/api-docs/)
 
 ## Tests
 
-For Sever side tests - run `npm test` on the terminal while within the **project root directory**.
-Server side testing is done through the use of `supertest`, `mocha` & `chai` packages. `supertest` is used to make requests to the api and `mocha` is the testing framework and `chai` is the assertion library. They will both be installed when you run the `npm install` command while setting up the project above and the tests will run when you run `npm test`.
+**Server-Side Tests**
+For Sever side tests run `npm test` on the terminal while within the **project root directory**.
+Server side testing is done through the use of the `supertest`, `mocha` & `chai` npm packages. `supertest` is used to make requests to the api and `mocha` is the testing framework and `chai` is the assertion library. They will both be installed when you run the `npm install` command while setting up the project above and the tests will run when you run `npm test`.
+
+**Client-Side Tests**
+To run the the client-side test, run the command `npm run jest` and `nightwatch` in the terminal in the **root project directory**.
+Note that `jest` is a frontend `reactjs` testing framework, while `nightwatch` is an End-2-End integration testing
 
 # Features
+
 ---
 
 #### Authentication
@@ -104,9 +111,11 @@ Server side testing is done through the use of `supertest`, `mocha` & `chai` pac
 * Admins can edit center they added
 * Admins can add new center
 * Admins can delete a center they added
+* Admin can cancel an event and a mail notification is sent about the cancellation
 * Super-Admins can do all the above and upgrade a `user` to an `admin`
 
 # Technology Stack & State of Project
+
 ---
 
 **Front-End**
@@ -140,9 +149,13 @@ The limitations with this current version of Event Manager includes:
 * Some extra features that would enable the application to offer more services to the user are still pending.
 
 # CONTRIBUTING
+
 ---
-#### How To Get Started 
-> To contribute to this project, please checkout this project's **[CONTRIBUTING.md](https://github.com/iidrees/Events-Manager/blob/develop/CONTRIBUTING.md)** 
+
+#### How To Get Started
+
+> To contribute to this project, please checkout this project's **[CONTRIBUTING.md](https://github.com/iidrees/Events-Manager/blob/develop/CONTRIBUTING.md)**
+
 ## Authors
 
 * Idrees Ibraheem

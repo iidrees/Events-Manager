@@ -106,51 +106,17 @@ class InputValidation {
     ) {
       return res.status(422).send({
         status: 'Unsuccessful',
-        message: "This is the valid date format  'YYYY-MM-DD'"
+        message:
+          "Please ensure that your dates are not in the past and are in this date format  'YYYY-MM-DD'"
       });
     }
 
-    if (startDate && endDate) {
-      const Op = Sequelize.Op;
-
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      return Events.findOne({
-        where: {
-          [Op.or]: [
-            {
-              startDate: {
-                [Op.between]: [startDate, endDate]
-              },
-              endDate: {
-                [Op.between]: [startDate, endDate]
-              }
-            },
-            {
-              startDate: {
-                [Op.lte]: startDate
-              },
-              endDate: {
-                [Op.gte]: endDate
-              }
-            }
-          ]
-        }
-      })
-        .then(event => {
-          if (event) {
-            return res.status(422).send({
-              status: 'Unsuccessful',
-              message:
-                'There is an event already scheduled for this day, kindly pick another date.',
-              event
-            });
-          }
-          return next();
-        })
-        .catch(err => {
-          return err;
-        });
+    if (startDate > endDate) {
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message:
+          'your event start date cannot be after the end date and vice versa'
+      });
     }
 
     next();

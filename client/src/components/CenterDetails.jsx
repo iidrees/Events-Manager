@@ -9,8 +9,8 @@ import { Wave } from 'react-preloading-component';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { deleteCenter } from '../actions/deleteCenterAction';
-import { centerDetails, cancelEvent } from '../actions/centerDetailsAction';
+import deleteCenter from '../actions/deleteCenter';
+import { centerDetails, cancelEvent } from '../actions/centerDetails';
 import { history } from '../routes';
 import CenterDetailsComponent from './CentersComponents/CenterDetailsComponent.jsx';
 import CenterDetailsBodyComponent from './CentersComponents/CenterDetailsBodyComponent.jsx';
@@ -38,27 +38,20 @@ class CenterDetails extends React.Component {
   }
 
   /**
-   *
-   *
    * @returns {JSON} JSON
    * @memberof CenterDetails
    */
   componentDidMount() {
     let { dispatch, currentPage } = this.props;
-
-    toastr.options.preventDuplicates = true;
-    toastr.options.positionClass = 'toast-top-left';
-    toastr.success('This is the details of center');
-
     return dispatch(
       centerDetails(this.props.match.params.id, this.state.currentPage)
     );
   }
 
   /**
-   *
+   * listens to event change
    * @returns {any} -
-   * @param {any} page -
+   * @param {any} page - used to calculate the page offset on the server
    * @memberof CenterDetails
    */
   onChange = page => {
@@ -90,17 +83,23 @@ class CenterDetails extends React.Component {
     return this.props.history.push('/getCenters');
   };
 
-  onCancel = index => {
+  /**
+   * onclick event that allows admin cancel an event
+   * @returns {void}
+   * @param {eventId} eventId -
+   * @memberof CenterDetails
+   */
+  onCancel = eventId => {
     let { dispatch } = this.props;
     toastr.options.preventDuplicates = true;
     toastr.options.positionClass = 'toast-top-left';
     toastr.success(`Event cancelled successfully`);
-    return dispatch(cancelEvent(index));
+    return dispatch(cancelEvent(eventId));
   };
 
   /**
    *
-   *
+   * the render method
    * @returns {JSX} JSX
    * @memberof CenterDetails
    */
@@ -196,11 +195,22 @@ class CenterDetails extends React.Component {
   }
 }
 
+/**
+ * Maps dispatch to props
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ * Maps state to props and the store
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     center: state.centerDetailsReducer,

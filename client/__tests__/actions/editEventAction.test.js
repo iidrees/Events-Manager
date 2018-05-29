@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { editEvent } from '../../src/actions/editEventAction';
+import { editEvent } from '../../src/actions/editEvent';
 import * as types from '../../src/actions/types';
 import * as edit from './mocks/addEventMock';
 

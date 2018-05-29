@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { editCenter } from '../../src/actions/editCenterAction';
+import { editCenter } from '../../src/actions/editCenter';
 import * as types from '../../src/actions/types';
 import * as edit from './mocks/addCenterMock';
 

@@ -81,7 +81,7 @@ app.get('*', (req, res, next) => {
 
 // a catch all route for route not matched
 app.all('*', (req, res) => {
-  res.status(404).send({
+  return res.status(404).send({
     status: 'Unsuccessful',
     message: 'Page Not Found'
   });

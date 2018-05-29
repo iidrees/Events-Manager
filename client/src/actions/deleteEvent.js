@@ -2,17 +2,17 @@ import axios from 'axios';
 import toastr from 'toastr';
 import { history } from '../routes';
 
-import { DELETE_EVENT, DELETE_EVENT_FAIL, GET_EVENTS_ON_DELETE } from './types';
+import { DELETE_EVENT, DELETE_EVENT_FAIL } from './types';
 
 /**
- * @param {any} index - eventId
+ * @param {eventId} eventId - eventId
  * @returns {void}
  */
-export const deleteEvent = index => {// eslint-disable-line
+const deleteEvent = eventId => {
   return dispatch => {
     return axios({
       method: 'DELETE',
-      url: `/api/v1/events/${index}`,
+      url: `/api/v1/events/${eventId}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
@@ -26,3 +26,4 @@ export const deleteEvent = index => {// eslint-disable-line
       });
   };
 };
+export default deleteEvent;

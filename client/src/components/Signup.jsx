@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
-import { userSignup } from '../actions/userActions';
+
+import { userSignup } from '../actions/user';
 import { history } from '../routes';
 import NavBarMain from './NavBarMain.jsx';
 /**
@@ -12,6 +13,8 @@ import NavBarMain from './NavBarMain.jsx';
  */
 class Signup extends React.Component {
   /**
+   * checks if user has already signed in before and
+   * then proceeds to automatically logs them in
    * @returns {void}
    * @memberof Signup
    */
@@ -43,6 +46,7 @@ class Signup extends React.Component {
   };
 
   /**
+   *
    * @param {event} event -
    * @returns {JSON} JSON
    * @memberof Signup
