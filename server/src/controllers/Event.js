@@ -20,7 +20,7 @@ export class Event {
     // grab values from the req object
     const { title, description, startDate, endDate, time, imgUrl } = req.body;
     const { id } = req.decoded;
-    if (startDate <= new Date().toISOString().slice(0, 10)) {
+    if (startDate < new Date().toISOString().slice(0, 10)) {
       return res.status(422).send({
         status: 'Unsuccessful',
         message:
