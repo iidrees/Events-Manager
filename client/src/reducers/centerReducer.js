@@ -48,7 +48,6 @@ export default (state = initialState, action) => {
         ...state,
         status: 'Success',
         message: action.centerDeleted.message,
-
         authenticated: true,
         centers: [...newCenters]
       };

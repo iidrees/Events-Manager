@@ -15,7 +15,6 @@ export const CENTERS_ERRORS = 'CENTERS_ERRORS';
 
 // Get all events type
 export const GET_EVENTS = 'GET_EVENTS';
-export const GET_EVENTS_ON_DELETE = 'GET_EVENTS_ON_DELETE';
 export const EVENT_RETRIEVED = 'EVENT_RETRIEVED';
 export const EVENT_FAILED = 'EVENT_FAILED';
 

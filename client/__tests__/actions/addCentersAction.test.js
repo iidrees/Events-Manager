@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { addCenter } from '../../src/actions/addCentersAction';
+import { addCenter } from '../../src/actions/addCenters';
 import * as types from '../../src/actions/types';
 import { center } from './mocks/addCenterMock';
 

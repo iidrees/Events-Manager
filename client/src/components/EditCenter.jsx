@@ -9,8 +9,8 @@ import _ from 'lodash';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { editCenter, imageUpload } from '../actions/editCenterAction';
-import { centerDetails } from '../actions/centerDetailsAction';
+import { editCenter, imageUpload } from '../actions/editCenter';
+import { centerDetails } from '../actions/centerDetails';
 import { history } from '../routes';
 import EditCenterComponent from './CentersComponents/EditCenterComponent.jsx';
 /**
@@ -68,6 +68,12 @@ class EditCenter extends React.Component {
     }
     return dispatch(imageUpload(this.props.match.params.id, centerData));
   };
+
+  /**
+   * @returns {void}
+   * @param {event} event -
+   * @memberof EditCenter
+   */
   onImageChange = event => {
     event.preventDefault();
 
@@ -93,6 +99,7 @@ class EditCenter extends React.Component {
       alert('Please upload an image with the .jpeg or .png file format');
     }
   };
+
   /**
    * @returns {void}
    * @memberof EditCenter
@@ -174,11 +181,22 @@ class EditCenter extends React.Component {
   }
 }
 
+/**
+ *  Maps dispatch to props exposing it to component
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ * Maps the store to props and exposing it to the component
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     center: state.centerDetailsReducer,

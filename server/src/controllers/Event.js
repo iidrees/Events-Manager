@@ -1,5 +1,6 @@
 /* Import modules */
 import moment from 'moment';
+import Sequelize from 'sequelize';
 
 import { Events, Centers } from '../models';
 
@@ -27,6 +28,8 @@ export class Event {
         startDate
       });
     }
+
+    const Op = Sequelize.Op;
     return Events /* 
     first check if the center is booked for an
     event for the same date.
@@ -34,13 +37,30 @@ export class Event {
       {
         where: {
           centerId: req.params.centerId,
-          startDate
+          [Op.or]: [
+            {
+              startDate: {
+                [Op.between]: [req.body.startDate, req.body.endDate]
+              },
+              endDate: {
+                [Op.between]: [req.body.startDate, req.body.endDate]
+              }
+            },
+            {
+              startDate: {
+                [Op.lte]: req.body.startDate
+              },
+              endDate: {
+                [Op.gte]: req.body.endDate
+              }
+            }
+          ]
         }
       }
     )
       .then(event => {
         // create the event exists
-        if (event.length === 0) {
+        if (!event || event.length === 0) {
           return Centers.findOne({
             where: {
               id: req.params.centerId
@@ -112,9 +132,23 @@ export class EventUpdate {
    * @memberof EventUpdate
    */
   static updateEvent(req, res) {
-    const { title, description, startDate, endDate, center, imgUrl } = req.body;
+    const { title, description, startDate, center, endDate, imgUrl } = req.body;
+
     const { id } = req.decoded;
     const { eventId } = req.params;
+
+    /**
+     * Check if date is a time in the past and returns an error if true
+     *  */
+    if (startDate <= new Date().toISOString().slice(0, 10)) {
+      return res.status(422).send({
+        status: 'Unsuccessful',
+        message:
+          'Your start and/or end date cannot be dates in the past, please enter a valid start date',
+        startDate
+      });
+    }
+
     /* Find Events */
     return Events.findOne({
       where: {
@@ -134,36 +168,85 @@ export class EventUpdate {
             message: 'you are not authorized to perform this action'
           });
         }
-        /* Update recipe if found and return update */
-        return event
-          .update({
-            title: title || event.title,
-            description: description || event.description,
-            startDate: startDate || event.startDate,
-            endDate: endDate || event.endDate,
-            center: center || event.center,
-            imgUrl: imgUrl || event.imgUrl
+        if (startDate && endDate) {
+          const Op = Sequelize.Op;
+
+          return Events.findOne({
+            where: {
+              centerId: event.centerId,
+              [Op.or]: [
+                {
+                  startDate: {
+                    [Op.between]: [req.body.startDate, req.body.endDate]
+                  },
+                  endDate: {
+                    [Op.between]: [req.body.startDate, req.body.endDate]
+                  }
+                },
+                {
+                  startDate: {
+                    [Op.lte]: req.body.startDate
+                  },
+                  endDate: {
+                    [Op.gte]: req.body.endDate
+                  }
+                }
+              ]
+            }
           })
-          .then(updatedEvent =>
-            res.status(201).send({
-              status: 'Success',
-              message: 'Event updated successfully',
-              data: updatedEvent
+            .then(dateEvent => {
+              if (!dateEvent || dateEvent.id === event.id) {
+                return Centers.findOne({
+                  where: {
+                    name: center
+                  }
+                }).then(venue => {
+                  if (!venue) {
+                    return res.status(404).send({
+                      status: 'Unsuccessful',
+                      message: 'Center Not Found'
+                    });
+                  }
+                  return event
+                    .update({
+                      title: title || event.title,
+                      description: description || event.description,
+                      startDate: startDate || event.startDate,
+                      endDate: endDate || event.endDate,
+                      center: venue.name || event.center,
+                      imgUrl: imgUrl || event.imgUrl,
+                      centerId: venue.id || event.centerId
+                    })
+                    .then(updatedEvent =>
+                      res.status(201).send({
+                        status: 'Success',
+                        message: 'Event updated successfully',
+                        data: updatedEvent
+                      })
+                    )
+                    .catch(err =>
+                      res.status(422).send({
+                        status: 'Unsuccessful',
+                        message:
+                          'Event cannot be updated, please check your inputs',
+                        error: err.errors[0].message
+                      })
+                    );
+                });
+              }
             })
-          )
-          .catch(err =>
-            res.status(422).send({
-              status: 'Unsuccessful',
-              message: 'Event cannot be updated, please check your inputs',
-              error: err.errors[0].message
-            })
-          );
+            .catch(err => {
+              return res.status(422).send({
+                status: 'Unsuccessful',
+                message: err.message
+              });
+            });
+        }
       })
       .catch(err =>
         res.status(422).send({
           status: 'Unsuccessful',
-          message: 'Please ensure you are entering a value',
-          error: err
+          message: 'Please ensure you are entering a value'
         })
       );
   }

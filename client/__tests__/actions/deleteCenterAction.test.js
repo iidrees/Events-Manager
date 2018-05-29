@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { deleteCenter } from '../../src/actions/deleteCenterAction';
+import deleteCenter from '../../src/actions/deleteCenter';
 import * as types from '../../src/actions/types';
 
 const middlewares = [thunk];

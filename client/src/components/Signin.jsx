@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import toastr from 'toastr';
-import { userSignin } from '../actions/userActions';
 
+import { userSignin } from '../actions/user';
 import Footer from './Footer.jsx';
 import { history } from '../routes';
 import NavBarMain from './NavBarMain.jsx';

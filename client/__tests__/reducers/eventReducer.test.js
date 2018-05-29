@@ -1,6 +1,6 @@
 /*Import event reducer to be tested and action types*/
 
-import eventReducer from '../../src/reducers/eventReducer';
+import myEventReducer from '../../src/reducers/myEventsReducer';
 import * as types from '../../src/actions/types';
 
 /* Test suits testing the event reducer*/
@@ -11,7 +11,7 @@ describe('GET all events reducer', () => {
       message: '',
       data: []
     };
-    const result = eventReducer(state, {
+    const result = myEventReducer(state, {
       type: types.ADD_EVENT
     });
     expect(result).toEqual({
@@ -62,7 +62,10 @@ describe('GET all events reducer', () => {
       }
     };
 
-    const results = eventReducer(state, { type: types.GET_EVENTS, events });
+    const results = myEventReducer(state, {
+      type: types.GET_MY_EVENTS,
+      events
+    });
     expect(results).toEqual({
       status: 'Success',
       message: 'These are your events',
@@ -107,8 +110,8 @@ describe('GET all events reducer', () => {
       error: 'error'
     };
 
-    const result = eventReducer(state, {
-      type: types.EVENT_FAILED,
+    const result = myEventReducer(state, {
+      type: types.MY_EVENT_FAIL,
       err
     });
 

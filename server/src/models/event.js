@@ -24,10 +24,6 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.DATEONLY,
       allowNull: true,
       isDate: true,
-      unique: {
-        args: true,
-        msg: 'Date already booked, enter another date'
-      },
       validate: {
         notEmpty: {
           args: true,

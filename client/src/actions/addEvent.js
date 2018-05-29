@@ -15,15 +15,15 @@ import {
  * Axios will help make POST request to add event
  * @export {function} addEvent function action
  * @param {eventData} eventData object sent to the server
- * @param {index}  index {centerId}
+ * @param {centerId}  centerId {centerId}
  * @param {imgUrl} imgUrl {the cloudinary url}
  * @returns {JSON} JSON data containing events
  */
-export const addEvent = (eventData, index, imgUrl) => {
+export const addEvent = (eventData, centerId, imgUrl) => {
   return dispatch => {
     return axios({
       method: 'post',
-      url: `/api/v1/events/${index}`,
+      url: `/api/v1/events/${centerId}`,
       data: {
         title: eventData.title,
         startDate: eventData.startDate,
@@ -49,10 +49,10 @@ export const addEvent = (eventData, index, imgUrl) => {
 /**
  * @export {function} imageUpload function
  * @param {eventData} eventData object sent to the server
- * @param {index}  index {centerId}
+ * @param {centerId}  centerId {centerId}
  * @returns {URL} URL link returned is used as a parameter
  */
-export const imageUpload = (eventData, index) => {
+export const imageUpload = (eventData, centerId) => {
   let formData = new FormData();
 
   formData.append('file', eventData.imgFile);
@@ -69,7 +69,7 @@ export const imageUpload = (eventData, index) => {
     })
       .then(response => {
         let imageURL = response.data.secure_url;
-        return dispatch(addEvent(eventData, index, imageURL));
+        return dispatch(addEvent(eventData, centerId, imageURL));
       })
       .catch(err => {
         dispatch({

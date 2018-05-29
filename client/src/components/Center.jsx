@@ -7,11 +7,12 @@ import toastr from 'toastr';
 import _ from 'lodash';
 
 import Footer from './Footer.jsx';
-import getCenters from '../actions/getCentersAction';
+import getCenters from '../actions/getCenters';
 import NavBarMain from './NavBarMain.jsx';
 import { history } from '../routes';
 import GetCentersComponent from './CentersComponents/GetCentersComponent.jsx';
 import GetCentersHeaderComponent from './CentersComponents/GetCentersHeaderComponent.jsx';
+
 /**
  * @class Center
  * @extends {React.Component}
@@ -41,6 +42,7 @@ class Center extends React.Component {
     const { dispatch, currentPage } = this.props;
     return dispatch(getCenters(currentPage));
   }
+
   /**
    *
    * @returns {any} -
@@ -82,11 +84,19 @@ class Center extends React.Component {
       );
       centers.status = '';
     }
-    if (centers.status === 'Success') {
-      toastr.options.preventDuplicates = true;
-      toastr.options.positionClass = 'toast-top-left';
-      toastr.success('These are the event centers available');
-      centers.status = '';
+
+    if (_.isEmpty(centers)) {
+      return (
+        <h1
+          style={{
+            paddingTop: '200px',
+            marginLeft: '300px',
+            fontSize: '70px'
+          }}
+        >
+          No Centers Available
+        </h1>
+      );
     }
     return (
       <div>
@@ -112,11 +122,22 @@ class Center extends React.Component {
   }
 }
 
+/**
+ * Maps dispatch to props
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ * Maps state to props
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     centers: state.centerReducer,

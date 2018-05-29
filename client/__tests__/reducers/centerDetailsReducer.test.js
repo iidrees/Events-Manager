@@ -97,31 +97,10 @@ describe('Test for Center Details reducer', () => {
       type: types.GET_CENTER_FAIL,
       error
     });
-    console.log('the result', result);
     expect(result).toEqual({
       status: 'Unsuccessful',
       message: 'No centers available',
       authenticated: false
-    });
-  });
-
-  xit('should delete a center', () => {
-    const initialState = {};
-
-    const centerDeleted = {
-      message: 'center deleted successfully',
-      status: 'Success',
-      authenticated: true
-    };
-
-    const result = centerReducer(initialState, {
-      type: types.DELETE_CENTER,
-      centerDeleted
-    });
-    expect(result).toEqual({
-      message: 'center deleted successfully',
-      status: 'Success',
-      authenticated: true
     });
   });
 });

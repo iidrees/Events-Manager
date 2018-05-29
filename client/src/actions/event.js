@@ -15,44 +15,16 @@ import {
 
 /**
  * Axios will help make GET request for events a user posted
- * @param {index} index -
+ * @param {pageNo} pageNo - pageNo needed for calculating the offset and limit
  * @export {function}
  * @returns {JSON} JSON data containing events
  */
-export const getEvents = index => {
+export const getMyEvents = pageNo => {
   return dispatch => {
     // axios request is made
     return axios({
       method: 'GET',
-      url: `/api/v1/events?page=${index}`,
-      headers: {
-        'x-access-token': localStorage.getItem('x-access-token')
-      },
-      withCredentials: true
-    })
-      .then(response => {
-        // when events response is received
-        dispatch({ type: GET_EVENTS, events: response.data });
-      })
-      .catch(error => {
-        // if any error is returned, it is shown to the user.
-        dispatch({ type: EVENT_FAILED, err: error.response.data });
-      });
-  };
-};
-
-/**
- * Axios will help make GET request for events a user posted
- * @param {index} index -
- * @export {function}
- * @returns {JSON} JSON data containing events
- */
-export const getMyEvents = index => {
-  return dispatch => {
-    // axios request is made
-    return axios({
-      method: 'GET',
-      url: `/api/v1/events/userevents?page=${index}`,
+      url: `/api/v1/events/userevents?page=${pageNo}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
@@ -72,14 +44,14 @@ export const getMyEvents = index => {
 /**
  * Axios will help make GET request for events a user posted
  * @export {function}
- * @param {index} index {args}
+ * @param {eventId} eventId - evenId of the event
  * @returns {JSON} JSON data containing events
  */
-export const detailEvent = index => {
+export const detailEvent = eventId => {
   return dispatch => {
     return axios({
       method: 'GET',
-      url: `/api/v1/events/${index}`,
+      url: `/api/v1/events/${eventId}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },

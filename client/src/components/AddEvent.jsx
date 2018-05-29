@@ -9,8 +9,8 @@ import { Wave, Third } from 'react-preloading-component';
 
 import NavBarMain from './NavBarMain.jsx';
 import Footer from './Footer.jsx';
-import { addEvent, imageUpload } from '../actions/addEventActions';
-import getCenters from '../actions/getCentersAction';
+import { addEvent, imageUpload } from '../actions/addEvent';
+import getCenters from '../actions/getCenters';
 import { history } from '../routes';
 import AddEventComponent from './EventsComponents/AddEventComponent.jsx';
 import AddEventHeaderComponent from './EventsComponents/AddEventHeaderComponent.jsx';
@@ -21,10 +21,20 @@ import AddEventHeaderComponent from './EventsComponents/AddEventHeaderComponent.
  * @extends { React.Component }
  */
 class AddEvent extends React.Component {
+  /**
+   * @returns {void}
+   * @param {event} event -
+   * @memberof AddEvent
+   */
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  /**
+   * @returns {void}
+   * @param {event} event -
+   * @memberof AddEvent
+   */
   onSubmit = event => {
     event.preventDefault();
     let eventData = this.state;
@@ -41,15 +51,15 @@ class AddEvent extends React.Component {
   };
 
   /**
-   * @param {e} e {event}
-   * @returns {any} any
-   * @memberof AddEvents
+   * @returns {void}
+   * @param {event} event -
+   * @memberof AddEvent
    */
-  onImageChange = e => {
-    e.preventDefault();
+  onImageChange = event => {
+    event.preventDefault();
 
     let reader = new FileReader();
-    let imgFile = e.target.files[0];
+    let imgFile = event.target.files[0];
 
     try {
       if (imgFile.type === 'image/jpeg' || imgFile.type === 'image/png') {
@@ -69,8 +79,6 @@ class AddEvent extends React.Component {
   };
 
   /**
-   *
-   *
    * @returns {JSON} An array of centers
    * @memberof Addevents
    */
@@ -80,8 +88,6 @@ class AddEvent extends React.Component {
   }
 
   /**
-   *
-   *
    * @returns {any} -
    * @memberof Addevents
    */
@@ -145,11 +151,23 @@ class AddEvent extends React.Component {
   }
 }
 
+/**
+ * Maps dispatch to props
+ * @param {any} dispatch -
+ * @returns {void}
+ */
 const mapDispatchToProps = dispatch => {
   return {
     dispatch: action => dispatch(action)
   };
 };
+
+/**
+ * Maps state to props and the store is exposed to the component
+ *
+ * @param {any} state -
+ * @returns {void}
+ */
 const mapStateToProps = state => {
   return {
     event: state.addEventReducer,

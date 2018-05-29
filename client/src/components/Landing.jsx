@@ -12,6 +12,13 @@ import Footer from './Footer.jsx';
  * @extends {React.Component}
  */
 export default class LandingPage extends React.Component {
+  /**
+   *
+   * checks if user is already signed in and then redirects them to
+   * their home page based on their role
+   * @returns
+   * @memberof LandingPage
+   */
   componentDidMount() {
     let token;
     let noToken;

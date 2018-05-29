@@ -4,11 +4,11 @@ import {
   MY_EVENT_FAIL,
   DELETE_EVENT,
   DELETE_EVENT_FAIL,
-  GET_EVENTS_ON_DELETE
+  ADD_IMG_FAIL
 } from '../actions/types';
 
 export const initialState = {
-  /* The initial state of the component */
+  /* The initial state of the state */
   status: '',
   message: '',
   events: [],
@@ -54,6 +54,13 @@ export default (state = initialState, action) => {
         status: 'Unsuccessful' || undefined,
         error: action.error.error,
         authenticated: false
+      };
+    }
+    case ADD_IMG_FAIL: {
+      return {
+        ...state,
+        status: 'Unsuccessful',
+        error: action.error
       };
     }
     default:

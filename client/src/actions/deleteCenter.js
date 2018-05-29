@@ -6,14 +6,14 @@ import { DELETE_CENTER, DELETE_CENTER_FAIL } from './types';
 /**
  *
  *
- * @param {any} index - centerId
+ * @param {centerId} centerId - centerId
  * @returns {void} -
  */
-export const deleteCenter = index => {// eslint-disable-line
+const deleteCenter = centerId => {
   return dispatch => {
     return axios({
       method: 'DELETE',
-      url: `/api/v1/centers/${index}`,
+      url: `/api/v1/centers/${centerId}`,
       headers: {
         'x-access-token': localStorage.getItem('x-access-token')
       },
@@ -27,3 +27,5 @@ export const deleteCenter = index => {// eslint-disable-line
       });
   };
 };
+
+export default deleteCenter;

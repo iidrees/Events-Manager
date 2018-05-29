@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { getEvents, detailEvent } from '../../src/actions/eventAction';
+import { getMyEvents, detailEvent } from '../../src/actions/event';
 import * as types from '../../src/actions/types';
 import { events } from './mocks/getEventsMock';
 
@@ -31,7 +31,7 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
 
     const expectedActions = [
       {
-        type: types.GET_EVENTS,
+        type: types.GET_MY_EVENTS,
         events: {
           status: 'Success',
           Message: 'This are your events',
@@ -42,7 +42,7 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
 
     const store = mockStore({});
 
-    return store.dispatch(getEvents()).then(() => {
+    return store.dispatch(getMyEvents()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -61,7 +61,7 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
 
     const expectedActions = [
       {
-        type: types.EVENT_FAILED,
+        type: types.MY_EVENT_FAIL,
         err: {
           status: 'Unsuccessful',
           message: 'No event(s) Found'
@@ -69,7 +69,7 @@ describe('TEST FOR THE GET EVENT ACTION', () => {
       }
     ];
     const store = mockStore({});
-    return store.dispatch(getEvents()).then(() => {
+    return store.dispatch(getMyEvents()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

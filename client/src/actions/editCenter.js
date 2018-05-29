@@ -11,16 +11,16 @@ import {
 /**
  *
  *
- * @param {any} index - the centerId
- * @param {any} centerData -the centerData is the update
+ * @param {any} centerId - the centerId
+ * @param {any} centerData - the centerData is the update
  * @param {any} imgUrl - the url for the image uploaded on cloudinary
  * @returns {void}
  */
-export const editCenter = (index, centerData, imgUrl) => {
+export const editCenter = (centerId, centerData, imgUrl) => {
   return dispatch => {
     return axios({
       method: 'PUT',
-      url: `/api/v1/centers/${index}`,
+      url: `/api/v1/centers/${centerId}`,
       data: {
         name: centerData.name,
         location: centerData.location,
@@ -45,11 +45,11 @@ export const editCenter = (index, centerData, imgUrl) => {
 
 /**
  * @export {function} imageUpload function
- * @param {index}  index {centerId}
+ * @param {centerId}  centerId {centerId}
  * @param {centerData} centerData object sent to the server
  * @returns {URL} URL link returned is used as a parameter
  */
-export const imageUpload = (index, centerData) => {
+export const imageUpload = (centerId, centerData) => {
   let formData = new FormData();
   formData.append('file', centerData.imgFile);
   formData.append('upload_preset', process.env.UPLOAD_PRESET);
@@ -65,7 +65,7 @@ export const imageUpload = (index, centerData) => {
     })
       .then(response => {
         let imageURL = response.data.secure_url;
-        return dispatch(editCenter(index, centerData, imageURL));
+        return dispatch(editCenter(centerId, centerData, imageURL));
       })
       .catch(err => {
         dispatch({
