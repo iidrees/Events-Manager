@@ -24,7 +24,7 @@ export const users = [
     name: 'idreessan'
   },
   {
-    password: bcrypt.hashSync('password', 10),
+    password: bcrypt.hashSync(11111111, 10),
     isSuperAdmin: false,
     isAdmin: true,
     role: 'Admin',
