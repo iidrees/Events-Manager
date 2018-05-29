@@ -9,7 +9,7 @@ module.exports = {
         {
           name: 'Idrees',
           email: 'idreeskun@kun.com',
-          password: bcrypt.hashSync('password', 10),
+          password: bcrypt.hashSync(process.env.SEED_SUPERADMIN, 10),
           role: 'superAdmin',
           isAdmin: true,
           isSuperAdmin: true,
@@ -19,7 +19,7 @@ module.exports = {
         {
           name: 'Felix',
           email: 'felixeba@eba.com',
-          password: bcrypt.hashSync('11111111', 10),
+          password: bcrypt.hashSync(process.env.SEED_ADMIN, 10),
           role: 'Admin',
           isAdmin: true,
           isSuperAdmin: false,
@@ -29,7 +29,7 @@ module.exports = {
         {
           name: 'Faith',
           email: 'faith.andela@andela.com',
-          password: bcrypt.hashSync('11111111', 10),
+          password: bcrypt.hashSync(process.env.SEED_USER, 10),
           role: 'User',
           isAdmin: false,
           isSuperAdmin: false,
