@@ -94,7 +94,7 @@ describe('Landing component', () => {
         <EditCenter {...props} history={history} />
       </Router>
     );
-    expect(wrapper).toMatchSnapshot();
+
     expect(wrapper.find('#admin-form').length).toEqual(1);
 
     expect(wrapper.setState(centerData));
