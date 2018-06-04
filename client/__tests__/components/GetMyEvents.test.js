@@ -46,7 +46,7 @@ describe('GetMyEvents component', () => {
       dispatch: () => {}
     };
     wrapper = shallow(<GetMyEvents {...props} />);
-    expect(wrapper).toMatchSnapshot();
+
     const action = wrapper.instance();
     const onChange = jest.spyOn(wrapper.instance(), 'onChange');
     action.onChange();

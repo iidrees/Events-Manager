@@ -19,7 +19,7 @@ describe('Landing component', () => {
       'componentDidMount'
     );
     action.componentDidMount();
-    expect(componentDidMount).toMatchSnapshot();
+
     expect(componentDidMount).toBeCalled();
     done();
   });

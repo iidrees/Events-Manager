@@ -132,7 +132,7 @@ describe('Signup component', () => {
     });
     it('should respond to change when form is submitted', () => {
       const wrapper = shallow(<Signup {...props} />);
-      expect(wrapper).toMatchSnapshot();
+
       const action = wrapper.instance();
       const signup = jest.spyOn(wrapper.instance(), 'onSubmit');
       action.onSubmit({ preventDefault: () => {} });
@@ -150,7 +150,7 @@ describe('Signup component', () => {
       const wrapper = shallow(
         <Signup {...props} user={user} history={history} token={data.token} />
       );
-      // expect(wrapper).toMatchSnapshot();
+
       const action = wrapper.instance();
       const componentDidMount = jest.spyOn(
         wrapper.instance(),

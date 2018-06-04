@@ -46,7 +46,6 @@ describe('EditEvent component', () => {
   let wrapper = shallow(<EditEvent {...props} />);
   it('should render without throwing an error', () => {
     expect(mount(<EditEvent {...props} />).length).toEqual(1);
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('should respond to full rendering', () => {

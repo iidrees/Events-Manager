@@ -66,9 +66,4 @@ describe('CenterDetails component', () => {
     ).toEqual(1);
     done();
   });
-  expect(
-    <Router>
-      <CenterDetails {...props} history={history} />
-    </Router>
-  ).toMatchSnapshot();
 });

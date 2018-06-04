@@ -64,7 +64,6 @@ describe('Signup component', () => {
     });
 
     it('should respond to change when form is submitted', () => {
-      expect(wrapper).toMatchSnapshot();
       const action = wrapper.instance();
       const signin = jest.spyOn(wrapper.instance(), 'onSubmit');
       action.onSubmit({ preventDefault: () => {} });
