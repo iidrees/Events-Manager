@@ -6,7 +6,7 @@ node_js:
 script:
   - NODE_ENV=test npm test
   - NODE_ENV=development npm test
-  - npm run jest && npm run jest -- -u
+  - npm run jest
 
 install:
   - npm install
