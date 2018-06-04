@@ -9,7 +9,7 @@ import { centerDetails, cancelEvent } from '../../src/actions/centerDetails';
 import deleteCenter from '../../src/actions/deleteCenter';
 import { DetailEvent, CenterDetails } from '../../src/components/CenterDetails';
 
-describe('DetailEvent component', () => {
+describe('CenterDetails component', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error');
     console.error.mockImplementation(() => {}); // eslint-disable-line
@@ -56,7 +56,7 @@ describe('DetailEvent component', () => {
     </Router>
   );
 
-  it('should render without throwing an error', () => {
+  it('should render without throwing an error', done => {
     expect(
       mount(
         <Router>
@@ -64,6 +64,7 @@ describe('DetailEvent component', () => {
         </Router>
       ).length
     ).toEqual(1);
+    done();
   });
   expect(
     <Router>

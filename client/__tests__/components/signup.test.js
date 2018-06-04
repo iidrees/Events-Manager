@@ -139,7 +139,7 @@ describe('Signup component', () => {
       expect(signup).toBeCalled();
     });
 
-    it('should respond to change when component mounts', () => {
+    it('should respond to change when component mounts', done => {
       const data = {
         token:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRoZW50aWNhdGVkIjp0cnVlLCJpZCI6MSwiYWRtaW4iOnRydWUsInJvbGUiOiJzdXBlckFkbWluIiwiaXNTdXBlckFkbWluIjp0cnVlLCJuYW1lIjoiSWRyZWVzIiwiaWF0IjoxNTI3NTk5OTkzLCJleHAiOjE1Mjc2MzU5OTN9.UAzE5IOIN3RVO7E4JCOnwtzpp5vberbZn8jOflEf1JI'
@@ -159,6 +159,7 @@ describe('Signup component', () => {
 
       action.componentDidMount();
       expect(componentDidMount).toBeCalled();
+      done();
     });
   });
 });

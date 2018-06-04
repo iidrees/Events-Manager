@@ -106,7 +106,7 @@ describe('DetailEvent component', () => {
     expect(props.onDelete).toBeCalled();
   });
 
-  it('should respond to submit and image upload clicks', () => {
+  it('should respond to submit and image upload clicks', done => {
     props = {
       user: {},
       event: {
@@ -133,5 +133,6 @@ describe('DetailEvent component', () => {
     );
 
     expect(wrapper.length).toEqual(1);
+    done();
   });
 });

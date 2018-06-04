@@ -53,7 +53,7 @@ describe('GetMyEvents component', () => {
     expect(onChange).toBeCalled();
     expect(wrapper.find('h1').length).toBe(1);
   });
-  it('should render the whole component when there are no events', () => {
+  it('should render the whole component when there are no events', done => {
     props = {
       // status: '',
       myEvents: {
@@ -100,5 +100,6 @@ describe('GetMyEvents component', () => {
     action.onChange();
     expect(onChange).toBeCalled();
     expect(wrapper.find('#myevent').length).toEqual(1);
+    done();
   });
 });
