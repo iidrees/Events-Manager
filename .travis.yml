@@ -6,11 +6,12 @@ node_js:
 script:
   - NODE_ENV=test npm test
   - NODE_ENV=development npm test
-  - npm run jest
+  - npm run jest && npm run jest -- -u
 
 install:
   - npm install
   - npm install -g codecov
+  - travis_wait 30 mvn install
 env:
   
 
