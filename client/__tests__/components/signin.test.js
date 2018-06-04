@@ -64,7 +64,6 @@ describe('Signup component', () => {
     });
 
     it('should respond to change when form is submitted', () => {
-      expect(wrapper).toMatchSnapshot();
       const action = wrapper.instance();
       const signin = jest.spyOn(wrapper.instance(), 'onSubmit');
       action.onSubmit({ preventDefault: () => {} });
@@ -81,7 +80,7 @@ describe('Signup component', () => {
       expect(componentWillReceivePropsSpy).toBeCalled();
     });
 
-    it('should respond to user componentWillReceiveProps', () => {
+    it('should respond to user componentWillReceiveProps', done => {
       props = {
         user: {
           status: 'Unsuccessful',
@@ -110,6 +109,7 @@ describe('Signup component', () => {
       wrapper.setProps(props);
       expect(componentWillReceivePropsSpy).toBeCalled();
       expect(componentDidMount).toBeCalled();
+      done();
     });
   });
 });

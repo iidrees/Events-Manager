@@ -37,16 +37,17 @@ describe('NavBarMain component', () => {
   );
 
   describe('NavBar and buttons', () => {
-    it('should render without throwing an error', () => {
+    it('should render without throwing an error', done => {
       wrapper = mount(
         <NavBarMain {...props} history={history} location={location} />
       );
-      expect(wrapper).toMatchSnapshot();
+
       expect(wrapper.length).toEqual(1);
       expect(wrapper.find('div').length).toBeGreaterThan(0);
       expect(wrapper.find('#nav-logo').length).toBe(1);
 
       expect(wrapper.find('nav').length).toBe(1);
+      done();
     });
   });
 });

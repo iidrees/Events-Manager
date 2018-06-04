@@ -11,7 +11,7 @@ describe('Landing component', () => {
     expect(shallow(<LandingPage />).length).toEqual(1);
   });
 
-  it('should render while storing token in localstorage', () => {
+  it('should render while storing token in localstorage', done => {
     const wrapper = shallow(<LandingPage />);
     const action = wrapper.instance();
     const componentDidMount = jest.spyOn(
@@ -19,7 +19,8 @@ describe('Landing component', () => {
       'componentDidMount'
     );
     action.componentDidMount();
-    expect(componentDidMount).toMatchSnapshot();
+
     expect(componentDidMount).toBeCalled();
+    done();
   });
 });

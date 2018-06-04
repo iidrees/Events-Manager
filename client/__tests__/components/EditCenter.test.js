@@ -114,7 +114,7 @@ describe('Landing component', () => {
 
     expect(wrapper.state('images')).toEqual(undefined);
   });
-  it('should respond to submit and image upload clicks', () => {
+  it('should respond to submit and image upload clicks', done => {
     wrapper.find('#input-file').simulate('change', {
       target: {
         name: 'images',
@@ -123,5 +123,6 @@ describe('Landing component', () => {
     });
 
     expect(wrapper.state('images')).toEqual(undefined);
+    done();
   });
 });

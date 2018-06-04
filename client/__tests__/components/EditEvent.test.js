@@ -46,7 +46,6 @@ describe('EditEvent component', () => {
   let wrapper = shallow(<EditEvent {...props} />);
   it('should render without throwing an error', () => {
     expect(mount(<EditEvent {...props} />).length).toEqual(1);
-    expect(wrapper).toMatchSnapshot();
   });
 
   it('should respond to full rendering', () => {
@@ -140,7 +139,7 @@ describe('EditEvent component', () => {
 
     expect(wrapper.state('images')).toEqual(undefined);
   });
-  it('should respond to submit and image upload clicks', () => {
+  it('should respond to submit and image upload clicks', done => {
     wrapper.find('#input-file').simulate('change', {
       target: {
         name: 'images',
@@ -149,5 +148,6 @@ describe('EditEvent component', () => {
     });
 
     expect(wrapper.state('images')).toEqual(undefined);
+    done();
   });
 });
