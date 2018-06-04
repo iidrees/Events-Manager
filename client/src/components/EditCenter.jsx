@@ -18,7 +18,7 @@ import EditCenterComponent from './CentersComponents/EditCenterComponent.jsx';
  * @param {event} event -
  * @extends {React.Component}
  */
-class EditCenter extends React.Component {
+export class EditCenter extends React.Component {
   /**
    * Creates an instance of EditCenter.
    * @param {any} props -

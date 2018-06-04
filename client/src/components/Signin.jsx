@@ -14,7 +14,7 @@ import NavBarMain from './NavBarMain.jsx';
  * @class Signin
  * @extends {React.Component}
  */
-class Signin extends React.Component {
+export class Signin extends React.Component {
   /**
    * Creates an instance of Signin.
    * @param {any} props -
@@ -39,9 +39,9 @@ class Signin extends React.Component {
       noToken = false;
 
       if (jwt.decode(token).admin === true) {
-        history.push('/getCenters');
+        this.props.history.push('/getCenters');
       } else {
-        history.push('/myevents');
+        this.props.history.push('/myevents');
       }
     } catch (error) {
       return (noToken = null);
@@ -59,32 +59,32 @@ class Signin extends React.Component {
         toastr.options.preventDuplicates = true;
         toastr.options.positionClass = 'toast-top-left';
         toastr.success('Signin was successful');
-        history.replace('/getcenters');
+        this.props.history.push('/getcenters');
       }
       if (jwt.decode(user.token).role === 'User') {
         toastr.options.preventDuplicates = true;
         toastr.options.positionClass = 'toast-top-left';
         toastr.success('Signin was successful');
-        history.push('/myevents');
+        this.props.history.push('/myevents');
       }
     }
   }
 
   /**
-   * @param {any} e {event}
+   * @param {any} event {event}
    * @return {*} any
    * @memberof Signin
    */
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
   /**
-   * @param {any} e {event}
+   * @param {any} event {event}
    * @returns {*} any
    * @memberof Signin
    */
-  onSubmit = e => {
-    e.preventDefault();
+  onSubmit = event => {
+    event.preventDefault();
     let userData = this.state;
     const { dispatch } = this.props;
     return dispatch(userSignin(userData));
@@ -124,21 +124,6 @@ class Signin extends React.Component {
                 <p className="signup-text">
                   Please fill the form below to login
                 </p>
-                {user.status === 'Unsuccessful' && (
-                  <div className="alert alert-danger" role="alert">
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>
-                      {user.message} {user.error}.
-                    </strong>
-                  </div>
-                )}
               </div>
             </div>
             <div className="row">

@@ -41,14 +41,23 @@
     "plugins": ["transform-object-rest-spread"]
   },
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"],
+    "setupFiles": [
+      "jest-localstorage-mock",
+      "<rootDir>./client/__tests__/setupTests.js"
+    ],
     "modulePathIgnorePatterns": [
       "server/test/",
       "client/__tests__/actions/mocks/",
-      "e2e/"
+      "e2e/",
+      "client/__tests__/setupTests.js",
+      "client/__tests__/components/mocks/mockStore.js",
+      "client/__tests__/components/mocks/localStorageMock.js"
     ],
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   },
   "repository": {
     "type": "git",
@@ -83,6 +92,8 @@
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.5",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.11.0",
     "expect": "^22.4.3",
     "express": "^4.16.2",
@@ -118,6 +129,7 @@
     "sequelize": "^4.22.8",
     "sequelize-cli": "^3.1.0",
     "shortid": "^2.2.8",
+    "sinon": "^5.0.10",
     "style-loader": "^0.19.0",
     "supertest": "^3.0.0",
     "swagger-jsdoc": "^1.9.7",
@@ -134,8 +146,6 @@
     "babel-jest": "^22.2.0",
     "clean-webpack-plugin": "^0.1.19",
     "codecov": "^3.0.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
@@ -143,6 +153,8 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^22.2.0",
+    "jest-css-modules": "^1.1.0",
+    "jest-enzyme": "^6.0.1",
     "jest-localstorage-mock": "^2.2.0",
     "moxios": "^0.4.0",
     "nodemon": "^1.12.1",

@@ -7,7 +7,7 @@ import Signup from './components/Signup.jsx';
 import authRoute from './components/auth/authRoute.jsx';
 import AddEvent from './components/AddEvent.jsx';
 import Center from './components/Center.jsx';
-import Landing from './components/Landing.jsx';
+import { LandingPage } from './components/Landing.jsx';
 import DetailEvent from './components/DetailEvent.jsx';
 import AddCenter from './components/AddCenter.jsx';
 import CenterDetails from './components/CenterDetails.jsx';
@@ -42,8 +42,8 @@ export const Routes = () => {
       <Route exact path="/editcenter/:id" component={authRoute(EditCenter)} />
       <Route exact path="/editevent/:id" component={authRoute(EditEvent)} />
       <Route exact path="/addcenter" component={authRoute(AddCenter)} />
-      <Route exact path="/" component={Landing} />
-      <Route exact path="*" component={Landing} />
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="*" component={LandingPage} />
     </Switch>
   );
 };

@@ -14,7 +14,7 @@ import { signOut } from '../actions/user';
  * @class NavBarMain
  * @extends {React.Component}
  */
-class NavBarMain extends React.Component {
+export class NavBarMain extends React.Component {
   /**
    *
    * logs out users

@@ -11,7 +11,7 @@ import Footer from './Footer.jsx';
  * @class LandingPage
  * @extends {React.Component}
  */
-export default class LandingPage extends React.Component {
+export class LandingPage extends React.Component {
   /**
    *
    * checks if user is already signed in and then redirects them to
