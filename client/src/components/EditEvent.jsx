@@ -20,7 +20,7 @@ import EditEventHeaderComponent from './EventsComponents/EditEventHeaderComponen
  * @class EditEvents
  * @extends { React.Component }
  */
-class EditEvent extends React.Component {
+export class EditEvent extends React.Component {
   /**
    * Creates an instance of EditEvent.
    * @param {any} props -
@@ -150,13 +150,10 @@ class EditEvent extends React.Component {
         </div>
       );
     }
-    if (event.status === '') {
-      return <Redirect to="/myevents" push />;
-    }
     return (
       <div>
         <div className="container">
-          <EditEventHeaderComponent editEvents={editEvents} />
+          <EditEventHeaderComponent />
           <EditEventComponent
             onSubmit={this.onSubmit}
             onChange={this.onChange}

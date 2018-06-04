@@ -20,7 +20,7 @@ import CenterDetailsBodyComponent from './CentersComponents/CenterDetailsBodyCom
  * @class CenterDetails
  * @extends {React.Component}
  */
-class CenterDetails extends React.Component {
+export class CenterDetails extends React.Component {
   /**
    * Creates an instance of Center.
    * @param {any} props -

@@ -103,6 +103,7 @@ const DetailsComponent = props => (
                       No
                     </button>
                     <button
+                      id="delete-button"
                       className="btn btn-warning"
                       onClick={props.onDelete}
                       data-dismiss="modal"

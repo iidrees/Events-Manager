@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing component should render while storing token in localstorage 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [],
+  ],
+}
+`;

@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history';
 import 'rc-pagination/assets/index.css';
 import toastr from 'toastr';
 import { Routes, history } from './routes';
-import { SET_TOKEN, REMOVE_TOKEN } from './actions/types';
+import { SET_TOKEN } from './actions/types';
 import './styles/scss/style.scss';
 import './styles/css/style.css';
 import '../../node_modules/toastr/build/toastr.min.css';

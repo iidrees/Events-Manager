@@ -44,7 +44,7 @@ module.exports = {
       .assert.visible('div > label[for=password]')
       .assert.containsText('div > label[for=password]', 'Password')
       .assert.visible('div > input[name=password]')
-      .setValue('div > input[name=password]', '11111111')
+      .setValue('div > input[name=password]', '22221111')
       .pause(1000)
       .assert.visible('#signin-btn')
       .click('#signin-btn')
@@ -57,8 +57,6 @@ module.exports = {
       .assert.containsText('#user-getcenters', 'Centers')
       .assert.visible('#user-addevent')
       .assert.containsText('#user-addevent', 'Add Events')
-      .assert.visible('#user-event')
-      .assert.containsText('#user-event', 'Events')
       .assert.visible('#user-myevents')
       .assert.containsText('#user-myevents', 'My Events')
       .assert.visible('#user-logout')
@@ -73,7 +71,7 @@ module.exports = {
   'User should be able to add an event': browser => {
     browser
       .click('#user-addevent')
-      .pause(1000)
+      .pause(2000)
       .assert.visible('div > #add-event-header > .row > div > h1')
       .assert.containsText(
         'div > #add-event-header > .row > div > h1',

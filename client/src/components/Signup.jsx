@@ -11,7 +11,7 @@ import NavBarMain from './NavBarMain.jsx';
  * @class Signup
  * @extends {React.Component}
  */
-class Signup extends React.Component {
+export class Signup extends React.Component {
   /**
    * checks if user has already signed in before and
    * then proceeds to automatically logs them in
@@ -27,9 +27,9 @@ class Signup extends React.Component {
       noToken = false;
 
       if (jwt.decode(token).admin === true) {
-        history.push('/getCenters');
+        this.props.history.push('/getCenters');
       } else {
-        history.push('/myevents');
+        this.props.history.push('/myevents');
       }
     } catch (error) {
       return (noToken = null);

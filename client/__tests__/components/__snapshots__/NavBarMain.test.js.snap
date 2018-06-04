@@ -1,0 +1,2714 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBarMain component NavBar and buttons should render without throwing an error 1`] = `
+ReactWrapper {
+  "length": 1,
+  Symbol(enzyme.__unrendered__): <NavBarMain
+    dispatch={[Function]}
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
+    location={Object {}}
+    onChange={[Function]}
+    onSubmit={[Function]}
+    user={
+      Object {
+        "admin": true,
+        "authenticated": true,
+        "message": "message",
+        "status": "Success",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__node__): Object {
+    "instance": NavBarMain {
+      "_reactInternalFiber": FiberNode {
+        "_debugID": 4,
+        "_debugIsCurrentlyTiming": false,
+        "_debugOwner": FiberNode {
+          "_debugID": 3,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "dispatch": [Function],
+              "history": Object {
+                "push": [Function],
+              },
+              "location": Object {},
+              "onChange": [Function],
+              "onSubmit": [Function],
+              "user": Object {
+                "admin": true,
+                "authenticated": true,
+                "message": "message",
+                "status": "Success",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+              },
+            },
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {
+              "dispatch": [Function],
+              "history": Object {
+                "push": [Function],
+              },
+              "location": Object {},
+              "onChange": [Function],
+              "onSubmit": [Function],
+              "user": Object {
+                "admin": true,
+                "authenticated": true,
+                "message": "message",
+                "status": "Success",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+              },
+            },
+          },
+          "nextEffect": null,
+          "pendingProps": null,
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 1,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "expirationTime": 1,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <header>
+                    <nav
+                      class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                      id="nav-bar"
+                    >
+                      <button
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        class="navbar-toggler"
+                        data-target="#navbar-myevents"
+                        data-toggle="collapse"
+                        type="button"
+                      >
+                        <span
+                          class="navbar-toggler-icon"
+                        />
+                      </button>
+                      <a
+                        class="navbar-brand"
+                        href="/"
+                        id="nav-logo"
+                      >
+                        Events Manager!
+                      </a>
+                      <div
+                        class="collapse navbar-collapse left"
+                        id="navbar-myevents"
+                      />
+                    </nav>
+                  </header>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "hydrate": false,
+                "isReadyForCommit": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": null,
+                "callbackList": null,
+                "expirationTime": 1,
+                "first": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "nextCallback": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "dispatch": [Function],
+                          "history": Object {
+                            "push": [Function],
+                          },
+                          "location": Object {},
+                          "onChange": [Function],
+                          "onSubmit": [Function],
+                          "user": Object {
+                            "admin": true,
+                            "authenticated": true,
+                            "message": "message",
+                            "status": "Success",
+                            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                          },
+                        }
+                      }
+                    />,
+                  },
+                },
+                "hasForceUpdate": false,
+                "isInitialized": false,
+                "isProcessing": false,
+                "last": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "nextCallback": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "dispatch": [Function],
+                          "history": Object {
+                            "push": [Function],
+                          },
+                          "location": Object {},
+                          "onChange": [Function],
+                          "onSubmit": [Function],
+                          "user": Object {
+                            "admin": true,
+                            "authenticated": true,
+                            "message": "message",
+                            "status": "Success",
+                            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                          },
+                        }
+                      }
+                    />,
+                  },
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 0,
+            "expirationTime": 0,
+            "firstEffect": [Circular],
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={
+                  Object {
+                    "dispatch": [Function],
+                    "history": Object {
+                      "push": [Function],
+                    },
+                    "location": Object {},
+                    "onChange": [Function],
+                    "onSubmit": [Function],
+                    "user": Object {
+                      "admin": true,
+                      "authenticated": true,
+                      "message": "message",
+                      "status": "Success",
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                    },
+                  }
+                }
+              />,
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": null,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <header>
+                  <nav
+                    class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                    id="nav-bar"
+                  >
+                    <button
+                      aria-controls="navbarSupportedContent"
+                      aria-expanded="false"
+                      aria-label="Toggle navigation"
+                      class="navbar-toggler"
+                      data-target="#navbar-myevents"
+                      data-toggle="collapse"
+                      type="button"
+                    >
+                      <span
+                        class="navbar-toggler-icon"
+                      />
+                    </button>
+                    <a
+                      class="navbar-brand"
+                      href="/"
+                      id="nav-logo"
+                    >
+                      Events Manager!
+                    </a>
+                    <div
+                      class="collapse navbar-collapse left"
+                      id="navbar-myevents"
+                    />
+                  </nav>
+                </header>
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "finishedWork": null,
+              "hydrate": false,
+              "isReadyForCommit": false,
+              "nextScheduledRoot": null,
+              "pendingChildren": null,
+              "pendingContext": null,
+              "remainingExpirationTime": 0,
+            },
+            "tag": 3,
+            "type": null,
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_debugSource": null,
+        "alternate": null,
+        "child": FiberNode {
+          "_debugID": 5,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": [Circular],
+          "_debugSource": null,
+          "alternate": null,
+          "child": FiberNode {
+            "_debugID": 6,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": FiberNode {
+              "_debugID": 7,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 10,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "className": "navbar-toggler-icon",
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": [Circular],
+                "sibling": null,
+                "stateNode": <span
+                  class="navbar-toggler-icon"
+                />,
+                "tag": 5,
+                "type": "span",
+                "updateQueue": null,
+              },
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "aria-controls": "navbarSupportedContent",
+                "aria-expanded": "false",
+                "aria-label": "Toggle navigation",
+                "children": <span
+                  className="navbar-toggler-icon"
+                />,
+                "className": "navbar-toggler",
+                "data-target": "#navbar-myevents",
+                "data-toggle": "collapse",
+                "type": "button",
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": [Circular],
+              "sibling": FiberNode {
+                "_debugID": 8,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 1,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "children": "Events Manager!",
+                  "className": "navbar-brand",
+                  "href": "/",
+                  "id": "nav-logo",
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": [Circular],
+                "sibling": FiberNode {
+                  "_debugID": 9,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 2,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": Array [
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                      undefined,
+                    ],
+                    "className": "collapse navbar-collapse left",
+                    "id": "navbar-myevents",
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <div
+                    class="collapse navbar-collapse left"
+                    id="navbar-myevents"
+                  />,
+                  "tag": 5,
+                  "type": "div",
+                  "updateQueue": null,
+                },
+                "stateNode": <a
+                  class="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>,
+                "tag": 5,
+                "type": "a",
+                "updateQueue": null,
+              },
+              "stateNode": <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  class="navbar-toggler-icon"
+                />
+              </button>,
+              "tag": 5,
+              "type": "button",
+              "updateQueue": null,
+            },
+            "effectTag": 0,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "children": Array [
+                <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  className="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    className="navbar-toggler-icon"
+                  />
+                </button>,
+                <a
+                  className="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>,
+                <div
+                  className="collapse navbar-collapse left"
+                  id="navbar-myevents"
+                />,
+              ],
+              "className": "navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end",
+              "id": "nav-bar",
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <nav
+              class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+              id="nav-bar"
+            >
+              <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  class="navbar-toggler-icon"
+                />
+              </button>
+              <a
+                class="navbar-brand"
+                href="/"
+                id="nav-logo"
+              >
+                Events Manager!
+              </a>
+              <div
+                class="collapse navbar-collapse left"
+                id="navbar-myevents"
+              />
+            </nav>,
+            "tag": 5,
+            "type": "nav",
+            "updateQueue": null,
+          },
+          "effectTag": 0,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "children": <nav
+              className="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+              id="nav-bar"
+            >
+              <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                className="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  className="navbar-toggler-icon"
+                />
+              </button>
+              <a
+                className="navbar-brand"
+                href="/"
+                id="nav-logo"
+              >
+                Events Manager!
+              </a>
+              <div
+                className="collapse navbar-collapse left"
+                id="navbar-myevents"
+              />
+            </nav>,
+          },
+          "memoizedState": null,
+          "nextEffect": null,
+          "pendingProps": null,
+          "ref": null,
+          "return": [Circular],
+          "sibling": null,
+          "stateNode": <header>
+            <nav
+              class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+              id="nav-bar"
+            >
+              <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  class="navbar-toggler-icon"
+                />
+              </button>
+              <a
+                class="navbar-brand"
+                href="/"
+                id="nav-logo"
+              >
+                Events Manager!
+              </a>
+              <div
+                class="collapse navbar-collapse left"
+                id="navbar-myevents"
+              />
+            </nav>
+          </header>,
+          "tag": 5,
+          "type": "header",
+          "updateQueue": null,
+        },
+        "effectTag": 1,
+        "expirationTime": 0,
+        "firstEffect": null,
+        "index": 0,
+        "internalContextTag": 0,
+        "key": null,
+        "lastEffect": null,
+        "memoizedProps": Object {
+          "dispatch": [Function],
+          "history": Object {
+            "push": [Function],
+          },
+          "location": Object {},
+          "onChange": [Function],
+          "onSubmit": [Function],
+          "user": Object {
+            "admin": true,
+            "authenticated": true,
+            "message": "message",
+            "status": "Success",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+          },
+        },
+        "memoizedState": null,
+        "nextEffect": null,
+        "pendingProps": null,
+        "ref": null,
+        "return": FiberNode {
+          "_debugID": 3,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": null,
+          "_debugSource": null,
+          "alternate": null,
+          "child": [Circular],
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "Component": [Function],
+            "context": null,
+            "props": Object {
+              "dispatch": [Function],
+              "history": Object {
+                "push": [Function],
+              },
+              "location": Object {},
+              "onChange": [Function],
+              "onSubmit": [Function],
+              "user": Object {
+                "admin": true,
+                "authenticated": true,
+                "message": "message",
+                "status": "Success",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+              },
+            },
+          },
+          "memoizedState": Object {
+            "context": null,
+            "mount": true,
+            "props": Object {
+              "dispatch": [Function],
+              "history": Object {
+                "push": [Function],
+              },
+              "location": Object {},
+              "onChange": [Function],
+              "onSubmit": [Function],
+              "user": Object {
+                "admin": true,
+                "authenticated": true,
+                "message": "message",
+                "status": "Success",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+              },
+            },
+          },
+          "nextEffect": null,
+          "pendingProps": null,
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 1,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": [Circular],
+              "child": null,
+              "effectTag": 0,
+              "expirationTime": 1,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": null,
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <header>
+                    <nav
+                      class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                      id="nav-bar"
+                    >
+                      <button
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        class="navbar-toggler"
+                        data-target="#navbar-myevents"
+                        data-toggle="collapse"
+                        type="button"
+                      >
+                        <span
+                          class="navbar-toggler-icon"
+                        />
+                      </button>
+                      <a
+                        class="navbar-brand"
+                        href="/"
+                        id="nav-logo"
+                      >
+                        Events Manager!
+                      </a>
+                      <div
+                        class="collapse navbar-collapse left"
+                        id="navbar-myevents"
+                      />
+                    </nav>
+                  </header>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "hydrate": false,
+                "isReadyForCommit": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": Object {
+                "baseState": null,
+                "callbackList": null,
+                "expirationTime": 1,
+                "first": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "nextCallback": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "dispatch": [Function],
+                          "history": Object {
+                            "push": [Function],
+                          },
+                          "location": Object {},
+                          "onChange": [Function],
+                          "onSubmit": [Function],
+                          "user": Object {
+                            "admin": true,
+                            "authenticated": true,
+                            "message": "message",
+                            "status": "Success",
+                            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                          },
+                        }
+                      }
+                    />,
+                  },
+                },
+                "hasForceUpdate": false,
+                "isInitialized": false,
+                "isProcessing": false,
+                "last": Object {
+                  "callback": null,
+                  "expirationTime": 1,
+                  "isForced": false,
+                  "isReplace": false,
+                  "next": null,
+                  "nextCallback": null,
+                  "partialState": Object {
+                    "element": <WrapperComponent
+                      Component={[Function]}
+                      context={null}
+                      props={
+                        Object {
+                          "dispatch": [Function],
+                          "history": Object {
+                            "push": [Function],
+                          },
+                          "location": Object {},
+                          "onChange": [Function],
+                          "onSubmit": [Function],
+                          "user": Object {
+                            "admin": true,
+                            "authenticated": true,
+                            "message": "message",
+                            "status": "Success",
+                            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                          },
+                        }
+                      }
+                    />,
+                  },
+                },
+              },
+            },
+            "child": [Circular],
+            "effectTag": 0,
+            "expirationTime": 0,
+            "firstEffect": [Circular],
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": [Circular],
+            "memoizedProps": null,
+            "memoizedState": Object {
+              "element": <WrapperComponent
+                Component={[Function]}
+                context={null}
+                props={
+                  Object {
+                    "dispatch": [Function],
+                    "history": Object {
+                      "push": [Function],
+                    },
+                    "location": Object {},
+                    "onChange": [Function],
+                    "onSubmit": [Function],
+                    "user": Object {
+                      "admin": true,
+                      "authenticated": true,
+                      "message": "message",
+                      "status": "Success",
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                    },
+                  }
+                }
+              />,
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": null,
+            "sibling": null,
+            "stateNode": Object {
+              "containerInfo": <div>
+                <header>
+                  <nav
+                    class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                    id="nav-bar"
+                  >
+                    <button
+                      aria-controls="navbarSupportedContent"
+                      aria-expanded="false"
+                      aria-label="Toggle navigation"
+                      class="navbar-toggler"
+                      data-target="#navbar-myevents"
+                      data-toggle="collapse"
+                      type="button"
+                    >
+                      <span
+                        class="navbar-toggler-icon"
+                      />
+                    </button>
+                    <a
+                      class="navbar-brand"
+                      href="/"
+                      id="nav-logo"
+                    >
+                      Events Manager!
+                    </a>
+                    <div
+                      class="collapse navbar-collapse left"
+                      id="navbar-myevents"
+                    />
+                  </nav>
+                </header>
+              </div>,
+              "context": Object {},
+              "current": [Circular],
+              "finishedWork": null,
+              "hydrate": false,
+              "isReadyForCommit": false,
+              "nextScheduledRoot": null,
+              "pendingChildren": null,
+              "pendingContext": null,
+              "remainingExpirationTime": 0,
+            },
+            "tag": 3,
+            "type": null,
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": WrapperComponent {
+            "_reactInternalFiber": [Circular],
+            "_reactInternalInstance": Object {},
+            "context": Object {},
+            "props": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "refs": Object {},
+            "state": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "updater": Object {
+              "enqueueForceUpdate": [Function],
+              "enqueueReplaceState": [Function],
+              "enqueueSetState": [Function],
+              "isMounted": [Function],
+            },
+          },
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "sibling": null,
+        "stateNode": [Circular],
+        "tag": 2,
+        "type": [Function],
+        "updateQueue": null,
+      },
+      "_reactInternalInstance": Object {},
+      "context": Object {},
+      "logOut": [Function],
+      "props": Object {
+        "dispatch": [Function],
+        "history": Object {
+          "push": [Function],
+        },
+        "location": Object {},
+        "onChange": [Function],
+        "onSubmit": [Function],
+        "user": Object {
+          "admin": true,
+          "authenticated": true,
+          "message": "message",
+          "status": "Success",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+        },
+      },
+      "refs": Object {},
+      "state": null,
+      "updater": Object {
+        "enqueueForceUpdate": [Function],
+        "enqueueReplaceState": [Function],
+        "enqueueSetState": [Function],
+        "isMounted": [Function],
+      },
+    },
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "dispatch": [Function],
+      "history": Object {
+        "push": [Function],
+      },
+      "location": Object {},
+      "onChange": [Function],
+      "onSubmit": [Function],
+      "user": Object {
+        "admin": true,
+        "authenticated": true,
+        "message": "message",
+        "status": "Success",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": <header>
+        <nav
+          class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+          id="nav-bar"
+        >
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="navbar-toggler"
+            data-target="#navbar-myevents"
+            data-toggle="collapse"
+            type="button"
+          >
+            <span
+              class="navbar-toggler-icon"
+            />
+          </button>
+          <a
+            class="navbar-brand"
+            href="/"
+            id="nav-logo"
+          >
+            Events Manager!
+          </a>
+          <div
+            class="collapse navbar-collapse left"
+            id="navbar-myevents"
+          />
+        </nav>
+      </header>,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <nav
+          className="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+          id="nav-bar"
+        >
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            className="navbar-toggler"
+            data-target="#navbar-myevents"
+            data-toggle="collapse"
+            type="button"
+          >
+            <span
+              className="navbar-toggler-icon"
+            />
+          </button>
+          <a
+            className="navbar-brand"
+            href="/"
+            id="nav-logo"
+          >
+            Events Manager!
+          </a>
+          <div
+            className="collapse navbar-collapse left"
+            id="navbar-myevents"
+          />
+        </nav>,
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": <nav
+            class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+            id="nav-bar"
+          >
+            <button
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              data-target="#navbar-myevents"
+              data-toggle="collapse"
+              type="button"
+            >
+              <span
+                class="navbar-toggler-icon"
+              />
+            </button>
+            <a
+              class="navbar-brand"
+              href="/"
+              id="nav-logo"
+            >
+              Events Manager!
+            </a>
+            <div
+              class="collapse navbar-collapse left"
+              id="navbar-myevents"
+            />
+          </nav>,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                className="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  className="navbar-toggler-icon"
+                />
+              </button>,
+              <a
+                className="navbar-brand"
+                href="/"
+                id="nav-logo"
+              >
+                Events Manager!
+              </a>,
+              <div
+                className="collapse navbar-collapse left"
+                id="navbar-myevents"
+              />,
+            ],
+            "className": "navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end",
+            "id": "nav-bar",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  class="navbar-toggler-icon"
+                />
+              </button>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "aria-controls": "navbarSupportedContent",
+                "aria-expanded": "false",
+                "aria-label": "Toggle navigation",
+                "children": <span
+                  className="navbar-toggler-icon"
+                />,
+                "className": "navbar-toggler",
+                "data-target": "#navbar-myevents",
+                "data-toggle": "collapse",
+                "type": "button",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": <span
+                    class="navbar-toggler-icon"
+                  />,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "className": "navbar-toggler-icon",
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    undefined,
+                  ],
+                  "type": "span",
+                },
+              ],
+              "type": "button",
+            },
+            Object {
+              "instance": <a
+                class="navbar-brand"
+                href="/"
+                id="nav-logo"
+              >
+                Events Manager!
+              </a>,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Events Manager!",
+                "className": "navbar-brand",
+                "href": "/",
+                "id": "nav-logo",
+              },
+              "ref": null,
+              "rendered": Array [
+                "Events Manager!",
+              ],
+              "type": "a",
+            },
+            Object {
+              "instance": <div
+                class="collapse navbar-collapse left"
+                id="navbar-myevents"
+              />,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ],
+                "className": "collapse navbar-collapse left",
+                "id": "navbar-myevents",
+              },
+              "ref": null,
+              "rendered": Array [
+                Array [
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                ],
+              ],
+              "type": "div",
+            },
+          ],
+          "type": "nav",
+        },
+      ],
+      "type": "header",
+    },
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": NavBarMain {
+        "_reactInternalFiber": FiberNode {
+          "_debugID": 4,
+          "_debugIsCurrentlyTiming": false,
+          "_debugOwner": FiberNode {
+            "_debugID": 3,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 1,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 1,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": null,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <header>
+                      <nav
+                        class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                        id="nav-bar"
+                      >
+                        <button
+                          aria-controls="navbarSupportedContent"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation"
+                          class="navbar-toggler"
+                          data-target="#navbar-myevents"
+                          data-toggle="collapse"
+                          type="button"
+                        >
+                          <span
+                            class="navbar-toggler-icon"
+                          />
+                        </button>
+                        <a
+                          class="navbar-brand"
+                          href="/"
+                          id="nav-logo"
+                        >
+                          Events Manager!
+                        </a>
+                        <div
+                          class="collapse navbar-collapse left"
+                          id="navbar-myevents"
+                        />
+                      </nav>
+                    </header>
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "finishedWork": null,
+                  "hydrate": false,
+                  "isReadyForCommit": false,
+                  "nextScheduledRoot": null,
+                  "pendingChildren": null,
+                  "pendingContext": null,
+                  "remainingExpirationTime": 0,
+                },
+                "tag": 3,
+                "type": null,
+                "updateQueue": Object {
+                  "baseState": null,
+                  "callbackList": null,
+                  "expirationTime": 1,
+                  "first": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "nextCallback": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "dispatch": [Function],
+                            "history": Object {
+                              "push": [Function],
+                            },
+                            "location": Object {},
+                            "onChange": [Function],
+                            "onSubmit": [Function],
+                            "user": Object {
+                              "admin": true,
+                              "authenticated": true,
+                              "message": "message",
+                              "status": "Success",
+                              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                            },
+                          }
+                        }
+                      />,
+                    },
+                  },
+                  "hasForceUpdate": false,
+                  "isInitialized": false,
+                  "isProcessing": false,
+                  "last": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "nextCallback": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "dispatch": [Function],
+                            "history": Object {
+                              "push": [Function],
+                            },
+                            "location": Object {},
+                            "onChange": [Function],
+                            "onSubmit": [Function],
+                            "user": Object {
+                              "admin": true,
+                              "authenticated": true,
+                              "message": "message",
+                              "status": "Success",
+                              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                            },
+                          }
+                        }
+                      />,
+                    },
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": [Circular],
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "dispatch": [Function],
+                      "history": Object {
+                        "push": [Function],
+                      },
+                      "location": Object {},
+                      "onChange": [Function],
+                      "onSubmit": [Function],
+                      "user": Object {
+                        "admin": true,
+                        "authenticated": true,
+                        "message": "message",
+                        "status": "Success",
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                      },
+                    }
+                  }
+                />,
+              },
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <header>
+                    <nav
+                      class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                      id="nav-bar"
+                    >
+                      <button
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        class="navbar-toggler"
+                        data-target="#navbar-myevents"
+                        data-toggle="collapse"
+                        type="button"
+                      >
+                        <span
+                          class="navbar-toggler-icon"
+                        />
+                      </button>
+                      <a
+                        class="navbar-brand"
+                        href="/"
+                        id="nav-logo"
+                      >
+                        Events Manager!
+                      </a>
+                      <div
+                        class="collapse navbar-collapse left"
+                        id="navbar-myevents"
+                      />
+                    </nav>
+                  </header>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "hydrate": false,
+                "isReadyForCommit": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": null,
+            },
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {
+                  "dispatch": [Function],
+                  "history": Object {
+                    "push": [Function],
+                  },
+                  "location": Object {},
+                  "onChange": [Function],
+                  "onSubmit": [Function],
+                  "user": Object {
+                    "admin": true,
+                    "authenticated": true,
+                    "message": "message",
+                    "status": "Success",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                  },
+                },
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {
+                  "dispatch": [Function],
+                  "history": Object {
+                    "push": [Function],
+                  },
+                  "location": Object {},
+                  "onChange": [Function],
+                  "onSubmit": [Function],
+                  "user": Object {
+                    "admin": true,
+                    "authenticated": true,
+                    "message": "message",
+                    "status": "Success",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                  },
+                },
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "_debugSource": null,
+          "alternate": null,
+          "child": FiberNode {
+            "_debugID": 5,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": [Circular],
+            "_debugSource": null,
+            "alternate": null,
+            "child": FiberNode {
+              "_debugID": 6,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": [Circular],
+              "_debugSource": null,
+              "alternate": null,
+              "child": FiberNode {
+                "_debugID": 7,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": [Circular],
+                "_debugSource": null,
+                "alternate": null,
+                "child": FiberNode {
+                  "_debugID": 10,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 0,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "className": "navbar-toggler-icon",
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": null,
+                  "stateNode": <span
+                    class="navbar-toggler-icon"
+                  />,
+                  "tag": 5,
+                  "type": "span",
+                  "updateQueue": null,
+                },
+                "effectTag": 0,
+                "expirationTime": 0,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": Object {
+                  "aria-controls": "navbarSupportedContent",
+                  "aria-expanded": "false",
+                  "aria-label": "Toggle navigation",
+                  "children": <span
+                    className="navbar-toggler-icon"
+                  />,
+                  "className": "navbar-toggler",
+                  "data-target": "#navbar-myevents",
+                  "data-toggle": "collapse",
+                  "type": "button",
+                },
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": [Circular],
+                "sibling": FiberNode {
+                  "_debugID": 8,
+                  "_debugIsCurrentlyTiming": false,
+                  "_debugOwner": [Circular],
+                  "_debugSource": null,
+                  "alternate": null,
+                  "child": null,
+                  "effectTag": 0,
+                  "expirationTime": 0,
+                  "firstEffect": null,
+                  "index": 1,
+                  "internalContextTag": 0,
+                  "key": null,
+                  "lastEffect": null,
+                  "memoizedProps": Object {
+                    "children": "Events Manager!",
+                    "className": "navbar-brand",
+                    "href": "/",
+                    "id": "nav-logo",
+                  },
+                  "memoizedState": null,
+                  "nextEffect": null,
+                  "pendingProps": null,
+                  "ref": null,
+                  "return": [Circular],
+                  "sibling": FiberNode {
+                    "_debugID": 9,
+                    "_debugIsCurrentlyTiming": false,
+                    "_debugOwner": [Circular],
+                    "_debugSource": null,
+                    "alternate": null,
+                    "child": null,
+                    "effectTag": 0,
+                    "expirationTime": 0,
+                    "firstEffect": null,
+                    "index": 2,
+                    "internalContextTag": 0,
+                    "key": null,
+                    "lastEffect": null,
+                    "memoizedProps": Object {
+                      "children": Array [
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                        undefined,
+                      ],
+                      "className": "collapse navbar-collapse left",
+                      "id": "navbar-myevents",
+                    },
+                    "memoizedState": null,
+                    "nextEffect": null,
+                    "pendingProps": null,
+                    "ref": null,
+                    "return": [Circular],
+                    "sibling": null,
+                    "stateNode": <div
+                      class="collapse navbar-collapse left"
+                      id="navbar-myevents"
+                    />,
+                    "tag": 5,
+                    "type": "div",
+                    "updateQueue": null,
+                  },
+                  "stateNode": <a
+                    class="navbar-brand"
+                    href="/"
+                    id="nav-logo"
+                  >
+                    Events Manager!
+                  </a>,
+                  "tag": 5,
+                  "type": "a",
+                  "updateQueue": null,
+                },
+                "stateNode": <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    class="navbar-toggler-icon"
+                  />
+                </button>,
+                "tag": 5,
+                "type": "button",
+                "updateQueue": null,
+              },
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": null,
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": null,
+              "memoizedProps": Object {
+                "children": Array [
+                  <button
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    className="navbar-toggler"
+                    data-target="#navbar-myevents"
+                    data-toggle="collapse"
+                    type="button"
+                  >
+                    <span
+                      className="navbar-toggler-icon"
+                    />
+                  </button>,
+                  <a
+                    className="navbar-brand"
+                    href="/"
+                    id="nav-logo"
+                  >
+                    Events Manager!
+                  </a>,
+                  <div
+                    className="collapse navbar-collapse left"
+                    id="navbar-myevents"
+                  />,
+                ],
+                "className": "navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end",
+                "id": "nav-bar",
+              },
+              "memoizedState": null,
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": [Circular],
+              "sibling": null,
+              "stateNode": <nav
+                class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                id="nav-bar"
+              >
+                <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    class="navbar-toggler-icon"
+                  />
+                </button>
+                <a
+                  class="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>
+                <div
+                  class="collapse navbar-collapse left"
+                  id="navbar-myevents"
+                />
+              </nav>,
+              "tag": 5,
+              "type": "nav",
+              "updateQueue": null,
+            },
+            "effectTag": 0,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "children": <nav
+                className="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                id="nav-bar"
+              >
+                <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  className="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    className="navbar-toggler-icon"
+                  />
+                </button>
+                <a
+                  className="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>
+                <div
+                  className="collapse navbar-collapse left"
+                  id="navbar-myevents"
+                />
+              </nav>,
+            },
+            "memoizedState": null,
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": [Circular],
+            "sibling": null,
+            "stateNode": <header>
+              <nav
+                class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                id="nav-bar"
+              >
+                <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    class="navbar-toggler-icon"
+                  />
+                </button>
+                <a
+                  class="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>
+                <div
+                  class="collapse navbar-collapse left"
+                  id="navbar-myevents"
+                />
+              </nav>
+            </header>,
+            "tag": 5,
+            "type": "header",
+            "updateQueue": null,
+          },
+          "effectTag": 1,
+          "expirationTime": 0,
+          "firstEffect": null,
+          "index": 0,
+          "internalContextTag": 0,
+          "key": null,
+          "lastEffect": null,
+          "memoizedProps": Object {
+            "dispatch": [Function],
+            "history": Object {
+              "push": [Function],
+            },
+            "location": Object {},
+            "onChange": [Function],
+            "onSubmit": [Function],
+            "user": Object {
+              "admin": true,
+              "authenticated": true,
+              "message": "message",
+              "status": "Success",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+            },
+          },
+          "memoizedState": null,
+          "nextEffect": null,
+          "pendingProps": null,
+          "ref": null,
+          "return": FiberNode {
+            "_debugID": 3,
+            "_debugIsCurrentlyTiming": false,
+            "_debugOwner": null,
+            "_debugSource": null,
+            "alternate": null,
+            "child": [Circular],
+            "effectTag": 1,
+            "expirationTime": 0,
+            "firstEffect": null,
+            "index": 0,
+            "internalContextTag": 0,
+            "key": null,
+            "lastEffect": null,
+            "memoizedProps": Object {
+              "Component": [Function],
+              "context": null,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "memoizedState": Object {
+              "context": null,
+              "mount": true,
+              "props": Object {
+                "dispatch": [Function],
+                "history": Object {
+                  "push": [Function],
+                },
+                "location": Object {},
+                "onChange": [Function],
+                "onSubmit": [Function],
+                "user": Object {
+                  "admin": true,
+                  "authenticated": true,
+                  "message": "message",
+                  "status": "Success",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                },
+              },
+            },
+            "nextEffect": null,
+            "pendingProps": null,
+            "ref": null,
+            "return": FiberNode {
+              "_debugID": 1,
+              "_debugIsCurrentlyTiming": false,
+              "_debugOwner": null,
+              "_debugSource": null,
+              "alternate": FiberNode {
+                "_debugID": 1,
+                "_debugIsCurrentlyTiming": false,
+                "_debugOwner": null,
+                "_debugSource": null,
+                "alternate": [Circular],
+                "child": null,
+                "effectTag": 0,
+                "expirationTime": 1,
+                "firstEffect": null,
+                "index": 0,
+                "internalContextTag": 0,
+                "key": null,
+                "lastEffect": null,
+                "memoizedProps": null,
+                "memoizedState": null,
+                "nextEffect": null,
+                "pendingProps": null,
+                "ref": null,
+                "return": null,
+                "sibling": null,
+                "stateNode": Object {
+                  "containerInfo": <div>
+                    <header>
+                      <nav
+                        class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                        id="nav-bar"
+                      >
+                        <button
+                          aria-controls="navbarSupportedContent"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation"
+                          class="navbar-toggler"
+                          data-target="#navbar-myevents"
+                          data-toggle="collapse"
+                          type="button"
+                        >
+                          <span
+                            class="navbar-toggler-icon"
+                          />
+                        </button>
+                        <a
+                          class="navbar-brand"
+                          href="/"
+                          id="nav-logo"
+                        >
+                          Events Manager!
+                        </a>
+                        <div
+                          class="collapse navbar-collapse left"
+                          id="navbar-myevents"
+                        />
+                      </nav>
+                    </header>
+                  </div>,
+                  "context": Object {},
+                  "current": [Circular],
+                  "finishedWork": null,
+                  "hydrate": false,
+                  "isReadyForCommit": false,
+                  "nextScheduledRoot": null,
+                  "pendingChildren": null,
+                  "pendingContext": null,
+                  "remainingExpirationTime": 0,
+                },
+                "tag": 3,
+                "type": null,
+                "updateQueue": Object {
+                  "baseState": null,
+                  "callbackList": null,
+                  "expirationTime": 1,
+                  "first": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "nextCallback": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "dispatch": [Function],
+                            "history": Object {
+                              "push": [Function],
+                            },
+                            "location": Object {},
+                            "onChange": [Function],
+                            "onSubmit": [Function],
+                            "user": Object {
+                              "admin": true,
+                              "authenticated": true,
+                              "message": "message",
+                              "status": "Success",
+                              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                            },
+                          }
+                        }
+                      />,
+                    },
+                  },
+                  "hasForceUpdate": false,
+                  "isInitialized": false,
+                  "isProcessing": false,
+                  "last": Object {
+                    "callback": null,
+                    "expirationTime": 1,
+                    "isForced": false,
+                    "isReplace": false,
+                    "next": null,
+                    "nextCallback": null,
+                    "partialState": Object {
+                      "element": <WrapperComponent
+                        Component={[Function]}
+                        context={null}
+                        props={
+                          Object {
+                            "dispatch": [Function],
+                            "history": Object {
+                              "push": [Function],
+                            },
+                            "location": Object {},
+                            "onChange": [Function],
+                            "onSubmit": [Function],
+                            "user": Object {
+                              "admin": true,
+                              "authenticated": true,
+                              "message": "message",
+                              "status": "Success",
+                              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                            },
+                          }
+                        }
+                      />,
+                    },
+                  },
+                },
+              },
+              "child": [Circular],
+              "effectTag": 0,
+              "expirationTime": 0,
+              "firstEffect": [Circular],
+              "index": 0,
+              "internalContextTag": 0,
+              "key": null,
+              "lastEffect": [Circular],
+              "memoizedProps": null,
+              "memoizedState": Object {
+                "element": <WrapperComponent
+                  Component={[Function]}
+                  context={null}
+                  props={
+                    Object {
+                      "dispatch": [Function],
+                      "history": Object {
+                        "push": [Function],
+                      },
+                      "location": Object {},
+                      "onChange": [Function],
+                      "onSubmit": [Function],
+                      "user": Object {
+                        "admin": true,
+                        "authenticated": true,
+                        "message": "message",
+                        "status": "Success",
+                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                      },
+                    }
+                  }
+                />,
+              },
+              "nextEffect": null,
+              "pendingProps": null,
+              "ref": null,
+              "return": null,
+              "sibling": null,
+              "stateNode": Object {
+                "containerInfo": <div>
+                  <header>
+                    <nav
+                      class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+                      id="nav-bar"
+                    >
+                      <button
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        class="navbar-toggler"
+                        data-target="#navbar-myevents"
+                        data-toggle="collapse"
+                        type="button"
+                      >
+                        <span
+                          class="navbar-toggler-icon"
+                        />
+                      </button>
+                      <a
+                        class="navbar-brand"
+                        href="/"
+                        id="nav-logo"
+                      >
+                        Events Manager!
+                      </a>
+                      <div
+                        class="collapse navbar-collapse left"
+                        id="navbar-myevents"
+                      />
+                    </nav>
+                  </header>
+                </div>,
+                "context": Object {},
+                "current": [Circular],
+                "finishedWork": null,
+                "hydrate": false,
+                "isReadyForCommit": false,
+                "nextScheduledRoot": null,
+                "pendingChildren": null,
+                "pendingContext": null,
+                "remainingExpirationTime": 0,
+              },
+              "tag": 3,
+              "type": null,
+              "updateQueue": null,
+            },
+            "sibling": null,
+            "stateNode": WrapperComponent {
+              "_reactInternalFiber": [Circular],
+              "_reactInternalInstance": Object {},
+              "context": Object {},
+              "props": Object {
+                "Component": [Function],
+                "context": null,
+                "props": Object {
+                  "dispatch": [Function],
+                  "history": Object {
+                    "push": [Function],
+                  },
+                  "location": Object {},
+                  "onChange": [Function],
+                  "onSubmit": [Function],
+                  "user": Object {
+                    "admin": true,
+                    "authenticated": true,
+                    "message": "message",
+                    "status": "Success",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                  },
+                },
+              },
+              "refs": Object {},
+              "state": Object {
+                "context": null,
+                "mount": true,
+                "props": Object {
+                  "dispatch": [Function],
+                  "history": Object {
+                    "push": [Function],
+                  },
+                  "location": Object {},
+                  "onChange": [Function],
+                  "onSubmit": [Function],
+                  "user": Object {
+                    "admin": true,
+                    "authenticated": true,
+                    "message": "message",
+                    "status": "Success",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+                  },
+                },
+              },
+              "updater": Object {
+                "enqueueForceUpdate": [Function],
+                "enqueueReplaceState": [Function],
+                "enqueueSetState": [Function],
+                "isMounted": [Function],
+              },
+            },
+            "tag": 2,
+            "type": [Function],
+            "updateQueue": null,
+          },
+          "sibling": null,
+          "stateNode": [Circular],
+          "tag": 2,
+          "type": [Function],
+          "updateQueue": null,
+        },
+        "_reactInternalInstance": Object {},
+        "context": Object {},
+        "logOut": [Function],
+        "props": Object {
+          "dispatch": [Function],
+          "history": Object {
+            "push": [Function],
+          },
+          "location": Object {},
+          "onChange": [Function],
+          "onSubmit": [Function],
+          "user": Object {
+            "admin": true,
+            "authenticated": true,
+            "message": "message",
+            "status": "Success",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+          },
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+        },
+      },
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "dispatch": [Function],
+        "history": Object {
+          "push": [Function],
+        },
+        "location": Object {},
+        "onChange": [Function],
+        "onSubmit": [Function],
+        "user": Object {
+          "admin": true,
+          "authenticated": true,
+          "message": "message",
+          "status": "Success",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiYWRtaW4iOnRydWUsInJvbGUiOiJBZG1pbiIsImlzU3VwZXJBZG1pbiI6ZmFsc2UsIm5hbWUiOiJ0ZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNTIzNDUyMjcwLCJleHAiOjE1MjM0ODgyNzB9.veeRWGTKnmU9qiZSG3H9aM3cbFUIBOKFfJJzSKLSijk",
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": <header>
+          <nav
+            class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+            id="nav-bar"
+          >
+            <button
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              class="navbar-toggler"
+              data-target="#navbar-myevents"
+              data-toggle="collapse"
+              type="button"
+            >
+              <span
+                class="navbar-toggler-icon"
+              />
+            </button>
+            <a
+              class="navbar-brand"
+              href="/"
+              id="nav-logo"
+            >
+              Events Manager!
+            </a>
+            <div
+              class="collapse navbar-collapse left"
+              id="navbar-myevents"
+            />
+          </nav>
+        </header>,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <nav
+            className="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+            id="nav-bar"
+          >
+            <button
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              className="navbar-toggler"
+              data-target="#navbar-myevents"
+              data-toggle="collapse"
+              type="button"
+            >
+              <span
+                className="navbar-toggler-icon"
+              />
+            </button>
+            <a
+              className="navbar-brand"
+              href="/"
+              id="nav-logo"
+            >
+              Events Manager!
+            </a>
+            <div
+              className="collapse navbar-collapse left"
+              id="navbar-myevents"
+            />
+          </nav>,
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": <nav
+              class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end"
+              id="nav-bar"
+            >
+              <button
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-target="#navbar-myevents"
+                data-toggle="collapse"
+                type="button"
+              >
+                <span
+                  class="navbar-toggler-icon"
+                />
+              </button>
+              <a
+                class="navbar-brand"
+                href="/"
+                id="nav-logo"
+              >
+                Events Manager!
+              </a>
+              <div
+                class="collapse navbar-collapse left"
+                id="navbar-myevents"
+              />
+            </nav>,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  className="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    className="navbar-toggler-icon"
+                  />
+                </button>,
+                <a
+                  className="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>,
+                <div
+                  className="collapse navbar-collapse left"
+                  id="navbar-myevents"
+                />,
+              ],
+              "className": "navbar navbar-expand-lg  fixed-top navbar-dark bg-dark justify-content-end",
+              "id": "nav-bar",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": <button
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  class="navbar-toggler"
+                  data-target="#navbar-myevents"
+                  data-toggle="collapse"
+                  type="button"
+                >
+                  <span
+                    class="navbar-toggler-icon"
+                  />
+                </button>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "aria-controls": "navbarSupportedContent",
+                  "aria-expanded": "false",
+                  "aria-label": "Toggle navigation",
+                  "children": <span
+                    className="navbar-toggler-icon"
+                  />,
+                  "className": "navbar-toggler",
+                  "data-target": "#navbar-myevents",
+                  "data-toggle": "collapse",
+                  "type": "button",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": <span
+                      class="navbar-toggler-icon"
+                    />,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "className": "navbar-toggler-icon",
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      undefined,
+                    ],
+                    "type": "span",
+                  },
+                ],
+                "type": "button",
+              },
+              Object {
+                "instance": <a
+                  class="navbar-brand"
+                  href="/"
+                  id="nav-logo"
+                >
+                  Events Manager!
+                </a>,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Events Manager!",
+                  "className": "navbar-brand",
+                  "href": "/",
+                  "id": "nav-logo",
+                },
+                "ref": null,
+                "rendered": Array [
+                  "Events Manager!",
+                ],
+                "type": "a",
+              },
+              Object {
+                "instance": <div
+                  class="collapse navbar-collapse left"
+                  id="navbar-myevents"
+                />,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                  ],
+                  "className": "collapse navbar-collapse left",
+                  "id": "navbar-myevents",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Array [
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                    undefined,
+                  ],
+                ],
+                "type": "div",
+              },
+            ],
+            "type": "nav",
+          },
+        ],
+        "type": "header",
+      },
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

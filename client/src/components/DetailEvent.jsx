@@ -19,7 +19,7 @@ import DetailsHeaderComponent from './EventsComponents/DetailsHeaderComponent.js
  * @class DetailEvents
  * @extends {React.Component}
  */
-class DetailEvent extends React.Component {
+export class DetailEvent extends React.Component {
   /**
    * A method that lets a user get their events
    * @memberof DetailEvent
@@ -43,7 +43,7 @@ class DetailEvent extends React.Component {
     toastr.options.positionClass = 'toast-top-left';
     toastr.success('Event Deleted Successfully');
     dispatch(deleteEvent(event.id));
-    return history.push('/myevents');
+    return this.props.history.push('/myevents');
   };
 
   /**

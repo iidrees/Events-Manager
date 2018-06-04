@@ -20,7 +20,7 @@ import MyEventHeader from './EventsComponents/MyEventHeader.jsx';
  * @class GetMyEvents
  * @extends {React.Component}
  */
-class GetMyEvents extends React.Component {
+export class GetMyEvents extends React.Component {
   /**
    * Creates an instance of Center.
    * @param {any} props -
