@@ -97,9 +97,7 @@ describe('Show and return event centers', () => {
     expect(result).toEqual(error);
   });
 
-  xit('should delete a center', () => {
-    const initialState = {};
-
+  it('should delete a center', () => {
     const centers = [
       {
         id: 1,
@@ -124,14 +122,15 @@ describe('Show and return event centers', () => {
         userId: 2
       }
     ];
+    const state = {
+      centers
+    };
     const centerDeleted = {
       message: 'center deleted successfully',
-      status: 'Success',
-      centers,
-      authenticated: true
+      centerId: 1
     };
 
-    const result = centerReducer((initialState.state['centers'] = centers), {
+    const result = centerReducer(state, {
       type: types.DELETE_CENTER,
       centerDeleted
     });
@@ -139,8 +138,41 @@ describe('Show and return event centers', () => {
     expect(result).toEqual({
       message: 'center deleted successfully',
       status: 'Success',
-      centers: centers,
+      centers: [
+        {
+          id: 2,
+          name: 'The UNILAG CENTER',
+          location: 'Lagos',
+          address: 'Akoka, Yaba Lagos State',
+          owner: 'The Idrees entertainment',
+          capacity: 10000,
+          description:
+            'This is a center that can allow you grove as much as you may need to',
+          userId: 2
+        }
+      ],
       authenticated: true
+    });
+  });
+
+  it('should return an error when DELETE_CENTER_FAIL', () => {
+    const initialState = [];
+
+    const error = {
+      authenticated: false,
+      status: 'Unsuccessful',
+      error: 'Center could not be deleted'
+    };
+
+    const result = centerReducer(initialState, {
+      type: types.DELETE_CENTER_FAIL,
+      error
+    });
+
+    expect(result).toEqual({
+      authenticated: false,
+      status: 'Unsuccessful',
+      message: error.error
     });
   });
 });

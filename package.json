@@ -34,7 +34,7 @@
       "babel server --presets es2015 --out-dir client/dist --source-maps",
     "jest": "jest && codecov",
     "jest:cover": "jest --coverage",
-    "jest:watch": "jest --watch"
+    "jest:watch": "jest client/__tests__/ --watchAll"
   },
   "babel": {
     "presets": ["es2015", "react", "stage-0"],

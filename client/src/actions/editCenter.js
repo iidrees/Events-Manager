@@ -55,7 +55,7 @@ export const imageUpload = (centerId, centerData) => {
   formData.append('upload_preset', process.env.UPLOAD_PRESET);
   return dispatch => {
     dispatch({ type: EDIT_CENTER_START });
-    axios({
+    return axios({
       method: 'post',
       url: process.env.CLOUDINARY_URL,
       data: formData,

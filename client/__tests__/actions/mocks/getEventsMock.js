@@ -8,6 +8,7 @@ export const events = [
     time: '10:00 PM',
     date: '21-03-2019',
     type: 'public',
+    isCancelled: true,
     center: 'The Multi-purpose',
     description: 'This is going to be the weirdest parry on the month of March',
     imgUrl: 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
@@ -18,6 +19,7 @@ export const events = [
     time: '10:00 PM',
     date: '21-03-2019',
     type: 'public',
+    isCancelled: true,
     center: 'The Multi-purpose',
     description: 'This is going to be the weirdest parry on the month of March',
     imgUrl: 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
@@ -28,6 +30,7 @@ export const events = [
     time: '10:00 PM',
     date: '21-03-2019',
     type: 'public',
+    isCancelled: true,
     center: 'The Multi-purpose',
     description: 'This is going to be the weirdest parry on the month of March',
     imgUrl: 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
@@ -38,6 +41,7 @@ export const events = [
     time: '10:00 PM',
     date: '21-03-2019',
     type: 'public',
+    isCancelled: true,
     center: 'The Multi-purpose',
     description: 'This is going to be the weirdest parry on the month of March',
     imgUrl: 'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
@@ -47,6 +51,7 @@ export const events = [
     title: 'The Amity party',
     time: '10:00 PM',
     date: '21-03-2019',
+    isCancelled: true,
     type: 'public',
     center: 'The Multi-purpose',
     description: 'This is going to be the weirdest parry on the month of March',

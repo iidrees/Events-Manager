@@ -1,6 +1,7 @@
 import centerDetailsReducer from '../../src/reducers/centerDetailsReducer';
 import centerReducer from '../../src/reducers/centerReducer';
 import * as types from '../../src/actions/types';
+import { events } from '../actions/mocks/getEventsMock';
 
 describe('Test for Center Details reducer', () => {
   const center = {
@@ -101,6 +102,129 @@ describe('Test for Center Details reducer', () => {
       status: 'Unsuccessful',
       message: 'No centers available',
       authenticated: false
+    });
+  });
+
+  it('Should return fail for any error returned', () => {
+    const initialState = {
+      status: '',
+      message: '',
+      center: {},
+      events: []
+    };
+
+    const error = {
+      message: 'No event available to be cancelled'
+    };
+
+    const result = centerDetailsReducer(initialState, {
+      type: types.CANCEL_EVENT_FAIL,
+      error
+    });
+    expect(result).toEqual({
+      center: {},
+      events: [],
+      status: 'Unsuccessful',
+      message: 'No event available to be cancelled',
+      authenticated: false
+    });
+  });
+
+  it('Should return the correct data for CANCEL_EVENT', () => {
+    const state = {
+      events,
+      center
+    };
+
+    const response = {
+      newEvent: {
+        id: 1,
+        title: 'The Amity party',
+        time: '10:00 PM',
+        date: '21-03-2019',
+        type: 'public',
+        isCancelled: true,
+        center: 'The Multi-purpose',
+        description:
+          'This is going to be the weirdest parry on the month of March',
+        imgUrl:
+          'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+      }
+    };
+
+    const result = centerDetailsReducer(state, {
+      type: types.CANCEL_EVENT,
+      response
+    });
+    expect(result).toEqual({
+      events: [
+        {
+          id: 1,
+          title: 'The Amity party',
+          time: '10:00 PM',
+          date: '21-03-2019',
+          type: 'public',
+          isCancelled: true,
+          center: 'The Multi-purpose',
+          description:
+            'This is going to be the weirdest parry on the month of March',
+          imgUrl:
+            'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+        },
+        {
+          id: 2,
+          title: 'The Amity party',
+          time: '10:00 PM',
+          date: '21-03-2019',
+          type: 'public',
+          isCancelled: true,
+          center: 'The Multi-purpose',
+          description:
+            'This is going to be the weirdest parry on the month of March',
+          imgUrl:
+            'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+        },
+        {
+          id: 3,
+          title: 'The Amity party',
+          time: '10:00 PM',
+          date: '21-03-2019',
+          type: 'public',
+          isCancelled: true,
+          center: 'The Multi-purpose',
+          description:
+            'This is going to be the weirdest parry on the month of March',
+          imgUrl:
+            'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+        },
+        {
+          id: 4,
+          title: 'The Amity party',
+          time: '10:00 PM',
+          date: '21-03-2019',
+          type: 'public',
+          isCancelled: true,
+          center: 'The Multi-purpose',
+          description:
+            'This is going to be the weirdest parry on the month of March',
+          imgUrl:
+            'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+        },
+        {
+          id: 5,
+          title: 'The Amity party',
+          time: '10:00 PM',
+          date: '21-03-2019',
+          isCancelled: true,
+          type: 'public',
+          center: 'The Multi-purpose',
+          description:
+            'This is going to be the weirdest parry on the month of March',
+          imgUrl:
+            'https://static.pexels.com/photos/169193/pexels-photo-169193.jpeg'
+        }
+      ],
+      center
     });
   });
 });

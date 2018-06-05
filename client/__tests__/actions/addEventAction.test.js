@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { addEvent } from '../../src/actions/addEvent';
+import { addEvent, imageUpload } from '../../src/actions/addEvent';
 import * as types from '../../src/actions/types';
 import { event } from './mocks/addEventMock';
 
@@ -72,6 +72,28 @@ describe('TEST FOR ADD EVENTS', () => {
     const store = mockStore({});
 
     return store.dispatch(addEvent(event[0], 1)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+  it('should return the expected action', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          error: 'Image upload failed'
+        }
+      });
+    });
+    const expectedActions = [
+      { type: types.ADD_EVENT_LOAD },
+      {
+        type: types.ADD_IMG_FAIL,
+        error: 'Image upload failed'
+      }
+    ];
+    const store = mockStore({});
+    return store.dispatch(imageUpload(event)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

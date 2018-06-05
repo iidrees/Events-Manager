@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { editEvent } from '../../src/actions/editEvent';
+import { editEvent, imageUpload } from '../../src/actions/editEvent';
 import * as types from '../../src/actions/types';
 import * as edit from './mocks/addEventMock';
 
@@ -72,6 +72,28 @@ describe('TEST FOR ADD CENTER', () => {
     const store = mockStore({});
 
     return store.dispatch(editEvent(1, edit.event[0])).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+  it('should return the expected action', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          error: 'Image upload failed'
+        }
+      });
+    });
+    const expectedActions = [
+      { type: types.EDIT_EVENT_LOAD },
+      {
+        type: types.ADD_IMG_FAIL,
+        error: 'Image upload failed'
+      }
+    ];
+    const store = mockStore({});
+    return store.dispatch(imageUpload(edit.event[0], 1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
