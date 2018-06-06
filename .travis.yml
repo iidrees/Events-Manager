@@ -5,7 +5,6 @@ node_js:
 
 script:
   - NODE_ENV=development npm test
-  - travis_wait 40 npm run jest
 
 install:
   - npm install
