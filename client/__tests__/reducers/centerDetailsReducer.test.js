@@ -15,7 +15,7 @@ describe('Test for Center Details reducer', () => {
     userId: 1
   };
 
-  xit('Should return initial state when no data is recieved', () => {
+  it('Should return initial state when no data is recieved', () => {
     const state = {
       status: '',
       message: '',
@@ -33,7 +33,7 @@ describe('Test for Center Details reducer', () => {
       events: []
     });
   });
-  xit('Should return the correct data for center Details', () => {
+  it('Should return the correct data for center Details', () => {
     const state = {
       status: '',
       message: '',
@@ -87,7 +87,7 @@ describe('Test for Center Details reducer', () => {
       ]
     });
   });
-  xit('Should return fail for any error returned', () => {
+  it('Should return fail for any error returned', () => {
     const initialState = {};
 
     const error = {
@@ -105,7 +105,7 @@ describe('Test for Center Details reducer', () => {
     });
   });
 
-  xit('Should return fail for any error returned', () => {
+  it('Should return fail for any error returned', () => {
     const initialState = {
       status: '',
       message: '',

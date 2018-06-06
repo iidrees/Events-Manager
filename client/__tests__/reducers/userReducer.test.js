@@ -2,7 +2,7 @@ import userReducer from '../../src/reducers/userReducer';
 import * as types from '../../src/actions/types';
 
 describe('USER reducer test', () => {
-  xit('should return initial state', () => {
+  it('should return initial state', () => {
     const state = {
       authenticated: false,
       status: '',
@@ -30,7 +30,7 @@ describe('USER reducer test', () => {
       }
     });
   });
-  xit('should signup new user', () => {
+  it('should signup new user', () => {
     const state = {
       authenticated: false,
       status: '',
@@ -86,7 +86,7 @@ describe('USER reducer test', () => {
     });
   });
 
-  xit('should show signup failed', () => {
+  it('should show signup failed', () => {
     const state = {
       authenticated: false,
       status: '',
@@ -108,7 +108,7 @@ describe('USER reducer test', () => {
       authenticated: false
     });
   });
-  xit('should signin user', () => {
+  it('should signin user', () => {
     const state = {
       authenticated: false,
       status: '',
@@ -160,7 +160,7 @@ describe('USER reducer test', () => {
       }
     });
   });
-  xit('should show signin fail', () => {
+  it('should show signin fail', () => {
     const state = {
       authenticated: false,
       status: '',

@@ -2,7 +2,7 @@ import detailsEventReducer from '../../src/reducers/detailsEventReducer';
 import * as types from '../../src/actions/types';
 
 describe('Event details reducer test', () => {
-  xit('Should return initial state', () => {
+  it('Should return initial state', () => {
     const initialState = {
       authenticated: false,
       status: '',
@@ -16,7 +16,7 @@ describe('Event details reducer test', () => {
     expect(result).toEqual(initialState);
   });
 
-  xit('Should return an event data', () => {
+  it('Should return an event data', () => {
     const initialState = {
       status: '',
       message: '',

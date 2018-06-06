@@ -15,7 +15,7 @@ describe('Add Center reducer Test', () => {
     }
   ];
 
-  xit('Should return initial state', () => {
+  it('Should return initial state', () => {
     const state = {
       status: '',
       message: '',
@@ -33,7 +33,7 @@ describe('Add Center reducer Test', () => {
     });
   });
 
-  xit('Should return the state after center added', () => {
+  it('Should return the state after center added', () => {
     const state = {
       status: '',
       message: '',
@@ -60,7 +60,7 @@ describe('Add Center reducer Test', () => {
     });
   });
 
-  xit('Should return state when add fails', () => {
+  it('Should return state when add fails', () => {
     const state = {
       status: '',
       message: '',
