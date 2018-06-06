@@ -2,7 +2,7 @@ import centerReducer from '../../src/reducers/centerReducer';
 import * as types from '../../src/actions/types';
 
 describe('Show and return event centers', () => {
-  it('should return the initial state where no data is received from the API', () => {
+  xit('should return the initial state where no data is received from the API', () => {
     const initialState = [];
     const result = centerReducer(initialState, {
       type: types.ADD_CENTER
@@ -11,7 +11,7 @@ describe('Show and return event centers', () => {
     expect(result).toEqual(initialState);
   });
 
-  it('should retuen an array of centers', () => {
+  xit('should retuen an array of centers', () => {
     const initialState = {
       status: '',
       message: '',
@@ -79,7 +79,7 @@ describe('Show and return event centers', () => {
     });
   });
 
-  it('should return an error reducer', () => {
+  xit('should return an error reducer', () => {
     const initialState = [];
 
     const error = {
@@ -97,7 +97,7 @@ describe('Show and return event centers', () => {
     expect(result).toEqual(error);
   });
 
-  it('should delete a center', () => {
+  xit('should delete a center', () => {
     const centers = [
       {
         id: 1,
@@ -155,7 +155,7 @@ describe('Show and return event centers', () => {
     });
   });
 
-  it('should return an error when DELETE_CENTER_FAIL', () => {
+  xit('should return an error when DELETE_CENTER_FAIL', () => {
     const initialState = [];
 
     const error = {
