@@ -4,9 +4,8 @@ node_js:
   - "8.2.1"
 
 script:
-  - NODE_ENV=test npm test
   - NODE_ENV=development npm test
-  - travis_wait 20 npm run jest
+  - travis_wait 40 npm run jest
 
 install:
   - npm install
@@ -25,10 +24,8 @@ before_script:
   - psql -c "create database events_manager_test;" -U postgres
   - psql -c "create database events_manager;" -U postgres
   - NODE_ENV=development npm run seq:create 
-  - NODE_ENV=test npm run seq:drop
-  - NODE_ENV=test npm run seq:create 
+  
 
 after_success:
   - NODE_ENV=development npm run coverage
-  - NODE_ENV=test npm run coverage
   - npm run jest
