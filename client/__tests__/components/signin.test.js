@@ -28,32 +28,39 @@ describe('Signup component', () => {
   let wrapper = shallow(<Signin {...props} history={history} />);
 
   describe('Signup tags and elements, classes and id', () => {
-    it('should render without throwing an error', () => {
+    it('should render without throwing an error', done => {
       expect(wrapper.length).toEqual(1);
+      done();
     });
 
-    it('renders the divs', () => {
+    it('renders the divs', done => {
       expect(wrapper.find('div').length).toBeGreaterThan(1);
+      done();
     });
-    it('renders the h1', () => {
+    it('renders the h1', done => {
       expect(wrapper.find('h1').length).toBeGreaterThan(0);
+      done();
     });
-    it('renders the h2', () => {
+    it('renders the h2', done => {
       expect(wrapper.find('div').length).toBeGreaterThan(0);
+      done();
     });
-    it('renders the buttons', () => {
+    it('renders the buttons', done => {
       expect(wrapper.find('button').length).toBeGreaterThan(0);
+      done();
     });
-    it('renders the input', () => {
+    it('renders the input', done => {
       expect(wrapper.find('input').length).toBeGreaterThan(0);
+      done();
     });
-    it('renders the form', () => {
+    it('renders the form', done => {
       expect(wrapper.find('form').length).toBeGreaterThan(0);
+      done();
     });
   });
 
   describe('SIGNIN FORM INPUT', () => {
-    it('should respond to email field change', () => {
+    it('should respond to email field change', done => {
       wrapper.find('#email').simulate('change', {
         target: {
           name: 'email',
@@ -61,16 +68,18 @@ describe('Signup component', () => {
         }
       });
       expect(wrapper.state('email')).toEqual('felix.amande@andela.com');
+      done();
     });
 
-    it('should respond to change when form is submitted', () => {
+    it('should respond to change when form is submitted', done => {
       const action = wrapper.instance();
       const signin = jest.spyOn(wrapper.instance(), 'onSubmit');
       action.onSubmit({ preventDefault: () => {} });
       expect(signin).toBeCalled();
+      done();
     });
 
-    it('should respond to componentWillReceiveProps', () => {
+    it('should respond to componentWillReceiveProps', done => {
       const action = wrapper.instance();
       const componentWillReceivePropsSpy = jest.spyOn(
         wrapper.instance(),
@@ -78,6 +87,7 @@ describe('Signup component', () => {
       );
       action.componentWillReceiveProps({ ...props });
       expect(componentWillReceivePropsSpy).toBeCalled();
+      done();
     });
 
     it('should respond to user componentWillReceiveProps', done => {
