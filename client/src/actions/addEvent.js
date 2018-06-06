@@ -59,7 +59,7 @@ export const imageUpload = (eventData, centerId) => {
   formData.append('upload_preset', process.env.UPLOAD_PRESET);
   return dispatch => {
     dispatch({ type: ADD_EVENT_LOAD });
-    axios({
+    return axios({
       method: 'post',
       url: process.env.CLOUDINARY_URL,
       data: formData,

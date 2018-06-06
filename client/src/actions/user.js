@@ -20,7 +20,7 @@ import {
  */
 export const userSignup = userData => {
   return dispatch => {
-    axios({
+    return axios({
       method: 'post',
       url: '/api/v1/users',
       data: userData,
@@ -31,7 +31,7 @@ export const userSignup = userData => {
         dispatch({ type: SIGNED_UP, payload: response.data });
       })
       .catch(err => {
-        dispatch({ type: 'SIGN_UP_FAIL', payload: err.response.data });
+        dispatch({ type: SIGN_UP_FAIL, payload: err.response.data });
       });
   };
 };
@@ -46,7 +46,7 @@ export const userSignin = userData => {
   return dispatch => {
     // dispatcher sends action to userReducer
     dispatch({ type: 'SIGN_IN' });
-    axios({
+    return axios({
       // axios request is made
       method: 'POST',
       url: '/api/v1/users/login',
@@ -69,6 +69,6 @@ export const userSignin = userData => {
 export const signOut = () => {
   return dispatch => {
     localStorage.removeItem('x-access-token');
-    dispatch({ type: SIGN_OUT });
+    return dispatch({ type: SIGN_OUT });
   };
 };

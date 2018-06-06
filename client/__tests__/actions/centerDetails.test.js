@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 
-import { centerDetails } from '../../src/actions/centerDetails';
+import { centerDetails, cancelEvent } from '../../src/actions/centerDetails';
 import * as types from '../../src/actions/types';
 import { centers } from './mocks/getCentersMocks';
 
@@ -99,6 +99,61 @@ describe('TEST FOR THE CENTER DETAIL ACTION', () => {
 
     const store = mockStore({});
     return store.dispatch(centerDetails(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+  it('should return the expected Action for CANCEL_EVENT', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: {
+          status: 'Success',
+          Message: 'Event successfully cancelled'
+        }
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: types.CANCEL_EVENT,
+        response: {
+          status: 'Success',
+          Message: 'Event successfully cancelled'
+        }
+      }
+    ];
+
+    const store = mockStore({});
+
+    return store.dispatch(cancelEvent(1)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+  it('should return 400 error response', () => {
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: {
+          status: 'Unsuccessful',
+          message: 'Cancelling event failed, please try again later'
+        }
+      });
+    });
+
+    const expectedActions = [
+      {
+        type: types.CANCEL_EVENT_FAIL,
+        error: {
+          status: 'Unsuccessful',
+          message: 'Cancelling event failed, please try again later'
+        }
+      }
+    ];
+
+    const store = mockStore({});
+    return store.dispatch(cancelEvent(1)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
