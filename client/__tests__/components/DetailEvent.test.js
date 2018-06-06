@@ -55,7 +55,7 @@ describe('DetailEvent component', () => {
       <DetailEvent {...props} history={history} />
     </Router>
   );
-  it('should render without throwing an error', () => {
+  it('should render without throwing an error', done => {
     expect(
       mount(
         <Router>
@@ -63,9 +63,10 @@ describe('DetailEvent component', () => {
         </Router>
       ).length
     ).toEqual(1);
+    done();
   });
 
-  it('should respond to full rendering', () => {
+  it('should respond to full rendering', done => {
     props = {
       user: {},
       event: {
@@ -104,6 +105,7 @@ describe('DetailEvent component', () => {
     wrapper.find('#delete-button').simulate('click');
     props.onDelete({ preventDefault: () => {} });
     expect(props.onDelete).toBeCalled();
+    done();
   });
 
   it('should respond to submit and image upload clicks', done => {

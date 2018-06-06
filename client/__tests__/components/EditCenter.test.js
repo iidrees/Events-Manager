@@ -43,11 +43,12 @@ describe('Landing component', () => {
     dispatch: jest.fn()
   };
   let wrapper = shallow(<EditCenter {...props} history={history} />);
-  it('should render without throwing an error', () => {
+  it('should render without throwing an error', done => {
     expect(mount(<EditCenter {...props} />).length).toEqual(1);
+    done();
   });
 
-  it('should respond to full rendering', () => {
+  it('should respond to full rendering', done => {
     props = {
       updateCenter: {
         status: 'Unsuccessful'
@@ -102,9 +103,10 @@ describe('Landing component', () => {
     props.onImageChange({ preventDefault: () => {} });
     props.onSubmit({ preventDefault: () => {} });
     expect(props.onSubmit).toBeCalled();
+    done();
   });
 
-  it('should respond to submit and image upload clicks', () => {
+  it('should respond to submit and image upload clicks', done => {
     wrapper.find('#input-file').simulate('change', {
       target: {
         name: 'images',
@@ -113,6 +115,7 @@ describe('Landing component', () => {
     });
 
     expect(wrapper.state('images')).toEqual(undefined);
+    done();
   });
   it('should respond to submit and image upload clicks', done => {
     wrapper.find('#input-file').simulate('change', {

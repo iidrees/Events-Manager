@@ -50,7 +50,6 @@
       "client/__tests__/actions/mocks/",
       "e2e/",
       "client/__tests__/setupTests.js",
-      "client/__tests__/components/",
       "client/__tests__/components/mocks/mockStore.js",
       "client/__tests__/components/mocks/localStorageMock.js"
     ],
