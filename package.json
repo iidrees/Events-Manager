@@ -32,7 +32,7 @@
     "watch": "webpack -d && webpack-dev-server --hot --inline",
     "compile-server":
       "babel server --presets es2015 --out-dir client/dist --source-maps",
-    "jest": "jest && codecov",
+    "jest": "jest",
     "jest:cover": "jest --coverage",
     "jest:watch": "jest client/__tests__/ --watchAll"
   },
