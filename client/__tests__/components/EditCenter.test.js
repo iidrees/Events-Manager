@@ -24,8 +24,6 @@ describe('Landing component', () => {
     }
   };
   let props = {
-    // status: '',
-
     authenticated: true,
     updateCenter: {
       status: 'Success',

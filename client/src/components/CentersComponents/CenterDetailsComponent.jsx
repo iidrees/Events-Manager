@@ -84,6 +84,7 @@ const CenterDetailsComponent = props => (
                       No
                     </button>
                     <button
+                      id="delete-center"
                       className="btn btn-warning"
                       data-dismiss="modal"
                       onClick={props.onDelete}
@@ -96,7 +97,11 @@ const CenterDetailsComponent = props => (
               </div>
             </div>
             <span /> {''}
-            <Link to={`/editcenter/${props.center.center.id}`} role="button">
+            <Link
+              to={`/editcenter/${props.center.center.id}`}
+              id="center-edit-btn"
+              role="button"
+            >
               <button className="btn btn-primary" type="button">
                 Edit Center
               </button>

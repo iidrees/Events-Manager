@@ -8,11 +8,7 @@ const GetCentersComponent = props => (
         return (
           <div className="col-sm-12 col-md-6 col-lg-4" key={center.id}>
             <div className="card-deck cont-body" id="card-center1">
-              <div
-                className="card "
-                id="card1"
-                // style={{ width: '18rem' }}
-              >
+              <div className="card " id="card1">
                 <div className="image-show">
                   <img
                     className="card-img-top img-fluid"

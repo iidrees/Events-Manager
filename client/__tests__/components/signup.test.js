@@ -66,7 +66,7 @@ describe('Signup component', () => {
       ).toEqual(1);
       done();
     });
-    xit('renders a form submit button tag ', done => {
+    it('renders a form submit button tag ', done => {
       expect(shallow(<Signup {...props} />).find('#signup-btn').length).toEqual(
         1
       );

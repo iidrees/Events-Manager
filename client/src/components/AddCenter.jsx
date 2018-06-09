@@ -16,11 +16,22 @@ import AddCenterHeaderComponent from './CentersComponents/AddCenterHeaderCompone
 
 /**
  *
- * @param {event} e {e}
+ * @param {event} event {event}
  * @class AddCenter
  * @extends {React.Component}
  */
-class AddCenter extends React.Component {
+export class AddCenter extends React.Component {
+  /**
+   *Creates an instance of AddCenter.
+   * @param {*} props -
+   * @memberof AddCenter
+   */
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   /**
    * @returns {void}
    * @param {event} event -
@@ -37,6 +48,7 @@ class AddCenter extends React.Component {
    */
   onSubmit = event => {
     event.preventDefault();
+
     let centerData = this.state;
     const { dispatch } = this.props;
     if (
@@ -163,5 +175,8 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(AddCenter)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AddCenter)
 );

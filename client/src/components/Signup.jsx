@@ -13,6 +13,21 @@ import NavBarMain from './NavBarMain.jsx';
  */
 export class Signup extends React.Component {
   /**
+   * Creates an instance of Signin.
+   * @param {any} props -
+   * @memberof Signup
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: {}
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  /**
    * checks if user has already signed in before and
    * then proceeds to automatically logs them in
    * @returns {void}
@@ -255,4 +270,9 @@ const mapDispatchToProps = dispatch => {
     dispatch: action => dispatch(action)
   };
 };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Signup)
+);
