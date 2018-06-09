@@ -1,6 +1,6 @@
 /* Import dependency and module */
 import express from 'express';
-import { UserSignup, UserSignin } from '../controllers/User';
+import { UserSignup, UserSignin } from '../controllers/UserSignup';
 import Admin from '../controllers/Admin';
 import {
   Event,
@@ -20,7 +20,7 @@ import CancelEvent from '../controllers/CancelEvent';
 import ModifyCenter from '../controllers/ModifyCenter';
 import UserValidator from '../middlewares/UserValidator';
 import InputValidation from '../middlewares/InputValidation';
-import AdminValidator from '../middlewares/adminValidator';
+import AdminValidator from '../middlewares/AdminValidator';
 import auth from '../auth/auth';
 
 // setup router
