@@ -30,6 +30,11 @@ describe('EditEvent component', () => {
       message: 'message',
       isLoading: true
     },
+    match: {
+      params: {
+        id: 1
+      }
+    },
     centers: [],
     user: {},
     event: {},
@@ -81,6 +86,11 @@ describe('EditEvent component', () => {
         ]
       },
       user: {},
+      match: {
+        params: {
+          id: 1
+        }
+      },
       event: {
         status: '',
         title: 'The Amity party',

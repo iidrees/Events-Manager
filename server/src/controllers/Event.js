@@ -133,14 +133,13 @@ export class EventUpdate {
    */
   static updateEvent(req, res) {
     const { title, description, startDate, center, endDate, imgUrl } = req.body;
-
     const { id } = req.decoded;
     const { eventId } = req.params;
 
     /**
      * Check if date is a time in the past and returns an error if true
      *  */
-    if (startDate <= new Date().toISOString().slice(0, 10)) {
+    if (startDate < new Date().toISOString().slice(0, 10)) {
       return res.status(422).send({
         status: 'Unsuccessful',
         message:

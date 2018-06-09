@@ -229,7 +229,7 @@ describe('TEST EVENT ENDPOINTS', () => {
         .then(res => {
           assert.deepEqual(res.status, 422);
           assert.deepEqual(res.body.status, 'Unsuccessful');
-          assert.deepEqual(res.body.message, 'Please fill all input fields');
+          assert.deepEqual(res.body.message, 'Event could not be added');
 
           done();
         });
