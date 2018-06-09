@@ -6,6 +6,7 @@ const AddEventComponent = props => (
     <div className="row">
       <div className="col-sm-12">
         <form
+          id="add-event-form"
           method="POST"
           className="form-horizontal"
           onSubmit={props.onSubmit}
@@ -20,7 +21,7 @@ const AddEventComponent = props => (
               className="form-control"
               onChange={props.onChange}
               name="title"
-              id="form-event1"
+              id="add-event-form1"
               type="text"
               placeholder=""
               autoFocus
@@ -36,7 +37,7 @@ const AddEventComponent = props => (
               onChange={props.onChange}
               name="startDate"
               type="date"
-              id="form-event2"
+              id="add-event-form2"
               placeholder="YY/MM/DD"
               required
             />
@@ -50,7 +51,7 @@ const AddEventComponent = props => (
               onChange={props.onChange}
               name="endDate"
               type="date"
-              id="form-event2"
+              id="add-event-form3"
               placeholder="YY/MM/DD"
               required
             />
@@ -61,7 +62,7 @@ const AddEventComponent = props => (
             </label>
             <select
               className="form-control"
-              id="event-center1"
+              id="add-event-form4"
               onChange={props.onChange}
               name="center"
               required
@@ -87,7 +88,7 @@ const AddEventComponent = props => (
             <textarea
               className="form-control"
               onChange={props.onChange}
-              id="form-event4"
+              id="add-event-form5"
               rows="8"
               name="description"
               placeholder="brief details about the event"
@@ -102,7 +103,7 @@ const AddEventComponent = props => (
               type="file"
               className="form-control-file"
               onChange={props.onImageChange}
-              id="input-file"
+              id="input-file1"
               name="images"
               aria-describedby="fileHelp"
               required
@@ -112,7 +113,7 @@ const AddEventComponent = props => (
           <button
             type="submit"
             className="btn btn-primary btn-sm"
-            id="save-event"
+            id="save-event1"
           >
             Save and create event{' '}
             <span>

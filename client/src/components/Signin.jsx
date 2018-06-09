@@ -25,6 +25,9 @@ export class Signin extends React.Component {
     this.state = {
       token: {}
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   /**
    * @returns {void}
@@ -223,4 +226,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signin));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Signin)
+);

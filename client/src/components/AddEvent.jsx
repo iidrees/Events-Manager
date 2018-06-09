@@ -20,7 +20,18 @@ import AddEventHeaderComponent from './EventsComponents/AddEventHeaderComponent.
  * @class Addevents
  * @extends { React.Component }
  */
-class AddEvent extends React.Component {
+export class AddEvent extends React.Component {
+  /**
+   *Creates an instance of AddEvent.
+   * @param {*} props -
+   * @memberof AddEvent
+   */
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   /**
    * @returns {void}
    * @param {event} event -
@@ -177,5 +188,8 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(AddEvent)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AddEvent)
 );

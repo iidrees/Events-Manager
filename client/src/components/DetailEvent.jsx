@@ -21,6 +21,19 @@ import DetailsHeaderComponent from './EventsComponents/DetailsHeaderComponent.js
  */
 export class DetailEvent extends React.Component {
   /**
+   *Creates an instance of DetailEvent.
+   * @param {*} props -
+   * @memberof DetailEvent
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1,
+      itemsPerPage: 10
+    };
+    this.onDelete = this.onDelete.bind(this);
+  }
+  /**
    * A method that lets a user get their events
    * @memberof DetailEvent
    * @returns {any} dispatched actions
@@ -125,5 +138,8 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(DetailEvent)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(DetailEvent)
 );

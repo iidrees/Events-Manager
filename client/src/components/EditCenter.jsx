@@ -33,6 +33,7 @@ export class EditCenter extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
   }
 
   /**
@@ -206,5 +207,8 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(EditCenter)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(EditCenter)
 );

@@ -8,7 +8,6 @@ import { GetMyEvents } from '../../src/components/GetMyEvents';
 
 describe('GetMyEvents component', () => {
   let props = {
-    // status: '',
     myEvents: {
       status: 'Success',
       message: 'message',
@@ -31,7 +30,6 @@ describe('GetMyEvents component', () => {
 
   it('should render the whole component when there are no events', done => {
     props = {
-      // status: '',
       myEvents: {
         status: 'Unsuccessful',
         message: 'message',
@@ -56,7 +54,6 @@ describe('GetMyEvents component', () => {
   });
   it('should render the whole component when there are no events', done => {
     props = {
-      // status: '',
       myEvents: {
         status: 'Success',
         message: 'message',

@@ -25,7 +25,7 @@ const AddCenterComponent = props => (
               name="name"
               type="text"
               placeholder="Enter Name of Center"
-              id="example-text-input"
+              id="example-text-input1"
               required
             />
           </div>
@@ -37,7 +37,7 @@ const AddCenterComponent = props => (
               className="form-control"
               type="text"
               placeholder=" Enter Location"
-              id="example-text-input"
+              id="example-text-input2"
               name="location"
               onChange={props.onChange}
               required
@@ -51,7 +51,7 @@ const AddCenterComponent = props => (
               className="form-control"
               type="text"
               placeholder="Enter Capacity"
-              id="example-text-input"
+              id="example-text-input3"
               name="capacity"
               onChange={props.onChange}
               required
@@ -65,7 +65,7 @@ const AddCenterComponent = props => (
               className="form-control"
               type="text"
               placeholder="Enter Owner"
-              id="example-text-input"
+              id="example-text-input4"
               name="owner"
               onChange={props.onChange}
               required
@@ -94,7 +94,7 @@ const AddCenterComponent = props => (
               type="file"
               className="form-control-file"
               onChange={props.onImageChange}
-              id="input-file"
+              id="file-center1"
               name="images"
               aria-describedby="fileHelp"
               required

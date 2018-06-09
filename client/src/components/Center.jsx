@@ -17,7 +17,7 @@ import GetCentersHeaderComponent from './CentersComponents/GetCentersHeaderCompo
  * @class Center
  * @extends {React.Component}
  */
-class Center extends React.Component {
+export class Center extends React.Component {
   /**
    * Creates an instance of Center.
    * @param {any} props -
@@ -145,4 +145,9 @@ const mapStateToProps = state => {
     token: state.userTokenReducer
   };
 };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Center));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Center)
+);

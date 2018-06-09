@@ -38,7 +38,7 @@ export default (state = initialState, action) => {
     }
     case DELETE_EVENT: {
       let newEvents = state.events.filter(
-        obj => obj.id !== action.eventDeleted.eventId
+        object => object.id !== action.eventDeleted.eventId
       );
       return {
         ...state,
