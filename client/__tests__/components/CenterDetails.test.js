@@ -13,11 +13,11 @@ import { event } from '../actions/mocks/addEventMock';
 describe('CenterDetails component', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error');
-    console.error.mockImplementation(() => {}); // eslint-disable-line
+    console.error.mockImplementation(() => {});
   });
 
   afterEach(() => {
-    console.error.mockRestore(); // eslint-disable-line
+    console.error.mockRestore();
   });
   const locations = [];
   const history = {

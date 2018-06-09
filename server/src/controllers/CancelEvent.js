@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import winston from 'winston';
 import { Events, Users } from '../models';
 import mailer from '../config/mailer';
 
@@ -58,7 +59,7 @@ export default class CancelEvent {
                   newEvent
                 });
               })
-              .catch(err => console.log('the error from the mail>>', err)); // eslint-disable-line
+              .catch(err => winston.info('the error from the mail>>', err)); // eslint-disable-line
           })
           .catch(err => {
             return res.status(400).send({

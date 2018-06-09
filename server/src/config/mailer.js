@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import moment from 'moment';
+import winston from 'winston';
 
 const mailer = (email, date, center) => {
   var transporter = nodemailer.createTransport({
@@ -31,9 +32,9 @@ const mailer = (email, date, center) => {
 
   transporter.sendMail(mailOptions, function(error, info) {
     if (error) {
-      console.log(error); // eslint-disable-line
+      winston.info(error); // eslint-disable-line
     } else {
-      console.log('Email sent: ' + info.response); // eslint-disable-line
+      winston.info('Email sent: ' + info.response); // eslint-disable-line
     }
   });
 };

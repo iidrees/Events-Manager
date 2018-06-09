@@ -19,7 +19,6 @@ export class GetCenter {
   static getCenter(req, res) {
     const { centerId } = req.params;
     let events;
-    // let page =  math.ceil((parseInt(req.query.page, 10) - 1 ) * 10)
 
     return Centers.findOne({
       where: {
