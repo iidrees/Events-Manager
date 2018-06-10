@@ -68,7 +68,7 @@ module.exports = {
       .visible('div > h1')
       .assert.containsText('div > h1', 'You Have No Event');
   },
-  'User should be able to add an event': browser => {
+  'Should prompt user to fill the empty Name field': browser => {
     browser
       .click('#user-addevent')
       .pause(2000)
@@ -87,25 +87,149 @@ module.exports = {
       .assert.visible('div > label[for=add-event]')
       .assert.containsText('div > label[for=add-event]', 'Name of Event:')
       .assert.visible('div > input[name=title]')
+      .setValue('div > input[name=title]', '')
+      .click('#save-event1')
+      .pause(1000)
+      .click('#save-event1')
+      .pause(1000)
+      .assert.visible('div > input[name=startDate]')
+      .setValue('div > input[name=startDate]', '')
+      .assert.visible('div > input[name=endDate]')
+      .setValue('div > input[name=endDate]', '')
+      .assert.visible('div > #add-event-form4')
+      .assert.visible("select[name=center] option[value='2']")
+      .click('select[name=center] ')
+      .assert.visible('#add-event-form5')
+      .setValue('#add-event-form5', '')
+      .assert.visible('input[name=images]')
+      .setValue('input[type=file]', '')
+      .pause(1000)
+      .assert.visible('#save-event1')
+      .click('#save-event1')
+      .pause(2000);
+  },
+  'Should prompt user when no date is entered': browser => {
+    browser
+      .pause(1000)
+      .assert.visible('div > input[name=title]')
       .setValue('div > input[name=title]', 'The Simulations Party!')
+      .pause(1000)
+      .assert.visible('div > input[name=startDate]')
+      .setValue('div > input[name=startDate]', '')
+      .assert.visible('div > input[name=endDate]')
+      .setValue('div > input[name=endDate]', '')
+      .assert.visible('div > #add-event-form4')
+      .assert.visible("select[name=center] option[value='2']")
+      .click('select[name=center] ')
+      .assert.visible('#add-event-form5')
+      .setValue('#add-event-form5', '')
+      .assert.visible('input[name=images]')
+      .setValue('input[type=file]', '')
+      .pause(1000)
+      .assert.visible('#save-event1')
+      .click('#save-event1')
+      .pause(2000);
+  },
+  'Should prompt user to pick a center': browser => {
+    browser
       .pause(1000)
       .assert.visible('div > input[name=startDate]')
       .setValue('div > input[name=startDate]', '10/02/2019')
       .assert.visible('div > input[name=endDate]')
       .setValue('div > input[name=endDate]', '16/02/2019')
-      .assert.visible('div > #event-center1')
+      .assert.visible('div > #add-event-form4')
+      .assert.visible("select[name=center] option[value='2']")
+      .click('select[name=center]')
+      .assert.visible('#save-event1')
+      .click('#save-event1')
+      .pause(2000);
+  },
+  'Should prompt user when no description is entered': browser => {
+    browser
+      .pause(1000)
       .assert.visible("select[name=center] option[value='2']")
       .click("select[name=center] option[value='2']")
-      .assert.visible('#form-event4')
-      .setValue('#form-event4', 'Lorem Ipsum dolor sit amet')
+      .assert.visible('#add-event-form5')
+      .setValue('#add-event-form5', '')
+      .assert.visible('input[name=images]')
+      .setValue('input[type=file]', '')
+      .pause(1000)
+      .assert.visible('#save-event1')
+      .click('#save-event1')
+      .pause(2000);
+  },
+  'Should prompt user when no image': browser => {
+    browser
+      .pause(1000)
+      .assert.visible('#add-event-form5')
+      .setValue('#add-event-form5', 'Lorem Ipsum and shit')
+      .assert.visible('input[name=images]')
+      .setValue('input[type=file]', '')
+      .pause(1000)
+      .assert.visible('#save-event1')
+      .click('#save-event1')
+      .pause(2000);
+  },
+  'User should be prompted to enter a valid date': browser => {
+    browser
+      .pause(2000)
+      .assert.visible('div > input[name=title]')
+      .setValue('div > input[name=title]', 'The Simulations Party!')
+      .pause(1000)
+      .assert.visible('div > input[name=startDate]')
+      .setValue('div > input[name=startDate]', '10/02/2018')
+      .assert.visible('div > input[name=endDate]')
+      .setValue('div > input[name=endDate]', '16/02/2018')
+      .assert.visible('div > #add-event-form4')
+      .assert.visible("select[name=center] option[value='2']")
+      .click("select[name=center] option[value='2']")
+      .assert.visible('#add-event-form5')
+      .setValue('#add-event-form5', 'Lorem Ipsum dolor sit amet')
       .assert.visible('input[name=images]')
       .setValue(
         'input[type=file]',
         '/Users/idreesibraheem/Desktop/pexels-photo-296878.jpeg'
       )
       .pause(1000)
-      .assert.visible('#save-event')
-      .click('#save-event')
+      .assert.visible('#save-event1')
+      .click('#save-event1')
+      .pause(15000);
+  },
+  'User should be able to add an event': browser => {
+    browser
+      .pause(2000)
+      .assert.visible('div > #add-event-header > .row > div > h1')
+      .assert.containsText(
+        'div > #add-event-header > .row > div > h1',
+        'Add your events'
+      )
+      .assert.visible('div > #add-event-header > .row > div > p')
+      .assert.containsText(
+        'div > #add-event-header > .row > div > p',
+        'Are you in need of a location to host your event? If yes, then why not host your events using one of our numerous event centers by creating an event below?'
+      )
+      .pause(1000)
+      .pause(2000)
+      .assert.visible('div > input[name=title]')
+      .setValue('div > input[name=title]', 'The Simulations Party!')
+      .pause(1000)
+      .assert.visible('div > input[name=startDate]')
+      .setValue('div > input[name=startDate]', '10/02/2019')
+      .assert.visible('div > input[name=endDate]')
+      .setValue('div > input[name=endDate]', '16/02/2019')
+      .assert.visible('div > #add-event-form4')
+      .assert.visible("select[name=center] option[value='2']")
+      .click("select[name=center] option[value='2']")
+      .assert.visible('#add-event-form5')
+      .setValue('#add-event-form5', 'Lorem Ipsum dolor sit amet')
+      .assert.visible('input[name=images]')
+      .setValue(
+        'input[type=file]',
+        '/Users/idreesibraheem/Desktop/pexels-photo-296878.jpeg'
+      )
+      .pause(1000)
+      .assert.visible('#save-event1')
+      .click('#save-event1')
       .pause(15000)
       .end();
   }

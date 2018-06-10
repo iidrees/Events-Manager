@@ -70,7 +70,7 @@ const EditEventComponent = props => (
               </option>
               {props.centers.centers.map(center => {
                 return (
-                  <option key={center.id} className="home-para">
+                  <option key={center.id} id={center.id} className="home-para">
                     {center.name}
                   </option>
                 );

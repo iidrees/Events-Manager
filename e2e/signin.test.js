@@ -37,17 +37,57 @@ module.exports = {
         'Please fill the form below to login'
       );
   },
-  'User should be able to see the form on page and signup': browser => {
+  'User should be to prompted to enter a valid email': browser => {
     browser.assert
       .visible('div > label[for=email]')
       .assert.containsText('div > label[for=email]', 'E-Mail Address')
       .assert.visible('div > input[name=email]')
+      .setValue('div > input[name=email]', 'faith.andela@andela')
+      .pause(1000)
+      .assert.visible('div > label[for=password]')
+      .assert.containsText('div > label[for=password]', 'Password')
+      .assert.visible('div > input[name=password]')
+      .setValue('div > input[name=password]', '22221111')
+      .pause(1000)
+      .assert.visible('#signin-btn')
+      .click('#signin-btn')
+      .pause(2000);
+  },
+  'User should be prompted that they entered an incorrect username or password ': browser => {
+    browser.assert
+      .visible('div > label[for=email]')
+      .assert.containsText('div > label[for=email]', 'E-Mail Address')
+      .assert.visible('div > input[name=email]')
+      .pause(1000)
+      .clearValue('input[name=email]')
+      .pause(1000)
       .setValue('div > input[name=email]', 'faith.andela@andela.com')
       .pause(1000)
       .assert.visible('div > label[for=password]')
       .assert.containsText('div > label[for=password]', 'Password')
       .assert.visible('div > input[name=password]')
-      .setValue('div > input[name=password]', '11111111')
+      .setValue('div > input[name=password]', '222211')
+      .pause(1000)
+      .assert.visible('#signin-btn')
+      .click('#signin-btn')
+      .pause(2000);
+  },
+  'User should be able to see the form on page and signin': browser => {
+    browser
+      .pause(1000)
+      .assert.visible('div > label[for=email]')
+      .assert.containsText('div > label[for=email]', 'E-Mail Address')
+      .assert.visible('div > input[name=email]')
+      .clearValue('input[name=email]')
+      .pause(1000)
+      .setValue('div > input[name=email]', 'faith.andela@andela.com')
+      .pause(1000)
+      .assert.visible('div > label[for=password]')
+      .assert.containsText('div > label[for=password]', 'Password')
+      .clearValue('input[name=password]')
+      .pause(1000)
+      .assert.visible('div > input[name=password]')
+      .setValue('div > input[name=password]', '22221111')
       .pause(1000)
       .assert.visible('#signin-btn')
       .click('#signin-btn')

@@ -7,7 +7,7 @@ const MyEventHeader = props => (
     <div className="row">
       <div className="col-sm-12">
         <h1 className=" head1 text-center">My Events</h1>
-        <p id="p-head" className="head1 text-center">
+        <p id="p-head" className="head1 text-center myevent">
           Check your pending events below.
         </p>
         <hr />
