@@ -32,9 +32,9 @@ const mailer = (email, date, center) => {
 
   transporter.sendMail(mailOptions, function(error, info) {
     if (error) {
-      winston.info(error); // eslint-disable-line
+      winston.info(error);
     } else {
-      winston.info('Email sent: ' + info.response); // eslint-disable-line
+      winston.info('Email sent: ' + info.response);
     }
   });
 };

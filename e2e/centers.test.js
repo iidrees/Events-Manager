@@ -2,7 +2,7 @@
 
 const APP_BASE_URL = 'http://localhost:5050';
 
-const myEvents = browser => {
+const centers = browser => {
   // 'User should be able to see the landing page'
   browser
     .url(APP_BASE_URL)
@@ -36,12 +36,12 @@ const myEvents = browser => {
     .assert.visible('div > label[for=email]')
     .assert.containsText('div > label[for=email]', 'E-Mail Address')
     .assert.visible('div > input[name=email]')
-    .setValue('div > input[name=email]', 'faith.andela@andela.com')
+    .setValue('div > input[name=email]', 'idreeskun@kun.com')
     .pause(1000)
     .assert.visible('div > label[for=password]')
     .assert.containsText('div > label[for=password]', 'Password')
     .assert.visible('div > input[name=password]')
-    .setValue('div > input[name=password]', '22221111')
+    .setValue('div > input[name=password]', 'wordpass')
     .pause(1000)
     .assert.visible('#signin-btn')
     .click('#signin-btn')
@@ -50,21 +50,23 @@ const myEvents = browser => {
   // 'User should see the buttons on the navigation bar'
   browser.assert
     .visible('.navbar-nav.ml-auto')
-    .assert.visible('#user-getcenters')
-    .assert.containsText('#user-getcenters', 'Centers')
-    .assert.visible('#user-addevent')
-    .assert.containsText('#user-addevent', 'Add Events')
-    .assert.visible('#user-myevents')
-    .assert.containsText('#user-myevents', 'My Events')
-    .assert.visible('#user-logout')
-    .assert.containsText('#user-logout', 'Sign Out')
+    .assert.visible('#admin-getcenters')
+    .assert.containsText('#admin-getcenters', 'Centers')
+    .assert.visible('#admin-addcenter')
+    .assert.containsText('#admin-addcenter', 'Add Center')
+    .assert.visible('#admin-logout')
+    .assert.containsText('#admin-logout', 'Sign Out')
     .pause(2000);
 
-  // 'User should be able to a 404 page when there are no events on myEvents page '
+  // 'User should be navigated to the Centers after signin '
   browser.assert
-    .visible('div > h1')
-
+    .visible('#p-head')
+    .assert.containsText(
+      '#p-head',
+      'Are you looking for a location to host your events?'
+    )
+    .pause(2000)
     .end();
 };
 
-export default myEvents;
+export default centers;

@@ -40,8 +40,8 @@ export default (state = initialState, action) => {
     }
 
     case DELETE_CENTER: {
-      let newCenters = state.centers.filter(obj => {
-        return obj.id != action.centerDeleted.centerId;
+      let newCenters = state.centers.filter(object => {
+        return object.id != action.centerDeleted.centerId;
       });
 
       return {

@@ -1,12 +1,35 @@
 {
   "name": "Events-Manager",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
     "SECRET": {
       "required": true
     },
     "DATABASE_URL": {
+      "required": true
+    },
+    "CLOUDINARY_URL": {
+      "required": true
+    },
+    "MAIL": {
+      "required": true
+    },
+    "SEED_ADMIN": {
+      "required": true
+    },
+    "PASSWORD": {
+      "required": true
+    },
+    "SEED_SUPERADMIN": {
+      "required": true
+    },
+    "SEED_ADMIN_PW": {
+      "required": true
+    },
+    "SEED_USER": {
+      "required": true
+    },
+    "UPLOAD_PRESET": {
       "required": true
     }
   },
@@ -15,9 +38,7 @@
       "quantity": 1
     }
   },
-  "addons": [
-    "heroku-postgresql"
-  ],
+  "addons": ["heroku-postgresql"],
   "buildpacks": [
     {
       "url": "heroku/nodejs"

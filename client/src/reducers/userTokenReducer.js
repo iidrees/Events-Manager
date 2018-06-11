@@ -1,4 +1,4 @@
-import { SET_TOKEN, REMOVE_TOKEN } from '../actions/types';
+import { SET_TOKEN } from '../actions/types';
 
 export default (state = { decodedToken: null }, action) => {
   switch (action.type) {
