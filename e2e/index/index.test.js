@@ -1,8 +1,8 @@
 /* browser */
 // import editCenter from '../editCenter.test.js';
 import landing from '../landingPage.test';
-import signUp from '../signup.test';
-import signIn from '../signin.test';
+import signUp from '../signUp.test';
+import signIn from '../signIn.test';
 import myEvents from '../myEvents.test';
 import addEvent from '../addEvent.test';
 import eventDetails from '../eventDetails.test';
