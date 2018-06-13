@@ -1,6 +1,7 @@
 {
   "name": "events-manager",
   "version": "1.0.0",
+  "private": true,
   "description": "An Events Manager Application that allows users host their organised events",
   "main": "server.js",
   "scripts": {
