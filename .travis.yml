@@ -24,8 +24,13 @@ before_script:
   - psql -c "create database events_manager_test;" -U postgres
   - psql -c "create database events_manager;" -U postgres
   - NODE_ENV=development npm run seq:create 
-  
+  - npm install -g nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 after_success:
   - NODE_ENV=development npm run coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
   - npm run jest
+  

@@ -1,5 +1,5 @@
 {
-  "src_folders": ["./e2e/"],
+  "src_folders": ["./e2e/index/"],
   "output_folder": "reports",
   "selenium": {
     "start_process": true,
@@ -20,7 +20,7 @@
         "path": "./reports/"
       },
       "desiredCapabilities": {
-        "args": ["window-size=3000,3000"],
+        "args": ["window-size=4000,4000"],
         "browserName": "chrome",
         "javascriptEnabled": true,
         "acceptSslCerts": true,

@@ -90,7 +90,7 @@ export class Signup extends React.Component {
     if (user.status === 'Unsuccessful') {
       toastr.options.preventDuplicates = true;
       toastr.options.positionClass = 'toast-top-left';
-      toastr.error(`${user.message}<br/>${user.error}`);
+      toastr.error(`${user.message}`);
       user.status = '';
     }
     return (

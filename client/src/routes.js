@@ -14,6 +14,7 @@ import CenterDetails from './components/CenterDetails.jsx';
 import EditCenter from './components/EditCenter.jsx';
 import EditEvent from './components/EditEvent.jsx';
 import GetMyEvents from './components/GetMyEvents.jsx';
+import NotFound from './components/NotFound.jsx';
 
 export const history = createBrowserHistory();
 
@@ -43,7 +44,7 @@ export const Routes = () => {
       <Route exact path="/editevent/:id" component={authRoute(EditEvent)} />
       <Route exact path="/addcenter" component={authRoute(AddCenter)} />
       <Route exact path="/" component={LandingPage} />
-      <Route exact path="*" component={LandingPage} />
+      <Route exact path="*" component={NotFound} />
     </Switch>
   );
 };

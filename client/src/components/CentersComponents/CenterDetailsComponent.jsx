@@ -41,6 +41,7 @@ const CenterDetailsComponent = props => (
           <div>
             <button
               type="button"
+              name="pre-delete"
               className="btn btn-danger "
               data-toggle="modal"
               data-target="#deleteCenter"
@@ -80,6 +81,7 @@ const CenterDetailsComponent = props => (
                       type="button"
                       className="btn btn-primary"
                       data-dismiss="modal"
+                      name="no-delete"
                     >
                       No
                     </button>
@@ -88,6 +90,7 @@ const CenterDetailsComponent = props => (
                       className="btn btn-warning"
                       data-dismiss="modal"
                       onClick={props.onDelete}
+                      name="del-center"
                       type="button"
                     >
                       Delete Center

@@ -76,7 +76,7 @@ export class EditEvent extends React.Component {
       eventData.imgFile === undefined ||
       !eventData.imgFile
     ) {
-      return dispatch(editEvent(eventData, eventData.center));
+      return dispatch(editEvent(eventData, this.props.match.params.id));
     }
     return dispatch(imageUpload(eventData, this.props.match.params.id));
   };

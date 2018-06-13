@@ -6,7 +6,9 @@ const EditEventHeaderComponent = props => (
     <div className="container" id="add-event-header">
       <div className="row">
         <div className="col-sm-12">
-          <h1 className="text-center head-1">Edit your event </h1>
+          <h1 id="edit-head" className="text-center head-1">
+            Edit your event{' '}
+          </h1>
           <p className="head-para text-center" />
         </div>
       </div>

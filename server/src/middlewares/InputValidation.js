@@ -27,8 +27,7 @@ class InputValidation {
       typeof name !== 'string' ||
       typeof location !== 'string' ||
       typeof owner !== 'string' ||
-      typeof description !== 'string' ||
-      typeof capacity + '' !== 'string'
+      typeof description !== 'string'
     ) {
       return res.status(422).send({
         status: 'Unsuccessful',
@@ -71,15 +70,14 @@ class InputValidation {
    * @memberof InputValidation
    */
   static eventInput(req, res, next) {
-    const { title, description, startDate, endDate, time, imgUrl } = req.body;
+    const { title, description, startDate, endDate, imgUrl } = req.body;
     const center = req.params.centerId;
 
     if (
-      typeof title !== 'string' ||
-      typeof startDate !== 'string' ||
-      typeof endDate !== 'string' ||
-      typeof description !== 'string' ||
-      typeof imgUrl + '' !== 'string'
+      typeof title + '' !== 'string' ||
+      typeof startDate + '' !== 'string' ||
+      typeof endDate + '' !== 'string' ||
+      typeof description + '' !== 'string'
     ) {
       return res.status(422).send({
         status: 'Unsuccessful',

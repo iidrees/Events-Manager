@@ -25,7 +25,10 @@ const GetCentersComponent = props => (
                     to={`/centerdetails/${center.id}`}
                     style={{ textDecoration: 'none', color: 'black' }}
                   >
-                    <h5 className="card-title even-font">
+                    <h5
+                      className="card-title even-font"
+                      id={'centers' + center.id}
+                    >
                       <span className="all-centers-font">Center: </span>
                       {center.name}
                     </h5>

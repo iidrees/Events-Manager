@@ -7,6 +7,7 @@ import logger from 'morgan';
 import dotenv from 'dotenv';
 import webpack from 'webpack';
 import path from 'path';
+import winston from 'winston';
 import config from '../../webpack.config.dev';
 import configProd from '../../webpack.config.prod';
 import router from './routes/routes';
@@ -25,7 +26,7 @@ dotenv.config();
 
 // In what env to serve both documentation webpack config
 if (process.env.NODE_ENV === 'production') {
-  console.log('this is production'); // eslint-disable-line
+  winston.info('this is production');
   // API DOC
   const swaggerDocument = require('../../api-doc-prod.json');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -39,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
   );
   app.use(require('webpack-hot-middleware')(compilerProd));
 } else {
-  console.log('this is development'); //eslint-disable-line
+  winston.info('this is development');
 
   const swaggerDocument = require('../../api-doc-dev.json');
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

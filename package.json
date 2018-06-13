@@ -1,23 +1,18 @@
 {
   "name": "events-manager",
   "version": "1.0.0",
-  "description":
-    "An Events Manager Application that allows users host their organised events",
+  "private": true,
+  "description": "An Events Manager Application that allows users host their organised events",
   "main": "server.js",
   "scripts": {
-    "test":
-      "npm run seq:db && nyc mocha server/test/* --timeout 25000 --require babel-register --exit",
-    "test:env":
-      "cross-env NODE_ENV=test npm run seq:db && nyc mocha server/test/* --timeout 25000 --require babel-register --exit",
-    "test:tester":
-      "cross-env NODE_ENV=test npm run seq:db && nyc --reporter=html --reporter=text --reporter=lcov --reporter=text-lcov _mocha server/test/ --compilers js:babel-core/register --exit",
+    "test": "npm run seq:db && nyc mocha server/test/* --timeout 25000 --require babel-register --exit",
+    "test:env": "cross-env NODE_ENV=test npm run seq:db && nyc mocha server/test/* --timeout 25000 --require babel-register --exit",
+    "test:tester": "cross-env NODE_ENV=test npm run seq:db && nyc --reporter=html --reporter=text --reporter=lcov --reporter=text-lcov _mocha server/test/ --compilers js:babel-core/register --exit",
     "start:prod": "NODE_ENV=production babel-node  server/src/server.js",
-    "start:dev":
-      "NODE_ENV=development nodemon server/src/server.js --exec babel-node",
+    "start:dev": "NODE_ENV=development nodemon server/src/server.js --exec babel-node",
     "build": "babel server/src -d server/lib",
     "heroku-postbuild": "npm run build",
-    "start":
-      "npm run build && node --optimize_for_size --max_old_space_size=920 --gc_interval=100 server/lib/server.js",
+    "start": "npm run build && node --optimize_for_size --max_old_space_size=920 --gc_interval=100 server/lib/server.js",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov",
     "nyc": "nyc report",
@@ -30,15 +25,20 @@
     "seq:elecreate": "sequelize db:migrate",
     "seq:db": "npm run seq:drop && npm run seq:create && npm run seq:seed",
     "watch": "webpack -d && webpack-dev-server --hot --inline",
-    "compile-server":
-      "babel server --presets es2015 --out-dir client/dist --source-maps",
+    "compile-server": "babel server --presets es2015 --out-dir client/dist --source-maps",
     "jest": "jest --runInBand && codecov",
     "jest:cover": "jest --coverage",
     "jest:watch": "jest client/__tests__/ --watchAll"
   },
   "babel": {
-    "presets": ["es2015", "react", "stage-0"],
-    "plugins": ["transform-object-rest-spread"]
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
   },
   "jest": {
     "setupFiles": [
@@ -63,7 +63,13 @@
     "type": "git",
     "url": "git+https://github.com/iidrees/Events-Manager.git"
   },
-  "keywords": ["Node.js", "Express.js", "React.js", "API", "Events-Management"],
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "React.js",
+    "API",
+    "Events-Management"
+  ],
   "author": "Idrees Ibraheem",
   "license": "MIT",
   "bugs": {
@@ -139,7 +145,8 @@
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.1",
     "webpack-dev-server": "^2.9.4",
-    "webpack-hot-middleware": "^2.21.0"
+    "webpack-hot-middleware": "^2.21.0",
+    "winston": "^3.0.0-rc6"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
